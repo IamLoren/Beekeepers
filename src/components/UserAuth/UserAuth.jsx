@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
+import { StyledSvg, StyledUserAuthWrapper } from './UserAuth.styled';
 
 const UserAuth = () => {
   return (
-    <div>
+    <StyledUserAuthWrapper>
       <Link to="signin">Sign in</Link>
-      <svg width={10}>
-        <use href={`${sprite}#icon-logo`} />
-      </svg>
-    </div>
+      <StyledSvg width={24} height={24}>
+        <use href={`${sprite}#icon-user`} />
+      </StyledSvg>
+    </StyledUserAuthWrapper>
   );
 };
 
