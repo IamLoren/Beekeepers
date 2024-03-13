@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import bgTab from '../assets/BG-tab.webp';
+import bgTab from '../assets/Bg-tab.webp';
 // import bgMob from '../img/Mobile/statistics-bg-mob.webp';
 // import BgMobRetina from  '../img/Mobile/statistics-bg-mob@retina.webp'
 import './variables.css';
@@ -81,7 +81,6 @@ input:-webkit-autofill:active {
     height: fit-content;
     background-image: url(${bgTab});
     background-position: bottom;
-    /* Додаткові стилі для бекграунду на малих екранах */
   }
 
   @media only screen and (min-width: 1440px) and (min-resolution: 192dpi) {
