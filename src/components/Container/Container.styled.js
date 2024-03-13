@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledContainer = styled.div`
   width: 320px;
   margin: 0 auto;
-  padding-left: 20px; 
+  padding-left: 20px;
   padding-right: 20px;
 
   @media only screen and (min-width: 768px) and (max-width: 1439px) {
@@ -12,10 +12,9 @@ export const StyledContainer = styled.div`
     padding-right: 32px;
   }
 
-    @media only screen and (min-width: 1440px) {
-      width: 1440px;
-      padding-left: 112px;
-      padding-right: 112px;
-    }
+  @media only screen and (min-width: 1440px) {
+    width: 1440px;
+    padding-left: 112px;
+    padding-right: 112px;
   }
 `;
