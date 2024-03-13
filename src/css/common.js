@@ -72,14 +72,14 @@ input:-webkit-autofill:active {
 
 @media screen and (min-width: 1440px) {
   body {
+    height: 100vh;
     max-height: 100vh;
   }
   }
 
   @media only screen and (min-width: 1440px) and (min-resolution: 192dpi) {
     body {
-       background-image: url(${bgTab};
-        background-position: bottom;
+       
     }
 
 `;
