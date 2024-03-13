@@ -1,7 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import bgTab from '../assets/Bg-tab.webp';
-// import bgMob from '../img/Mobile/statistics-bg-mob.webp';
-// import BgMobRetina from  '../img/Mobile/statistics-bg-mob@retina.webp'
 import './variables.css';
 
 export const Global = createGlobalStyle`
