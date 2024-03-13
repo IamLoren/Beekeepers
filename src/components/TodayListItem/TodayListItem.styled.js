@@ -6,7 +6,7 @@ export const ItemWrapper = styled.li`
   align-items: center;
   padding: 12px 0;
 
-  border-bottom: 1px solid var(--card-bg-color);
+  border-bottom: 1px solid var(--accent-bg-color);
 
   button {
     background-color: transparent;
