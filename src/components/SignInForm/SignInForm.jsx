@@ -4,7 +4,7 @@ const SignInForm = () => {
   return (
     <form>
     SignInForm
-    <NavLink to="signup">Sign Up</NavLink>
+    <NavLink to="/signup">Sign Up</NavLink>
 </form>
   )
 }
