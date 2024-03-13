@@ -9,6 +9,13 @@ export const StyledUserAuthWrapper = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const StyledSpan = styled.span`
   color: var(--secondary-text);
 `;
 

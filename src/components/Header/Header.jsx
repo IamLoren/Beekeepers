@@ -3,15 +3,19 @@ import UserAuth from '../UserAuth/UserAuth';
 import UserLogo from '../UserLogo/UserLogo';
 import { StyledHeader, StyledWrapper } from './Header.styled';
 
-export const Header = () => {
+export const Header = ({ isAuthenticated }) => {
   return (
     <StyledHeader>
-      {' '}
       <Logo />
-      <StyledWrapper>
-        <UserAuth />
-        <UserLogo />
-      </StyledWrapper>
+      {isAuthenticated ? (
+        <StyledWrapper>
+          <UserLogo />
+        </StyledWrapper>
+      ) : (
+        <StyledWrapper>
+          <UserAuth />
+        </StyledWrapper>
+      )}
     </StyledHeader>
   );
 };
