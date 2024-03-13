@@ -41,7 +41,7 @@ import {
     reducer: {
       authSlice: persistedAuthReducer,
       normaCounterSlice: persistedCounterReducer,
-      transactionsSlice: persistedDataReducer,
+      statisticDataSlice: persistedDataReducer,
     },
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
