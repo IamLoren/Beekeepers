@@ -1,27 +1,26 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import FirstPage from 'pages/FirstPage/FirstPage';
-import SecondPage from 'pages/SecondPage/SecondPage';
-import HalfPage from 'pages/HalfPage/HalfPage';
 import ErrorPage from 'pages/ErrorPage/ErrorPage';
-import { AppWrapper } from './App.styled';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import SignInPage from './pages/SignInPage/SignInPage.jsx';
+import HomePage from './pages/HomePage/HomePage';
+import SignUpPage from './pages/SignUpPage/SignUpPage.jsx';
 
 const test = import.meta.env.VITE_API_TEST;
 
 function App() {
   console.log(test);
   return (
-    <AppWrapper>
-      <Routes>
+        <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/first" element={<FirstPage />} />
-          <Route path="/second" element={<SecondPage />}>
-            <Route path=":half" element={<HalfPage />} />
-          </Route>
+          <Route index element={<WelcomePage />} />
+          <Route path="/welcome" element={<WelcomePage />} />
+          <Route path="/signin" element={<SignInPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
-    </AppWrapper>
   );
 }
 export default App;
