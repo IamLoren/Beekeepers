@@ -3,11 +3,11 @@ import DailyNorma from '../../components/DailyNorma/DailyNorma';
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
-import { StyledFlexContainer } from './HomePage.styled';
+import StyledWrapperDiv, { StyledFlexContainer } from './HomePage.styled';
 
 const HomePage = () => {
   return (
-    <div>
+    <StyledWrapperDiv>
       <Container>
         <StyledFlexContainer>
           <div>
@@ -21,7 +21,7 @@ const HomePage = () => {
         </StyledFlexContainer>
         
       </Container>
-    </div>
+    </StyledWrapperDiv>
   );
 };
 
