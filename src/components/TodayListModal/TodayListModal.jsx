@@ -1,8 +1,5 @@
-
 const TodayListModal = () => {
-  return (
-    <div>TodayListModal</div>
-  )
-}
+  return <div>TodayListModal</div>;
+};
 
-export default TodayListModal
+export default TodayListModal;

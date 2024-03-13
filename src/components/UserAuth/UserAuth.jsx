@@ -1,6 +1,7 @@
 import sprite from '../../assets/sprite.svg';
 import {
   StyledLink,
+  StyledSpan,
   StyledSvg,
   StyledUserAuthWrapper,
 } from './UserAuth.styled';
@@ -8,10 +9,12 @@ import {
 const UserAuth = () => {
   return (
     <StyledUserAuthWrapper>
-      <StyledLink to="signin">Sign in</StyledLink>
-      <StyledSvg width={24} height={24}>
-        <use href={`${sprite}#icon-user`} />
-      </StyledSvg>
+      <StyledLink to="signin">
+        <StyledSpan>Sign in</StyledSpan>
+        <StyledSvg width={28} height={28}>
+          <use href={`${sprite}#icon-user`} />
+        </StyledSvg>
+      </StyledLink>
     </StyledUserAuthWrapper>
   );
 };
