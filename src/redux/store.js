@@ -24,7 +24,7 @@ import {
   const counterPersistConfig = {
     key: 'counter',
     storage,
-    whitelist: ['daylynorma'],
+    whitelist: ['dailyNorma'],
   };
   
   const dataPersistConfig = {
