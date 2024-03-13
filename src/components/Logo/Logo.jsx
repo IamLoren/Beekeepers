@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import sprite from '../../assets/sprite.svg';
+import { StyledUserAuthLink } from './Logo.styled';
 
 const Logo = () => {
   return (
-    <Link to="/">
-      <svg width={10}>
-        <use href={`${sprite}#icon-logo`} />
+    <StyledUserAuthLink to="/">
+      <svg width={102} height={48}>
+        <use href={`${sprite}#icon-logo-1`} />
       </svg>
-      Logo-svg
-    </Link>
+    </StyledUserAuthLink>
   );
 };
 
