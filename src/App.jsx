@@ -5,6 +5,8 @@ import WelcomePage from './pages/WelcomePage/WelcomePage';
 import SignInPage from './pages/SignInPage/SignInPage.jsx';
 import HomePage from './pages/HomePage/HomePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage.jsx';
+import PublicRoute from './routesConfig/PublicRoute.jsx';
+import PrivateRoute from './routesConfig/PrivateRoute.jsx';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -13,13 +15,13 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<WelcomePage />} />
+        <Route index element={<PublicRoute><WelcomePage /></PublicRoute>} />
         <Route path="/welcome" element={<WelcomePage />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/home" element={<PrivateRoute><HomePage /></PrivateRoute>} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
-      <Route path="/signin" element={<SignInPage />} />
-      <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/signin" element={<PublicRoute><SignInPage /></PublicRoute>} />
+      <Route path="/signup" element={<PublicRoute><SignUpPage /></PublicRoute>} />
     </Routes>
   );
 }
