@@ -125,7 +125,7 @@ body{
   font-family: 'Roboto Regular';
   font-size: 18px;
   min-height: 100vh;
-  color: #000;
+  color: var(--primary-text);
   background-image: url(${uu});
   background-position: center;
   background-repeat: no-repeat;
