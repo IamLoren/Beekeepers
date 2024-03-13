@@ -55,11 +55,6 @@ body{
   font-size: 18px;
   min-height: 100vh;
   color: var(--primary-text);
-  background-image: url(${bgTab});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
 }
 
 input:-webkit-autofill,
@@ -78,9 +73,7 @@ input:-webkit-autofill:active {
 @media screen and (min-width: 1440px) {
   body {
     max-height: 100vh;
-    height: fit-content;
-    background-image: url(${bgTab});
-    background-position: bottom;
+  }
   }
 
   @media only screen and (min-width: 1440px) and (min-resolution: 192dpi) {
@@ -88,7 +81,7 @@ input:-webkit-autofill:active {
        background-image: url(${bgTab};
         background-position: bottom;
     }
-  }
+
 `;
 
 export default Global;
