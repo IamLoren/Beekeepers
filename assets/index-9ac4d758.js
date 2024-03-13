@@ -330,7 +330,8 @@ Error generating stack: `+i.message+`
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media screen and (min-width: 767px) and (max-width: 1440px) {
+@media screen and (min-width: 767px) and (max-width: 1439px) {
+
     background-image: url(${Zw});
   }
 
