@@ -31,11 +31,19 @@ const Modal = () => {
     };
   }, []);
 
+  const closeModal = () => {
+    document.body.style.overflow = 'auto';
+    dispatch(changeModalOpen(false));
+    dispatch(changeEditPortionModal(false));
+    dispatch(deletePortionModal(false));
+    dispatch(changeDailyNormaModal(false));
+  };
+
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
         document.body.style.overflow = 'auto';
-        dispatch(changeModalOpen(false));
+        closeModal();
       }
     };
 
@@ -47,16 +55,8 @@ const Modal = () => {
 
   const onBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
-      dispatch(changeModalOpen(false));
+      closeModal();
     }
-  };
-
-  const closeModal = () => {
-    document.body.style.overflow = 'auto';
-    dispatch(changeModalOpen(false));
-    dispatch(changeEditPortionModal(false));
-    dispatch(deletePortionModal(false));
-    dispatch(changeDailyNormaModal(false));
   };
 
   return ReactDom.createPortal(
