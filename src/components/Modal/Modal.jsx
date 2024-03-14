@@ -2,11 +2,27 @@ import ReactDom from 'react-dom';
 import sprite from '../../assets/sprite.svg';
 import { useEffect } from 'react';
 import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
-import { useDispatch } from 'react-redux';
-import { changeModalOpen } from '../../redux/normaCounter/normaCounterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  changeEditPortionModal,
+  changeModalOpen,
+  deletePortionModal,
+} from '../../redux/normaCounter/normaCounterSlice';
+import {
+  selectDailyNormaModal,
+  selectDeletePortionModal,
+  selectEditPortionModal,
+} from '../../redux/selectors';
+import TodayListModal from '../TodayListModal/TodayListModal';
+import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
 
-const Modal = ({ children }) => {
+const Modal = () => {
   const dispatch = useDispatch();
+  const dailyNormaModal = useSelector(selectDailyNormaModal);
+  console.log(dailyNormaModal);
+  const editPortionModal = useSelector(selectEditPortionModal);
+  const deletePortionModal = useSelector(selectDeletePortionModal);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -37,12 +53,16 @@ const Modal = ({ children }) => {
   const closeModal = () => {
     document.body.style.overflow = 'auto';
     dispatch(changeModalOpen(false));
+    dispatch(changeEditPortionModal(false));
+    dispatch(deletePortionModal(false));
   };
 
   return ReactDom.createPortal(
     <Overlay onClick={onBackdropClick}>
       <ModalStyled>
-        {children}
+        {dailyNormaModal && <DailyNormaModal />}
+        {editPortionModal && <TodayListModal />}
+        {deletePortionModal && <h1>DeleteModal</h1>}
         <BtnClose type="button" onClick={closeModal}>
           <SvgBtnClose>
             <use href={`${sprite}#icon-close`} />
