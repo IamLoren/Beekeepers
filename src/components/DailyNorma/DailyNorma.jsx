@@ -12,7 +12,7 @@ import DailyNormaModal from '../DailyNormaModal/DailyNormaModal.jsx';
 
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);
-  const water = dailyNorma.toFixed(1);
+  const water = dailyNorma;
   // const modalIsOpen = useSelector(selectIsModalOpen);
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
