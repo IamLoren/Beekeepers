@@ -1,27 +1,24 @@
 import ReactDom from 'react-dom';
 import sprite from '../../assets/sprite.svg';
-
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
+import { useDispatch } from 'react-redux';
+import { changeModalOpen } from '../../redux/normaCounter/normaCounterSlice';
 
-const Modal = ({ children, closeModal }) => {
-  const [modalIsOpen] = useState(false);
-
+const Modal = ({ children }) => {
+  const dispatch = useDispatch();
   useEffect(() => {
-    if (modalIsOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [modalIsOpen]);
+  }, []);
 
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        closeModal();
+        document.body.style.overflow = 'auto';
+        dispatch(changeModalOpen(false));
       }
     };
 
@@ -29,12 +26,17 @@ const Modal = ({ children, closeModal }) => {
     return () => {
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [closeModal]);
+  }, [dispatch]);
 
   const onBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
-      closeModal();
+      dispatch(changeModalOpen(false));
     }
+  };
+
+  const closeModal = () => {
+    document.body.style.overflow = 'auto';
+    dispatch(changeModalOpen(false));
   };
 
   return ReactDom.createPortal(
