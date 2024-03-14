@@ -11,8 +11,10 @@
     "format": "prettier --write ./src"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
+    "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.13",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.17",
     "@reduxjs/toolkit": "^2.2.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "modern-normalize": "^2.0.0",
@@ -23,7 +25,7 @@
     "react-router-dom": "^6.15.0",
     "react-toastify": "^10.0.4",
     "redux-persist": "^6.0.0",
-    "styled-components": "^6.0.7",
+    "styled-components": "^6.1.8",
     "vite-plugin-svgr": "^3.2.0"
   },
   "devDependencies": {
