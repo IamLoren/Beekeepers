@@ -79,14 +79,11 @@ const CircleIndicator = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const MiddleIndicator = styled.span`
-  padding-left: 7px;
-`;
-
 const StyledProgressNumbers = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 16px;
+  color: var(--secondary-text);
 
   > span {
     margin-right: -2px;
@@ -101,7 +98,6 @@ const StyledProgressNumbers = styled.div`
     font-size: 12px;
     line-height: 1.33333;
     text-align: center;
-    color: var(--secondary-text);
 
     &::before {
       content: '';
@@ -112,6 +108,15 @@ const StyledProgressNumbers = styled.div`
       background-color: var(--accent-bg-color);
     }
   }
+`;
+
+const MiddleIndicator = styled.span`
+  padding-left: 7px;
+`;
+
+const LastIndicator = styled.span`
+  color: ${(props) =>
+    props.$progress > 100 ? '#50C800' : 'var(--secondary-text)'};
 `;
 
 const StyledAddBtn = styled.button`
@@ -165,4 +170,5 @@ export {
   ProgressFill,
   CircleIndicator,
   MiddleIndicator,
+  LastIndicator,
 };
