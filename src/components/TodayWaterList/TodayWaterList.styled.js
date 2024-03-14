@@ -49,6 +49,14 @@ export const TodayListButton = styled.button`
   font-size: 16px;
   font-family: 'Roboto Medium';
 
+  &:hover,
+  &:active {
+    color: var(--accent-text);
+    svg {
+      stroke: var(--accent-text);
+    }
+  }
+
   svg {
     stroke: var(--secondary-text);
   }
