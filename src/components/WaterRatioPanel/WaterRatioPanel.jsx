@@ -10,15 +10,17 @@ import {
   MiddleIndicator,
 } from './WaterRatioPanel.styled';
 
+import sprite from '../../assets/sprite.svg';
+
 const WaterRatioPanel = () => {
-  const progress = 50;
+  const progress = 30;
 
   const addWater = () => {};
 
   return (
     <StyledRatioSectionContainer>
-      <StyledToday>Today</StyledToday>
       <StyledProgressBarContainer>
+        <StyledToday>Today</StyledToday>
         <StyledProgressBar id="ml" max="100" value="0">
           <ProgressFill $progress={progress} />
           <CircleIndicator $progress={progress} />
@@ -29,9 +31,14 @@ const WaterRatioPanel = () => {
           <span>100%</span>
         </StyledProgressNumbers>
       </StyledProgressBarContainer>
-      <StyledAddBtn type="button" onClick={addWater}>
-        Add Water
-      </StyledAddBtn>
+      <div>
+        <StyledAddBtn type="button" onClick={addWater}>
+          <svg className="add" fill="none">
+            <use href={sprite + '#icon-plus-circle'}></use>
+          </svg>
+          Add Water
+        </StyledAddBtn>
+      </div>
     </StyledRatioSectionContainer>
   );
 };
