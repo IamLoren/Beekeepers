@@ -10,6 +10,8 @@ import {
   MiddleIndicator,
 } from './WaterRatioPanel.styled';
 
+import sprite from '../../assets/sprite.svg';
+
 const WaterRatioPanel = () => {
   const progress = 30;
 
@@ -31,6 +33,9 @@ const WaterRatioPanel = () => {
       </StyledProgressBarContainer>
       <div>
         <StyledAddBtn type="button" onClick={addWater}>
+          <svg className="add" fill="none">
+            <use href={sprite + '#icon-plus-circle'}></use>
+          </svg>
           Add Water
         </StyledAddBtn>
       </div>

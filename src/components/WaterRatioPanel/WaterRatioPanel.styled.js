@@ -117,6 +117,10 @@ const StyledProgressNumbers = styled.div`
 const StyledAddBtn = styled.button`
   width: 280px;
   height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   background: var(--secondary-text);
   border: none;
@@ -130,6 +134,12 @@ const StyledAddBtn = styled.button`
   text-align: center;
   color: var(--white-text);
 
+  svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+  }
+
   @media only screen and (min-width: 768px) {
     width: 336px;
     height: 44px;
@@ -141,7 +151,7 @@ const StyledAddBtn = styled.button`
 
   @media only screen and (min-width: 1440px) {
     width: 178px;
-    padding: 10px 30px;
+    padding: 10px 29px;
   }
 `;
 
