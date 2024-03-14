@@ -12,6 +12,9 @@ export const normaCounterSlice = createSlice({
     changeDailyNorma: (state, { payload }) => {
       state.dailyNorma = payload;
     },
+    changeModalOpen: (state, { payload }) => {
+      state.isModalOpen = payload;
+    },
   },
 
   extraReducers: (builder) => {
@@ -24,4 +27,4 @@ export const normaCounterSlice = createSlice({
 });
 
 export const counterReducer = normaCounterSlice.reducer;
-export const { changeDailyNorma } = normaCounterSlice.actions;
+export const { changeDailyNorma, changeModalOpen } = normaCounterSlice.actions;
