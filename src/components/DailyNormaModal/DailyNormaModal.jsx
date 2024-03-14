@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Radio } from '@mui/material';
 import {
   AmountNumber,
   BtnSave,
@@ -6,23 +7,29 @@ import {
   Data,
   FormulaExplication,
   Input,
-  InputRadio,
-  Label,
   ModalTitle,
-  Span,
+  StyledFormControlLabel,
+  StyledRadioGroup,
   Subtitle,
   TypeData,
   WrapAmount,
   WrapFormula,
   WrapFormulaExplication,
-  WrapRadioInputs,
 } from './DailyNormaModal.styled';
 
 const DailyNormaModal = () => {
   const womanFormula = 'V=(M*0,03) + (T*0,4)';
   const manFormula = 'V=(M*0,04) + (T*0,6)';
   const [amount] = useState(0);
+  const [setFormula] = useState('');
 
+  const changeGender = (evt) => {
+    if (evt.target.value === 'woman') {
+      setFormula(womanFormula);
+    } else {
+      setFormula(manFormula);
+    }
+  };
   return (
     <DailyNormaModalContainer>
       <ModalTitle>My daily norma</ModalTitle>
@@ -44,16 +51,25 @@ const DailyNormaModal = () => {
       </WrapFormulaExplication>
       <form>
         <Subtitle>Calculate your rate:</Subtitle>
-        <WrapRadioInputs>
-          <Label htmlFor="woman">
-            <InputRadio type="radio" id="woman" name="gender" value="woman" />
-            <Span>For woman</Span>
-          </Label>
-          <Label htmlFor="man">
-            <InputRadio type="radio" id="man" name="gender" value="man" />
-            <Span>For man</Span>
-          </Label>
-        </WrapRadioInputs>
+        <StyledRadioGroup
+          aria-labelledby="radio-buttons-group"
+          name="gender"
+          defaultValue="woman"
+          row
+          onChange={changeGender}
+        >
+          <StyledFormControlLabel
+            value="woman"
+            control={<Radio />}
+            label="For woman"
+          />
+
+          <StyledFormControlLabel
+            value="man"
+            control={<Radio />}
+            label="For man"
+          />
+        </StyledRadioGroup>
 
         <label htmlFor="weight">
           <TypeData>Your weight in kilograms:</TypeData>
