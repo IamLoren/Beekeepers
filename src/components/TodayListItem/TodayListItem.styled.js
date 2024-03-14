@@ -6,7 +6,7 @@ export const ItemWrapper = styled.li`
   align-items: center;
   padding: 12px 0;
 
-  border-bottom: 1px solid var(--card-bg-color);
+  border-bottom: 1px solid var(--accent-bg-color);
 
   button {
     background-color: transparent;
@@ -35,11 +35,17 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   gap: 18px;
 
-  button > svg.edit {
+  button.edit {
     stroke: var(--secondary-text);
+    &:hover {
+      border-bottom: 1px solid var(--secondary-text);
+    }
   }
-  button > svg.trash {
+  button.trash {
     stroke: var(--error-text);
+    &:hover {
+      border-bottom: 1px solid var(--error-text);
+    }
   }
 `;
 
