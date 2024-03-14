@@ -4,12 +4,12 @@ export const statisticDataSlice = createSlice({
   name: 'data',
   initialState: {
     portions: [
-      { amount: 250, time: '7:00' },
-      { amount: 220, time: '11:00' },
-      { amount: 200, time: '14:00' },
-      { amount: 200, time: '14:00' },
-      { amount: 200, time: '14:00' },
-      { amount: 250, time: '14:00' },
+      { id: 1, amount: 250, time: '07:00' },
+      { id: 2, amount: 220, time: '11:00' },
+      { id: 3, amount: 200, time: '14:00' },
+      { id: 4, amount: 200, time: '14:00' },
+      { id: 5, amount: 200, time: '14:00' },
+      { id: 6, amount: 250, time: '14:00' },
     ],
     isModalOpen: false,
     isLoading: false,
@@ -18,6 +18,9 @@ export const statisticDataSlice = createSlice({
   reducers: {
     addPortion: (state, { payload }) => {
       state.portions.push(payload);
+    },
+    changeModalOpen: (state, { payload }) => {
+      state.isModalOpen = payload;
     },
   },
 
