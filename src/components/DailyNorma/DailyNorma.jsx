@@ -8,9 +8,11 @@ import {
   Title,
   Wrapper,
 } from './DailyNorma.styled';
-import DailyNormaModal from '../DailyNormaModal/DailyNormaModal.jsx';
 import Modal from '../Modal/Modal.jsx';
-import { changeModalOpen } from '../../redux/normaCounter/normaCounterSlice';
+import {
+  changeDailyNormaModal,
+  changeModalOpen,
+} from '../../redux/normaCounter/normaCounterSlice';
 
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);
@@ -20,6 +22,7 @@ const DailyNorma = () => {
 
   const onEditClick = () => {
     dispatch(changeModalOpen(true));
+    dispatch(changeDailyNormaModal(true));
   };
 
   return (
@@ -32,11 +35,7 @@ const DailyNorma = () => {
         </Btn>
       </NormaBtnWrap>
 
-      {modalIsOpen && (
-        <Modal>
-          <DailyNormaModal />
-        </Modal>
-      )}
+      {modalIsOpen && <Modal />}
     </Wrapper>
   );
 };
