@@ -4,7 +4,12 @@ export const normaCounterSlice = createSlice({
   name: 'counter',
   initialState: {
     dailyNorma: null,
-    isModalOpen: false,
+    modal: {
+      isModalOpen: false,
+      dailyNormaModal: false,
+      editPortionModal: false,
+      deletePortionModal: false,
+    },
     isLoading: false,
     isError: null,
   },
@@ -13,18 +18,36 @@ export const normaCounterSlice = createSlice({
       state.dailyNorma = payload;
     },
     changeModalOpen: (state, { payload }) => {
-      state.isModalOpen = payload;
+      state.modal.isModalOpen = payload;
     },
-  },
 
-  extraReducers: (builder) => {
-    builder;
-    // .addCase(getNormaThunk.fulfilled, (state, { payload }) => {
-    //     state.dailyNorma = payload;
-    //   state.isLoading = false;
-    // })
+    changeEditPortionModal: (state, { payload }) => {
+      state.modal.editPortionModal = payload;
+    },
+    deletePortionModal: (state, { payload }) => {
+      state.modal.deletePortionModal = payload;
+    },
+    changeDailyNormaModal: (state, { payload }) => {
+      state.modal.dailyNormaModal = payload;
+    },
   },
 });
 
+// extraReducers: (builder) => {
+//   builder;
+// .addCase(getNormaThunk.fulfilled, (state, { payload }) => {
+//     state.dailyNorma = payload;
+//   state.isLoading = false;
+// })
+//   },
+// });
+
 export const counterReducer = normaCounterSlice.reducer;
-export const { changeDailyNorma, changeModalOpen } = normaCounterSlice.actions;
+export const {
+  changeDailyNorma,
+  changeModalOpen,
+  deletePortionModal,
+  changeDailyNormaModal,
+  changeEditPortionModal,
+  closeAllModals,
+} = normaCounterSlice.actions;
