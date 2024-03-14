@@ -28,6 +28,7 @@ export const normaCounterSlice = createSlice({
       state.modal.deletePortionModal = payload;
     },
     changeDailyNormaModal: (state, { payload }) => {
+      console.log("воно працює");
       state.modal.dailyNormaModal = payload;
     },
   },
