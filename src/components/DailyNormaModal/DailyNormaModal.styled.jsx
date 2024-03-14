@@ -1,3 +1,4 @@
+import { FormControlLabel, RadioGroup } from '@mui/material';
 import styled from 'styled-components';
 
 export const DailyNormaModalContainer = styled.div`
@@ -9,7 +10,6 @@ export const DailyNormaModalContainer = styled.div`
 
 export const ModalTitle = styled.h1`
   font-size: 26px;
-  font-family: 'Roboto Medium';
   line-height: 1.2;
   margin-bottom: 24px;
 `;
@@ -55,35 +55,60 @@ export const FormulaExplication = styled.p`
 `;
 
 export const Subtitle = styled.h2`
-  font-family: 'Roboto Medium';
   font-size: 18px;
   line-height: 1.1;
   margin-bottom: 16px;
 `;
-export const WrapRadioInputs = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
+// export const WrapRadioInputs = styled.div`
+//   display: flex;
+//   flex-direction: row;
+// `;
 
-export const Label = styled.label`
-  position: relative;
-  cursor: pointer;
-  margin-right: 24px;
-`;
+// export const Label = styled.label`
+//   position: relative;
+//   cursor: pointer;
+//   margin-right: 24px;
+// `;
 
-export const InputRadio = styled.input`
-  cursor: pointer;
-`;
+// export const InputRadio = styled.input`
+//   cursor: pointer;
+// `;
 
-export const Span = styled.span`
-  margin-left: 8px;
-  font-size: 16px;
-  line-height: 1.25;
+// export const Span = styled.span`
+//   margin-left: 8px;
+//   font-size: 16px;
+//   line-height: 1.25;
+// `;
+export const StyledRadioGroup = styled(RadioGroup)`
+  && {
+    margin-bottom: 16px;
+  }
+`;
+export const StyledFormControlLabel = styled(FormControlLabel)`
+  && {
+    & .MuiSvgIcon-root {
+      font-size: 20px;
+    }
+    & .MuiFormControlLabel-label {
+      font-size: 16px;
+      line-height: 1.25;
+      margin-right: 10px;
+    }
+    & .MuiRadio-colorPrimary {
+      color: var(--secondary-text);
+    }
+    & .MuiRadio-colorPrimary.Mui-checked {
+      color: var(--secondary-text);
+    }
+  }
 `;
 
 export const TypeData = styled.p`
   margin-top: 16px;
   margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
 `;
 
 export const Input = styled.input`
@@ -109,6 +134,9 @@ export const WrapAmount = styled.div`
 `;
 export const Data = styled.p`
   width: 190px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
   @media (min-width: 768px) {
     width: 328px;
   }
