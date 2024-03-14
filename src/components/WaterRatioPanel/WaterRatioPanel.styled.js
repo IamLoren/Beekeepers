@@ -2,6 +2,18 @@ import styled from 'styled-components';
 
 const StyledRatioSectionContainer = styled.div`
   width: 280px;
+
+  @media only screen and (min-width: 768px) {
+    width: 704px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
+    gap: 23px;
+  }
 `;
 
 const StyledToday = styled.p`
@@ -10,11 +22,24 @@ const StyledToday = styled.p`
   line-height: 1.33333;
   color: var(--secondary-text);
   margin-bottom: 8px;
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 16px;
+  }
 `;
 
 const StyledProgressBarContainer = styled.div`
   margin-bottom: 16px;
   position: relative;
+
+  @media only screen and (min-width: 768px) {
+    width: 356px;
+    margin-bottom: 0;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 391px;
+  }
 `;
 
 const StyledProgressBar = styled.div`
@@ -24,6 +49,14 @@ const StyledProgressBar = styled.div`
   border-radius: 8px;
   margin: 0 auto;
   position: relative;
+
+  @media only screen and (min-width: 768px) {
+    width: 325px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 360px;
+  }
 `;
 
 const ProgressFill = styled.div`
@@ -96,6 +129,20 @@ const StyledAddBtn = styled.button`
   line-height: 1.25;
   text-align: center;
   color: var(--white-text);
+
+  @media only screen and (min-width: 768px) {
+    width: 336px;
+    height: 44px;
+    padding: 10px 104px;
+
+    font-size: 18px;
+    line-height: 1.33333;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 178px;
+    padding: 10px 30px;
+  }
 `;
 
 export {
