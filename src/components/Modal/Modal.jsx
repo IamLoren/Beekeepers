@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  changeDailyNormaModal,
   changeEditPortionModal,
   changeModalOpen,
   deletePortionModal,
@@ -21,7 +22,7 @@ const Modal = () => {
   const dailyNormaModal = useSelector(selectDailyNormaModal);
   console.log(dailyNormaModal);
   const editPortionModal = useSelector(selectEditPortionModal);
-  const deletePortionModal = useSelector(selectDeletePortionModal);
+  const deletePortionModa = useSelector(selectDeletePortionModal);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -55,6 +56,7 @@ const Modal = () => {
     dispatch(changeModalOpen(false));
     dispatch(changeEditPortionModal(false));
     dispatch(deletePortionModal(false));
+    dispatch(changeDailyNormaModal(false));
   };
 
   return ReactDom.createPortal(
@@ -62,7 +64,7 @@ const Modal = () => {
       <ModalStyled>
         {dailyNormaModal && <DailyNormaModal />}
         {editPortionModal && <TodayListModal />}
-        {deletePortionModal && <h1>DeleteModal</h1>}
+        {deletePortionModa && <h1>DeleteModal</h1>}
         <BtnClose type="button" onClick={closeModal}>
           <SvgBtnClose>
             <use href={`${sprite}#icon-close`} />
