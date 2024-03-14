@@ -81,11 +81,22 @@ export const StyledAddModalInput = styled.input`
   font-size: 16px;
   line-height: 1.25;
   color: var(--secondary-text);
+
+  @media only screen and (min-width: 768px) {
+    width: 656px;
+  }
 `;
 
 export const StyledValueAndBtnContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 24px;
+    align-items: center;
+  }
 `;
 
 export const StyledCounterBottomNumber = styled.span`
@@ -96,6 +107,10 @@ export const StyledCounterBottomNumber = styled.span`
   color: var(--secondary-text);
 
   margin-bottom: 16px;
+
+  @media only screen and (min-width: 768px) {
+    margin-bottom: 0;
+  }
 `;
 
 export const StyledSaveBtn = styled.button`
@@ -113,4 +128,8 @@ export const StyledSaveBtn = styled.button`
   text-align: center;
   color: var(--white-text);
   border: none;
+
+  @media only screen and (min-width: 768px) {
+    width: 160px;
+  }
 `;
