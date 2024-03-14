@@ -1,6 +1,6 @@
 import ReactDom from 'react-dom';
 import sprite from '../../assets/sprite.svg';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -22,7 +22,7 @@ const Modal = () => {
   const dailyNormaModal = useSelector(selectDailyNormaModal);
   console.log(dailyNormaModal);
   const editPortionModal = useSelector(selectEditPortionModal);
-  const deletePortionModa = useSelector(selectDeletePortionModal);
+  const deleteModal = useSelector(selectDeletePortionModal);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -31,13 +31,13 @@ const Modal = () => {
     };
   }, []);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     document.body.style.overflow = 'auto';
     dispatch(changeModalOpen(false));
     dispatch(changeEditPortionModal(false));
     dispatch(deletePortionModal(false));
     dispatch(changeDailyNormaModal(false));
-  };
+  }, [dispatch]);
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -51,7 +51,7 @@ const Modal = () => {
     return () => {
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [dispatch]);
+  }, [closeModal, dispatch]);
 
   const onBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
@@ -64,7 +64,7 @@ const Modal = () => {
       <ModalStyled>
         {dailyNormaModal && <DailyNormaModal />}
         {editPortionModal && <TodayListModal />}
-        {deletePortionModa && <h1>DeleteModal</h1>}
+        {deleteModal && <h1>DeleteModal</h1>}
         <BtnClose type="button" onClick={closeModal}>
           <SvgBtnClose>
             <use href={`${sprite}#icon-close`} />
