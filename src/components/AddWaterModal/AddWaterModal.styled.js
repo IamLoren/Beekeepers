@@ -85,6 +85,10 @@ export const StyledAddModalInput = styled.input`
   @media only screen and (min-width: 768px) {
     width: 656px;
   }
+
+  @media only screen and (min-width: 1440px) {
+    width: 544px;
+  }
 `;
 
 export const StyledValueAndBtnContainer = styled.div`
