@@ -57,15 +57,25 @@ const AddWaterModal = () => {
             </StyledCounterBtn>
           </StyledCounterContainer>
         </div>
-        <label for="time">
+        <label htmlFor="time">
           <StyledModalText>Recording time:</StyledModalText>
-          <StyledAddModalInput type="text" id="time" name="time" value="7:00" />
+          <StyledAddModalInput
+            type="text"
+            id="time"
+            name="time"
+            defaultValue="7:00"
+          />
         </label>
-        <label for="ml">
+        <label htmlFor="ml">
           <StyledModalBoldText>
             Enter the value of the water used:
           </StyledModalBoldText>
-          <StyledAddModalInput type="text" id="ml" name="ml" value="50" />
+          <StyledAddModalInput
+            type="text"
+            id="ml"
+            name="ml"
+            defaultValue="50"
+          />
         </label>
         <StyledValueAndBtnContainer>
           <StyledCounterBottomNumber>{`${counter}ml`}</StyledCounterBottomNumber>
