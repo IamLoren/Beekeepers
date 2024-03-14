@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
-import { selectDailyNorma } from '../../redux/selectors.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDailyNorma, selectIsModalOpen } from '../../redux/selectors.js';
 
 import {
   Btn,
@@ -9,27 +9,32 @@ import {
   Wrapper,
 } from './DailyNorma.styled';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal.jsx';
-import { useState } from 'react';
 import Modal from '../Modal/Modal.jsx';
+import { changeModalOpen } from '../../redux/normaCounter/normaCounterSlice';
 
 const DailyNorma = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const dailyNorma = useSelector(selectDailyNorma);
-  const water = dailyNorma;
+
+  const modalIsOpen = useSelector(selectIsModalOpen);
+  const dispatch = useDispatch();
+
+  const onEditClick = () => {
+    dispatch(changeModalOpen(true));
+  };
 
   return (
     <Wrapper>
       <Title>My daily norma</Title>
       <NormaBtnWrap>
-        <NormaText>{water} L</NormaText>
-        <Btn type="button" onClick={() => setModalIsOpen(true)}>
+        <NormaText>{dailyNorma} L</NormaText>
+        <Btn type="button" onClick={onEditClick}>
           Edit
         </Btn>
       </NormaBtnWrap>
 
       {modalIsOpen && (
-        <Modal closeModal={() => setModalIsOpen(false)}>
-          <DailyNormaModal closeModal={() => setModalIsOpen(false)} />
+        <Modal>
+          <DailyNormaModal />
         </Modal>
       )}
     </Wrapper>
