@@ -1,12 +1,9 @@
-import { nanoid } from '@reduxjs/toolkit';
-import { useDispatch, useSelector } from 'react-redux';
-
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
-import { changeModalOpen } from '../../redux/normaCounter/normaCounterSlice';
 import { selectIsModalOpen, selectPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
-import TodayListModal from '../TodayListModal/TodayListModal';
-
+import Modal from '../Modal/Modal';
 import {
   TodayList,
   TodayListButton,
@@ -14,39 +11,44 @@ import {
 } from './TodayWaterList.styled';
 
 const TodayWaterList = () => {
-    const dispatch = useDispatch();
-    const portions = useSelector(selectPortions);
-    const isModalOpen = useSelector(selectIsModalOpen);
-    const openModal = () => {
-      dispatch(changeModalOpen(!isModalOpen));
-    };
-    return (
-      <div>
-        <TodayListTitle>Today</TodayListTitle>
-        <TodayList>
-          {portions.map(({ amount, time }) => {
-            return (
-              <TodayListItem
-                key={nanoid()}
-                amount={amount}
-                time={time}
-              ></TodayListItem>
-            );
-          })}
-        </TodayList>
-        <TodayListButton>
-          <svg width={16} height={16}>
-            <use href={sprite + '#icon-plus-small'}></use>
-          </svg>
-          Add water
-        </TodayListButton>
-        <TodayListModal
-          key={nanoid()}
-          amount={portions[0].amount}
-          time={portions[0].time}
+  const [selectedItem, setSelectedItem] = useState(null);
+  const portions = useSelector(selectPortions);
+  const isModalOpen = useSelector(selectIsModalOpen);
+
+  const showModal = (item) => {
+    setSelectedItem(item);
+  };
+
+  useEffect;
+  return (
+    <div>
+      <TodayListTitle>Today</TodayListTitle>
+      <TodayList>
+        {portions.map(({ id, amount, time }) => (
+          <TodayListItem
+            key={id}
+            id={id}
+            amount={amount}
+            time={time}
+            showModal={showModal}
+          />
+        ))}
+      </TodayList>
+      <TodayListButton>
+        <svg width={16} height={16}>
+          <use href={sprite + '#icon-plus-small'}></use>
+        </svg>
+        Add water
+      </TodayListButton>
+      {isModalOpen && (
+        <Modal
+          id={selectedItem.id}
+          amount={selectedItem.amount}
+          time={selectedItem.time}
         />
-      </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default TodayWaterList;
