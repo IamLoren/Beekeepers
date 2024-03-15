@@ -43,6 +43,7 @@ const SettingModal = () => {
           <p>Repeat new password:</p>
           <input type="password" />
         </label>
+        <button type="submit">Save</button>
       </form>
     </div>
   );
