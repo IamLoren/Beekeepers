@@ -1,4 +1,9 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { deletePortion } from '../../redux/statisticData/statisticDataSlice';
+import { selectSelectedItem } from '../../redux/selectors';
+import { closeModals } from '../../redux/modals/modalsSlice';
+
 import {
   ButtonDelete,
   ButtonsWrapper,
@@ -6,14 +11,14 @@ import {
   SubtitleModal,
   TitleModal,
 } from './TodayListModal.styled';
-import { deletePortion } from '../../redux/statisticData/statisticDataSlice';
 
-const DeleteModal = ({ id, closeModal }) => {
+const DeleteModal = () => {
   const dispatch = useDispatch();
+  const selectedItem = useSelector(selectSelectedItem);
 
   const onDeleteClick = () => {
-    dispatch(deletePortion(id));
-    closeModal();
+    dispatch(deletePortion(selectedItem.id));
+    dispatch(closeModals());
   };
 
   return (
@@ -24,7 +29,7 @@ const DeleteModal = ({ id, closeModal }) => {
       </SubtitleModal>
       <ButtonsWrapper>
         <ButtonDelete onClick={onDeleteClick}>Delete</ButtonDelete>
-        <ButtonDelete className="cancel-btn" onClick={closeModal}>
+        <ButtonDelete className="cancel-btn" onClick={closeModals}>
           Cancel
         </ButtonDelete>
       </ButtonsWrapper>
