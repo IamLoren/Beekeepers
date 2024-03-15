@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const StyledRatioSectionContainer = styled.div`
+export const StyledRatioSectionContainer = styled.div`
   width: 280px;
 
   @media only screen and (min-width: 768px) {
@@ -16,7 +16,7 @@ const StyledRatioSectionContainer = styled.div`
   }
 `;
 
-const StyledToday = styled.p`
+export const StyledToday = styled.p`
   font-family: 'Roboto Regular', sans-serif;
   font-size: 18px;
   line-height: 1.33333;
@@ -28,7 +28,7 @@ const StyledToday = styled.p`
   }
 `;
 
-const StyledProgressBarContainer = styled.div`
+export const StyledProgressBarContainer = styled.div`
   margin-bottom: 16px;
   position: relative;
 
@@ -42,7 +42,7 @@ const StyledProgressBarContainer = styled.div`
   }
 `;
 
-const StyledProgressBar = styled.div`
+export const StyledProgressBar = styled.div`
   width: 256px;
   height: 10px;
   background-color: var(--accent-bg-color);
@@ -59,7 +59,7 @@ const StyledProgressBar = styled.div`
   }
 `;
 
-const ProgressFill = styled.div`
+export const ProgressFill = styled.div`
   height: 100%;
   background-color: var(--percentage-text);
   border-radius: 8px 0 0 8px;
@@ -67,7 +67,7 @@ const ProgressFill = styled.div`
   width: ${(props) => props.$progress}%;
 `;
 
-const CircleIndicator = styled.div`
+export const CircleIndicator = styled.div`
   width: 17px;
   height: 17px;
   background-color: var(--white-text);
@@ -79,7 +79,7 @@ const CircleIndicator = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-const StyledProgressNumbers = styled.div`
+export const StyledProgressNumbers = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 16px;
@@ -110,16 +110,16 @@ const StyledProgressNumbers = styled.div`
   }
 `;
 
-const MiddleIndicator = styled.span`
+export const MiddleIndicator = styled.span`
   padding-left: 7px;
 `;
 
-const LastIndicator = styled.span`
+export const LastIndicator = styled.span`
   color: ${(props) =>
     props.$progress > 100 ? '#50C800' : 'var(--secondary-text)'};
 `;
 
-const StyledAddBtn = styled.button`
+export const StyledAddBtn = styled.button`
   width: 280px;
   height: 36px;
   display: flex;
@@ -138,6 +138,10 @@ const StyledAddBtn = styled.button`
   line-height: 1.25;
   text-align: center;
   color: var(--white-text);
+
+  &:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
 
   svg {
     width: 24px;
@@ -159,16 +163,3 @@ const StyledAddBtn = styled.button`
     padding: 10px 29px;
   }
 `;
-
-export {
-  StyledRatioSectionContainer,
-  StyledProgressBarContainer,
-  StyledToday,
-  StyledProgressNumbers,
-  StyledAddBtn,
-  StyledProgressBar,
-  ProgressFill,
-  CircleIndicator,
-  MiddleIndicator,
-  LastIndicator,
-};
