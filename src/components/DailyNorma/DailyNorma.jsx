@@ -12,7 +12,7 @@ import Modal from '../Modal/Modal.jsx';
 import {
   changeDailyNormaModal,
   changeModalOpen,
-} from '../../redux/normaCounter/normaCounterSlice';
+} from '../../redux/modals/modalsSlice.js';
 
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);
