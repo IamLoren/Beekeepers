@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addPortion } from '../../redux/statisticData/statisticDataSlice';
+import { closeModals } from '../../redux/modals/modalsSlice';
 import {
   StyledAddModalInput,
   StyledAddWater,
@@ -14,8 +17,14 @@ import {
 } from './AddWaterModal.styled';
 import sprite from '../../assets/sprite.svg';
 
-const AddWaterModal = () => {
+const AddWaterModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
+
   const [counter, setCounter] = useState(50);
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  );
+  const [isSaveDisabled, setIsSaveDisabled] = useState(counter === 0);
 
   const MIN_VALUE = 0;
   const MAX_VALUE = 1500;
@@ -23,17 +32,35 @@ const AddWaterModal = () => {
   const handleClick1 = () => {
     if (counter > MIN_VALUE) {
       setCounter(counter - 50);
+      setIsSaveDisabled(counter - 50 === 0);
     }
   };
 
   const handleClick2 = () => {
     if (counter < MAX_VALUE) {
       setCounter(counter + 50);
+      setIsSaveDisabled(counter + 50 === 0);
     }
+  };
+
+  const handleInputChange = (event) => {
+    setCounter(Number(event.target.value));
+  };
+
+  const handleTimeChange = (e) => {
+    setCurrentTime(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      addPortion({ id: Math.random(), amount: counter, time: currentTime })
+    );
+    dispatch(closeModals());
+
+    // setCurrentTime(
+    //   new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    // );
   };
 
   return (
@@ -44,13 +71,13 @@ const AddWaterModal = () => {
         <div>
           <StyledModalText>Amount of water:</StyledModalText>
           <StyledCounterContainer>
-            <StyledCounterBtn onClick={handleClick1}>
+            <StyledCounterBtn type="button" onClick={handleClick1}>
               <svg className="minus" fill="none">
                 <use href={sprite + '#icon-minus-small'}></use>
               </svg>
             </StyledCounterBtn>
             <StyledCounterNumber>{`${counter}ml`}</StyledCounterNumber>
-            <StyledCounterBtn onClick={handleClick2}>
+            <StyledCounterBtn type="button" onClick={handleClick2}>
               <svg className="plus" fill="none">
                 <use href={sprite + '#icon-plus-small'}></use>
               </svg>
@@ -63,7 +90,8 @@ const AddWaterModal = () => {
             type="text"
             id="time"
             name="time"
-            defaultValue="7:00"
+            value={currentTime}
+            onChange={handleTimeChange}
           />
         </label>
         <label htmlFor="ml">
@@ -71,15 +99,19 @@ const AddWaterModal = () => {
             Enter the value of the water used:
           </StyledModalBoldText>
           <StyledAddModalInput
-            type="text"
+            type="number"
+            step="10"
             id="ml"
             name="ml"
-            defaultValue="50"
+            value={counter}
+            onChange={handleInputChange}
           />
         </label>
         <StyledValueAndBtnContainer>
           <StyledCounterBottomNumber>{`${counter}ml`}</StyledCounterBottomNumber>
-          <StyledSaveBtn type="submit">Save</StyledSaveBtn>
+          <StyledSaveBtn type="submit" disabled={isSaveDisabled}>
+            Save
+          </StyledSaveBtn>
         </StyledValueAndBtnContainer>
       </form>
     </StyledAddWaterModalContainer>
