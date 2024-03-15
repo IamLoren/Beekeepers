@@ -8,10 +8,10 @@ import {
   ButtonsWrapper,
 } from './TodayListItem.styled';
 import {
-  changeModalOpen,
-  changeEditPortionModal,
   changeDeletePortionModal,
-} from '../../redux/normaCounter/normaCounterSlice';
+  changeEditPortionModal,
+  changeModalOpen,
+} from '../../redux/modals/modalsSlice';
 
 const TodayListItem = ({ id, amount, time, showModal }) => {
   const dispatch = useDispatch();
