@@ -9,7 +9,7 @@ import {
 const UserAuth = () => {
   return (
     <StyledUserAuthWrapper>
-      <StyledLink to="signin">
+      <StyledLink to="/signin">
         <StyledSpan>Sign in</StyledSpan>
         <StyledSvg width={28} height={28}>
           <use href={`${sprite}#icon-user`} />
