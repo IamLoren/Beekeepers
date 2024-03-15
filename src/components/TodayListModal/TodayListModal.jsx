@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import sprite from '../../assets/sprite.svg';
 import { editPortion } from '../../redux/statisticData/statisticDataSlice';
+import { selectSelectedItem } from '../../redux/selectors';
+import { closeModals } from '../../redux/modals/modalsSlice';
 
 import {
   AmountText,
@@ -20,10 +22,11 @@ import {
   ResultSaveWrapper,
 } from './TodayListModal.styled';
 
-const TodayListModal = ({ id, amount, time, closeModal }) => {
+const TodayListModal = () => {
   const dispatch = useDispatch();
-  const [count, setCount] = useState(amount);
-  const [selectedTime, setSelectedTime] = useState(time);
+  const selectedItem = useSelector(selectSelectedItem);
+  const [count, setCount] = useState(selectedItem.amount);
+  const [selectedTime, setSelectedTime] = useState(selectedItem.time);
   const [inputValue, setInputValue] = useState(count);
 
   const handleDecrement = () => {
@@ -59,8 +62,10 @@ const TodayListModal = ({ id, amount, time, closeModal }) => {
   };
 
   const onSaveClick = () => {
-    dispatch(editPortion({ id, amount: count, time: selectedTime }));
-    closeModal();
+    dispatch(
+      editPortion({ id: selectedItem.id, amount: count, time: selectedTime })
+    );
+    dispatch(closeModals());
   };
 
   useEffect(() => {
@@ -74,8 +79,8 @@ const TodayListModal = ({ id, amount, time, closeModal }) => {
         <svg className="edit" width={17} height={22} fill="none">
           <use href={sprite + '#icon-glass'}></use>
         </svg>
-        <AmountText>{amount} ml</AmountText>
-        <TimeText>{time}</TimeText>
+        <AmountText>{selectedItem.amount} ml</AmountText>
+        <TimeText>{selectedItem.time}</TimeText>
       </ContentItemWrapper>
       <div>
         <SubtitleModal>Correct entered data:</SubtitleModal>

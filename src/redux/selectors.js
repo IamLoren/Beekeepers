@@ -18,3 +18,6 @@ export const selectAddWaterModal = (state) => state.modalsSlice.addWaterModal;
 export const selectSettingModal = (state) => state.modalsSlice.settingModal;
 
 export const selectLogoutModal = (state) => state.modalsSlice.logoutModal;
+
+export const selectSelectedItem = (state) =>
+  state.statisticDataSlice.selectedItem;
