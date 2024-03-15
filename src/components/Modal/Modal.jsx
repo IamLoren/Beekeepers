@@ -7,7 +7,7 @@ import {
   changeDailyNormaModal,
   changeEditPortionModal,
   changeModalOpen,
-  deletePortionModal,
+  changeDeletePortionModal,
 } from '../../redux/normaCounter/normaCounterSlice';
 import {
   selectDailyNormaModal,
@@ -16,13 +16,13 @@ import {
 } from '../../redux/selectors';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
+import DeleteModal from '../TodayListModal/DeleteModal';
 
-const Modal = () => {
+const Modal = ({ id, amount, time }) => {
   const dispatch = useDispatch();
   const dailyNormaModal = useSelector(selectDailyNormaModal);
-  console.log(dailyNormaModal);
   const editPortionModal = useSelector(selectEditPortionModal);
-  const deleteModal = useSelector(selectDeletePortionModal);
+  const deletePortionModal = useSelector(selectDeletePortionModal);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -35,7 +35,7 @@ const Modal = () => {
     document.body.style.overflow = 'auto';
     dispatch(changeModalOpen(false));
     dispatch(changeEditPortionModal(false));
-    dispatch(deletePortionModal(false));
+    dispatch(changeDeletePortionModal(false));
     dispatch(changeDailyNormaModal(false));
   }, [dispatch]);
 
@@ -63,8 +63,15 @@ const Modal = () => {
     <Overlay onClick={onBackdropClick}>
       <ModalStyled>
         {dailyNormaModal && <DailyNormaModal />}
-        {editPortionModal && <TodayListModal />}
-        {deleteModal && <h1>DeleteModal</h1>}
+        {editPortionModal && (
+          <TodayListModal
+            id={id}
+            amount={amount}
+            time={time}
+            closeModal={closeModal}
+          />
+        )}
+        {deletePortionModal && <DeleteModal id={id} closeModal={closeModal} />}
         <BtnClose type="button" onClick={closeModal}>
           <SvgBtnClose>
             <use href={`${sprite}#icon-close`} />
