@@ -1,55 +1,75 @@
-// import { Radio, RadioGroup } from '@mui/material';
+import { Radio } from '@mui/material';
 import sprite from '../../assets/sprite.svg';
+import {
+  LabelText,
+  MainLabelText,
+  PhotoWrapper,
+  RadioGroupWrap,
+  SaveBtn,
+  StyledFormControlLabel,
+  StyledInput,
+  UploadBtn,
+  Wrapper,
+} from './SettingModal.styled';
 
 const SettingModal = () => {
   return (
-    <div>
+    <Wrapper>
       <h1>Setting</h1>
 
       <form>
-        <div>
-          <h2>Your photo</h2>
-          <img src="/" alt="avatar" />
-          <button>
-            <svg className="arrow-up" fill="none">
+        <MainLabelText>Your photo</MainLabelText>
+        <PhotoWrapper>
+          <img src="/" alt="avatar" width="80" height="80" />
+
+          <UploadBtn>
+            <svg className="arrow-up" fill="none" fontSize={24}>
               <use href={sprite + '#icon-arrow-up-try'}></use>
             </svg>
             Upload a photo
-          </button>
-        </div>
+          </UploadBtn>
+        </PhotoWrapper>
 
-        <h2>Your gender identity</h2>
-        {/* <RadioGroup defaultValue="woman" name="gender" row>
-          <Radio value="woman" label="Woman" />
-          <Radio value="man" label="Man" />
-        </RadioGroup> */}
+        <MainLabelText>Your gender identity</MainLabelText>
+        <RadioGroupWrap defaultValue="woman" name="gender" row>
+          <StyledFormControlLabel
+            value="woman"
+            control={<Radio />}
+            label="Woman"
+          ></StyledFormControlLabel>
+          <StyledFormControlLabel
+            value="man"
+            control={<Radio />}
+            label="Man"
+          ></StyledFormControlLabel>
+        </RadioGroupWrap>
 
         <label htmlFor="name">
-          <h2>Your name</h2>
-          <input id="name" type="text" placeholder="David" />
+          <MainLabelText>Your name</MainLabelText>
+          <StyledInput id="name" type="text" placeholder="David" />
         </label>
 
         <label htmlFor="email">
-          <h2>E-mail</h2>
-          <input id="email" type="text" placeholder="david01@gmail.com" />
+          <MainLabelText>E-mail</MainLabelText>
+          <StyledInput id="email" type="text" placeholder="david01@gmail.com" />
         </label>
 
-        <h2>Password</h2>
+        <MainLabelText>Password</MainLabelText>
         <label htmlFor="oldPassword">
-          Outdated password:
-          <input id="oldPassword" type="password" />
+          <LabelText>Outdated password:</LabelText>
+          <StyledInput id="oldPassword" type="password" />
         </label>
         <label htmlFor="newPassword">
-          New Password:
-          <input id="newPassword" type="password" />
+          <LabelText>New Password:</LabelText>
+          <StyledInput id="newPassword" type="password" />
         </label>
         <label htmlFor="repeatPassword">
-          Repeat new password:
-          <input id="repeatPassword" type="password" />
+          <LabelText>Repeat new password:</LabelText>
+          <StyledInput id="repeatPassword" type="password" />
         </label>
-        <button type="submit">Save</button>
       </form>
-    </div>
+      <SaveBtn type="submit">Save</SaveBtn>
+    </Wrapper>
   );
 };
 
