@@ -15,15 +15,7 @@ import {
   selectLogoutModal,
   selectSettingModal,
 } from '../../redux/selectors';
-import {
-  changeAddModal,
-  changeDailyNormaModal,
-  changeDeletePortionModal,
-  changeEditPortionModal,
-  changeLogoutModal,
-  changeModalOpen,
-  changeSettingModal,
-} from '../../redux/modals/modalsSlice';
+import { closeModals } from '../../redux/modals/modalsSlice';
 
 const Modal = ({ id, amount, time }) => {
   const dispatch = useDispatch();
@@ -43,13 +35,7 @@ const Modal = ({ id, amount, time }) => {
 
   const closeModal = useCallback(() => {
     document.body.style.overflow = 'auto';
-    dispatch(changeModalOpen(false));
-    dispatch(changeDailyNormaModal(false));
-    dispatch(changeEditPortionModal(false));
-    dispatch(changeDeletePortionModal(false));
-    dispatch(changeAddModal(false));
-    dispatch(changeSettingModal(false));
-    dispatch(changeLogoutModal(false));
+    dispatch(closeModals(false));
   }, [dispatch]);
 
   useEffect(() => {
@@ -86,8 +72,8 @@ const Modal = ({ id, amount, time }) => {
         )}
         {deletePortionModal && <DeleteModal id={id} closeModal={closeModal} />}
         {addWaterModal && <h1>Add Modal</h1>}
-        {settingModal && <h1>Add Modal</h1>}
-        {logoutModal && <h1>Add Modal</h1>}
+        {settingModal && <h1>Setting Modal</h1>}
+        {logoutModal && <h1>Logout Modal</h1>}
 
         <BtnClose type="button" onClick={closeModal}>
           <SvgBtnClose>

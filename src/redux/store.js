@@ -37,7 +37,7 @@ const dataPersistConfig = {
 const modalsPersistConfig = {
   key: 'modals',
   storage,
-  whitelist: ['portions'],
+  whitelist: [],
 };
 
 const persistedAuthReducer = persistReducer(authPersistConfig, authReducer);
