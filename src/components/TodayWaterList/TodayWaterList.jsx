@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
 import { selectIsModalOpen, selectPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
@@ -9,17 +9,26 @@ import {
   TodayListButton,
   TodayListTitle,
 } from './TodayWaterList.styled';
+import {
+  changeAddModal,
+  changeModalOpen,
+} from '../../redux/modals/modalsSlice';
 
 const TodayWaterList = () => {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const dispatch = useDispatch();
   const portions = useSelector(selectPortions);
   const isModalOpen = useSelector(selectIsModalOpen);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const showModal = (item) => {
     setSelectedItem(item);
   };
 
-  useEffect;
+  const onAddPortionClick = () => {
+    dispatch(changeModalOpen(true));
+    dispatch(changeAddModal(true));
+  };
+
   return (
     <div>
       <TodayListTitle>Today</TodayListTitle>
@@ -34,7 +43,7 @@ const TodayWaterList = () => {
           />
         ))}
       </TodayList>
-      <TodayListButton>
+      <TodayListButton onClick={onAddPortionClick}>
         <svg width={16} height={16}>
           <use href={sprite + '#icon-plus-small'}></use>
         </svg>
