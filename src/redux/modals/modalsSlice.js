@@ -35,6 +35,15 @@ export const modalsSlice = createSlice({
     changeLogoutModal: (state, { payload }) => {
       state.logoutModal = payload;
     },
+    closeModals: (state, { payload }) => {
+      state.isModalOpen = payload;
+      state.dailyNormaModal = payload;
+      state.editPortionModal = payload;
+      state.deletePortionModal = payload;
+      state.addWaterModal = payload;
+      state.settingModal = payload;
+      state.logoutModal = payload;
+    },
   },
 });
 
@@ -56,4 +65,5 @@ export const {
   changeAddModal,
   changeSettingModal,
   changeLogoutModal,
+  closeModals,
 } = modalsSlice.actions;
