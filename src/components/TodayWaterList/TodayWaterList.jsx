@@ -20,6 +20,12 @@ const TodayWaterList = () => {
   const isModalOpen = useSelector(selectIsModalOpen);
   const [selectedItem, setSelectedItem] = useState(null);
 
+  const sortedPortions = [...portions].sort((a, b) => {
+    const timeA = new Date(`1970/01/01 ${a.time}`).getTime();
+    const timeB = new Date(`1970/01/01 ${b.time}`).getTime();
+    return timeA - timeB;
+  });
+
   const showModal = (item) => {
     setSelectedItem(item);
   };
@@ -33,7 +39,7 @@ const TodayWaterList = () => {
     <div>
       <TodayListTitle>Today</TodayListTitle>
       <TodayList>
-        {portions.map(({ id, amount, time }) => (
+        {sortedPortions.map(({ id, amount, time }) => (
           <TodayListItem
             key={id}
             id={id}
