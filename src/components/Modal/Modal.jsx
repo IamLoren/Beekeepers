@@ -8,6 +8,7 @@ import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
 import DeleteModal from '../TodayListModal/DeleteModal';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
 import UserLogoutModal from '../UserLogoutModal/UserLogoutModal';
+import SettingModal from '../SettingModal/SettingModal';
 import {
   selectAddWaterModal,
   selectDailyNormaModal,
@@ -68,7 +69,7 @@ const Modal = () => {
         {editPortionModal && <TodayListModal />}
         {deletePortionModal && <DeleteModal />}
         {addWaterModal && <AddWaterModal />}
-        {settingModal && <h1>Setting Modal</h1>}
+        {settingModal && <SettingModal />}
         {logoutModal && <UserLogoutModal />}
 
         <BtnClose type="button" onClick={closeModal}>
