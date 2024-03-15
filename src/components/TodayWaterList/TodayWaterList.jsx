@@ -1,9 +1,16 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import sprite from '../../assets/sprite.svg';
-import { selectIsModalOpen, selectPortions } from '../../redux/selectors';
+import {
+  selectDeletePortionModal,
+  selectEditPortionModal,
+  selectIsModalOpen,
+  selectPortions,
+} from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
 import Modal from '../Modal/Modal';
+
 import {
   TodayList,
   TodayListButton,
@@ -16,9 +23,19 @@ import {
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
+
   const portions = useSelector(selectPortions);
   const isModalOpen = useSelector(selectIsModalOpen);
+  const isEditPortionOpen = useSelector(selectEditPortionModal);
+  const isDeletePortionOpen = useSelector(selectDeletePortionModal);
+
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const sortedPortions = [...portions].sort((a, b) => {
+    const timeA = new Date(`1970/01/01 ${a.time}`).getTime();
+    const timeB = new Date(`1970/01/01 ${b.time}`).getTime();
+    return timeA - timeB;
+  });
 
   const showModal = (item) => {
     setSelectedItem(item);
@@ -33,7 +50,7 @@ const TodayWaterList = () => {
     <div>
       <TodayListTitle>Today</TodayListTitle>
       <TodayList>
-        {portions.map(({ id, amount, time }) => (
+        {sortedPortions.map(({ id, amount, time }) => (
           <TodayListItem
             key={id}
             id={id}
@@ -49,7 +66,7 @@ const TodayWaterList = () => {
         </svg>
         Add water
       </TodayListButton>
-      {isModalOpen && (
+      {(isEditPortionOpen || isDeletePortionOpen) && (
         <Modal
           id={selectedItem.id}
           amount={selectedItem.amount}
