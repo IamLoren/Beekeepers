@@ -11,7 +11,6 @@ export const statisticDataSlice = createSlice({
       { id: 5, amount: 200, time: '14:00' },
       { id: 6, amount: 250, time: '14:00' },
     ],
-    isModalOpen: false,
     isLoading: false,
     isError: null,
     selectedItem: null,
