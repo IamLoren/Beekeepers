@@ -17,6 +17,17 @@ export const StyledLink = styled(Link)`
 
 export const StyledSpan = styled.span`
   color: var(--secondary-text);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  &:hover {
+    color: #ff9d43;
+  }
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
 `;
 
 export const StyledSvg = styled.svg`

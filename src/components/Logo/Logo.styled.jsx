@@ -6,3 +6,7 @@ export const StyledUserAuthLink = styled(Link)`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const StyledSvg = styled.svg`
+  height: 48px;
+`;
