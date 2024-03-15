@@ -16,7 +16,6 @@ export const modalsSlice = createSlice({
     changeModalOpen: (state, { payload }) => {
       state.isModalOpen = payload;
     },
-
     changeDailyNormaModal: (state, { payload }) => {
       state.dailyNormaModal = payload;
     },

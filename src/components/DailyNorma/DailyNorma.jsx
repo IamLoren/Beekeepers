@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDailyNorma, selectIsModalOpen } from '../../redux/selectors.js';
+import { selectDailyNorma, selectDailyNormaModal } from '../../redux/selectors.js';
 
 import {
   Btn,
@@ -17,7 +17,7 @@ import {
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);
 
-  const modalIsOpen = useSelector(selectIsModalOpen);
+  const modalIsOpen = useSelector(selectDailyNormaModal);
   const dispatch = useDispatch();
 
   const onEditClick = () => {
