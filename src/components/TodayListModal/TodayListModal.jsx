@@ -26,12 +26,16 @@ const TodayListModal = ({ id, amount, time, closeModal }) => {
   const [selectedTime, setSelectedTime] = useState(time);
   const [inputValue, setInputValue] = useState(count);
 
-  const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 50);
+  const handleDecrement = () => {
+    if (count > 0) {
+      setCount(count - 50);
+    }
   };
 
-  const handleDecrement = () => {
-    setCount((prevCount) => prevCount - 50);
+  const handleIncrement = () => {
+    if (count < 1500) {
+      setCount(count + 50);
+    }
   };
 
   const generateTimeOptions = () => {
