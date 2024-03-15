@@ -9,18 +9,13 @@ export const StyledModalWrapper = styled.div`
   background: #fff;
   position: absolute;
   margin: 8px -90px;
-
-  /* @media only screen and (min-width: 768px) {
-  }
-
-  @media only screen and (min-width: 1440px) {
-  } */
 `;
 
 export const StyledSpan = styled.span`
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
+  gap: 8px;
 `;
 
 export const StyledSvg = styled.svg`
