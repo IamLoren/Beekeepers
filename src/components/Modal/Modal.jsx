@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
 import DeleteModal from '../TodayListModal/DeleteModal';
+import AddWaterModal from '../AddWaterModal/AddWaterModal';
+import UserLogoutModal from '../UserLogoutModal/UserLogoutModal';
 import {
   selectAddWaterModal,
   selectDailyNormaModal,
@@ -71,9 +73,9 @@ const Modal = ({ id, amount, time }) => {
           />
         )}
         {deletePortionModal && <DeleteModal id={id} closeModal={closeModal} />}
-        {addWaterModal && <h1>Add Modal</h1>}
+        {addWaterModal && <AddWaterModal />}
         {settingModal && <h1>Setting Modal</h1>}
-        {logoutModal && <h1>Logout Modal</h1>}
+        {logoutModal && <UserLogoutModal />}
 
         <BtnClose type="button" onClick={closeModal}>
           <SvgBtnClose>
