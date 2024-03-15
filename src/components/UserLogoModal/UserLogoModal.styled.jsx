@@ -7,8 +7,14 @@ export const StyledModalWrapper = styled.div`
   height: 88px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
   background: #fff;
+  position: absolute;
+  margin: 8px -90px;
 
-  /* margin-top: 48px; */
+  /* @media only screen and (min-width: 768px) {
+  }
+
+  @media only screen and (min-width: 1440px) {
+  } */
 `;
 
 export const StyledSpan = styled.span`
