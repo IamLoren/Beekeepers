@@ -14,6 +14,7 @@ export const statisticDataSlice = createSlice({
     isModalOpen: false,
     isLoading: false,
     isError: null,
+    selectedItem: null,
   },
   reducers: {
     addPortion: (state, { payload }) => {
@@ -33,6 +34,9 @@ export const statisticDataSlice = createSlice({
       const idToDelete = payload;
       state.portions = state.portions.filter((item) => item.id !== idToDelete);
     },
+    changeSelectedItem: (state, { payload }) => {
+      state.selectedItem = payload;
+    },
   },
 
   // extraReducers: (builder) => {
@@ -45,5 +49,5 @@ export const statisticDataSlice = createSlice({
 });
 
 export const statisticDataReducer = statisticDataSlice.reducer;
-export const { addPortion, editPortion, deletePortion } =
+export const { addPortion, editPortion, deletePortion, changeSelectedItem } =
   statisticDataSlice.actions;
