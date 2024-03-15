@@ -21,3 +21,9 @@ export const selectLogoutModal = (state) => state.modalsSlice.logoutModal;
 
 export const selectSelectedItem = (state) =>
   state.statisticDataSlice.selectedItem;
+
+export const selectPortionsAmount = (state) =>
+  state.statisticDataSlice.portions.reduce(
+    (totalAmount, portion) => totalAmount + portion.amount,
+    0
+  );
