@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const normaCounterSlice = createSlice({
   name: 'counter',
   initialState: {
-    dailyNorma: null,
+    dailyNorma: 1.8,
     isLoading: false,
     isError: null,
   },
