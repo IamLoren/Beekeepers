@@ -37,12 +37,16 @@ export const ButtonsWrapper = styled.div`
 
   button.edit {
     stroke: var(--secondary-text);
+    outline: none;
+
     &:hover {
       border-bottom: 1px solid var(--secondary-text);
     }
   }
   button.trash {
     stroke: var(--error-text);
+    outline: none;
+
     &:hover {
       border-bottom: 1px solid var(--error-text);
     }

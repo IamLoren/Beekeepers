@@ -19,19 +19,31 @@ export const statisticDataSlice = createSlice({
     addPortion: (state, { payload }) => {
       state.portions.push(payload);
     },
-    changeModalOpen: (state, { payload }) => {
-      state.isModalOpen = payload;
+    editPortion: (state, { payload }) => {
+      const { id, amount, time } = payload;
+      const portionToUpdate = state.portions.find(
+        (portion) => portion.id === id
+      );
+      if (portionToUpdate) {
+        portionToUpdate.amount = amount;
+        portionToUpdate.time = time;
+      }
+    },
+    deletePortion: (state, { payload }) => {
+      const idToDelete = payload;
+      state.portions = state.portions.filter((item) => item.id !== idToDelete);
     },
   },
 
-  extraReducers: (builder) => {
-    builder;
-    // .addCase(getNormaThunk.fulfilled, (state, { payload }) => {
-    //     state.dailyNorma = payload;
-    //   state.isLoading = false;
-    // })
-  },
+  // extraReducers: (builder) => {
+  //   builder;
+  // .addCase(getNormaThunk.fulfilled, (state, { payload }) => {
+  //     state.dailyNorma = payload;
+  //   state.isLoading = false;
+  // })
+  // },
 });
 
 export const statisticDataReducer = statisticDataSlice.reducer;
-export const { addPortion } = statisticDataSlice.actions;
+export const { addPortion, editPortion, deletePortion } =
+  statisticDataSlice.actions;
