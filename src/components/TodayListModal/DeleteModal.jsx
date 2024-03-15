@@ -29,7 +29,12 @@ const DeleteModal = () => {
       </SubtitleModal>
       <ButtonsWrapper>
         <ButtonDelete onClick={onDeleteClick}>Delete</ButtonDelete>
-        <ButtonDelete className="cancel-btn" onClick={closeModals}>
+        <ButtonDelete
+          className="cancel-btn"
+          onClick={() => {
+            dispatch(closeModals());
+          }}
+        >
           Cancel
         </ButtonDelete>
       </ButtonsWrapper>
