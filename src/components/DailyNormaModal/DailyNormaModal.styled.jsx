@@ -180,3 +180,8 @@ export const BtnSave = styled.button`
     line-height: 1.3;
   }
 `;
+export const Error = styled.div`
+  color: var(--error-text);
+  margin-top: 10px;
+  font-size: 14px;
+`;
