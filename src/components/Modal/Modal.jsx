@@ -16,7 +16,6 @@ import {
   selectEditPortionModal,
   selectLogoutModal,
   selectSettingModal,
-  selectSelectedItem,
 } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
 
@@ -28,7 +27,6 @@ const Modal = () => {
   const addWaterModal = useSelector(selectAddWaterModal);
   const settingModal = useSelector(selectSettingModal);
   const logoutModal = useSelector(selectLogoutModal);
-  const selectedItem = useSelector(selectSelectedItem);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -66,17 +64,8 @@ const Modal = () => {
     <Overlay onClick={onBackdropClick}>
       <ModalStyled>
         {dailyNormaModal && <DailyNormaModal />}
-        {editPortionModal && (
-          <TodayListModal
-            id={selectedItem.id}
-            amount={selectedItem.amount}
-            time={selectedItem.time}
-            closeModal={closeModal}
-          />
-        )}
-        {deletePortionModal && (
-          <DeleteModal id={selectedItem.id} closeModal={closeModal} />
-        )}
+        {editPortionModal && <TodayListModal closeModal={closeModal} />}
+        {deletePortionModal && <DeleteModal closeModal={closeModal} />}
         {addWaterModal && <AddWaterModal />}
         {settingModal && <h1>Setting Modal</h1>}
         {logoutModal && <UserLogoutModal />}
