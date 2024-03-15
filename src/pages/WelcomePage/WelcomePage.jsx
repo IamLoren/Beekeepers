@@ -1,8 +1,19 @@
-import {StyledFullPage, StyledContainer, StyledLeftWrapper, StyledTitle1, StyledTitle2, StyledLeftTitle3, StyledLeftList, StyledLeftItem, StyledButton, StyledRightWrapper, StyledRightTitle3, StyledRightList, StyledRightItem} from './WelcomePage.styled'
-
+import {StyledFullPage, StyledContainer, StyledLeftWrapper, StyledTitle1, StyledTitle2, StyledLeftTitle3, StyledLeftList, StyledLeftItem, StyledSvg, StyledButton, StyledRightWrapper, StyledRightTitle3, StyledRightList, StyledRightItem} from './WelcomePage.styled'
+import { useEffect, useState } from 'react';
+import Modal from '../../components/Modal/Modal'
 import sprite from '../../assets/sprite.svg'
 
 const WelcomePage = () => {
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  useEffect(() => {
+    isOpenModal ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'
+  }, [isOpenModal])
+  const handleShowModal = () => {
+    setIsOpenModal(true);
+  } 
+
+
   return (
    <StyledFullPage>
     <StyledContainer>
@@ -12,25 +23,25 @@ const WelcomePage = () => {
         <StyledLeftTitle3>Tracker Benefits</StyledLeftTitle3>
         <StyledLeftList>
           <StyledLeftItem>
-            <svg width={30} height={30}>
+            <StyledSvg>
               <use href={sprite + '#icon-calendar-day'}></use>
-            </svg>
+            </StyledSvg>
               <p>Habit drive</p>
           </StyledLeftItem>
           <StyledLeftItem>
-          <svg width={30} height={30}>
+          <StyledSvg>
               <use href={sprite + '#icon-presentation-chart-bar'}></use>
-            </svg>
+            </StyledSvg>
             <p>View statistics</p>
           </StyledLeftItem>
           <StyledLeftItem>
-          <svg width={30} height={30}>
+          <StyledSvg>
               <use href={sprite + '#icon-wrench-screwdriver'}></use>
-            </svg>
+            </StyledSvg>
             <p>Personal rate setting</p>
           </StyledLeftItem>
         </StyledLeftList>
-        <StyledButton>Try tracker</StyledButton>
+        <StyledButton onClick={handleShowModal}>Try tracker</StyledButton>
       </StyledLeftWrapper>
       <StyledRightWrapper>
         <StyledRightTitle3>Why drink water</StyledRightTitle3>
@@ -59,6 +70,8 @@ const WelcomePage = () => {
         </StyledRightList>
       </StyledRightWrapper>
     </StyledContainer>
+    <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}> Modal Window</Modal>
+
    </StyledFullPage>
     )
 }
