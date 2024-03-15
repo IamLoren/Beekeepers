@@ -10,7 +10,6 @@ export const modalsSlice = createSlice({
     addWaterModal: false,
     settingModal: false,
     logoutModal: false,
-    selectedItem: null,
   },
 
   reducers: {
@@ -45,9 +44,6 @@ export const modalsSlice = createSlice({
       state.settingModal = payload;
       state.logoutModal = payload;
     },
-    changeSelectedItem: (state, { payload }) => {
-      state.selectedItem = payload;
-    },
   },
 });
 
@@ -70,5 +66,4 @@ export const {
   changeSettingModal,
   changeLogoutModal,
   closeModals,
-  changeSelectedItem,
 } = modalsSlice.actions;

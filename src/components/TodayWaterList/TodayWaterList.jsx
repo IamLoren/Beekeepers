@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
 import { selectPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
+import {
+  changeAddModal,
+  changeModalOpen,
+} from '../../redux/modals/modalsSlice';
 
 import {
   TodayList,
   TodayListButton,
   TodayListTitle,
 } from './TodayWaterList.styled';
-import {
-  changeAddModal,
-  changeModalOpen,
-} from '../../redux/modals/modalsSlice';
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
