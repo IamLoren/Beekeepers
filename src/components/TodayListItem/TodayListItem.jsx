@@ -11,19 +11,20 @@ import {
   changeDeletePortionModal,
   changeEditPortionModal,
   changeModalOpen,
+  changeSelectedItem,
 } from '../../redux/modals/modalsSlice';
 
-const TodayListItem = ({ id, amount, time, showModal }) => {
+const TodayListItem = ({ id, amount, time }) => {
   const dispatch = useDispatch();
 
   const onEditPortionClick = () => {
-    showModal({ id, amount, time });
+    dispatch(changeSelectedItem({ id, amount, time }));
     dispatch(changeModalOpen(true));
     dispatch(changeEditPortionModal(true));
   };
 
   const onDeletePortionClick = () => {
-    showModal({ id });
+    dispatch(changeSelectedItem({ id, amount, time }));
     dispatch(changeModalOpen(true));
     dispatch(changeDeletePortionModal(true));
   };
