@@ -3,26 +3,36 @@ import sprite from '../../assets/sprite.svg';
 import { useCallback, useEffect } from 'react';
 import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  changeDailyNormaModal,
-  changeEditPortionModal,
-  changeModalOpen,
-  changeDeletePortionModal,
-} from '../../redux/normaCounter/normaCounterSlice';
-import {
-  selectDailyNormaModal,
-  selectDeletePortionModal,
-  selectEditPortionModal,
-} from '../../redux/selectors';
+
 import TodayListModal from '../TodayListModal/TodayListModal';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
 import DeleteModal from '../TodayListModal/DeleteModal';
+import {
+  selectAddWaterModal,
+  selectDailyNormaModal,
+  selectDeletePortionModal,
+  selectEditPortionModal,
+  selectLogoutModal,
+  selectSettingModal,
+} from '../../redux/selectors';
+import {
+  changeAddModal,
+  changeDailyNormaModal,
+  changeDeletePortionModal,
+  changeEditPortionModal,
+  changeLogoutModal,
+  changeModalOpen,
+  changeSettingModal,
+} from '../../redux/modals/modalsSlice';
 
 const Modal = ({ id, amount, time }) => {
   const dispatch = useDispatch();
   const dailyNormaModal = useSelector(selectDailyNormaModal);
   const editPortionModal = useSelector(selectEditPortionModal);
   const deletePortionModal = useSelector(selectDeletePortionModal);
+  const addWaterModal = useSelector(selectAddWaterModal);
+  const settingModal = useSelector(selectSettingModal);
+  const logoutModal = useSelector(selectLogoutModal);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -34,9 +44,12 @@ const Modal = ({ id, amount, time }) => {
   const closeModal = useCallback(() => {
     document.body.style.overflow = 'auto';
     dispatch(changeModalOpen(false));
+    dispatch(changeDailyNormaModal(false));
     dispatch(changeEditPortionModal(false));
     dispatch(changeDeletePortionModal(false));
-    dispatch(changeDailyNormaModal(false));
+    dispatch(changeAddModal(false));
+    dispatch(changeSettingModal(false));
+    dispatch(changeLogoutModal(false));
   }, [dispatch]);
 
   useEffect(() => {
@@ -72,6 +85,10 @@ const Modal = ({ id, amount, time }) => {
           />
         )}
         {deletePortionModal && <DeleteModal id={id} closeModal={closeModal} />}
+        {addWaterModal && <h1>Add Modal</h1>}
+        {settingModal && <h1>Add Modal</h1>}
+        {logoutModal && <h1>Add Modal</h1>}
+
         <BtnClose type="button" onClick={closeModal}>
           <SvgBtnClose>
             <use href={`${sprite}#icon-close`} />
