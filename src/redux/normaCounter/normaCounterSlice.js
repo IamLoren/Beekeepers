@@ -24,11 +24,11 @@ export const normaCounterSlice = createSlice({
     changeEditPortionModal: (state, { payload }) => {
       state.modal.editPortionModal = payload;
     },
-    deletePortionModal: (state, { payload }) => {
+    changeDeletePortionModal: (state, { payload }) => {
       state.modal.deletePortionModal = payload;
     },
     changeDailyNormaModal: (state, { payload }) => {
-      console.log("воно працює");
+      console.log('воно працює');
       state.modal.dailyNormaModal = payload;
     },
   },
@@ -47,7 +47,7 @@ export const counterReducer = normaCounterSlice.reducer;
 export const {
   changeDailyNorma,
   changeModalOpen,
-  deletePortionModal,
+  changeDeletePortionModal,
   changeDailyNormaModal,
   changeEditPortionModal,
   closeAllModals,
