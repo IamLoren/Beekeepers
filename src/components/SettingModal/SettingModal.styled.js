@@ -1,21 +1,33 @@
 import styled from 'styled-components';
 import { FormControlLabel, RadioGroup } from '@mui/material';
 
-export const Wrapper = styled.div`
+export const SettingContainer = styled.div`
   padding: 32px 12px;
+
   @media (min-width: 768px) {
     padding: 32px 24px;
   }
 
+  /* @media (min-width: 1440px) {
+    width: 1008px;
+  } */
+
   h1 {
+    font-family: 'Roboto Medium';
     font-size: 26px;
     line-height: 1.23;
     margin-bottom: 24px;
   }
 `;
 
+export const FormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const MainLabelText = styled.h2`
   font-size: 18px;
+  font-family: 'Roboto Medium';
   line-height: 1.11;
   color: var(--primary-text);
   margin-bottom: 8px;
@@ -42,6 +54,13 @@ export const StyledInput = styled.input`
 
   &::placeholder {
     color: var(--secondary-text);
+  }
+
+  &[type='password'] {
+    color: var(--percentage-text);
+  }
+  @media (min-width: 768px) {
+    width: 392px;
   }
 `;
 
@@ -119,5 +138,14 @@ export const SaveBtn = styled.button`
 
   &:active {
     box-shadow: none;
+  }
+
+  @media (min-width: 768px) {
+    display: block;
+    margin-left: auto;
+    width: 160px;
+    height: 44px;
+    font-size: 18px;
+    line-height: 1.33;
   }
 `;

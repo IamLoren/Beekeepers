@@ -9,15 +9,16 @@ import {
   StyledFormControlLabel,
   StyledInput,
   UploadBtn,
-  Wrapper,
+  SettingContainer,
+  FormWrapper,
 } from './SettingModal.styled';
 
 const SettingModal = () => {
   return (
-    <Wrapper>
+    <SettingContainer>
       <h1>Setting</h1>
 
-      <form>
+      <FormWrapper>
         <MainLabelText>Your photo</MainLabelText>
         <PhotoWrapper>
           <img src="/" alt="avatar" width="80" height="80" />
@@ -67,9 +68,9 @@ const SettingModal = () => {
           <LabelText>Repeat new password:</LabelText>
           <StyledInput id="repeatPassword" type="password" />
         </label>
-      </form>
+      </FormWrapper>
       <SaveBtn type="submit">Save</SaveBtn>
-    </Wrapper>
+    </SettingContainer>
   );
 };
 
