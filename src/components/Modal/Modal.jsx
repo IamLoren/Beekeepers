@@ -1,9 +1,8 @@
-import ReactDom from 'react-dom';
-import sprite from '../../assets/sprite.svg';
 import { useCallback, useEffect } from 'react';
-import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
+import ReactDom from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import sprite from '../../assets/sprite.svg';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
 import DeleteModal from '../TodayListModal/DeleteModal';
@@ -18,6 +17,8 @@ import {
   selectSettingModal,
 } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
+
+import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -64,8 +65,8 @@ const Modal = () => {
     <Overlay onClick={onBackdropClick}>
       <ModalStyled>
         {dailyNormaModal && <DailyNormaModal />}
-        {editPortionModal && <TodayListModal closeModal={closeModal} />}
-        {deletePortionModal && <DeleteModal closeModal={closeModal} />}
+        {editPortionModal && <TodayListModal />}
+        {deletePortionModal && <DeleteModal />}
         {addWaterModal && <AddWaterModal />}
         {settingModal && <h1>Setting Modal</h1>}
         {logoutModal && <UserLogoutModal />}

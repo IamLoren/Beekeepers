@@ -19,4 +19,5 @@ export const selectSettingModal = (state) => state.modalsSlice.settingModal;
 
 export const selectLogoutModal = (state) => state.modalsSlice.logoutModal;
 
-export const selectSelectedItem = (state) => state.modalsSlice.selectedItem;
+export const selectSelectedItem = (state) =>
+  state.statisticDataSlice.selectedItem;

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import sprite from '../../assets/sprite.svg';
 import { editPortion } from '../../redux/statisticData/statisticDataSlice';
+import { selectSelectedItem } from '../../redux/selectors';
+import { closeModals } from '../../redux/modals/modalsSlice';
 
 import {
   AmountText,
@@ -19,9 +21,8 @@ import {
   SaveButton,
   ResultSaveWrapper,
 } from './TodayListModal.styled';
-import { selectSelectedItem } from '../../redux/selectors';
 
-const TodayListModal = ({ closeModal }) => {
+const TodayListModal = () => {
   const dispatch = useDispatch();
   const selectedItem = useSelector(selectSelectedItem);
   const [count, setCount] = useState(selectedItem.amount);
@@ -64,8 +65,7 @@ const TodayListModal = ({ closeModal }) => {
     dispatch(
       editPortion({ id: selectedItem.id, amount: count, time: selectedTime })
     );
-
-    closeModal();
+    dispatch(closeModals());
   };
 
   useEffect(() => {
