@@ -14,8 +14,8 @@ export const StyledModalWrapper = styled.div`
 export const StyledSpan = styled.span`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   /* justify-content: center; */
-  gap: 8px;
 `;
 
 export const StyledSvg = styled.svg`
@@ -23,7 +23,6 @@ export const StyledSvg = styled.svg`
   stroke: #407bff;
   font-weight: 400;
   font-size: 16px;
-  stroke-width: 1px;
 `;
 
 export const StyledButton = styled.button`
@@ -36,6 +35,6 @@ export const StyledButton = styled.button`
   border: none;
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 16px;
+  justify-content: space-between;
 `;
