@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import sprite from '../../assets/sprite.svg';
+import { editPortion } from '../../redux/statisticData/statisticDataSlice';
 
 import {
   AmountText,
@@ -17,8 +19,6 @@ import {
   SaveButton,
   ResultSaveWrapper,
 } from './TodayListModal.styled';
-import { useDispatch } from 'react-redux';
-import { editPortion } from '../../redux/statisticData/statisticDataSlice';
 
 const TodayListModal = ({ id, amount, time, closeModal }) => {
   const dispatch = useDispatch();
