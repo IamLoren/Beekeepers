@@ -9,6 +9,7 @@ import {
   Error,
   FormulaExplication,
   Input,
+  InputErrorWrap,
   ModalTitle,
   StyledFormControlLabel,
   StyledRadioGroup,
@@ -147,51 +148,59 @@ const DailyNormaModal = () => {
             checked={formik.values.gender === 'man'}
           />
         </StyledRadioGroup>
-        <label htmlFor="weight">
-          <TypeData>Your weight in kilograms:</TypeData>
-          <Input
-            type="text"
-            id="weight"
-            name="weight"
-            placeholder="0"
-            value={formik.values.weight}
-            onChange={onInputChange}
-            $isError={formik.errors.weight}
-          />
-          {formik.errors.weight && <Error>{formik.errors.weight}</Error>}
-        </label>
-        <label htmlFor="time">
-          <TypeData>
-            The time of active participation in sports or other activities with
-            a high physical. load in hours:
-          </TypeData>
-          <Input
-            id="time"
-            name="time"
-            type="text"
-            placeholder="0"
-            value={formik.values.time}
-            onChange={onInputChange}
-            $isError={formik.errors.time}
-          />
-          {formik.errors.time && <Error>{formik.errors.time}</Error>}
-        </label>
+
+        <InputErrorWrap>
+          <label htmlFor="weight">
+            <TypeData>Your weight in kilograms:</TypeData>
+
+            <Input
+              type="text"
+              id="weight"
+              name="weight"
+              placeholder="0"
+              value={formik.values.weight}
+              onChange={onInputChange}
+              $isError={formik.errors.weight}
+            />
+            {formik.errors.weight && <Error>{formik.errors.weight}</Error>}
+          </label>
+        </InputErrorWrap>
+        <InputErrorWrap>
+          <label htmlFor="time">
+            <TypeData>
+              The time of active participation in sports or other activities
+              with a high physical. load in hours:
+            </TypeData>
+            <Input
+              id="time"
+              name="time"
+              type="text"
+              placeholder="0"
+              value={formik.values.time}
+              onChange={onInputChange}
+              $isError={formik.errors.time}
+            />
+            {formik.errors.time && <Error>{formik.errors.time}</Error>}
+          </label>
+        </InputErrorWrap>
         <WrapAmount>
           <Data>The required amount of water in liters per day:</Data>
           <AmountNumber>{dailyNorma} L</AmountNumber>
         </WrapAmount>
-        <label htmlFor="norma">
-          <Subtitle>Write down how much water you will drink:</Subtitle>
-          <Input
-            id="norma"
-            name="norma"
-            type="text"
-            placeholder="0"
-            onChange={onInputChange}
-            $isError={formik.errors.norma}
-          />
-          {formik.errors.norma && <Error>{formik.errors.norma}</Error>}
-        </label>
+        <InputErrorWrap>
+          <label htmlFor="norma">
+            <Subtitle>Write down how much water you will drink:</Subtitle>
+            <Input
+              id="norma"
+              name="norma"
+              type="text"
+              placeholder="0"
+              onChange={onInputChange}
+              $isError={formik.errors.norma}
+            />
+            {formik.errors.norma && <Error>{formik.errors.norma}</Error>}
+          </label>
+        </InputErrorWrap>
         <BtnSave type="submit">Save</BtnSave>
       </form>
     </DailyNormaModalContainer>

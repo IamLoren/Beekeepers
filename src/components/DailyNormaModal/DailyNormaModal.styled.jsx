@@ -3,8 +3,13 @@ import styled from 'styled-components';
 
 export const DailyNormaModalContainer = styled.div`
   padding: 24px 12px;
+  width: 280px;
   @media (min-width: 768px) {
     padding: 32px 24px;
+    width: 704px;
+  }
+  @media (min-width: 1440px) {
+    width: 592px;
   }
 `;
 
@@ -59,26 +64,7 @@ export const Subtitle = styled.h2`
   line-height: 1.1;
   margin-bottom: 16px;
 `;
-// export const WrapRadioInputs = styled.div`
-//   display: flex;
-//   flex-direction: row;
-// `;
 
-// export const Label = styled.label`
-//   position: relative;
-//   cursor: pointer;
-//   margin-right: 24px;
-// `;
-
-// export const InputRadio = styled.input`
-//   cursor: pointer;
-// `;
-
-// export const Span = styled.span`
-//   margin-left: 8px;
-//   font-size: 16px;
-//   line-height: 1.25;
-// `;
 export const StyledRadioGroup = styled(RadioGroup)`
   && {
     margin-bottom: 16px;
@@ -185,8 +171,15 @@ export const BtnSave = styled.button`
     line-height: 1.3;
   }
 `;
+
+export const InputErrorWrap = styled.div`
+  position: relative;
+`;
+
 export const Error = styled.div`
   color: var(--error-text);
-  margin-top: 1px;
-  font-size: 12px;
+  position: absolute;
+  bottom: -16px;
+  font-size: 14px;
+  line-height: 1.3;
 `;
