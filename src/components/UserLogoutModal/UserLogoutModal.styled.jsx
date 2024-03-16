@@ -4,13 +4,16 @@ export const ModalWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 280px;
 
   background-color: var(--white-text);
   border-radius: 10px;
-
   &.delete-modal {
     padding: 32px 24px;
     position: relative;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 592px;
   }
 `;
 
