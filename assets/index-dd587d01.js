@@ -1847,4 +1847,4 @@ input:-webkit-autofill:active {
     z-index: 10 !important;
     margin-top: 5px;
   }
-`;Jd.createRoot(document.getElementById("root")).render(g.jsx(j.StrictMode,{children:g.jsx(BE,{basename:"/Beekeepers",children:g.jsxs(hO,{store:uk,children:[g.jsxs(ck,{loading:null,persistor:DB,children:[g.jsx(q7,{}),g.jsx(JB,{})]}),g.jsx(QB,{autoClose:1500})]})})}))});export default ZB();
+`;Jd.createRoot(document.getElementById("root")).render(g.jsx(j.StrictMode,{children:g.jsx(BE,{children:g.jsxs(hO,{store:uk,children:[g.jsxs(ck,{loading:null,persistor:DB,children:[g.jsx(q7,{}),g.jsx(JB,{})]}),g.jsx(QB,{autoClose:1500})]})})}))});export default ZB();
