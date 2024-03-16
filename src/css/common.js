@@ -73,12 +73,34 @@ input:-webkit-autofill:active {
     max-height: 100vh;
   }
   }
-
-  @media only screen and (min-width: 1440px) and (min-resolution: 192dpi) {
-    body {
-       
-    }
-
+  .react-calendar {
+    width: 100%;
+  }
+  .react-calendar__month-view__weekdays {
+    display: none !important; 
+  }
+  .react-calendar__month-view__days  {
+    display: grid !important;
+    grid-template-columns: repeat(10, 1fr) !important;
+    grid-template-rows: repeat(4, 1fr) !important;
+    column-gap: 22px;
+    row-gap: 20px;
+  }
+   .react-calendar__tile {
+      width: 34px !important;
+      height: 56px;
+      padding: 10px 0 !important;
+      border-radius: 50%;
+      border: transparent;
+      background-color: transparent;
+      z-index: 10 !important;
+      overflow: visible !important;
+  }
+  abbr {
+    position: relative;
+    z-index: 10 !important;
+    margin-top: 5px;
+  }
 `;
 
 export default Global;
