@@ -12,7 +12,6 @@ const WelcomePage = () => {
   }
 
 
-
   return (
    <StyledFullPage>
     <StyledContainer>
