@@ -25,6 +25,7 @@ import * as Yup from 'yup';
 
 const validationDailyNormaModalSchema = Yup.object({
   weight: Yup.number('Weight value must be a number')
+    .typeError('Weight must be a number')
     .min(1)
     .required('Weight is required'),
   time: Yup.number()
@@ -32,7 +33,9 @@ const validationDailyNormaModalSchema = Yup.object({
     .max(24, 'Time must not be greater than 24')
     .min(0)
     .nullable(),
-  dailyNorma: Yup.number().typeError('Water amount value must be a number'),
+  norma: Yup.number('Daily norma value must be a number').typeError(
+    'Water amount value must be a number'
+  ),
 });
 
 const DailyNormaModal = () => {
@@ -95,9 +98,11 @@ const DailyNormaModal = () => {
 
   useEffect(() => {
     if (formik.errors.weight) {
+      console.log(formik.errors.weight);
       console.log('validation error!!!');
     }
     if (formik.errors.time) {
+      console.log(formik.errors.time);
       console.log('validation error2!!!');
     }
   }, [formik.errors.weight, formik.errors.time]);
@@ -135,7 +140,6 @@ const DailyNormaModal = () => {
             label="For woman"
             checked={formik.values.gender === 'woman'}
           />
-
           <StyledFormControlLabel
             value="man"
             control={<Radio />}
@@ -152,10 +156,9 @@ const DailyNormaModal = () => {
             placeholder="0"
             value={formik.values.weight}
             onChange={onInputChange}
+            $isError={formik.errors.weight}
           />
-          {formik.touched.weight && formik.errors.weight ? (
-            <Error>{formik.errors.weight}</Error>
-          ) : null}
+          {formik.errors.weight && <Error>{formik.errors.weight}</Error>}
         </label>
         <label htmlFor="time">
           <TypeData>
@@ -169,23 +172,26 @@ const DailyNormaModal = () => {
             placeholder="0"
             value={formik.values.time}
             onChange={onInputChange}
+            $isError={formik.errors.time}
           />
-          {formik.touched.time && formik.errors.time ? (
-            <Error>{formik.errors.time}</Error>
-          ) : null}
+          {formik.errors.time && <Error>{formik.errors.time}</Error>}
         </label>
         <WrapAmount>
           <Data>The required amount of water in liters per day:</Data>
           <AmountNumber>{dailyNorma} L</AmountNumber>
         </WrapAmount>
-        <Subtitle>Write down how much water you will drink:</Subtitle>
-        <Input
-          id="norma"
-          name="norma"
-          type="text"
-          placeholder="0"
-          onChange={onInputChange}
-        />
+        <label htmlFor="norma">
+          <Subtitle>Write down how much water you will drink:</Subtitle>
+          <Input
+            id="norma"
+            name="norma"
+            type="text"
+            placeholder="0"
+            onChange={onInputChange}
+            $isError={formik.errors.norma}
+          />
+          {formik.errors.norma && <Error>{formik.errors.norma}</Error>}
+        </label>
         <BtnSave type="submit">Save</BtnSave>
       </form>
     </DailyNormaModalContainer>
