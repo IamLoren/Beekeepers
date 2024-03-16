@@ -647,6 +647,10 @@ text-indent:-1rem;
 
   @media only screen and (min-width: 768px) {
     padding: 32px 24px;
+    width: 704px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
   }
 `,v2=O.h2`
   font-family: 'Roboto Medium';
