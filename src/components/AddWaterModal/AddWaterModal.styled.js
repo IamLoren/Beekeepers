@@ -2,6 +2,15 @@ import styled from 'styled-components';
 
 export const StyledAddWaterModalContainer = styled.div`
   padding: 24px 12px;
+
+  @media only screen and (min-width: 768px) {
+    padding: 32px 24px;
+    width: 704px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
+  }
 `;
 
 export const StyledAddWater = styled.h2`
@@ -42,6 +51,10 @@ export const StyledCounterBtn = styled.button`
 
   box-shadow: 0 2px 4px 0 rgba(64, 123, 255, 0.2);
   background: var(--white-text);
+
+  &:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
 
   svg {
     width: 24px;
