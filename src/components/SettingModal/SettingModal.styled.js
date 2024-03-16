@@ -47,13 +47,17 @@ export const MainLabelText = styled.label`
     props.htmlFor === 'email'
       ? '8px'
       : '12px'};
+  ${(props) =>
+    props.htmlFor === 'password' &&
+    css`
+      margin-bottom: 0px;
+    `}
 
   @media (min-width: 1440px) {
     ${(props) =>
       props.htmlFor === 'password' &&
       css`
         margin-top: 0px;
-        margin-bottom: 0px;
       `}
   }
 `;
@@ -62,8 +66,18 @@ export const LabelText = styled.label`
   font-size: 16px;
   line-height: 1.25;
   color: var(--primary-text);
-  margin-bottom: 8px;
   margin-top: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    width: 392px;
+  }
+
+  :first-child {
+    margin-top: 8px;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -82,13 +96,12 @@ export const StyledInput = styled.input`
   }
 
   &[type='password'] {
-    color: var(--percentage-text);
-  }
-  @media (min-width: 768px) {
-    width: 60%;
+    &::placeholder {
+      color: var(--percentage-text);
+    }
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     width: 392px;
   }
 `;
@@ -102,7 +115,9 @@ export const PhotoWrapper = styled.div`
   margin-bottom: 24px;
 
   img {
-    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
   }
 `;
 
@@ -192,5 +207,23 @@ export const MainInfoWrapper = styled.div`
     height: 272px;
     width: 272px;
     column-gap: 24px;
+  }
+`;
+
+export const EyePassBtn = styled.button`
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top: 37px;
+  height: 16px;
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  svg {
+    stroke: var(--secondary-text);
   }
 `;
