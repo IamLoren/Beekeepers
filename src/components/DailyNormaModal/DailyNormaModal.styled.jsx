@@ -3,8 +3,13 @@ import styled from 'styled-components';
 
 export const DailyNormaModalContainer = styled.div`
   padding: 24px 12px;
+  width: 280px;
   @media (min-width: 768px) {
     padding: 32px 24px;
+    width: 704px;
+  }
+  @media (min-width: 1440px) {
+    width: 592px;
   }
 `;
 
@@ -185,8 +190,15 @@ export const BtnSave = styled.button`
     line-height: 1.3;
   }
 `;
+
+export const InputErrorWrap = styled.div`
+  position: relative;
+`;
+
 export const Error = styled.div`
   color: var(--error-text);
-  margin-top: 1px;
-  font-size: 12px;
+  position: absolute;
+  bottom: -16px;
+  font-size: 14px;
+  line-height: 1.3;
 `;
