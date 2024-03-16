@@ -227,3 +227,10 @@ export const EyePassBtn = styled.button`
     stroke: var(--secondary-text);
   }
 `;
+
+export const ErrMessage = styled.p`
+  color: var(--secondary-text);
+  padding-top: 2px;
+  font-size: 14px;
+  height: 16px;
+`;
