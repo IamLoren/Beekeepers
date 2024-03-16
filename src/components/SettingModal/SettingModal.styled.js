@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FormControlLabel, RadioGroup } from '@mui/material';
 
 export const SettingContainer = styled.div`
@@ -8,36 +8,62 @@ export const SettingContainer = styled.div`
     padding: 32px 24px;
   }
 
-  /* @media (min-width: 1440px) {
+  @media (min-width: 1440px) {
     width: 1008px;
-  } */
+  }
 
   h1 {
     font-family: 'Roboto Medium';
     font-size: 26px;
     line-height: 1.23;
-    margin-bottom: 24px;
   }
 `;
 
 export const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @media (min-width: 1440px) {
+    height: 404px;
+  }
 `;
 
-export const MainLabelText = styled.h2`
+export const MainLabelText = styled.label`
   font-size: 18px;
   font-family: 'Roboto Medium';
   line-height: 1.11;
   color: var(--primary-text);
-  margin-bottom: 8px;
+  margin-top: ${(props) =>
+    props.htmlFor === 'gender' ||
+    props.htmlFor === 'name' ||
+    props.htmlFor === 'photo'
+      ? '0px'
+      : '24px'};
+  margin-bottom: ${(props) =>
+    props.htmlFor === 'name' ||
+    props.htmlFor === 'photo' ||
+    props.htmlFor === 'email'
+      ? '8px'
+      : '12px'};
+
+  @media (min-width: 1440px) {
+    ${(props) =>
+      props.htmlFor === 'password' &&
+      css`
+        margin-top: 0px;
+        margin-bottom: 0px;
+      `}
+  }
 `;
 
-export const LabelText = styled.h3`
+export const LabelText = styled.label`
   font-size: 16px;
   line-height: 1.25;
   color: var(--primary-text);
   margin-bottom: 8px;
+  margin-top: 12px;
 `;
 
 export const StyledInput = styled.input`
@@ -50,7 +76,6 @@ export const StyledInput = styled.input`
   color: var(--secondary-text);
   font-size: 16px;
   line-height: 1.25;
-  margin-bottom: 24px;
 
   &::placeholder {
     color: var(--secondary-text);
@@ -60,6 +85,10 @@ export const StyledInput = styled.input`
     color: var(--percentage-text);
   }
   @media (min-width: 768px) {
+    width: 60%;
+  }
+
+  @media (min-width: 1440px) {
     width: 392px;
   }
 `;
@@ -98,8 +127,12 @@ export const UploadBtn = styled.button`
 `;
 
 export const RadioGroupWrap = styled(RadioGroup)`
-  margin-bottom: 24px;
   column-gap: 24px;
+  margin-bottom: 24px;
+
+  @media (min-width: 1440px) {
+    margin-bottom: 34px;
+  }
 `;
 
 export const StyledFormControlLabel = styled(FormControlLabel)`
@@ -147,5 +180,17 @@ export const SaveBtn = styled.button`
     height: 44px;
     font-size: 18px;
     line-height: 1.33;
+  }
+`;
+
+export const MainInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1440px) {
+    flex-wrap: wrap;
+    height: 272px;
+    width: 272px;
+    column-gap: 24px;
   }
 `;

@@ -11,15 +11,20 @@ import {
   UploadBtn,
   SettingContainer,
   FormWrapper,
+  MainInfoWrapper,
 } from './SettingModal.styled';
 
 const SettingModal = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('bam');
+  };
   return (
     <SettingContainer>
       <h1>Setting</h1>
 
-      <FormWrapper>
-        <MainLabelText>Your photo</MainLabelText>
+      <FormWrapper onSubmit={handleSubmit}>
+        <MainLabelText htmlFor="photo">Your photo</MainLabelText>
         <PhotoWrapper>
           <img src="/" alt="avatar" width="80" height="80" />
 
@@ -31,43 +36,36 @@ const SettingModal = () => {
           </UploadBtn>
         </PhotoWrapper>
 
-        <MainLabelText>Your gender identity</MainLabelText>
-        <RadioGroupWrap defaultValue="woman" name="gender" row>
-          <StyledFormControlLabel
-            value="woman"
-            control={<Radio />}
-            label="Woman"
-          ></StyledFormControlLabel>
-          <StyledFormControlLabel
-            value="man"
-            control={<Radio />}
-            label="Man"
-          ></StyledFormControlLabel>
-        </RadioGroupWrap>
+        <MainInfoWrapper>
+          <MainLabelText htmlFor="gender">Your gender identity</MainLabelText>
+          <RadioGroupWrap defaultValue="woman" name="gender" row>
+            <StyledFormControlLabel
+              value="woman"
+              control={<Radio />}
+              label="Woman"
+            ></StyledFormControlLabel>
+            <StyledFormControlLabel
+              value="man"
+              control={<Radio />}
+              label="Man"
+            ></StyledFormControlLabel>
+          </RadioGroupWrap>
 
-        <label htmlFor="name">
-          <MainLabelText>Your name</MainLabelText>
+          <MainLabelText htmlFor="name">Your name</MainLabelText>
           <StyledInput id="name" type="text" placeholder="David" />
-        </label>
 
-        <label htmlFor="email">
-          <MainLabelText>E-mail</MainLabelText>
+          <MainLabelText htmlFor="email">E-mail</MainLabelText>
           <StyledInput id="email" type="text" placeholder="david01@gmail.com" />
-        </label>
 
-        <MainLabelText>Password</MainLabelText>
-        <label htmlFor="oldPassword">
-          <LabelText>Outdated password:</LabelText>
+          <MainLabelText htmlFor="password">Password</MainLabelText>
+
+          <LabelText htmlFor="oldPassword">Outdated password:</LabelText>
           <StyledInput id="oldPassword" type="password" />
-        </label>
-        <label htmlFor="newPassword">
-          <LabelText>New Password:</LabelText>
+          <LabelText htmlFor="newPassword">New Password:</LabelText>
           <StyledInput id="newPassword" type="password" />
-        </label>
-        <label htmlFor="repeatPassword">
-          <LabelText>Repeat new password:</LabelText>
+          <LabelText htmlFor="repeatPassword">Repeat new password:</LabelText>
           <StyledInput id="repeatPassword" type="password" />
-        </label>
+        </MainInfoWrapper>
       </FormWrapper>
       <SaveBtn type="submit">Save</SaveBtn>
     </SettingContainer>

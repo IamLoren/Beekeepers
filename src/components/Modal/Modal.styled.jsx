@@ -26,7 +26,8 @@ export const ModalStyled = styled.div`
   }
 
   @media (min-width: 1440px) {
-    width: 592px;
+    /* width: 592px; */
+    width: 1008px;
   }
 `;
 export const BtnClose = styled.button`
