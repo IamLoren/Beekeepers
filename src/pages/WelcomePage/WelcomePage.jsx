@@ -1,17 +1,16 @@
 import {StyledFullPage, StyledContainer, StyledLeftWrapper, StyledTitle1, StyledTitle2, StyledLeftTitle3, StyledLeftList, StyledLeftItem, StyledSvg, StyledButton, StyledRightWrapper, StyledRightTitle3, StyledRightList, StyledRightItem} from './WelcomePage.styled'
-import { useEffect, useState } from 'react';
-import Modal from '../../components/Modal/Modal'
+import { useNavigate } from 'react-router-dom'
 import sprite from '../../assets/sprite.svg'
 
 const WelcomePage = () => {
 
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  useEffect(() => {
-    isOpenModal ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'visible'
-  }, [isOpenModal])
-  const handleShowModal = () => {
-    setIsOpenModal(true);
-  } 
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/SignUpPage')
+  }
+
 
 
   return (
@@ -41,7 +40,7 @@ const WelcomePage = () => {
             <p>Personal rate setting</p>
           </StyledLeftItem>
         </StyledLeftList>
-        <StyledButton onClick={handleShowModal}>Try tracker</StyledButton>
+        <StyledButton onClick={handleClick}>Try tracker</StyledButton>
       </StyledLeftWrapper>
       <StyledRightWrapper>
         <StyledRightTitle3>Why drink water</StyledRightTitle3>
@@ -70,7 +69,6 @@ const WelcomePage = () => {
         </StyledRightList>
       </StyledRightWrapper>
     </StyledContainer>
-    <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}> Modal Window</Modal>
 
    </StyledFullPage>
     )
