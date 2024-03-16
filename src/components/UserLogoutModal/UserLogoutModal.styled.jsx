@@ -1,50 +1,81 @@
 import styled from 'styled-components';
 
+export const ModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  background-color: var(--white-text);
+  border-radius: 10px;
+
+  &.delete-modal {
+    padding: 32px 24px;
+    position: relative;
+  }
+`;
+
 export const StyledTitle = styled.h2`
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-family: 'Roboto Medium', sans-serif;
   font-size: 26px;
-  line-height: 1.23077;
-  color: #2f2f2f;
 `;
 
 export const StyledText = styled.p`
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  font-family: 'Roboto Medium', sans-serif;
   font-size: 18px;
-  line-height: 1.11111;
-  color: #2f2f2f;
+
+  padding-bottom: 16px;
+
+  &.delete-subtitle {
+    padding: 0;
+  }
 `;
 
-export const StyledBtnDelete = styled.button`
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  text-align: center;
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
+  @media only screen and (min-width: 768px) {
+    flex-direction: row-reverse;
+    /* justify-content: flex-end; */
+  }
+
+  @media only screen and (min-width: 1440px) {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+`;
+
+export const ButtonDelete = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  padding: 8px;
+
+  font-family: 'Roboto Medium';
+  font-size: 16px;
+
+  color: var(--white-text);
+  background-color: var(--error-text);
+  border: none;
   border-radius: 10px;
-  padding: 8px 30px;
-  width: 232px;
-  height: 36px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: #ef5050;
-  color: #fff;
-  border: none;
-`;
 
-export const StyledBtnCancel = styled.button`
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
-  text-align: center;
+  &:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
 
-  border-radius: 10px;
-  padding: 8px 30px;
-  width: 232px;
-  height: 36px;
-  background: #d7e3ff;
-  color: #407bff;
-  border: none;
+  &.cancel-btn {
+    color: var(--secondary-text);
+    background-color: var(--accent-bg-color);
+    box-shadow: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    width: 160px;
+
+    font-size: 18px;
+  }
 `;
