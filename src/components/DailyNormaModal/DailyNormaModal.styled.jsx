@@ -64,26 +64,7 @@ export const Subtitle = styled.h2`
   line-height: 1.1;
   margin-bottom: 16px;
 `;
-// export const WrapRadioInputs = styled.div`
-//   display: flex;
-//   flex-direction: row;
-// `;
 
-// export const Label = styled.label`
-//   position: relative;
-//   cursor: pointer;
-//   margin-right: 24px;
-// `;
-
-// export const InputRadio = styled.input`
-//   cursor: pointer;
-// `;
-
-// export const Span = styled.span`
-//   margin-left: 8px;
-//   font-size: 16px;
-//   line-height: 1.25;
-// `;
 export const StyledRadioGroup = styled(RadioGroup)`
   && {
     margin-bottom: 16px;
