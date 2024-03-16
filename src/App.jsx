@@ -15,13 +15,41 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route index element={<PublicRoute><WelcomePage /></PublicRoute>} />
+        <Route
+          index
+          element={
+            <PublicRoute>
+              <WelcomePage />
+            </PublicRoute>
+          }
+        />
         <Route path="/welcome" element={<WelcomePage />} />
-        <Route path="/home" element={<PrivateRoute><HomePage /></PrivateRoute>} />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
         <Route path="*" element={<ErrorPage />} />
       </Route>
-      <Route path="/signin" element={<PublicRoute><SignInPage /></PublicRoute>} />
-      <Route path="/signup" element={<PublicRoute><SignUpPage /></PublicRoute>} />
+      <Route
+        path="/signin"
+        element={
+          <PublicRoute>
+            <SignInPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <PublicRoute>
+            <SignUpPage />
+          </PublicRoute>
+        }
+      />
     </Routes>
   );
 }
