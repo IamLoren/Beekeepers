@@ -133,6 +133,15 @@ export const StyledSaveBtn = styled.button`
   color: var(--white-text);
   border: none;
 
+  &:hover {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
   @media only screen and (min-width: 768px) {
     width: 160px;
   }

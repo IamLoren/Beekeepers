@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectDailyNorma, selectIsModalOpen } from '../../redux/selectors.js';
+import { selectDailyNorma } from '../../redux/selectors.js';
 
 import {
   Btn,
@@ -8,16 +8,14 @@ import {
   Title,
   Wrapper,
 } from './DailyNorma.styled';
-import Modal from '../Modal/Modal.jsx';
+
 import {
   changeDailyNormaModal,
   changeModalOpen,
-} from '../../redux/normaCounter/normaCounterSlice';
+} from '../../redux/modals/modalsSlice.js';
 
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);
-
-  const modalIsOpen = useSelector(selectIsModalOpen);
   const dispatch = useDispatch();
 
   const onEditClick = () => {
@@ -34,8 +32,6 @@ const DailyNorma = () => {
           Edit
         </Btn>
       </NormaBtnWrap>
-
-      {modalIsOpen && <Modal />}
     </Wrapper>
   );
 };

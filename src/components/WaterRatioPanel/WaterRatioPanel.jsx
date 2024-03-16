@@ -1,6 +1,14 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectDailyNorma,
+  selectIsModalOpen,
+  selectPortionsAmount,
+} from '../../redux/selectors';
+import {
+  changeAddModal,
+  changeModalOpen,
+} from '../../redux/modals/modalsSlice';
 import Modal from '../Modal/Modal';
-import AddWaterModal from '../AddWaterModal/AddWaterModal';
 import {
   StyledRatioSectionContainer,
   StyledProgressBarContainer,
@@ -16,10 +24,22 @@ import {
 import sprite from '../../assets/sprite.svg';
 
 const WaterRatioPanel = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const dailyNorma = useSelector(selectDailyNorma);
 
-  const progress = 101;
+  const modalIsOpen = useSelector(selectIsModalOpen);
+  const consumedWater = useSelector(selectPortionsAmount);
 
+  const dispatch = useDispatch();
+
+  const onAddClick = () => {
+    dispatch(changeModalOpen(true));
+    dispatch(changeAddModal(true));
+  };
+
+  const dailyNorma = 2000;
+  // const consumedWater = 2500;
+
+  const progress = (consumedWater / dailyNorma) * 100;
   const limitedProgress = Math.min(progress, 100);
 
   return (
@@ -39,18 +59,14 @@ const WaterRatioPanel = () => {
         </StyledProgressNumbers>
       </StyledProgressBarContainer>
       <div>
-        <StyledAddBtn type="button" onClick={() => setModalIsOpen(true)}>
+        <StyledAddBtn type="button" onClick={onAddClick}>
           <svg className="add" fill="none">
             <use href={sprite + '#icon-plus-circle'}></use>
           </svg>
           Add Water
         </StyledAddBtn>
       </div>
-      {modalIsOpen && (
-        <Modal closeModal={() => setModalIsOpen(false)}>
-          <AddWaterModal />
-        </Modal>
-      )}
+      {modalIsOpen && <Modal />}
     </StyledRatioSectionContainer>
   );
 };
