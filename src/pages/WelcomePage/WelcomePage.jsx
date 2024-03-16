@@ -8,7 +8,7 @@ const WelcomePage = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/SignUpPage')
+    navigate('/signup')
   }
 
 
