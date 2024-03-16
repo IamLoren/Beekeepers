@@ -58,7 +58,9 @@ const TodayListModal = () => {
   };
 
   const handleInputBlur = () => {
-    setCount(inputValue || 0);
+    const newValue = parseInt(inputValue, 10) || 0;
+    setInputValue(newValue);
+    setCount(newValue);
   };
 
   const onSaveClick = () => {
@@ -119,11 +121,14 @@ const TodayListModal = () => {
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
+          min={0}
         />
       </div>
       <ResultSaveWrapper>
         <AmountResult>{count} ml</AmountResult>
-        <SaveButton onClick={onSaveClick}>Save</SaveButton>
+        <SaveButton onClick={onSaveClick} disabled={count <= 0}>
+          Save
+        </SaveButton>
       </ResultSaveWrapper>
     </ModalWrapper>
   );
