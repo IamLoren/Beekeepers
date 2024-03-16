@@ -46,7 +46,13 @@ a {
 button {
   cursor: pointer;
 }
-
+.react-calendar__month-view__days  {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  grid-template-rows: repeat(7, 1fr) !important;
+  column-gap: 22px;
+  row-gap: 20px;
+}
 body{
   font-family: 'Roboto Regular';
   font-size: 18px;
@@ -63,8 +69,16 @@ input:-webkit-autofill:active {
     color: var(--text-forms);
 }
 
+
+
 @media screen and (min-width: 767px) and (max-width: 1440px) {
- 
+  .react-calendar__month-view__days  {
+    display: grid !important;
+    grid-template-columns: repeat(10, 1fr) !important;
+    grid-template-rows: repeat(4, 1fr) !important;
+    column-gap: 22px;
+    row-gap: 20px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -72,7 +86,15 @@ input:-webkit-autofill:active {
     height: 100vh;
     max-height: 100vh;
   }
+  .react-calendar__month-view__days  {
+    display: grid !important;
+    grid-template-columns: repeat(10, 1fr) !important;
+    grid-template-rows: repeat(4, 1fr) !important;
+    column-gap: 22px;
+    row-gap: 20px;
   }
+  
+}
   .react-calendar {
     width: 100%;
   }
@@ -103,18 +125,12 @@ input:-webkit-autofill:active {
     background-color: transparent;
     color: var(--secondary-text);
   }
-  
+
 
   .react-calendar__month-view__weekdays {
     display: none !important; 
   }
-  .react-calendar__month-view__days  {
-    display: grid !important;
-    grid-template-columns: repeat(10, 1fr) !important;
-    grid-template-rows: repeat(4, 1fr) !important;
-    column-gap: 22px;
-    row-gap: 20px;
-  }
+
    .react-calendar__tile {
       width: 34px !important;
       height: 56px;
