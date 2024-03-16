@@ -76,6 +76,35 @@ input:-webkit-autofill:active {
   .react-calendar {
     width: 100%;
   }
+
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 22px;
+    
+  }
+
+  .react-calendar__navigation__label {
+    width: 150px;
+    flex-grow: 0 !important;
+    border: none !important;
+    background-color: transparent;
+    color: var(--secondary-text);
+  }
+
+  .react-calendar__navigation__next2-button,
+  .react-calendar__navigation__prev2-button {
+    display: none !important;
+  }
+
+  .react-calendar__navigation__next-button,
+  .react-calendar__navigation__prev-button {
+    border: none;
+    background-color: transparent;
+    color: var(--secondary-text);
+  }
+  
+
   .react-calendar__month-view__weekdays {
     display: none !important; 
   }
