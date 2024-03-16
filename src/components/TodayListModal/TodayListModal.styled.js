@@ -18,6 +18,10 @@ export const ModalWrapper = styled.div`
 
   @media only screen and (min-width: 768px) {
     padding: 32px 24px;
+    width: 704px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
   }
 `;
 
