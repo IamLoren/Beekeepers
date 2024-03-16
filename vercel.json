@@ -1,5 +1,6 @@
 {
     "rewrites": [
-        {"source": "/Beekeepers", "destination": "/"}
+        {"source": "/Beekeepers", "destination": "/"},
+        {"source": "/", "destination": "/"}
     ]
 }
