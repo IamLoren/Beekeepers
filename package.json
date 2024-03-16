@@ -19,7 +19,6 @@
     "@vitejs/plugin-react-swc": "^3.3.2",
 
     "date-fns": "^3.5.0",
-
     "formik": "^2.4.5",
 
     "modern-normalize": "^2.0.0",
