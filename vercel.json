@@ -2,7 +2,7 @@
     "redirects": [
       {
         "source": "/(.*)",
-        "destination": "https://beekeepers-seven.vercel.app/Beekeepers"
+        "destination": "https://beekeepers-three.vercel.app/Beekeepers"
       }
     ]
   }
