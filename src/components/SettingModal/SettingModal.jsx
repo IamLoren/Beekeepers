@@ -13,12 +13,21 @@ import {
   FormWrapper,
   MainInfoWrapper,
 } from './SettingModal.styled';
+import { useState } from 'react';
+
+import EyePassButton from './EyePassBtn';
 
 const SettingModal = () => {
+  const [eyePass, setEyePass] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('bam');
   };
+
+  function showPass() {
+    eyePass ? setEyePass(false) : setEyePass(true);
+  }
   return (
     <SettingContainer>
       <h1>Setting</h1>
@@ -59,12 +68,35 @@ const SettingModal = () => {
 
           <MainLabelText htmlFor="password">Password</MainLabelText>
 
-          <LabelText htmlFor="oldPassword">Outdated password:</LabelText>
-          <StyledInput id="oldPassword" type="password" />
-          <LabelText htmlFor="newPassword">New Password:</LabelText>
-          <StyledInput id="newPassword" type="password" />
-          <LabelText htmlFor="repeatPassword">Repeat new password:</LabelText>
-          <StyledInput id="repeatPassword" type="password" />
+          <LabelText htmlFor="oldPassword">
+            Outdated password:
+            <StyledInput
+              id="oldPassword"
+              type={eyePass ? 'text' : 'password'}
+              placeholder="Password"
+            />
+            <EyePassButton onClick={showPass} eyePass={eyePass} />
+          </LabelText>
+
+          <LabelText htmlFor="newPassword">
+            New Password:
+            <StyledInput
+              id="newPassword"
+              type={eyePass ? 'text' : 'password'}
+              placeholder="Password"
+            />
+            <EyePassButton onClick={showPass} eyePass={eyePass} />
+          </LabelText>
+
+          <LabelText htmlFor="repeatPassword">
+            Repeat new password:
+            <StyledInput
+              id="repeatPassword"
+              type={eyePass ? 'text' : 'password'}
+              placeholder="Password"
+            />
+            <EyePassButton onClick={showPass} eyePass={eyePass} />
+          </LabelText>
         </MainInfoWrapper>
       </FormWrapper>
       <SaveBtn type="submit">Save</SaveBtn>
