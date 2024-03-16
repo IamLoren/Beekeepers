@@ -19,6 +19,7 @@ import EyePassButton from './EyePassBtn';
 
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
+  // const [setImage, setImageSrc] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
