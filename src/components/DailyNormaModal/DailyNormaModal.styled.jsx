@@ -123,6 +123,11 @@ export const Input = styled.input`
   &::placeholder {
     color: var(--secondary-text);
   }
+  ${({ $isError }) =>
+    $isError &&
+    `border-color:  var(--error-text) !important;
+    color: var(--error-text);
+    `}
 `;
 
 export const WrapAmount = styled.div`
@@ -182,6 +187,6 @@ export const BtnSave = styled.button`
 `;
 export const Error = styled.div`
   color: var(--error-text);
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 1px;
+  font-size: 12px;
 `;
