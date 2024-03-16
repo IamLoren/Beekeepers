@@ -14,20 +14,11 @@ export const ModalStyled = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 280px;
   height: auto;
   overflow-y: auto;
   z-index: 2000;
   border-radius: 10px;
   background-color: var(--white-text);
-
-  @media (min-width: 768px) {
-    width: 704px;
-  }
-
-  @media (min-width: 1440px) {
-    width: 592px;
-  }
 `;
 export const BtnClose = styled.button`
   background-color: var(--white-text);
