@@ -1,21 +1,22 @@
+import { useSelector } from 'react-redux';
+import Container from '../Container/Container';
 import Logo from '../Logo/Logo';
 import UserAuth from '../UserAuth/UserAuth';
 import UserLogo from '../UserLogo/UserLogo';
-import { StyledHeader, StyledWrapper } from './Header.styled';
+import { StyledBox, StyledWrapper } from './Header.styled';
+import { selectIsLogged } from '../../redux/selectors';
 
-export const Header = ({ isAuthenticated }) => {
+export const Header = () => {
+  const isAuthenticated = useSelector(selectIsLogged);
   return (
-    <StyledHeader>
-      <Logo />
-      {isAuthenticated ? (
+    <header>
+      <Container>
         <StyledWrapper>
-          <UserLogo />
+          {' '}
+          <Logo />{' '}
+          <StyledBox>{isAuthenticated ? <UserLogo /> : <UserAuth />}</StyledBox>
         </StyledWrapper>
-      ) : (
-        <StyledWrapper>
-          <UserAuth />
-        </StyledWrapper>
-      )}
-    </StyledHeader>
+      </Container>
+    </header>
   );
 };

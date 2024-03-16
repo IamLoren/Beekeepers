@@ -1,28 +1,34 @@
-import ReactDom from 'react-dom';
-import sprite from '../../assets/sprite.svg';
 import { useCallback, useEffect } from 'react';
-import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
+import ReactDom from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
+import sprite from '../../assets/sprite.svg';
+import TodayListModal from '../TodayListModal/TodayListModal';
+import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
+import DeleteModal from '../TodayListModal/DeleteModal';
+import AddWaterModal from '../AddWaterModal/AddWaterModal';
+import UserLogoutModal from '../UserLogoutModal/UserLogoutModal';
+import SettingModal from '../SettingModal/SettingModal';
 import {
-  changeDailyNormaModal,
-  changeEditPortionModal,
-  changeModalOpen,
-  deletePortionModal,
-} from '../../redux/normaCounter/normaCounterSlice';
-import {
+  selectAddWaterModal,
   selectDailyNormaModal,
   selectDeletePortionModal,
   selectEditPortionModal,
+  selectLogoutModal,
+  selectSettingModal,
 } from '../../redux/selectors';
-import TodayListModal from '../TodayListModal/TodayListModal';
-import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
+import { closeModals } from '../../redux/modals/modalsSlice';
+
+import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
 
 const Modal = () => {
   const dispatch = useDispatch();
   const dailyNormaModal = useSelector(selectDailyNormaModal);
-  console.log(dailyNormaModal);
   const editPortionModal = useSelector(selectEditPortionModal);
-  const deleteModal = useSelector(selectDeletePortionModal);
+  const deletePortionModal = useSelector(selectDeletePortionModal);
+  const addWaterModal = useSelector(selectAddWaterModal);
+  const settingModal = useSelector(selectSettingModal);
+  const logoutModal = useSelector(selectLogoutModal);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -33,10 +39,7 @@ const Modal = () => {
 
   const closeModal = useCallback(() => {
     document.body.style.overflow = 'auto';
-    dispatch(changeModalOpen(false));
-    dispatch(changeEditPortionModal(false));
-    dispatch(deletePortionModal(false));
-    dispatch(changeDailyNormaModal(false));
+    dispatch(closeModals(false));
   }, [dispatch]);
 
   useEffect(() => {
@@ -64,7 +67,11 @@ const Modal = () => {
       <ModalStyled>
         {dailyNormaModal && <DailyNormaModal />}
         {editPortionModal && <TodayListModal />}
-        {deleteModal && <h1>DeleteModal</h1>}
+        {deletePortionModal && <DeleteModal />}
+        {addWaterModal && <AddWaterModal />}
+        {settingModal && <SettingModal />}
+        {logoutModal && <UserLogoutModal />}
+
         <BtnClose type="button" onClick={closeModal}>
           <SvgBtnClose>
             <use href={`${sprite}#icon-close`} />

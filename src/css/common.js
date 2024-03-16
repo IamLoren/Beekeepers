@@ -73,12 +73,63 @@ input:-webkit-autofill:active {
     max-height: 100vh;
   }
   }
+  .react-calendar {
+    width: 100%;
+  }
 
-  @media only screen and (min-width: 1440px) and (min-resolution: 192dpi) {
-    body {
-       
-    }
+  .react-calendar__navigation {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 22px;
+    
+  }
 
+  .react-calendar__navigation__label {
+    width: 150px;
+    flex-grow: 0 !important;
+    border: none !important;
+    background-color: transparent;
+    color: var(--secondary-text);
+  }
+
+  .react-calendar__navigation__next2-button,
+  .react-calendar__navigation__prev2-button {
+    display: none !important;
+  }
+
+  .react-calendar__navigation__next-button,
+  .react-calendar__navigation__prev-button {
+    border: none;
+    background-color: transparent;
+    color: var(--secondary-text);
+  }
+  
+
+  .react-calendar__month-view__weekdays {
+    display: none !important; 
+  }
+  .react-calendar__month-view__days  {
+    display: grid !important;
+    grid-template-columns: repeat(10, 1fr) !important;
+    grid-template-rows: repeat(4, 1fr) !important;
+    column-gap: 22px;
+    row-gap: 20px;
+  }
+   .react-calendar__tile {
+      width: 34px !important;
+      height: 56px;
+      padding: 10px 0 !important;
+      border-radius: 50%;
+      border: transparent;
+      background-color: transparent;
+      z-index: 10 !important;
+      overflow: visible !important;
+  }
+  abbr {
+    position: relative;
+    z-index: 10 !important;
+    margin-top: 5px;
+  }
 `;
 
 export default Global;
