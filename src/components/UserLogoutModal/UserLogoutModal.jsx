@@ -8,8 +8,6 @@ import {
   ButtonDelete,
   ButtonsWrapper,
   ModalWrapper,
-  // StyledBtnCancel,
-  // StyledBtnDelete,
   StyledText,
   StyledTitle,
 } from './UserLogoutModal.styled';
@@ -18,13 +16,13 @@ const UserLogoutModal = () => {
   const dispatch = useDispatch();
 
   const handleCancelClick = () => {
-    dispatch(changeModalOpen(false)); // Закриваємо модалку Logout
+    dispatch(changeModalOpen(false));
+    dispatch(closeModals(false));
   };
 
   const handleLogoutClick = () => {
     dispatch(changeModalOpen(false));
     dispatch(changeLogoutModal(false));
-    dispatch(closeModals(false));
   };
 
   return (

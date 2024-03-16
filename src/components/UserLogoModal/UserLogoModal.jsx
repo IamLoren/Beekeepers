@@ -2,7 +2,6 @@ import sprite from '../../assets/sprite.svg';
 import {
   StyledButton,
   StyledModalWrapper,
-  StyledSpan,
   StyledSvg,
 } from './UserLogoModal.styled';
 import { useDispatch } from 'react-redux';
@@ -12,36 +11,38 @@ import {
   changeSettingModal,
 } from '../../redux/modals/modalsSlice';
 
-const UserLogoModal = () => {
+const UserLogoModal = ({ isSettingModalOpen, isLogoutModalOpen, onClose }) => {
   const dispatch = useDispatch();
 
   const handleSettingClick = () => {
     dispatch(changeModalOpen(true));
     dispatch(changeSettingModal(true));
+    onClose();
   };
 
   const handleLogoutClick = () => {
     dispatch(changeModalOpen(true));
     dispatch(changeLogoutModal(true));
+    onClose();
   };
+
+  if (isSettingModalOpen || isLogoutModalOpen) {
+    return null;
+  }
 
   return (
     <>
       <StyledModalWrapper>
         <StyledButton onClick={handleSettingClick}>
-          <StyledSpan>
-            <StyledSvg width={16} height={16}>
-              <use href={`${sprite}#icon-cog-6-tooth`} />
-            </StyledSvg>
-          </StyledSpan>
+          <StyledSvg width={16} height={16}>
+            <use href={`${sprite}#icon-cog-6-tooth`} />
+          </StyledSvg>
           Setting
         </StyledButton>
         <StyledButton onClick={handleLogoutClick}>
-          <StyledSpan>
-            <StyledSvg width={16} height={16}>
-              <use href={`${sprite}#icon-arrow-right-on-rectangle`} />
-            </StyledSvg>
-          </StyledSpan>
+          <StyledSvg width={16} height={16}>
+            <use href={`${sprite}#icon-arrow-right-on-rectangle`} />
+          </StyledSvg>
           Log out
         </StyledButton>
       </StyledModalWrapper>

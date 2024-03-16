@@ -19,19 +19,35 @@ export const StyledName = styled.h2`
   }
 `;
 
-export const StyledImg = styled.img`
-  border-radius: 100%;
-  width: 28px;
-  height: 28px;
+export const StyledBtn = styled.button`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: 0;
 `;
 
-export const StyledBtn = styled.button`
-  border: none;
-  outline: none;
-  background: transparent;
+export const AvatarWrapper = styled.div`
+  margin-right: 4px;
+  width: 28px;
+  height: 28px;
+  overflow: clip;
+  border-radius: 50px;
+  border: 1px solid ${({ $borderColor }) => $borderColor};
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  img {
+    object-fit: cover;
+  }
+`;
+
+export const StyledSpan = styled.span`
+  font-weight: 500;
+  color: #407bff;
+  margin: 2px 0 0;
 `;
 
 export const StyledSvg = styled.svg`
