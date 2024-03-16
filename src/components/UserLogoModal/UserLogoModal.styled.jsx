@@ -6,16 +6,14 @@ export const StyledModalWrapper = styled.div`
   width: 118px;
   height: 88px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
-  background: #fff;
-  position: absolute;
-  margin: 8px -90px;
-`;
-
-export const StyledSpan = styled.span`
+  background-color: #fff;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
   align-items: center;
-  justify-content: space-between;
-  /* justify-content: center; */
+  justify-content: center;
+
+  /* margin: 8px -90px; */
 `;
 
 export const StyledSvg = styled.svg`
@@ -23,6 +21,9 @@ export const StyledSvg = styled.svg`
   stroke: #407bff;
   font-weight: 400;
   font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledButton = styled.button`
@@ -31,10 +32,10 @@ export const StyledButton = styled.button`
   font-size: 16px;
   line-height: 1.25;
   color: #407bff;
-  background: transparent;
+  background-color: transparent;
   border: none;
+  padding: 0;
   display: flex;
+  gap: 8px;
   align-items: center;
-  margin-bottom: 16px;
-  justify-content: space-between;
 `;
