@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addPortion } from '../../redux/statisticData/statisticDataSlice';
+import sprite from '../../assets/sprite.svg';
+import { addPortionThunk } from '../../redux/statisticData/operations';
 import { closeModals } from '../../redux/modals/modalsSlice';
 import {
   StyledAddModalInput,
@@ -15,9 +16,8 @@ import {
   StyledSaveBtn,
   StyledValueAndBtnContainer,
 } from './AddWaterModal.styled';
-import sprite from '../../assets/sprite.svg';
 
-const AddWaterModal = ({ closeModal }) => {
+const AddWaterModal = () => {
   const dispatch = useDispatch();
 
   const [counter, setCounter] = useState(50);
@@ -53,9 +53,7 @@ const AddWaterModal = ({ closeModal }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      addPortion({ id: Math.random(), amount: counter, time: currentTime })
-    );
+    dispatch(addPortionThunk({ amount: counter, time: currentTime }));
     dispatch(closeModals());
 
     // setCurrentTime(

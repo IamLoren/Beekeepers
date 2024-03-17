@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deletePortion } from '../../redux/statisticData/statisticDataSlice';
+import { deletePortionThunk } from '../../redux/statisticData/operations';
 import { selectSelectedItem } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
 
@@ -17,7 +17,7 @@ const DeleteModal = () => {
   const selectedItem = useSelector(selectSelectedItem);
 
   const onDeleteClick = () => {
-    dispatch(deletePortion(selectedItem.id));
+    dispatch(deletePortionThunk(selectedItem.id));
     dispatch(closeModals());
   };
 
