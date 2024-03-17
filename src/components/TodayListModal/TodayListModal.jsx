@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import sprite from '../../assets/sprite.svg';
-import { editPortion } from '../../redux/statisticData/statisticDataSlice';
+import { updatePortionThunk } from '../../redux/statisticData/operations';
 import { selectSelectedItem } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
 
@@ -65,7 +65,11 @@ const TodayListModal = () => {
 
   const onSaveClick = () => {
     dispatch(
-      editPortion({ id: selectedItem.id, amount: count, time: selectedTime })
+      updatePortionThunk({
+        id: selectedItem.id,
+        amount: count,
+        time: selectedTime,
+      })
     );
     dispatch(closeModals());
   };
