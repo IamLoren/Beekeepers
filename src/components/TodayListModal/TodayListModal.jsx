@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import sprite from '../../assets/sprite.svg';
 import { updatePortionThunk } from '../../redux/statisticData/operations';
-import { selectSelectedItem } from '../../redux/selectors';
+import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
 
 import {
@@ -25,6 +25,7 @@ import {
 const TodayListModal = () => {
   const dispatch = useDispatch();
   const selectedItem = useSelector(selectSelectedItem);
+  const dailyNorma = useSelector(selectDailyNorma);
   const [count, setCount] = useState(selectedItem.amount);
   const [selectedTime, setSelectedTime] = useState(selectedItem.time);
   const [inputValue, setInputValue] = useState(count);
@@ -64,11 +65,14 @@ const TodayListModal = () => {
   };
 
   const onSaveClick = () => {
+    const consumeRatio = dailyNorma / count;
     dispatch(
       updatePortionThunk({
         id: selectedItem.id,
         amount: count,
         time: selectedTime,
+        dailyNorma,
+        consumeRatio,
       })
     );
     dispatch(closeModals());
