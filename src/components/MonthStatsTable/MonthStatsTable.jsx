@@ -1,7 +1,13 @@
 import { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-tooltip/dist/react-tooltip.css';
-import { StyledTooltip } from './MonthStatsTable.styled';
+import {
+  AccentSpan,
+  StyledDivWrapper,
+  StyledTooltip,
+} from './MonthStatsTable.styled';
+import { useSelector } from 'react-redux';
+import { selectDailyNorma } from '../../redux/selectors';
 
 const CustomTile = ({ date, view }) => {
   const tileStyle = {
@@ -37,12 +43,12 @@ const CustomTile = ({ date, view }) => {
 };
 
 const MonthStatsTable = () => {
+  const dailyNorma = useSelector(selectDailyNorma);
   const [value, setValue] = useState(new Date());
-  
+
   const tiles = document.querySelectorAll('.react-calendar__tile');
   tiles.forEach((button) => {
     button.setAttribute('data-tooltip-id', 'my-tooltip');
-    button.setAttribute('data-tooltip-content', 'Hello world!');
   });
 
   function onChange(nextValue) {
@@ -63,7 +69,26 @@ const MonthStatsTable = () => {
         }
         tileContent={({ date, view }) => <CustomTile date={date} view={view} />}
       />
-      <StyledTooltip id="my-tooltip" />
+      <StyledTooltip id="my-tooltip">
+        <StyledDivWrapper>
+          <p>
+            <AccentSpan></AccentSpan>
+            <AccentSpan></AccentSpan>
+          </p>
+          <p>
+            <span>Daily norma: </span>
+            <AccentSpan>{dailyNorma} L</AccentSpan>
+          </p>
+          <p>
+            <span>Fulfillment of the daily norm:</span>
+            <AccentSpan></AccentSpan>
+          </p>
+          <p>
+            <span>How many servings of water:</span>
+            <AccentSpan></AccentSpan>
+          </p>
+        </StyledDivWrapper>
+      </StyledTooltip>
     </div>
   );
 };
