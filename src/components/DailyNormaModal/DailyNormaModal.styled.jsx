@@ -183,3 +183,11 @@ export const Error = styled.div`
   font-size: 14px;
   line-height: 1.3;
 `;
+
+export const InfoMessage = styled.div`
+  color: var(--secondary-text);
+  position: absolute;
+  bottom: -16px;
+  font-size: 14px;
+  line-height: 1.3;
+`;
