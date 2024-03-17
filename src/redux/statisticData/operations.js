@@ -40,7 +40,7 @@ export const fetchMonthlyPortionsThunk = createAsyncThunk(
   'fetchMonthlyPortions',
   async (date, thunkAPI) => {
     try {
-      const { data } = await api.get(`/portions/${date}`);
+      const { data } = await api.get(`/portions/month/${date}`);
       return data;
     } catch (error) {
       toast.error(error.message);
