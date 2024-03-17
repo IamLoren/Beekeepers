@@ -1,60 +1,65 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { api, clearToken, setToken } from '../../configAxios/api';
+import { api, clearToken, setToken } from '../../configAxios/configAxios.js';
+import { toast } from 'react-toastify';
 
 export const registerThunk = createAsyncThunk(
-    'auth/register',
-    async (credentials, thunkAPI) => {
-        try {
-            const { username, password, email } = credentials;
-            const { data } = await api.post('/auth/sign-up', {
-                username,
-                password,
-                email,
-            });
-            setToken(data.token);
-            return data;
-        } catch (e) {
-            return thunkAPI.rejectWithValue(e.response.data.message);
-        }
+  'auth/register',
+  async (credentials, thunkApi) => {
+    try {
+      const { data } = await api.post('/api/auth/register', credentials);
+      setToken(data.token);
+      return data;
+    } catch (error) {
+      toast.error(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
+  }
 );
 
 export const loginThunk = createAsyncThunk(
-    'auth/login',
-    async (credentials, thunkAPI) => {
-        try {
-            const { data } = await api.post('/auth/sign-in', credentials);
-            setToken(data.token);
-            return data;
-        } catch (e) {
-            return thunkAPI.rejectWithValue(e.message);
-        }
+  'auth/login',
+  async (credentials, thunkApi) => {
+    try {
+      const { data } = await api.post('/api/auth/sign-in', credentials);
+      setToken(data.token);
+      return data;
+    } catch (error) {
+      toast.error(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
+  }
 );
 
 export const logoutThunk = createAsyncThunk(
-    'auth/logout',
-    async (_, thunkAPI) => {
-        try {
-            await api.delete('/auth/sign-out');
-            clearToken();
-        } catch (e) {
-            return thunkAPI.rejectWithValue(e.message);
-        }
+  'auth/logout',
+  async (_, thunkApi) => {
+    try {
+      await api.delete('/api/auth/sign-out');
+      localStorage.removeItem('auth');
+      clearToken();
+    } catch (error) {
+      toast.error(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
+  }
 );
 
 export const refreshThunk = createAsyncThunk(
-    'auth/refresh',
-    async (_, thunkAPI) => {
-        const state = thunkAPI.getState();
-        const persistedToken = state.auth.token;
-        try {
-            setToken(persistedToken);
-            const res = await api.get('/users/current');
-            return res.data;
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
-        }
+  'auth/refresh',
+  async (_, thunkApi) => {
+    const savedToken = thunkApi.getState().authSlice.token;
+    if (savedToken) {
+      setToken(savedToken);
+    } else {
+      return thunkApi.rejectWithValue("Token doesn't exist");
     }
+
+    try {
+      const { data } = await api.get('/api/users/current');
+      return data;
+    } catch (error) {
+      toast.error(error.message);
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
 );
