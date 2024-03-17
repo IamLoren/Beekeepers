@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
 import { addPortionThunk } from '../../redux/statisticData/operations';
 import { closeModals } from '../../redux/modals/modalsSlice';
+import { selectDailyNorma } from '../../redux/selectors';
 import {
   StyledAddModalInput,
   StyledAddWater,
@@ -20,6 +21,7 @@ import {
 const AddWaterModal = () => {
   const dispatch = useDispatch();
 
+  const dailyNorma = useSelector(selectDailyNorma);
   const [counter, setCounter] = useState(50);
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -53,7 +55,15 @@ const AddWaterModal = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(addPortionThunk({ amount: counter, time: currentTime }));
+    const consumeRatio = dailyNorma / counter;
+    dispatch(
+      addPortionThunk({
+        amount: counter,
+        time: currentTime,
+        dailyNorma,
+        consumeRatio,
+      })
+    );
     dispatch(closeModals());
 
     // setCurrentTime(
