@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Radio } from '@mui/material';
 import { useFormik } from 'formik';
 import {
@@ -8,6 +8,7 @@ import {
   Data,
   Error,
   FormulaExplication,
+  InfoMessage,
   Input,
   InputErrorWrap,
   ModalTitle,
@@ -19,9 +20,10 @@ import {
   WrapFormula,
   WrapFormulaExplication,
 } from './DailyNormaModal.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { closeModals } from '../../redux/modals/modalsSlice';
 import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
-import { selectDailyNorma } from '../../redux/selectors';
+
 import * as Yup from 'yup';
 
 const validationDailyNormaModalSchema = Yup.object({
@@ -40,31 +42,26 @@ const validationDailyNormaModalSchema = Yup.object({
 });
 
 const DailyNormaModal = () => {
-  const dailyNorma = useSelector(selectDailyNorma);
+  // const dailyNorma = useSelector(selectDailyNorma);
+
   const womanFormula = 'V=(M*0,03) + (T*0,4)';
   const manFormula = 'V=(M*0,04) + (T*0,6)';
   const dispatch = useDispatch();
-
-  const DEFAULT_DAILY_NORMA = 1.8;
+  const [calculatedNorma, setCalculatedNorma] = useState(1.8);
 
   const formik = useFormik({
     initialValues: {
       gender: 'woman',
       weight: '',
       time: '',
-      norma: dailyNorma,
+      norma: '',
     },
     validationSchema: validationDailyNormaModalSchema,
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(changeDailyNorma(values.norma));
+      dispatch(closeModals());
     },
   });
-
-  const changeGender = (e) => {
-    const value = e.target.value;
-    dispatch(changeDailyNorma(value === 'woman' ? womanFormula : manFormula));
-    formik.handleChange(e);
-  };
 
   const onInputChange = (e) => {
     formik.handleChange(e);
@@ -76,7 +73,7 @@ const DailyNormaModal = () => {
     let result;
 
     if (isNaN(weight) || isNaN(time) || weight <= 0) {
-      result = DEFAULT_DAILY_NORMA;
+      result = calculatedNorma;
     } else {
       switch (formik.values.gender) {
         case 'woman':
@@ -89,24 +86,14 @@ const DailyNormaModal = () => {
           return;
       }
     }
-    dispatch(changeDailyNorma(result));
+    setCalculatedNorma(result);
   }, [
+    calculatedNorma,
     dispatch,
     formik.values.gender,
     formik.values.time,
     formik.values.weight,
   ]);
-
-  useEffect(() => {
-    if (formik.errors.weight) {
-      console.log(formik.errors.weight);
-      console.log('validation error!!!');
-    }
-    if (formik.errors.time) {
-      console.log(formik.errors.time);
-      console.log('validation error2!!!');
-    }
-  }, [formik.errors.weight, formik.errors.time]);
 
   return (
     <DailyNormaModalContainer>
@@ -133,7 +120,7 @@ const DailyNormaModal = () => {
           aria-labelledby="radio-buttons-group"
           name="gender"
           row
-          onChange={changeGender}
+          onChange={onInputChange}
         >
           <StyledFormControlLabel
             value="woman"
@@ -161,8 +148,15 @@ const DailyNormaModal = () => {
               value={formik.values.weight}
               onChange={onInputChange}
               $isError={formik.errors.weight}
+              onFocus={(e) => (e.target.placeholder = '')}
+              onBlur={(e) => (e.target.placeholder = '0')}
             />
-            {formik.errors.weight && <Error>{formik.errors.weight}</Error>}
+            {formik.errors.weight ? (
+              <Error>{formik.errors.weight}</Error>
+            ) : (
+              <InfoMessage>Your weight in kilograms</InfoMessage>
+            )}
+            {/* {formik.errors.weight && <Error>{formik.errors.weight}</Error>} */}
           </label>
         </InputErrorWrap>
         <InputErrorWrap>
@@ -179,13 +173,15 @@ const DailyNormaModal = () => {
               value={formik.values.time}
               onChange={onInputChange}
               $isError={formik.errors.time}
+              onFocus={(e) => (e.target.placeholder = '')}
+              onBlur={(e) => (e.target.placeholder = '0')}
             />
             {formik.errors.time && <Error>{formik.errors.time}</Error>}
           </label>
         </InputErrorWrap>
         <WrapAmount>
           <Data>The required amount of water in liters per day:</Data>
-          <AmountNumber>{dailyNorma} L</AmountNumber>
+          <AmountNumber>{calculatedNorma} L</AmountNumber>
         </WrapAmount>
         <InputErrorWrap>
           <label htmlFor="norma">
@@ -197,8 +193,15 @@ const DailyNormaModal = () => {
               placeholder="0"
               onChange={onInputChange}
               $isError={formik.errors.norma}
+              onFocus={(e) => (e.target.placeholder = '')}
+              onBlur={(e) => (e.target.placeholder = '0')}
             />
-            {formik.errors.norma && <Error>{formik.errors.norma}</Error>}
+            {formik.errors.norma ? (
+              <Error>{formik.errors.norma}</Error>
+            ) : (
+              <InfoMessage>Amount of water in Liters</InfoMessage>
+            )}
+            {/* {formik.errors.norma && <Error>{formik.errors.norma}</Error>} */}
           </label>
         </InputErrorWrap>
         <BtnSave type="submit">Save</BtnSave>

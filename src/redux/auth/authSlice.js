@@ -4,7 +4,7 @@ import {
   logoutThunk,
   refreshThunk,
   registerThunk,
-} from './operations';
+} from './operations.js';
 import { toast } from 'react-toastify';
 
 export const authSlice = createSlice({
@@ -13,6 +13,7 @@ export const authSlice = createSlice({
     user: {
       email: '',
       name: '',
+      gender: '',
     },
     token: '',
     isLogged: false,
@@ -25,8 +26,8 @@ export const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
-        state.user.email = payload.user.email;
-        state.user.name = payload.user.username;
+        console.log(payload)
+        state.user.email = payload.email;
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
