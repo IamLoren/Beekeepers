@@ -4,7 +4,6 @@ import {
   logoutThunk,
   refreshThunk,
   registerThunk,
-  updateUserThunk,
 } from './operations.js';
 import { toast } from 'react-toastify';
 

@@ -11,6 +11,7 @@ import {
   StyledText,
   StyledTitle,
 } from './UserLogoutModal.styled';
+import { logoutThunk } from '../../redux/auth/operations';
 
 const UserLogoutModal = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const UserLogoutModal = () => {
   };
 
   const handleLogoutClick = () => {
+    dispatch(logoutThunk());
     dispatch(changeModalOpen(false));
     dispatch(changeLogoutModal(false));
   };

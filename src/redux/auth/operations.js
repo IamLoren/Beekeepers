@@ -49,7 +49,7 @@ export const logoutThunk = createAsyncThunk(
   'auth/logout',
   async (_, thunkApi) => {
     try {
-      await api.delete('api/auth/logout');
+      await api.post('api/auth/logout');
       localStorage.removeItem('auth');
       clearToken();
     } catch (error) {
