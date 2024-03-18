@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import sprite from '../../assets/sprite.svg';
@@ -7,6 +8,7 @@ import {
   changeAddModal,
   changeModalOpen,
 } from '../../redux/modals/modalsSlice';
+import { fetchDailyPortionsThunk } from '../../redux/statisticData/operations';
 
 import {
   TodayList,
@@ -16,6 +18,16 @@ import {
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
+
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+  const formattedDate = `${day}.${month}.${year}`;
+
+  useEffect(() => {
+    dispatch(fetchDailyPortionsThunk(formattedDate));
+  }, [dispatch, formattedDate]);
 
   const portions = useSelector(selectPortions);
 

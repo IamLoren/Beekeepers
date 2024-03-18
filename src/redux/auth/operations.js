@@ -2,6 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, clearToken, setToken } from '../../configAxios/configAxios.js';
 import { toast } from 'react-toastify';
 
+// При виклику санки аргументом передати об'єкт:
+// {email: string, password: string}
+// payload відповіді: 
+// {email: string}
 export const registerThunk = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
