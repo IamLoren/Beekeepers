@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://byte-water-back.onrender.com',
+  baseURL: 'https://beekeepers-back.onrender.com',
 });
 
-export const setToken = token => {
+export const setToken = (token) => {
   api.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 

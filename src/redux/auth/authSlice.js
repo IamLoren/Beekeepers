@@ -4,6 +4,7 @@ import {
   logoutThunk,
   refreshThunk,
   registerThunk,
+  updateUserThunk,
 } from './operations.js';
 import { toast } from 'react-toastify';
 
@@ -14,6 +15,7 @@ export const authSlice = createSlice({
       email: '',
       name: '',
       gender: '',
+      avatarURL: '',
     },
     token: '',
     isLogged: false,
@@ -100,9 +102,10 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
+        console.log(payload);
         state.user.email = payload.user.email;
-        state.user.name = payload.user.username;
-        state.user.balance = payload.user.balance;
+        state.user.name = payload.user.name;
+
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
@@ -120,9 +123,8 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-        state.user.name = payload.username;
-        state.user.email = payload.email;
-        state.user.balance = payload.balance;
+        state.user.name = payload.user.name;
+        state.user.email = payload.user.email;
         state.isLogged = true;
         state.isLoading = false;
       })
@@ -140,4 +142,111 @@ export const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const { changeBalanceValue } = authSlice.actions;
+// export const {} = authSlice.actions;
+
+// import { createSlice } from '@reduxjs/toolkit';
+// // import {
+// //   loginThunk,
+// //   logoutThunk,
+// //   refreshThunk,
+// //   registerThunk,
+// //   updateUserThunk,
+// // } from './operations.js';
+// import { toast } from 'react-toastify';
+
+// export const authSlice = createSlice({
+//   name: 'auth',
+//   initialState: {
+//     user: {
+//       email: '',
+//       name: '',
+//       gender: '',
+//       avatarURL: '',
+//     },
+//     token: '',
+//     isLogged: false,
+//     isLoading: false,
+//     isRefresh: false,
+//     isError: null,
+//   },
+//   reducers: {
+//     registerSuccess: (state, action) => {
+//       const { payload } = action;
+//       console.log(payload);
+//       state.user.email = payload.email;
+//       state.token = payload.token;
+//       state.isLogged = true;
+//       state.isLoading = false;
+//     },
+//     registerFailure: (state) => {
+//       toast.error('Error! User exist!');
+//       state.isLogged = false;
+//       state.isLoading = false;
+//     },
+//     loginFailure: (state) => {
+//       toast.error('Error! Something went wrong!');
+//       state.isLogged = false;
+//       state.isLoading = false;
+//     },
+//     loginSuccess: (state, action) => {
+//       const { payload } = action;
+//       state.user.email = payload.user.email;
+//       state.user.name = payload.user.name;
+//       state.token = payload.token;
+//       state.isLogged = true;
+//       state.isLoading = false;
+//     },
+//     logoutSuccess: (state) => {
+//       state.user = {
+//         email: '',
+//         name: '',
+//       };
+//       state.token = '';
+//       state.isLogged = false;
+//       state.isLoading = false;
+//     },
+//     startLoading: (state) => {
+//       state.isLoading = true;
+//     },
+//     updateUserSuccess: (state, action) => {
+//       const { payload } = action;
+//       state.user.name = payload.user.name;
+//       state.user.email = payload.user.email;
+//       state.user.gender = payload.user.gender;
+//       state.user.avatarURL = payload.user.avatarURL;
+//     },
+//     refreshSuccess: (state, action) => {
+//       const { payload } = action;
+//       state.user.name = payload.user.name;
+//       state.user.email = payload.user.email;
+//       state.user.gender = payload.user.gender;
+//       state.user.avatarURL = payload.user.avatarURL;
+//       state.isLogged = true;
+//       state.isLoading = false;
+//     },
+//     startRefresh: (state) => {
+//       state.isLoading = true;
+//       state.isLogged = true;
+//       state.isRefresh = true;
+//     },
+//     refreshFailure: (state) => {
+//       toast.error('You need to logIn!');
+//       state.isLogged = false;
+//       state.isLoading = false;
+//     },
+//   },
+// });
+
+// export const authReducer = authSlice.reducer;
+// export const {
+//   registerSuccess,
+//   registerFailure,
+//   loginFailure,
+//   loginSuccess,
+//   logoutSuccess,
+//   startLoading,
+//   updateUserSuccess,
+//   refreshSuccess,
+//   startRefresh,
+//   refreshFailure,
+// } = authSlice.actions;

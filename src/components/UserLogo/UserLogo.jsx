@@ -15,18 +15,15 @@ import {
   // selectUser,
 } from '../../redux/selectors';
 import { Popover } from '@mui/material';
-// import { changeModalOpen } from '../../redux/modals/modalsSlice';
 
 const UserLogo = () => {
-  // const dispatch = useDispatch();
   const isSettingModalOpen = useSelector(selectSettingModal);
   const isLogoutModalOpen = useSelector(selectLogoutModal);
-  // const { username, email, avatar } = useSelector(selectUser);
+  // const { username, email, avatarURL } = useSelector(selectUser);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    // dispatch(changeModalOpen(true));
   };
 
   const handleClose = () => {
@@ -43,9 +40,9 @@ const UserLogo = () => {
         <StyledWrapper>
           <StyledBtn onClick={handleClick}>
             {/* {username && <StyledName>{username}</StyledName>}
-            <AvatarWrapper $borderColor={avatar ? 'transparent' : '#407bff'}>
-              {avatar ? (
-                <img src={avatar} width={28} height={28} alt="user avatar" />
+            <AvatarWrapper $borderColor={avatarURL ? 'transparent' : '#407bff'}>
+              {avatarURL ? (
+                <img src={avatarURL} width={28} height={28} alt="user avatar" />
               ) : username ? (
                 <StyledName>{username[0].toUpperCase()}</StyledName>
               ) : (
