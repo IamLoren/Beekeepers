@@ -9,7 +9,7 @@ export const updateWaterRateThunk = createAsyncThunk(
   'water/rate',
   async (dailyWaterNorma, thunkApi) => {
     try {
-      const { data } = await api.patch('/auth/water-rate', dailyWaterNorma);
+      const { data } = await api.patch('/api/auth/water-rate', dailyWaterNorma);
       return data;
     } catch (error) {
       toast.error('Something went wrong');
