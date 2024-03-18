@@ -29,7 +29,6 @@ export const StyledBtn = styled.button`
 `;
 
 export const AvatarWrapper = styled.div`
-  margin-right: 4px;
   width: 28px;
   height: 28px;
   overflow: clip;

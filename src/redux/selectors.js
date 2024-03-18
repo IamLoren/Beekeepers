@@ -28,5 +28,5 @@ export const selectPortionsAmount = (state) =>
     0
   );
 
-// export const selectUser = (state) => state.authSlice.user;
+export const selectUser = (state) => state.authSlice.user;
 export const selectToken = (state) => state.authSlice.token;
