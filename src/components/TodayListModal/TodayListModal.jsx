@@ -30,7 +30,7 @@ import {
 const TodayListModal = () => {
   const dispatch = useDispatch();
   const selectedItem = useSelector(selectSelectedItem);
-  const dailyNorma = useSelector(selectDailyNorma);
+  const dailyNorma = useSelector(selectDailyNorma) || 0;
   const [count, setCount] = useState(selectedItem.amount);
   const [selectedTime, setSelectedTime] = useState(selectedItem.time);
   const [inputValue, setInputValue] = useState(count);
