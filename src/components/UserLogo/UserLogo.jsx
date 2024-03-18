@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
 import {
-  // AvatarWrapper,
+  AvatarWrapper,
   StyledBtn,
-  // StyledName,
+  StyledName,
   StyledSvg,
   StyledWrapper,
 } from './UserLogo.styled';
@@ -12,14 +12,14 @@ import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import {
   selectLogoutModal,
   selectSettingModal,
-  // selectUser,
+  selectUser,
 } from '../../redux/selectors';
 import { Popover } from '@mui/material';
 
 const UserLogo = () => {
   const isSettingModalOpen = useSelector(selectSettingModal);
   const isLogoutModalOpen = useSelector(selectLogoutModal);
-  // const { username, email, avatarURL } = useSelector(selectUser);
+  const { name, email, avatarURL } = useSelector(selectUser);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -39,17 +39,16 @@ const UserLogo = () => {
         {' '}
         <StyledWrapper>
           <StyledBtn onClick={handleClick}>
-            {/* {username && <StyledName>{username}</StyledName>}
+            {name && <StyledName>{name}</StyledName>}
             <AvatarWrapper $borderColor={avatarURL ? 'transparent' : '#407bff'}>
               {avatarURL ? (
                 <img src={avatarURL} width={28} height={28} alt="user avatar" />
-              ) : username ? (
-                <StyledName>{username[0].toUpperCase()}</StyledName>
+              ) : name ? (
+                <StyledName>{name[0].toUpperCase()}</StyledName>
               ) : (
                 <span>{email[0].toUpperCase()}</span>
               )}
-            </AvatarWrapper> */}
-
+            </AvatarWrapper>
             <StyledSvg width={16} height={16}>
               <use href={`${sprite}#icon-chevron-double-up`} />
             </StyledSvg>
