@@ -22,9 +22,10 @@ import {
 } from './DailyNormaModal.styled';
 import { useDispatch } from 'react-redux';
 import { closeModals } from '../../redux/modals/modalsSlice';
-import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
+// import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
 
 import * as Yup from 'yup';
+import { updateWaterRateThunk } from '../../redux/normaCounter/operations';
 
 const validationDailyNormaModalSchema = Yup.object({
   weight: Yup.number('Weight value must be a number')
@@ -42,12 +43,10 @@ const validationDailyNormaModalSchema = Yup.object({
 });
 
 const DailyNormaModal = () => {
-  // const dailyNorma = useSelector(selectDailyNorma);
-
   const womanFormula = 'V=(M*0,03) + (T*0,4)';
   const manFormula = 'V=(M*0,04) + (T*0,6)';
   const dispatch = useDispatch();
-  const [calculatedNorma, setCalculatedNorma] = useState(1.8);
+  const [calculatedNorma, setCalculatedNorma] = useState(1.5);
 
   const formik = useFormik({
     initialValues: {
@@ -57,9 +56,13 @@ const DailyNormaModal = () => {
       norma: '',
     },
     validationSchema: validationDailyNormaModalSchema,
-    onSubmit: (values) => {
-      dispatch(changeDailyNorma(values.norma));
-      dispatch(closeModals());
+    onSubmit: async (values) => {
+      const dailyWaterNorma = values.norma;
+      const newDailyWaterNorma = { dailyWaterNorma };
+      dispatch(updateWaterRateThunk(newDailyWaterNorma));
+      dispatch(closeModals()).catch((error) => {
+        console.log(error);
+      });
     },
   });
 
@@ -151,12 +154,7 @@ const DailyNormaModal = () => {
               onFocus={(e) => (e.target.placeholder = '')}
               onBlur={(e) => (e.target.placeholder = '0')}
             />
-            {formik.errors.weight ? (
-              <Error>{formik.errors.weight}</Error>
-            ) : (
-              <InfoMessage>Your weight in kilograms</InfoMessage>
-            )}
-            {/* {formik.errors.weight && <Error>{formik.errors.weight}</Error>} */}
+            {formik.errors.weight && <Error>{formik.errors.weight}</Error>}
           </label>
         </InputErrorWrap>
         <InputErrorWrap>
