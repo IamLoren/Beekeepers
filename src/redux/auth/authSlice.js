@@ -18,7 +18,7 @@ export const authSlice = createSlice({
       avatarURL: '',
     },
     token: '',
-    isLogged: false,
+    isLogged: true,
     isLoading: false,
     isRefresh: false,
     isError: null,
@@ -48,6 +48,7 @@ export const authSlice = createSlice({
         console.log(payload);
         state.user.email = payload.user.email;
         state.user.name = payload.user.name;
+
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
@@ -64,21 +65,9 @@ export const authSlice = createSlice({
       .addCase(loginThunk.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(updateUserThunk.fulfilled, (state, { payload }) => {
-        state.user.name = payload.user.name;
-        state.user.email = payload.user.email;
-        state.user.gender = payload.user.gender;
-        state.user.avatarURL = payload.user.avatarURL;
-      })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-        // state.user.name = payload.name;
-        // state.user.email = payload.email;
-        // state.isLogged = true;
-        // state.isLoading = false;
         state.user.name = payload.user.name;
         state.user.email = payload.user.email;
-        state.user.gender = payload.user.gender;
-        state.user.avatarURL = payload.user.avatarURL;
         state.isLogged = true;
         state.isLoading = false;
       })
