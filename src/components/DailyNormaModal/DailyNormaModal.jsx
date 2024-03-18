@@ -20,14 +20,12 @@ import {
   WrapFormula,
   WrapFormulaExplication,
 } from './DailyNormaModal.styled';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { closeModals } from '../../redux/modals/modalsSlice';
-// import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
-
 import * as Yup from 'yup';
 import { updateWaterRateThunk } from '../../redux/normaCounter/operations';
-import { selectToken } from '../../redux/selectors';
 import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
+import { toast } from 'react-toastify';
 
 const validationDailyNormaModalSchema = Yup.object({
   weight: Yup.number('Weight value must be a number')
@@ -47,9 +45,8 @@ const validationDailyNormaModalSchema = Yup.object({
 const DailyNormaModal = () => {
   const womanFormula = 'V=(M*0,03) + (T*0,4)';
   const manFormula = 'V=(M*0,04) + (T*0,6)';
-  // const dailyNorma = useSelector(selectDailyNorma);
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
+
   const [calculatedNorma, setCalculatedNorma] = useState(1.5);
 
   const formik = useFormik({
@@ -60,14 +57,19 @@ const DailyNormaModal = () => {
       norma: '',
     },
     validationSchema: validationDailyNormaModalSchema,
+
     onSubmit: async (values) => {
-      const dailyWaterNorma = Number(values.norma);
-      const newDailyWaterNorma = { dailyWaterNorma };
-      console.log(newDailyWaterNorma);
+      const dailyWaterNormaLiters = Number(values.norma);
+      const dailyWaterNormaMl = dailyWaterNormaLiters * 1000;
+      if (dailyWaterNormaMl > 15000) {
+        console.log('Maximum amount of water is 15 L');
+        return toast.error('Maximum amount of water is 15 L');
+      }
+      const newDailyWaterNorma = { dailyWaterNorma: dailyWaterNormaMl };
       dispatch(changeDailyNorma(newDailyWaterNorma));
-      dispatch(updateWaterRateThunk(newDailyWaterNorma, token));
+      dispatch(updateWaterRateThunk(newDailyWaterNorma));
       dispatch(closeModals()).catch((error) => {
-        console.log(error);
+        toast.error(error.message);
       });
     },
   });

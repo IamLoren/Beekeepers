@@ -8,7 +8,7 @@ import { updateWaterRateThunk } from './operations';
 export const normaCounterSlice = createSlice({
   name: 'counter',
   initialState: {
-    dailyNorma: 1.5,
+    dailyNorma: 1500,
     isLoading: false,
     isError: null,
   },
@@ -21,12 +21,12 @@ export const normaCounterSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(updateWaterRateThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.dailyNorma = payload.result.dailyWaterNorma;
         state.isLoading = false;
       })
       .addCase(updateWaterRateThunk.pending, (state) => {
         state.isLoading = true;
+
         state.isError = null;
       })
       .addCase(updateWaterRateThunk.rejected, (state, { payload }) => {
