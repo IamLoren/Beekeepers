@@ -16,7 +16,7 @@ import {
 
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);
-
+  const dailyNormaLiters = dailyNorma / 1000;
   const dispatch = useDispatch();
 
   const onEditClick = () => {
@@ -28,7 +28,7 @@ const DailyNorma = () => {
     <Wrapper>
       <Title>My daily norma</Title>
       <NormaBtnWrap>
-        <NormaText>{dailyNorma} L</NormaText>
+        <NormaText>{dailyNormaLiters} L</NormaText>
         <Btn type="button" onClick={onEditClick}>
           Edit
         </Btn>
