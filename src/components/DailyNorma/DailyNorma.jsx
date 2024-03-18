@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectDailyNorma } from '../../redux/selectors.js';
+import { useDispatch} from 'react-redux';
+// import { selectDailyNorma } from '../../redux/selectors.js';
 
 import {
   Btn,
   NormaBtnWrap,
-  NormaText,
+  // NormaText,
   Title,
   Wrapper,
 } from './DailyNorma.styled';
@@ -15,7 +15,7 @@ import {
 } from '../../redux/modals/modalsSlice.js';
 
 const DailyNorma = () => {
-  const dailyNorma = useSelector(selectDailyNorma);
+  // const dailyNorma = useSelector(selectDailyNorma);
   const dispatch = useDispatch();
 
   const onEditClick = () => {
@@ -27,7 +27,7 @@ const DailyNorma = () => {
     <Wrapper>
       <Title>My daily norma</Title>
       <NormaBtnWrap>
-        <NormaText>{dailyNorma} L</NormaText>
+        {/* <NormaText>{dailyNorma} L</NormaText> */}
         <Btn type="button" onClick={onEditClick}>
           Edit
         </Btn>
