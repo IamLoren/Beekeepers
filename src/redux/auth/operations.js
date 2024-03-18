@@ -62,7 +62,7 @@ export const logoutThunk = createAsyncThunk(
 export const refreshThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkApi) => {
-    const savedToken = thunkApi.getState().auth.token;
+    const savedToken = thunkApi.getState().authSlice.token;
     console.log(savedToken);
     if (savedToken) {
       setToken(savedToken);
