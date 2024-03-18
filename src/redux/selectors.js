@@ -27,3 +27,5 @@ export const selectPortionsAmount = (state) =>
     (totalAmount, portion) => totalAmount + portion.amount,
     0
   );
+
+// export const selectUser = (state) => state.authSlice.user;
