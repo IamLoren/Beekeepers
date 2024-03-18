@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectDailyNorma } from '../../redux/selectors.js';
+import { useDispatch} from 'react-redux';
+// import { selectDailyNorma } from '../../redux/selectors.js';
 
 import {
   Btn,
