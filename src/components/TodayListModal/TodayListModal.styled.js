@@ -18,6 +18,10 @@ export const ModalWrapper = styled.div`
 
   @media only screen and (min-width: 768px) {
     padding: 32px 24px;
+    width: 704px;
+  }
+  @media only screen and (min-width: 1440px) {
+    width: 592px;
   }
 `;
 
@@ -194,9 +198,18 @@ export const SaveButton = styled.button`
   padding: 8px 0;
 
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-
   &:hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
+
+  &:disabled {
+    background-color: var(--percentage-text);
+    box-shadow: none;
+    cursor: default;
+  }
+
+  &:disabled:hover {
+    box-shadow: none;
   }
 
   @media only screen and (min-width: 768px) {
