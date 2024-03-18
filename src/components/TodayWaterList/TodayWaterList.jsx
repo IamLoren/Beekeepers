@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 
 import sprite from '../../assets/sprite.svg';
 import { selectPortions } from '../../redux/selectors';
@@ -21,7 +22,7 @@ import {
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
-
+  const portions = useSelector(selectPortions);
   // const today = new Date();
   // const day = String(today.getDate()).padStart(2, '0');
   // const month = String(today.getMonth() + 1).padStart(2, '0');
@@ -35,8 +36,6 @@ const TodayWaterList = () => {
     dispatch,
     // formattedDate
   ]);
-
-  const portions = useSelector(selectPortions);
 
   const sortedPortions = [...portions].sort((a, b) => {
     const timeA = new Date(`1970/01/01 ${a.time}`).getTime();
@@ -53,8 +52,8 @@ const TodayWaterList = () => {
     <div>
       <TodayListTitle>Today</TodayListTitle>
       <TodayList>
-        {sortedPortions.map(({ id, amount, time }) => (
-          <TodayListItem key={id} id={id} amount={amount} time={time} />
+        {sortedPortions.map(({ _id, amount, time }) => (
+          <TodayListItem key={nanoid()} id={_id} amount={amount} time={time} />
         ))}
       </TodayList>
       <TodayListButton onClick={onAddPortionClick}>

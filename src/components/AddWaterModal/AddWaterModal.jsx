@@ -21,7 +21,7 @@ import {
 const AddWaterModal = () => {
   const dispatch = useDispatch();
 
-  const dailyNorma = useSelector(selectDailyNorma);
+  const dailyNorma = useSelector(selectDailyNorma || 0);
   const [counter, setCounter] = useState(50);
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })

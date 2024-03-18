@@ -94,12 +94,9 @@ export const addPortionThunk = createAsyncThunk(
 // {_id: string(ObjectId), amount: number, time: string, timeStamp(createdAt: date, updatedAt: date)}
 export const updatePortionThunk = createAsyncThunk(
   'updatePortion',
-  async (credentials, thunkAPI) => {
+  async ({ id, ...restCredentials }, thunkAPI) => {
     try {
-      const { data } = await api.patch(
-        `/api/portions/${credentials.id}`,
-        credentials
-      );
+      const { data } = await api.put(`/api/portions/${id}`, restCredentials);
       toast.success('Updated successfully');
       return data;
     } catch (error) {
