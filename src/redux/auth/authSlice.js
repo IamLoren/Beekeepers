@@ -17,9 +17,8 @@ export const authSlice = createSlice({
       gender: '',
       avatarURL: '',
     },
-    token:
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZjgzMGQyNjM2NDk4ZDYwNDg2NjEyOCIsImlhdCI6MTcxMDc2NDI0MiwiZXhwIjoxNzEwODQ3MDQyfQ.9OTQzvJZ9eer8pxcM7NYIDP1IB85jpegMGqJJu75V2c',
-    isLogged: true,
+    token: '',
+    isLogged: false,
     isLoading: false,
     isRefresh: false,
     isError: null,
