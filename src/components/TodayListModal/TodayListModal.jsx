@@ -30,7 +30,7 @@ import {
 const TodayListModal = () => {
   const dispatch = useDispatch();
   const selectedItem = useSelector(selectSelectedItem);
-  const dailyNorma = useSelector(selectDailyNorma);
+  const dailyNorma = useSelector(selectDailyNorma) || 0;
   const [count, setCount] = useState(selectedItem.amount);
   const [selectedTime, setSelectedTime] = useState(selectedItem.time);
   const [inputValue, setInputValue] = useState(count);
@@ -93,11 +93,8 @@ const TodayListModal = () => {
   const day = String(unformattedTime.getDate()).padStart(2, '0');
 
   const datetime = `${year}-${month}-${day}T${selectedTime}`;
-  console.log(datetime);
-  console.log(selectedTime);
 
   const onTimePickerChange = (value) => {
-    console.log(value);
     const formattedHour = String(value.$H).padStart(2, '0');
     const formattedMinute = String(value.$m).padStart(2, '0');
     const formattedValue = `${formattedHour}:${formattedMinute}`;

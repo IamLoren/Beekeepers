@@ -11,14 +11,7 @@ import {
 export const statisticDataSlice = createSlice({
   name: 'data',
   initialState: {
-    portions: [
-      { id: 1, amount: 250, time: '07:00' },
-      { id: 2, amount: 220, time: '11:00' },
-      { id: 3, amount: 200, time: '14:00' },
-      { id: 4, amount: 200, time: '14:00' },
-      { id: 5, amount: 200, time: '14:00' },
-      { id: 6, amount: 250, time: '14:00' },
-    ],
+    portions: [],
     dailyPortions: [],
     monthlyPortions: [],
     isLoading: false,
