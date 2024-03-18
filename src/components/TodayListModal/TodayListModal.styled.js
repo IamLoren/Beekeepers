@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MobileTimePicker } from '@mui/x-date-pickers';
 
 export const ModalWrapper = styled.div`
   display: flex;
@@ -137,6 +138,7 @@ export const CounterWrapper = styled.div`
 export const TimeSelect = styled.select`
   width: 100%;
   color: var(--secondary-text);
+  font-size: 16px;
   background-color: transparent;
   border: 1px solid var(--accent-bg-color);
   border-radius: 10px;
@@ -149,9 +151,41 @@ export const TimeSelect = styled.select`
   }
 `;
 
+export const StyledTimePicker = styled(MobileTimePicker)`
+  fieldset {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+  }
+
+  div.MuiTextField-root {
+    display: flex;
+    border: none;
+  }
+
+  input {
+    width: 100%;
+    color: var(--secondary-text);
+    font-size: 16px;
+    font-family: 'Roboto Regular';
+    background-color: transparent;
+    border: 1px solid var(--accent-bg-color);
+    border-color: var(--accent-bg-color);
+    border-radius: 10px;
+    padding: 12px 10px;
+    appearance: none;
+
+    &:valid {
+      border-color: var(--secondary-text);
+      outline: none;
+    }
+  }
+`;
+
 export const AmountInput = styled.input`
   width: 100%;
   color: var(--secondary-text);
+  font-size: 16px;
   background-color: transparent;
   border: 1px solid var(--accent-bg-color);
   border-radius: 10px;
