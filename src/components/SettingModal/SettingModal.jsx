@@ -17,59 +17,56 @@ import {
 import EyePassButton from './EyePassBtn';
 import defaultPhoto from '../../assets/avatar.jpg';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { useFormik } from 'formik';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-const basicSchema = yup.object().shape({
-  password: yup
-    .string()
-    .min(6, 'Password must be at least 6 characters!')
-    .required('Password is required!'),
-  confirmPassword: yup
-    .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match!')
-    .required('The field is required!'),
-  // name: yup.string().required('Name is required!'),
+const basicSchema = yup.object({
+  // name: yup.string().required('Name is required'),
   // email: yup
   //   .string()
-  //   .email('Please enter a valid email!')
-  //   .required('Email is required!'),
+  //   .email('Please write valid email')
+  //   .matches(/^(?!.*@[^,]*,)/)
+  //   .required('Email is required'),
+  oldPassword: yup
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .max(64)
+    .required('Password is required'),
+  newPassword: yup
+    .string()
+    .min(8, 'Password must be at least 8 characters!')
+    .required('Password is required!'),
+  repPassword: yup
+    .string()
+    .oneOf([yup.ref('newPassword'), null], 'Passwords must match!')
+    .required('The field is required!'),
 });
 
 const SettingModal = () => {
-  const formik = useFormik({
-    initialValues: {
-      // user: {
-      //   email: '',
-      //   name: '',
-      // },
-      photo: '',
-      gender: 'woman',
-      password: '',
-    },
-    validationSchema: basicSchema,
-    onSubmit: (values) => {
-      console.log(values);
-    },
-  });
-
-  const { errors } = formik;
-
-  const inputChange = (e) => {
-    formik.handleChange(e);
-  };
-
   const [eyePass, setEyePass] = useState(false);
   const [photo, setPhoto] = useState(defaultPhoto);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('bam');
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onChange',
+    resolver: yupResolver(basicSchema),
+  });
 
-  const changeGender = (e) => {
-    formik.handleChange(e);
-  };
+  // const inputChange = (e) => {
+  //   formik.handleChange(e);
+  // };
+
+  // const changeGender = (e) => {
+  //   formik.handleChange(e);
+  // };
+
+  // function submit({ ...data }) {
+  //   console.log(data);
+  // }
 
   function showPass() {
     eyePass ? setEyePass(false) : setEyePass(true);
@@ -96,12 +93,16 @@ const SettingModal = () => {
     <SettingContainer>
       <h1>Setting</h1>
 
-      <FormWrapper onSubmit={handleSubmit}>
+      <FormWrapper
+        onSubmit={handleSubmit}
+        encType="multipart/form-data"
+        errors={errors}
+      >
         <MainLabelText htmlFor="photo">Your photo</MainLabelText>
         <PhotoWrapper>
           <img src={photo} alt="avatar" width="80" height="80" />
 
-          <UploadBtn onClick={handlePhotoUpload}>
+          <UploadBtn onClick={handlePhotoUpload} register={register}>
             <svg className="arrow-up" fill="none" fontSize={24}>
               <use href={sprite + '#icon-arrow-up-try'}></use>
             </svg>
@@ -115,20 +116,22 @@ const SettingModal = () => {
             defaultValue="woman"
             name="gender"
             row
-            onChange={changeGender}
+            // onChange={changeGender}
           >
             <StyledFormControlLabel
               value="woman"
               control={<Radio />}
               label="Woman"
-              checked={formik.values.gender === 'woman'}
+              {...register('gender')}
+              // checked={formik.values.gender === 'woman'}
             ></StyledFormControlLabel>
 
             <StyledFormControlLabel
               value="man"
               control={<Radio />}
               label="Man"
-              checked={formik.values.gender === 'man'}
+              {...register('gender')}
+              // checked={formik.values.gender === 'man'}
             ></StyledFormControlLabel>
           </RadioGroupWrap>
 
@@ -138,7 +141,7 @@ const SettingModal = () => {
             type="text"
             name="name"
             placeholder="David"
-            onChange={inputChange}
+            {...register('name')}
           />
 
           <MainLabelText htmlFor="email">E-mail</MainLabelText>
@@ -147,7 +150,7 @@ const SettingModal = () => {
             type="text"
             name="email"
             placeholder="david01@gmail.com"
-            onChange={inputChange}
+            {...register('email')}
           />
 
           <MainLabelText htmlFor="password">Password</MainLabelText>
@@ -156,9 +159,10 @@ const SettingModal = () => {
             Outdated password:
             <StyledInput
               id="oldPassword"
+              name="oldPassword"
               type={eyePass ? 'text' : 'password'}
               placeholder="Password"
-              onChange={inputChange}
+              {...register('oldPassword')}
             />
             <EyePassButton onClick={showPass} eyePass={eyePass} />
           </LabelText>
@@ -168,11 +172,11 @@ const SettingModal = () => {
             <StyledInput
               id="newPassword"
               type={eyePass ? 'text' : 'password'}
-              name="password"
+              name="newPassword"
               placeholder="Password"
-              onChange={inputChange}
+              {...register('newPassword')}
             />
-            <ErrMessage>{errors.password?.message}</ErrMessage>
+            <ErrMessage>{errors.newPassword?.message}</ErrMessage>
             <EyePassButton onClick={showPass} eyePass={eyePass} />
           </LabelText>
 
@@ -181,11 +185,11 @@ const SettingModal = () => {
             <StyledInput
               id="repeatPassword"
               type={eyePass ? 'text' : 'password'}
-              name="confirmPassword"
+              name="repPassword"
               placeholder="Password"
-              onChange={inputChange}
+              {...register('repPassword')}
             />
-            <ErrMessage>{errors.confirmPassword?.message}</ErrMessage>
+            <ErrMessage>{errors.repPassword?.message}</ErrMessage>
             <EyePassButton onClick={showPass} eyePass={eyePass} />
           </LabelText>
         </MainInfoWrapper>

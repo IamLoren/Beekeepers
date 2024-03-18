@@ -23,10 +23,10 @@ export const authSlice = createSlice({
   },
   reducers: {},
 
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
-        console.log(payload)
+        console.log(payload);
         state.user.email = payload.email;
         state.token = payload.token;
         state.isLogged = true;
@@ -50,7 +50,7 @@ export const authSlice = createSlice({
         state.isLogged = true;
         state.isLoading = false;
       })
-      .addCase(logoutThunk.fulfilled, state => {
+      .addCase(logoutThunk.fulfilled, (state) => {
         state.user = {
           email: '',
           name: '',
@@ -59,7 +59,7 @@ export const authSlice = createSlice({
         state.isLogged = false;
         state.isLoading = false;
       })
-      .addCase(loginThunk.pending, state => {
+      .addCase(loginThunk.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
@@ -69,7 +69,7 @@ export const authSlice = createSlice({
         state.isLogged = true;
         state.isLoading = false;
       })
-      .addCase(refreshThunk.pending, state => {
+      .addCase(refreshThunk.pending, (state) => {
         state.isLoading = true;
         state.isLogged = true;
         state.isRefresh = true;
@@ -78,7 +78,7 @@ export const authSlice = createSlice({
         toast.error('You need to logIn!');
         state.isLogged = false;
         state.isLoading = false;
-      })
+      });
   },
   extraReducers: (builder) => {
     builder
