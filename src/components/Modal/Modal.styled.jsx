@@ -21,13 +21,19 @@ export const ModalStyled = styled.div`
   background-color: var(--white-text);
 `;
 export const BtnClose = styled.button`
-  background-color: var(--white-text);
+  background-color: transparent;
   position: absolute;
   border: none;
   height: 24px;
   padding: 0;
   right: ${(props) => props.size || '12px'};
   top: ${(props) => props.size || '28px'};
+  transition: scale 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    scale: 1.4;
+  }
 
   @media (min-width: 768px) {
     right: ${(props) => props.size || '24px'};
