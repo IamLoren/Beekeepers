@@ -34,9 +34,10 @@ const CustomTile = ({ date, view }) => {
     borderRadius: '50%',
   };
 
+  const ratio = 100;
   return (
     <div style={tileStyle}>
-      <div style={textStyle}>{'0%'}</div>
+      <div style={textStyle}>{`${ratio}%`}</div>
       <div style={circleStyle}></div>
     </div>
   );
