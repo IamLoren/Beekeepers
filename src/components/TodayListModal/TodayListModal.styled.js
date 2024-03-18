@@ -152,17 +152,16 @@ export const TimeSelect = styled.select`
 `;
 
 export const StyledTimePicker = styled(MobileTimePicker)`
+  width: 100%;
+
   fieldset {
     width: 100%;
     border: none;
     border-radius: 10px;
   }
-
-  div.MuiTextField-root {
-    display: flex;
-    border: none;
+  div {
+    padding: 0;
   }
-
   input {
     width: 100%;
     color: var(--secondary-text);
@@ -170,7 +169,6 @@ export const StyledTimePicker = styled(MobileTimePicker)`
     font-family: 'Roboto Regular';
     background-color: transparent;
     border: 1px solid var(--accent-bg-color);
-    border-color: var(--accent-bg-color);
     border-radius: 10px;
     padding: 12px 10px;
     appearance: none;
