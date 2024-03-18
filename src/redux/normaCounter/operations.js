@@ -3,21 +3,20 @@ import { api } from '../../configAxios/configAxios.js';
 import { toast } from 'react-toastify';
 
 // При виклику санки в параметрах передати {"dailyWaterNorma": number (min 0, max 1500)
-// payload відповіді: оновлений повний обєкт юзера: {"_id": "", "password": " ", "email": "", "token": "", "dailyWaterNorma": Number, "gender": "", createdAt: date, updatedAt: date}
+// payload відповіді: оновлений повний обєкт юзера: {result{"_id": "", "password": " ", "email": "", "token": "", "dailyWaterNorma": Number, "gender": "", createdAt: date, updatedAt: date}
 
 export const updateWaterRateThunk = createAsyncThunk(
   'water/rate',
-  async ({ dailyWaterNorma, token }) => {
+  async ({ dailyWaterNorma }) => {
     try {
-      const data = await api.patch(
-        '/api/auth/water-rate',
+      const response = await api.patch('/api/auth/water-rate', {
         dailyWaterNorma,
-        token
-      );
+      });
+      const data = response.data;
       return data;
     } catch (error) {
       toast.error('Something went wrong');
-      return error;
+      throw error;
     }
   }
 );
