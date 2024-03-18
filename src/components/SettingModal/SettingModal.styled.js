@@ -3,9 +3,11 @@ import { FormControlLabel, RadioGroup } from '@mui/material';
 
 export const SettingContainer = styled.div`
   padding: 32px 12px;
+  width: 280px;
 
   @media (min-width: 768px) {
     padding: 32px 24px;
+    width: 704px;
   }
 
   @media (min-width: 1440px) {
@@ -70,6 +72,7 @@ export const LabelText = styled.label`
   position: relative;
   display: flex;
   flex-direction: column;
+  height: 72px;
 
   @media (min-width: 768px) {
     width: 392px;
@@ -226,4 +229,10 @@ export const EyePassBtn = styled.button`
   svg {
     stroke: var(--secondary-text);
   }
+`;
+
+export const ErrMessage = styled.p`
+  color: var(--secondary-text);
+  padding-top: 2px;
+  font-size: 12px;
 `;
