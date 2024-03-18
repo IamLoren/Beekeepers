@@ -27,9 +27,9 @@ function App() {
         <Route
           path="/home"
           element={
-            <PrivateRoute>
+            <PublicRoute>
               <HomePage />
-            </PrivateRoute>
+            </PublicRoute>
           }
         />
         <Route path="*" element={<ErrorPage />} />
