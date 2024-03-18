@@ -6,15 +6,28 @@ export const StyledSection = styled.section`
   position: relative;
 `;
 export const LoginWrapper = styled.div`
+  @media only screen and (min-width: 1280px) {
     margin-top: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: center;
+  }
 `;
 export const ImgWrapper = styled.div`
   text-align: center;
+
+  @media only screen and (min-width: 768px) {
+    position: absolute;
+    right: -5%;
+    top: 0;
+  }
+  @media only screen and (min-width: 1280px) {
+    position: static;
+    margin-left: -298px;
+  }
 `;
 
 export const ErrorSpan = styled.span`
-  color: red;
+  color: var(--primary-red);
+  font-size: 14px;
 `;
