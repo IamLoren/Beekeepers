@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'https://beekeepers-back.onrender.com',
+  baseURL: 'https://byte-water-back.onrender.com',
 });
 
 export const setToken = token => {
