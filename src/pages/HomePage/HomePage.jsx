@@ -7,6 +7,7 @@ import StyledWrapperDiv, {
   StatisticsWrapper,
   StyledFlexContainer,
 } from './HomePage.styled';
+import PictureBottleBg from './PictureBottleBg';
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
         <StyledFlexContainer>
           <div>
             <DailyNorma />
+            <PictureBottleBg />
             <WaterRatioPanel />
           </div>
           <StatisticsWrapper>
