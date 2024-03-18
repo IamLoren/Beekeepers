@@ -107,8 +107,9 @@ export const Input = styled.input`
   font-size: 16px;
   line-height: 1.25;
   &::placeholder {
-    color: var(--secondary-text);
+    color: var(--percentage-text);
   }
+
   ${({ $isError }) =>
     $isError &&
     `border-color:  var(--error-text) !important;
