@@ -19,19 +19,19 @@ const authPersistConfig = {
   key: 'auth',
   version: 1,
   storage,
-  whitelist: [/*'token'*/],
+  whitelist: ['token'],
 };
 
 const counterPersistConfig = {
   key: 'counter',
   storage,
-  whitelist: [/*'dailyNorma'*/],
+  whitelist: ['dailyNorma'],
 };
 
 const dataPersistConfig = {
   key: 'data',
   storage,
-  whitelist: [/*'portions'*/],
+  whitelist: ['portions'],
 };
 
 const modalsPersistConfig = {
