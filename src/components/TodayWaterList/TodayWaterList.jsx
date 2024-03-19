@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import sprite from '../../assets/sprite.svg';
-import { selectPortions } from '../../redux/selectors';
+import { selectDailyPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
 import {
   changeAddModal,
@@ -20,7 +20,7 @@ import {
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
-  const portions = useSelector(selectPortions);
+  const portions = useSelector(selectDailyPortions);
   const today = new Date();
   const day = String(today.getDate()).padStart(2, '0');
   const month = String(today.getMonth() + 1).padStart(2, '0');
