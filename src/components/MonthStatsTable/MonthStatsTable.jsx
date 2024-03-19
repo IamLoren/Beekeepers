@@ -11,7 +11,7 @@ import {
   Styledcircle,
 } from './MonthStatsTable.styled';
 import { useSelector } from 'react-redux';
-import {selectMonthData } from '../../redux/selectors';
+import {selectDataOfRegistration, selectMonthData } from '../../redux/selectors';
 import {fetchMonthlyPortionsThunk} from '../../redux/statisticData/operations.js';
 import { convertCalendarMonth} from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
@@ -56,6 +56,8 @@ const MonthStatsTable = () => {
   const [currentMonth, setCurrentMonth] = useState('');
   const [tooltipContent, setTooltipContent] = useState([]);
   const monthData = useSelector(selectMonthData);
+  const registration = useSelector(selectDataOfRegistration);
+  const userRegistration = new Date(registration);
  
   function changeMonth(){
     const currentMonthLabel = document.querySelector(".react-calendar__navigation__label__labelText").textContent;
@@ -149,7 +151,7 @@ DataForTootip()
         views={['month', 'tenDays']}
         tileWidth={40}
         value={value}
-        minDate={new Date(2024, 2, 16)}
+        minDate={userRegistration}
         locale="en-GB"
         onActiveStartDateChange={({ activeStartDate }) =>
           setValue(activeStartDate)
