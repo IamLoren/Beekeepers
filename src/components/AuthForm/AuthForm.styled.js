@@ -8,7 +8,7 @@ export const FormWrapper = styled.div`
     max-width: 336px;
   }
 
-  @media only screen and (min-width: 1280px) {
+  @media only screen and (min-width: 1440px) {
     margin-top: 162px;
     min-width: 384px;
   }
@@ -16,6 +16,7 @@ export const FormWrapper = styled.div`
 export const FormEl = styled.form`
   display: flex;
   flex-direction: column;
+  gap:30px;
 
   label:first-child > input {
     border: 1px solid
@@ -73,12 +74,14 @@ export const FormInput = styled.input`
 export const FormLabel = styled.label`
   display: flex;
   flex-direction: column;
+  position: relative;
   font-size: 18px;
   line-height: 24px;
-  margin-bottom: 16px;
+  // margin-bottom: 16px;
   position: relative;
 `;
 export const FormBtn = styled.button`
+  margin-top: 10px;
   margin-bottom: 16px;
   background-color: #407BFF;
   border: 1px solid #407BFF;
