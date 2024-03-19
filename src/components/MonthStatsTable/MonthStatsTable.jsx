@@ -162,11 +162,11 @@ DataForTootip()
             <AccentSpan> {dailyNormaForTooltip / 1000} L</AccentSpan>
           </p>
           <p>
-            <span>Fulfillment of the daily norm:</span>
+            <span>Fulfillment of the daily norm: </span>
             <AccentSpan>{percentForTooltip}%</AccentSpan>
           </p>
           <p>
-            <span>How many servings of water:</span>
+            <span>How many servings of water: </span>
             <AccentSpan>{countPortionsForTooltip}</AccentSpan>
           </p>
         </StyledDivWrapper>
