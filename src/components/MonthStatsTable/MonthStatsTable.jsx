@@ -8,9 +8,9 @@ import {
   StyledTooltip,
 } from './MonthStatsTable.styled';
 import { useSelector } from 'react-redux';
-import { selectDailyNorma, selectMonthData } from '../../redux/selectors';
+import {selectMonthData } from '../../redux/selectors';
 import {fetchMonthlyPortionsThunk} from '../../redux/statisticData/operations.js';
-import { convertCalendarMonth } from '../../serviceFunctions/serviceFunctions.js';
+import { convertCalendarMonth} from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
 const CustomTile = () => {
@@ -49,7 +49,6 @@ const CustomTile = () => {
 
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
-  const dailyNorma = useSelector(selectDailyNorma) / 1000;
   const [value, setValue] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState('');
   const [tooltipContent, setTooltipContent] = useState([]);
@@ -111,6 +110,36 @@ useEffect(() => {
   }
 
   const [number, date] = tooltipContent;
+const [dailyNormaForTooltip, setdailyNormaForTooltip] = useState('')
+  useEffect(() => {
+     const DataForTootip = () => {
+    const day = monthData?.find(d => d.day === number);
+    console.log(day)
+    setdailyNormaForTooltip(day?.dailyNorma ? day.dailyNorma : '0' )
+}
+DataForTootip()
+  })
+
+  const [countPortionsForTooltip, setcountPortionsForTooltip] = useState('')
+  useEffect(() => {
+     const DataForTootip = () => {
+    const day = monthData?.find(d => d.day === number);
+    console.log(day)
+    setcountPortionsForTooltip(day?.portionsCount ? day.portionsCount : '0' )
+}
+DataForTootip()
+  })
+
+  const [percentForTooltip, setPercentForTooltip] = useState('')
+  useEffect(() => {
+     const DataForTootip = () => {
+    const day = monthData?.find(d => d.day === number);
+    console.log(day)
+    setPercentForTooltip(day?.portionsCount ? day.portionsCount : '0' )
+}
+DataForTootip()
+  })
+
   return (
     <div>
       <Calendar
@@ -130,19 +159,18 @@ useEffect(() => {
         <StyledDivWrapper>
           <p>
             <AccentSpan>{date}</AccentSpan>
-            <AccentSpan></AccentSpan>
           </p>
           <p>
             <span>Daily norma: </span>
-            <AccentSpan>{dailyNorma} L</AccentSpan>
+            <AccentSpan> {dailyNormaForTooltip / 1000} L</AccentSpan>
           </p>
           <p>
             <span>Fulfillment of the daily norm:</span>
-            <AccentSpan></AccentSpan>
+            <AccentSpan>{percentForTooltip}%</AccentSpan>
           </p>
           <p>
             <span>How many servings of water:</span>
-            <AccentSpan></AccentSpan>
+            <AccentSpan>{countPortionsForTooltip}</AccentSpan>
           </p>
         </StyledDivWrapper>
       </StyledTooltip>

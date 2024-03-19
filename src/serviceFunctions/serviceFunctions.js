@@ -29,3 +29,9 @@ export const convertCalendarMonth = (monthYear) => {
             return "Invalid month name";
     }
 }
+
+// export const getDataForTootip = (monthArray, number) => {
+//     const day = monthArray.find(day => day === number);
+//     console.log(day)
+//     return day.dailyNorma;
+// }
