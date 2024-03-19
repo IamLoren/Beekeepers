@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -8,9 +8,10 @@ import {
   StyledTooltip,
 } from './MonthStatsTable.styled';
 import { useSelector } from 'react-redux';
-import { selectDailyNorma } from '../../redux/selectors';
+import { selectDailyNorma, selectMonthData } from '../../redux/selectors';
 import {fetchMonthlyPortionsThunk} from '../../redux/statisticData/operations.js';
 import { convertCalendarMonth } from '../../serviceFunctions/serviceFunctions.js';
+import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
 const CustomTile = () => {
   const tileStyle = {
@@ -50,36 +51,71 @@ const MonthStatsTable = () => {
   const dispatch = useDispatch();
   const dailyNorma = useSelector(selectDailyNorma) / 1000;
   const [value, setValue] = useState(new Date());
-const currentMonth = document.querySelector(".react-calendar__navigation__label").textContent
-  
+  const [currentMonth, setCurrentMonth] = useState('');
+  const [tooltipContent, setTooltipContent] = useState([]);
+  const monthData = useSelector(selectMonthData);
+ 
+  function changeMonth(){
+    const currentMonthLabel = document.querySelector(".react-calendar__navigation__label__labelText").textContent;
+    setCurrentMonth(currentMonthLabel);
+  }
+
 useEffect(() => {
   const fetchData = async () => {
-    try {
+    const currentMonthLabel = document.querySelector(".react-calendar__navigation__label__labelText").textContent;
+    if (currentMonthLabel) {
+     setCurrentMonth(currentMonthLabel);
       const date = convertCalendarMonth(currentMonth);
-      const data = await dispatch(fetchMonthlyPortionsThunk(date));
-      console.log(data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+      try {
+        const {payload} = await dispatch(fetchMonthlyPortionsThunk(date));
+       dispatch(changemonthlyPortions(payload))
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     }
   };
 
-  fetchData();
+    fetchData();
+  
   }, [currentMonth, dispatch])
   
+  useEffect(() => {
+    const navigationButtons = document.querySelectorAll(".react-calendar__navigation__arrow");
+    navigationButtons.forEach(button => button.addEventListener("click", changeMonth));
+
+    return () => {
+      navigationButtons.forEach(button => button.removeEventListener("click", changeMonth));
+    };
+  }, []);
 
   const tiles = document.querySelectorAll('.react-calendar__tile');
   tiles.forEach((button) => {
     button.setAttribute('data-tooltip-id', 'my-tooltip');
+    const content = button.querySelector("abbr").textContent;
+    button.setAttribute('data-tip', `${content}`);
   });
+
+  useEffect(() => {
+    const tiles = document.querySelectorAll('.react-calendar__tile');
+    tiles.forEach((button) => {
+      const number = button.querySelector('abbr').textContent;
+      const date = button.querySelector('abbr').getAttribute('aria-label');
+      // button.setAttribute('data-tip', [number, date]);
+      button.addEventListener('mouseenter', () => setTooltipContent([number, date]));
+      button.addEventListener('mouseleave', () => setTooltipContent(''));
+    });
+  }, []);
 
   function onChange(nextValue) {
     setValue(nextValue);
   }
 
+  const [number, date] = tooltipContent;
   return (
     <div>
       <Calendar
         onChange={onChange}
+
         views={['month', 'tenDays']}
         tileWidth={40}
         value={value}
@@ -93,7 +129,7 @@ useEffect(() => {
       <StyledTooltip id="my-tooltip">
         <StyledDivWrapper>
           <p>
-            <AccentSpan></AccentSpan>
+            <AccentSpan>{date}</AccentSpan>
             <AccentSpan></AccentSpan>
           </p>
           <p>
