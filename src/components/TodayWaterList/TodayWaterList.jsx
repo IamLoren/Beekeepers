@@ -3,16 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import sprite from '../../assets/sprite.svg';
-import { selectPortions } from '../../redux/selectors';
+import { selectDailyPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
 import {
   changeAddModal,
   changeModalOpen,
 } from '../../redux/modals/modalsSlice';
-import {
-  // fetchDailyPortionsThunk,
-  fetchPortionsThunk,
-} from '../../redux/statisticData/operations';
+import { fetchDailyPortionsThunk } from '../../redux/statisticData/operations';
 
 import {
   TodayList,
@@ -22,20 +19,16 @@ import {
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
-  const portions = useSelector(selectPortions);
-  // const today = new Date();
-  // const day = String(today.getDate()).padStart(2, '0');
-  // const month = String(today.getMonth() + 1).padStart(2, '0');
-  // const year = today.getFullYear();
-  // const formattedDate = `${day}.${month}.${year}`;
+  const portions = useSelector(selectDailyPortions);
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+  const formattedDate = `${day}.${month}.${year}`;
 
   useEffect(() => {
-    dispatch(fetchPortionsThunk());
-    // dispatch(fetchDailyPortionsThunk(formattedDate));
-  }, [
-    dispatch,
-    // formattedDate
-  ]);
+    dispatch(fetchDailyPortionsThunk(formattedDate));
+  }, [dispatch, formattedDate]);
 
   const sortedPortions = [...portions].sort((a, b) => {
     const timeA = new Date(`1970/01/01 ${a.time}`).getTime();
