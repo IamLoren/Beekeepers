@@ -24,8 +24,7 @@ import {
 import sprite from '../../assets/sprite.svg';
 
 const WaterRatioPanel = () => {
-  // const dailyNorma = useSelector(selectDailyNorma);
-
+  const dailyNorma = useSelector(selectDailyNorma);
   const modalIsOpen = useSelector(selectIsModalOpen);
   const consumedWater = useSelector(selectPortionsAmount);
 
@@ -36,10 +35,7 @@ const WaterRatioPanel = () => {
     dispatch(changeAddModal(true));
   };
 
-  const dailyNorma = 2000;
-  // const consumedWater = 2500;
-
-  const progress = (consumedWater / dailyNorma) * 100;
+  const progress = Math.round((consumedWater / dailyNorma) * 100);
   const limitedProgress = Math.min(progress, 100);
 
   return (
