@@ -48,11 +48,11 @@ export const statisticDataSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(fetchDailyPortionsThunk.fulfilled, (state, { payload }) => {
-        state.portions = payload;
+        state.dailyPortions = payload;
         state.isLoading = false;
       })
       .addCase(fetchMonthlyPortionsThunk.fulfilled, (state, { payload }) => {
-        state.portions = payload;
+        state.monthlyPortions = payload;
         state.isLoading = false;
       })
       .addCase(deletePortionThunk.fulfilled, (state, { payload }) => {
