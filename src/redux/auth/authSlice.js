@@ -29,11 +29,10 @@ export const authSlice = createSlice({
     builder
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
-
+        state.user.registrationDate = payload.date.substring(0, 10);
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
-        state.user.registrationDate = payload.substring(0, 10);
       })
       .addCase(registerThunk.rejected, (state) => {
         toast.error('Error! User exist!');
