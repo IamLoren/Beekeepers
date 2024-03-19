@@ -1,4 +1,3 @@
-
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, clearToken, setToken } from '../../configAxios/configAxios.js';
 import { toast } from 'react-toastify';
@@ -50,7 +49,7 @@ export const logoutThunk = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       await api.post('api/auth/logout');
-      localStorage.removeItem('auth');
+      localStorage.removeItem('auth', 'counter', 'data');
       clearToken();
     } catch (error) {
       toast.error(error.message);
