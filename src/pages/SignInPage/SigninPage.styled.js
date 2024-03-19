@@ -6,7 +6,7 @@ export const StyledSection = styled.section`
   position: relative;
 `;
 export const LoginWrapper = styled.div`
-  @media only screen and (min-width: 1280px) {
+  @media only screen and (min-width: 1440px) {
     margin-top: 20px;
     display: flex;
     flex-direction: row-reverse;
@@ -21,13 +21,15 @@ export const ImgWrapper = styled.div`
     right: -5%;
     top: 0;
   }
-  @media only screen and (min-width: 1280px) {
+  @media only screen and (min-width: 1440px) {
     position: static;
     margin-left: -298px;
   }
 `;
 
 export const ErrorSpan = styled.span`
-  color: var(--primary-red);
+  position: absolute;
+  bottom: -24px;
+  color: #ef5050;
   font-size: 14px;
 `;
