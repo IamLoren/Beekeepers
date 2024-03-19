@@ -38,3 +38,7 @@ justify-content: space-between;
     font-size: 26px;
     color: var(--primary-text);
   `
+
+  export const Styledcircle = styled.div`
+    border: 1px solid green;
+  `
