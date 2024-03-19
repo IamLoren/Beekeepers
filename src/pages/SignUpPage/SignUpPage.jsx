@@ -54,7 +54,7 @@ const schema = yup
 const SignUpPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
-  const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const [eyePass, setEyePass] = useState(false);
   const navigate = useNavigate();
 
