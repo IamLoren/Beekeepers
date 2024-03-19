@@ -17,10 +17,14 @@ export const statisticDataSlice = createSlice({
     isLoading: false,
     isError: null,
     selectedItem: null,
+    selectedDay: {},
   },
   reducers: {
     changemonthlyPortions: (state, { payload }) => {
       state.monthlyPortions = payload;
+    },
+    changeSelectedDay: (state, { payload }) => {
+      state.selectedDay = payload;
     },
     // addPortion: (state, { payload }) => {
     //   state.portions.push(payload);

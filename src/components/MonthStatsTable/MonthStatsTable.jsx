@@ -8,6 +8,7 @@ import {
   StyledDivWrapper,
   StyledTitle,
   StyledTooltip,
+  Styledcircle,
 } from './MonthStatsTable.styled';
 import { useSelector } from 'react-redux';
 import {selectMonthData } from '../../redux/selectors';
@@ -35,7 +36,7 @@ const CustomTile = () => {
     backgroundColor: 'white',
     position: 'absolute',
     top: '-27px',
-    left: '1px',
+    left: '0',
     zIndex: '1',
     borderRadius: '50%',
   };
@@ -44,7 +45,7 @@ const CustomTile = () => {
   return (
     <div style={tileStyle}>
       <div style={textStyle}>{`${ratio}%`}</div>
-      <div style={circleStyle}></div>
+      <Styledcircle style={circleStyle}></Styledcircle>
     </div>
   );
 };
