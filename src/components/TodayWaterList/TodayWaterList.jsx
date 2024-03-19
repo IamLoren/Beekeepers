@@ -9,12 +9,10 @@ import {
   changeAddModal,
   changeModalOpen,
 } from '../../redux/modals/modalsSlice';
-import {
-  // fetchDailyPortionsThunk,
-  fetchPortionsThunk,
-} from '../../redux/statisticData/operations';
+import { fetchDailyPortionsThunk } from '../../redux/statisticData/operations';
 
 import {
+  NoPortionsText,
   TodayList,
   TodayListButton,
   TodayListTitle,
@@ -23,19 +21,15 @@ import {
 const TodayWaterList = () => {
   const dispatch = useDispatch();
   const portions = useSelector(selectPortions);
-  // const today = new Date();
-  // const day = String(today.getDate()).padStart(2, '0');
-  // const month = String(today.getMonth() + 1).padStart(2, '0');
-  // const year = today.getFullYear();
-  // const formattedDate = `${day}.${month}.${year}`;
+  const today = new Date();
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+  const formattedDate = `${day}.${month}.${year}`;
 
   useEffect(() => {
-    dispatch(fetchPortionsThunk());
-    // dispatch(fetchDailyPortionsThunk(formattedDate));
-  }, [
-    dispatch,
-    // formattedDate
-  ]);
+    dispatch(fetchDailyPortionsThunk(formattedDate));
+  }, [dispatch, formattedDate]);
 
   const sortedPortions = [...portions].sort((a, b) => {
     const timeA = new Date(`1970/01/01 ${a.time}`).getTime();
@@ -51,11 +45,20 @@ const TodayWaterList = () => {
   return (
     <div>
       <TodayListTitle>Today</TodayListTitle>
-      <TodayList>
-        {sortedPortions.map(({ _id, amount, time }) => (
-          <TodayListItem key={nanoid()} id={_id} amount={amount} time={time} />
-        ))}
-      </TodayList>
+      {portions.legth ? (
+        <TodayList>
+          {sortedPortions.map(({ _id, amount, time }) => (
+            <TodayListItem
+              key={nanoid()}
+              id={_id}
+              amount={amount}
+              time={time}
+            />
+          ))}
+        </TodayList>
+      ) : (
+        <NoPortionsText>No notes yet</NoPortionsText>
+      )}
       <TodayListButton onClick={onAddPortionClick}>
         <svg width={16} height={16}>
           <use href={sprite + '#icon-plus-small'}></use>
