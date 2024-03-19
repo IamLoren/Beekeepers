@@ -1,3 +1,14 @@
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectDailyNorma,
+  selectIsModalOpen,
+  selectPortionsAmount,
+} from '../../redux/selectors';
+import {
+  changeAddModal,
+  changeModalOpen,
+} from '../../redux/modals/modalsSlice';
+import Modal from '../Modal/Modal';
 import {
   StyledRatioSectionContainer,
   StyledProgressBarContainer,
@@ -8,30 +19,50 @@ import {
   ProgressFill,
   CircleIndicator,
   MiddleIndicator,
+  LastIndicator,
 } from './WaterRatioPanel.styled';
+import sprite from '../../assets/sprite.svg';
 
 const WaterRatioPanel = () => {
-  const progress = 50;
+  const dailyNorma = useSelector(selectDailyNorma);
+  const modalIsOpen = useSelector(selectIsModalOpen);
+  const consumedWater = useSelector(selectPortionsAmount);
 
-  const addWater = () => {};
+  const dispatch = useDispatch();
+
+  const onAddClick = () => {
+    dispatch(changeModalOpen(true));
+    dispatch(changeAddModal(true));
+  };
+
+  const progress = Math.round((consumedWater / dailyNorma) * 100);
+  const limitedProgress = Math.min(progress, 100);
 
   return (
     <StyledRatioSectionContainer>
-      <StyledToday>Today</StyledToday>
       <StyledProgressBarContainer>
+        <StyledToday>Today</StyledToday>
         <StyledProgressBar id="ml" max="100" value="0">
-          <ProgressFill $progress={progress} />
-          <CircleIndicator $progress={progress} />
+          <ProgressFill $progress={limitedProgress} />
+          <CircleIndicator $progress={limitedProgress} />
         </StyledProgressBar>
         <StyledProgressNumbers>
           <span>0%</span>
           <MiddleIndicator>50%</MiddleIndicator>
-          <span>100%</span>
+          <LastIndicator $progress={progress}>
+            {progress > 100 ? `${progress}%` : '100%'}
+          </LastIndicator>
         </StyledProgressNumbers>
       </StyledProgressBarContainer>
-      <StyledAddBtn type="button" onClick={addWater}>
-        Add Water
-      </StyledAddBtn>
+      <div>
+        <StyledAddBtn type="button" onClick={onAddClick}>
+          <svg className="add" fill="none">
+            <use href={sprite + '#icon-plus-circle'}></use>
+          </svg>
+          Add Water
+        </StyledAddBtn>
+      </div>
+      {modalIsOpen && <Modal />}
     </StyledRatioSectionContainer>
   );
 };

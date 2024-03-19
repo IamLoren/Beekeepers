@@ -35,11 +35,21 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   gap: 18px;
 
-  button > svg.edit {
+  button.edit {
     stroke: var(--secondary-text);
+    outline: none;
+
+    &:hover {
+      border-bottom: 1px solid var(--secondary-text);
+    }
   }
-  button > svg.trash {
+  button.trash {
     stroke: var(--error-text);
+    outline: none;
+
+    &:hover {
+      border-bottom: 1px solid var(--error-text);
+    }
   }
 `;
 

@@ -1,34 +1,62 @@
-import { useSelector } from 'react-redux';
-import { selectPortions } from '../../redux/selectors';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
+import sprite from '../../assets/sprite.svg';
+import { selectPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
+import {
+  changeAddModal,
+  changeModalOpen,
+} from '../../redux/modals/modalsSlice';
+import {
+  // fetchDailyPortionsThunk,
+  fetchPortionsThunk,
+} from '../../redux/statisticData/operations';
+
 import {
   TodayList,
   TodayListButton,
   TodayListTitle,
 } from './TodayWaterList.styled';
 
-import sprite from '../../assets/sprite.svg';
-
 const TodayWaterList = () => {
+  const dispatch = useDispatch();
   const portions = useSelector(selectPortions);
+  // const today = new Date();
+  // const day = String(today.getDate()).padStart(2, '0');
+  // const month = String(today.getMonth() + 1).padStart(2, '0');
+  // const year = today.getFullYear();
+  // const formattedDate = `${day}.${month}.${year}`;
+
+  useEffect(() => {
+    dispatch(fetchPortionsThunk());
+    // dispatch(fetchDailyPortionsThunk(formattedDate));
+  }, [
+    dispatch,
+    // formattedDate
+  ]);
+
+  const sortedPortions = [...portions].sort((a, b) => {
+    const timeA = new Date(`1970/01/01 ${a.time}`).getTime();
+    const timeB = new Date(`1970/01/01 ${b.time}`).getTime();
+    return timeA - timeB;
+  });
+
+  const onAddPortionClick = () => {
+    dispatch(changeModalOpen(true));
+    dispatch(changeAddModal(true));
+  };
 
   return (
     <div>
       <TodayListTitle>Today</TodayListTitle>
       <TodayList>
-        {portions.map(({ amount, time }) => {
-          return (
-            <TodayListItem
-              key={nanoid()}
-              amount={amount}
-              time={time}
-            ></TodayListItem>
-          );
-        })}
+        {sortedPortions.map(({ _id, amount, time }) => (
+          <TodayListItem key={nanoid()} id={_id} amount={amount} time={time} />
+        ))}
       </TodayList>
-      <TodayListButton>
+      <TodayListButton onClick={onAddPortionClick}>
         <svg width={16} height={16}>
           <use href={sprite + '#icon-plus-small'}></use>
         </svg>

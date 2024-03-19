@@ -1,31 +1,53 @@
-import {
-  AmountText,
-  ButtonsWrapper,
-  ContentItemWrapper,
-  ItemWrapper,
-  TimeText,
-} from './TodayListItem.styled';
+import { useDispatch } from 'react-redux';
 
 import sprite from '../../assets/sprite.svg';
+import {
+  changeDeletePortionModal,
+  changeEditPortionModal,
+  changeModalOpen,
+} from '../../redux/modals/modalsSlice';
+import { changeSelectedItem } from '../../redux/statisticData/statisticDataSlice';
 
-const TodayListItem = ({ amount, time }) => {
+import {
+  ItemWrapper,
+  ContentItemWrapper,
+  AmountText,
+  TimeText,
+  ButtonsWrapper,
+} from './TodayListItem.styled';
+
+const TodayListItem = ({ id, amount, time }) => {
+  const dispatch = useDispatch();
+
+  const onEditPortionClick = () => {
+    dispatch(changeSelectedItem({ id, amount, time }));
+    dispatch(changeModalOpen(true));
+    dispatch(changeEditPortionModal(true));
+  };
+
+  const onDeletePortionClick = () => {
+    dispatch(changeSelectedItem({ id, amount, time }));
+    dispatch(changeModalOpen(true));
+    dispatch(changeDeletePortionModal(true));
+  };
+
   return (
     <ItemWrapper>
       <ContentItemWrapper>
-        <svg className="edit" width={17} height={22} fill="none">
+        <svg width={17} height={22} fill="none">
           <use href={sprite + '#icon-glass'}></use>
         </svg>
         <AmountText>{amount} ml</AmountText>
         <TimeText>{time}</TimeText>
       </ContentItemWrapper>
       <ButtonsWrapper>
-        <button>
-          <svg className="edit" width={16} height={16} fill="none">
+        <button className="edit" onClick={onEditPortionClick}>
+          <svg width={16} height={16} fill="none">
             <use href={sprite + '#icon-pencil-square'}></use>
           </svg>
         </button>
-        <button>
-          <svg className="trash" width={16} height={16} fill="none">
+        <button className="trash" onClick={onDeletePortionClick}>
+          <svg width={16} height={16} fill="none">
             <use href={sprite + '#icon-trash'}></use>
           </svg>
         </button>
