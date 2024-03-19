@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-tooltip/dist/react-tooltip.css';
 import {
@@ -8,8 +9,10 @@ import {
 } from './MonthStatsTable.styled';
 import { useSelector } from 'react-redux';
 import { selectDailyNorma } from '../../redux/selectors';
+import {fetchMonthlyPortionsThunk} from '../../redux/statisticData/operations.js';
+import { convertCalendarMonth } from '../../serviceFunctions/serviceFunctions.js';
 
-const CustomTile = ({ date, view }) => {
+const CustomTile = () => {
   const tileStyle = {
     textAlign: 'center',
     paddingTop: '10px',
@@ -44,8 +47,25 @@ const CustomTile = ({ date, view }) => {
 };
 
 const MonthStatsTable = () => {
-  const dailyNorma = useSelector(selectDailyNorma);
+  const dispatch = useDispatch();
+  const dailyNorma = useSelector(selectDailyNorma) / 1000;
   const [value, setValue] = useState(new Date());
+const currentMonth = document.querySelector(".react-calendar__navigation__label").textContent
+  
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const date = convertCalendarMonth(currentMonth);
+      const data = await dispatch(fetchMonthlyPortionsThunk(date));
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+  }, [currentMonth, dispatch])
+  
 
   const tiles = document.querySelectorAll('.react-calendar__tile');
   tiles.forEach((button) => {
