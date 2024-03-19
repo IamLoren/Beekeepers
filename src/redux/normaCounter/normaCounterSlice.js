@@ -1,27 +1,40 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { updateWaterRateThunk } from './operations';
+// import { selectIsLogged } from '../selectors';
+// import { useSelector } from 'react-redux';
+
+// const isLogged = useSelector(selectIsLogged);
 
 export const normaCounterSlice = createSlice({
-    name: 'counter',
-    initialState: {
-      dailyNorma: 0,
-      isModalOpen: false,
-      isLoading: false,
-      isError: null,
+  name: 'counter',
+  initialState: {
+    dailyNorma: 1500,
+    isLoading: false,
+    isError: null,
+  },
+  reducers: {
+    changeDailyNorma: (state, { payload }) => {
+      state.dailyNorma = payload.dailyWaterNorma;
     },
-    reducers: {
-      changedailyNorma: (state, { payload }) => {
-        state.dailyNorma = payload;
-      },
-    },
-  
-    extraReducers: builder => {
-      builder
-        // .addCase(getNormaThunk.fulfilled, (state, { payload }) => {
-        //     state.dailyNorma = payload;
-        //   state.isLoading = false;
-        // })
-    },
-  });
-  
-  export const counterReducer = normaCounterSlice.reducer;
-  export const { changedailyNorma } = normaCounterSlice.actions;
+  },
+
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateWaterRateThunk.fulfilled, (state, { payload }) => {
+        state.dailyNorma = payload.result.dailyWaterNorma;
+        state.isLoading = false;
+      })
+      .addCase(updateWaterRateThunk.pending, (state) => {
+        state.isLoading = true;
+
+        state.isError = null;
+      })
+      .addCase(updateWaterRateThunk.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = payload;
+      });
+  },
+});
+
+export const counterReducer = normaCounterSlice.reducer;
+export const { changeDailyNorma } = normaCounterSlice.actions;
