@@ -4,7 +4,9 @@ import Calendar from 'react-calendar';
 import 'react-tooltip/dist/react-tooltip.css';
 import {
   AccentSpan,
+  CalendarWrapper,
   StyledDivWrapper,
+  StyledTitle,
   StyledTooltip,
 } from './MonthStatsTable.styled';
 import { useSelector } from 'react-redux';
@@ -138,7 +140,8 @@ DataForTootip()
   })
 
   return (
-    <div>
+    <CalendarWrapper>
+      <StyledTitle>Month</StyledTitle>
       <Calendar
         onChange={onChange}
 
@@ -171,7 +174,7 @@ DataForTootip()
           </p>
         </StyledDivWrapper>
       </StyledTooltip>
-    </div>
+    </CalendarWrapper>
   );
 };
 
