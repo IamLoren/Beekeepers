@@ -27,3 +27,14 @@ justify-content: space-between;
   export const AccentSpan = styled.span`
     color: var(--secondary-text);
   `
+
+  export const CalendarWrapper = styled.div`
+    position: relative;
+  `
+
+  export const StyledTitle = styled.h2`
+    position: absolute;
+    font-family: 'Roboto Medium';
+    font-size: 26px;
+    color: var(--primary-text);
+  `
