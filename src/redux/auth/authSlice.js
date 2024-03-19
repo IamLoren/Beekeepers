@@ -33,11 +33,7 @@ export const authSlice = createSlice({
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
-        const currentDate = new Date();
-        const year = currentDate.getFullYear();
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // +1, оскільки місяці в JavaScript нумеруються з 0
-        const day = String(currentDate.getDate()).padStart(2, '0');
-        state.user.registrationDate = `${year}-${month}-${day}`;
+        state.user.registrationDate = payload.substring(0, 10);
       })
       .addCase(registerThunk.rejected, (state) => {
         toast.error('Error! User exist!');
