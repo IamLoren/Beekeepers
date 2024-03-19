@@ -34,6 +34,12 @@ export const TodayList = styled.ul`
   }
 `;
 
+export const NoPortionsText = styled.p`
+  color: var(--percentage-text);
+  font-size: 20px;
+  padding-bottom: 16px;
+`;
+
 export const TodayListButton = styled.button`
   display: flex;
   justify-content: center;
