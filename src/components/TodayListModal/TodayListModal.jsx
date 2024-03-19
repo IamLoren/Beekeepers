@@ -36,7 +36,7 @@ const TodayListModal = () => {
   const [inputValue, setInputValue] = useState(count);
 
   const handleDecrement = () => {
-    if (count > 0) {
+    if (count >= 50) {
       setCount(count - 50);
     }
   };
@@ -64,9 +64,17 @@ const TodayListModal = () => {
   };
 
   const handleInputBlur = () => {
-    const newValue = parseInt(inputValue, 10) || 0;
+    let newValue = inputValue.trim();
+
+    if (/^0/.test(newValue)) {
+      newValue = newValue.replace(/^0+/, '');
+
+      if (newValue === '') {
+        newValue = '0';
+      }
+    }
     setInputValue(newValue);
-    setCount(newValue);
+    setCount(parseInt(newValue, 10));
   };
 
   const onSaveClick = () => {
@@ -156,14 +164,16 @@ const TodayListModal = () => {
         <AmountInput
           type="number"
           value={inputValue}
+          min={0}
+          max={1500}
+          step={10}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
-          min={0}
         />
       </div>
       <ResultSaveWrapper>
         <AmountResult>{count} ml</AmountResult>
-        <SaveButton onClick={onSaveClick} disabled={count <= 0}>
+        <SaveButton onClick={onSaveClick} disabled={count < 0 || count > 1500}>
           Save
         </SaveButton>
       </ResultSaveWrapper>
