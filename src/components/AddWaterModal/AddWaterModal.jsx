@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import sprite from '../../assets/sprite.svg';
 import { addPortionThunk } from '../../redux/statisticData/operations';
 import { closeModals } from '../../redux/modals/modalsSlice';
 import { selectDailyNorma } from '../../redux/selectors';
+import sprite from '../../assets/sprite.svg';
 import {
   StyledAddModalInput,
   StyledAddWater,
@@ -32,7 +32,7 @@ const AddWaterModal = () => {
   const MAX_VALUE = 1500;
 
   const handleClick1 = () => {
-    if (counter > MIN_VALUE) {
+    if (counter - 50 >= MIN_VALUE) {
       setCounter(counter - 50);
       setIsSaveDisabled(counter - 50 === 0);
     }
@@ -46,7 +46,13 @@ const AddWaterModal = () => {
   };
 
   const handleInputChange = (event) => {
-    setCounter(Number(event.target.value));
+    let value = Number(event.target.value);
+    if (value < MIN_VALUE) {
+      value = MIN_VALUE;
+    } else if (value > MAX_VALUE) {
+      value = MAX_VALUE;
+    }
+    setCounter(value);
   };
 
   const handleTimeChange = (e) => {
@@ -65,10 +71,6 @@ const AddWaterModal = () => {
       })
     );
     dispatch(closeModals());
-
-    // setCurrentTime(
-    //   new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-    // );
   };
 
   return (
@@ -111,7 +113,9 @@ const AddWaterModal = () => {
             step="10"
             id="ml"
             name="ml"
-            value={counter}
+            value={counter === 0 ? '' : counter}
+            min={0}
+            max={1500}
             onChange={handleInputChange}
           />
         </label>
