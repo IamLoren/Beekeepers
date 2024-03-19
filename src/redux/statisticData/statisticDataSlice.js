@@ -19,6 +19,9 @@ export const statisticDataSlice = createSlice({
     selectedItem: null,
   },
   reducers: {
+    changemonthlyPortions: (state, { payload }) => {
+      state.monthlyPortions = payload;
+    },
     // addPortion: (state, { payload }) => {
     //   state.portions.push(payload);
     // },
@@ -99,4 +102,5 @@ export const statisticDataReducer = statisticDataSlice.reducer;
 export const {
   // addPortion, editPortion, deletePortion,
   changeSelectedItem,
+  changemonthlyPortions,
 } = statisticDataSlice.actions;
