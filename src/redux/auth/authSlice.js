@@ -15,6 +15,7 @@ export const authSlice = createSlice({
       name: '',
       gender: '',
       avatarURL: '',
+      registrationDate: '',
     },
     token: '',
     isLogged: false,
@@ -27,11 +28,16 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(registerThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.user.email = payload.email;
+
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // +1, оскільки місяці в JavaScript нумеруються з 0
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        state.user.registrationDate = `${year}.${month}.${day}`;
       })
       .addCase(registerThunk.rejected, (state) => {
         toast.error('Error! User exist!');
