@@ -12,6 +12,7 @@ import {
 import { fetchDailyPortionsThunk } from '../../redux/statisticData/operations';
 
 import {
+  NoPortionsText,
   TodayList,
   TodayListButton,
   TodayListTitle,
@@ -44,11 +45,20 @@ const TodayWaterList = () => {
   return (
     <div>
       <TodayListTitle>Today</TodayListTitle>
-      <TodayList>
-        {sortedPortions.map(({ _id, amount, time }) => (
-          <TodayListItem key={nanoid()} id={_id} amount={amount} time={time} />
-        ))}
-      </TodayList>
+      {portions.legth ? (
+        <TodayList>
+          {sortedPortions.map(({ _id, amount, time }) => (
+            <TodayListItem
+              key={nanoid()}
+              id={_id}
+              amount={amount}
+              time={time}
+            />
+          ))}
+        </TodayList>
+      ) : (
+        <NoPortionsText>No notes yet</NoPortionsText>
+      )}
       <TodayListButton onClick={onAddPortionClick}>
         <svg width={16} height={16}>
           <use href={sprite + '#icon-plus-small'}></use>
