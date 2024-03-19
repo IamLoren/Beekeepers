@@ -45,7 +45,7 @@ const TodayWaterList = () => {
   return (
     <div>
       <TodayListTitle>Today</TodayListTitle>
-      {portions.legth ? (
+      {portions.legth !== 0 ? (
         <TodayList>
           {sortedPortions.map(({ _id, amount, time }) => (
             <TodayListItem
