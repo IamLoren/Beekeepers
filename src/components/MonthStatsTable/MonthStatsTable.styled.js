@@ -40,5 +40,5 @@ justify-content: space-between;
   `
 
   export const Styledcircle = styled.div`
-    border: 1px solid green;
+    border: 1px solid transparent;
   `

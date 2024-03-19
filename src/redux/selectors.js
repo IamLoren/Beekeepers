@@ -37,3 +37,4 @@ export const selectToken = (state) => state.authSlice.token;
 
 
 export const selectMonthData = (state) => state.statisticDataSlice.monthlyPortions;
+export const selectDataOfRegistration = (state) => state.authSlice.user.registrationDate;
