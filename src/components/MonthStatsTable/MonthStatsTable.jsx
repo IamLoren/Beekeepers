@@ -13,7 +13,7 @@ import {
 import { useSelector } from 'react-redux';
 import {selectDataOfRegistration, selectMonthData } from '../../redux/selectors';
 import {fetchMonthlyPortionsThunk} from '../../redux/statisticData/operations.js';
-import { convertCalendarMonth} from '../../serviceFunctions/serviceFunctions.js';
+import { convertCalendarMonth, convertDate} from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
 const CustomTile = () => {
@@ -56,8 +56,10 @@ const MonthStatsTable = () => {
   const [currentMonth, setCurrentMonth] = useState('');
   const [tooltipContent, setTooltipContent] = useState([]);
   const monthData = useSelector(selectMonthData);
+  console.log(monthData);
   const registration = useSelector(selectDataOfRegistration);
-  const userRegistration = new Date(registration);
+  const formattedRegistration = convertDate(registration);
+  const userRegistration = new Date(formattedRegistration);
  
   function changeMonth(){
     const currentMonthLabel = document.querySelector(".react-calendar__navigation__label__labelText").textContent;
@@ -118,7 +120,7 @@ useEffect(() => {
 const [dailyNormaForTooltip, setdailyNormaForTooltip] = useState('')
   useEffect(() => {
      const DataForTootip = () => {
-    const day = monthData?.find(d => d.day === number);
+    const day = monthData.length > 0 ? monthData.filter(d => d.day === number) : null;
     setdailyNormaForTooltip(day?.dailyNorma ? day.dailyNorma : '0' )
 }
 DataForTootip()
