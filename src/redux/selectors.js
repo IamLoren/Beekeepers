@@ -35,6 +35,10 @@ export const selectPortionsAmount = (state) =>
 export const selectUser = (state) => state.authSlice.user;
 export const selectToken = (state) => state.authSlice.token;
 
+export const selectMonthData = (state) =>
+  state.statisticDataSlice.monthlyPortions;
+export const selectDataOfRegistration = (state) =>
+  state.authSlice.user.registrationDate;
 
-export const selectMonthData = (state) => state.statisticDataSlice.monthlyPortions;
-export const selectDataOfRegistration = (state) => state.authSlice.user.registrationDate;
+export const selectIsLoading = (state) => state.authSlice.isLoading;
+export const selectIsRefresh = (state) => state.authSlice.isRefresh;
