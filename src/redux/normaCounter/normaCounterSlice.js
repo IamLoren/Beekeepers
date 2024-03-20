@@ -16,6 +16,11 @@ export const normaCounterSlice = createSlice({
     changeDailyNorma: (state, { payload }) => {
       state.dailyNorma = payload.dailyWaterNorma;
     },
+    clearNormaCounterData: (state) => {
+      state.dailyNorma = 1500;
+      state.isLoading = false;
+      state.isError = null;
+    },
   },
 
   extraReducers: (builder) => {
@@ -37,4 +42,5 @@ export const normaCounterSlice = createSlice({
 });
 
 export const counterReducer = normaCounterSlice.reducer;
-export const { changeDailyNorma } = normaCounterSlice.actions;
+export const { changeDailyNorma, clearNormaCounterData } =
+  normaCounterSlice.actions;
