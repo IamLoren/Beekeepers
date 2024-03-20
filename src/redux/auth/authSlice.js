@@ -52,8 +52,7 @@ export const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.gender = payload.user.gender;
         // state.user.avatarURL = payload.user.avatarURL;
-        state.user.registrationDate = payload.user.date;
-
+        state.user.registrationDate = payload.user.createdAt;
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
