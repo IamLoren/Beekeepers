@@ -30,8 +30,8 @@ import { toast } from 'react-toastify';
 const validationDailyNormaModalSchema = Yup.object({
   weight: Yup.number('Weight value must be a number')
     .typeError('Weight must be a number')
-    .min(1, 'Weight must be greater than or equal to 1')
-    .required('Weight is required'),
+    .min(1, 'Weight must be greater than or equal to 1'),
+  // .required('Weight is required'),
   time: Yup.number()
     .typeError('Time value must be a number')
     .max(24, 'Time must not be greater than 24')
