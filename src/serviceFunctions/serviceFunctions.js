@@ -31,7 +31,5 @@ export const convertCalendarMonth = (monthYear) => {
 };
 
 export const convertDate = (date) => {
-    const parts = date.split('-');
-    const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-    return formattedDate;
+  console.log(date.substring(0, 10)) 
 };
