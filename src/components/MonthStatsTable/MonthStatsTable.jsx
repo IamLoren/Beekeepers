@@ -120,7 +120,7 @@ useEffect(() => {
 const [dailyNormaForTooltip, setdailyNormaForTooltip] = useState('')
   useEffect(() => {
      const DataForTootip = () => {
-    const day = monthData.length > 0 ? monthData.filter(d => d.day === number) : null;
+    const day = (monthData.isArray && monthData.length > 0) && monthData.filter(d => d.day === number);
     setdailyNormaForTooltip(day?.dailyNorma ? day.dailyNorma : '0' )
 }
 DataForTootip()
@@ -129,7 +129,7 @@ DataForTootip()
   const [countPortionsForTooltip, setcountPortionsForTooltip] = useState('')
   useEffect(() => {
      const DataForTootip = () => {
-    const day = monthData?.find(d => d.day === number);
+    const day = (monthData.isArray && monthData.length > 0) && monthData?.find(d => d.day === number);
     setcountPortionsForTooltip(day?.portionsCount ? day.portionsCount : '0' )
 }
 DataForTootip()
@@ -138,7 +138,7 @@ DataForTootip()
   const [percentForTooltip, setPercentForTooltip] = useState('')
   useEffect(() => {
      const DataForTootip = () => {
-    const day = monthData?.find(d => d.day === number);
+    const day = (monthData.isArray && monthData.length > 0) && monthData?.find(d => d.day === number);
     setPercentForTooltip(day?.portionsCount ? day.portionsCount : '0' )
 }
 DataForTootip()
