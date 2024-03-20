@@ -7,50 +7,62 @@ import HomePage from './pages/HomePage/HomePage';
 import SignUpPage from './pages/SignUpPage/SignUpPage.jsx';
 import PublicRoute from './routesConfig/PublicRoute.jsx';
 import PrivateRoute from './routesConfig/PrivateRoute.jsx';
+import { selectIsRefresh } from './redux/selectors.js';
+import Loader from './components/Loader/Loader.jsx';
+import { useSelector } from 'react-redux';
+import { selectIsLoading } from './redux/Global/selectors.jsx';
 
 const test = import.meta.env.VITE_API_TEST;
 
 function App() {
   console.log(test);
-  return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
+  const isRefresh = useSelector(selectIsRefresh);
+  const isLoading = useSelector(selectIsLoading);
+
+  return isRefresh ? (
+    <Loader visible={isLoading} />
+  ) : (
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route
+            index
+            element={
+              <PublicRoute>
+                <WelcomePage />
+              </PublicRoute>
+            }
+          />
+          <Route path="/welcome" element={<WelcomePage />} />
+          <Route
+            path="/home"
+            element={
+              <PrivateRoute>
+                <HomePage />
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
         <Route
-          index
+          path="/signin"
           element={
             <PublicRoute>
-              <WelcomePage />
+              <SignInPage />
             </PublicRoute>
           }
         />
-        <Route path="/welcome" element={<WelcomePage />} />
         <Route
-          path="/home"
+          path="/signup"
           element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
+            <PublicRoute>
+              <SignUpPage />
+            </PublicRoute>
           }
         />
-        <Route path="*" element={<ErrorPage />} />
-      </Route>
-      <Route
-        path="/signin"
-        element={
-          <PublicRoute>
-            <SignInPage />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path="/signup"
-        element={
-          <PublicRoute>
-            <SignUpPage />
-          </PublicRoute>
-        }
-      />
-    </Routes>
+      </Routes>
+      <Loader visible={isLoading} />
+    </>
   );
 }
 export default App;
