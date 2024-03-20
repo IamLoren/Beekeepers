@@ -1,8 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deletePortionThunk } from '../../redux/statisticData/operations';
+import {
+  deletePortionThunk,
+  fetchDailyPortionsThunk,
+} from '../../redux/statisticData/operations';
 import { selectSelectedItem } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
+import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
 
 import {
   ButtonDelete,
@@ -18,6 +22,8 @@ const DeleteModal = () => {
 
   const onDeleteClick = () => {
     dispatch(deletePortionThunk(selectedItem.id));
+    const today = new Date();
+    dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
     dispatch(closeModals());
   };
 
