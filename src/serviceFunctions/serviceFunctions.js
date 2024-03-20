@@ -1,7 +1,7 @@
 export const convertCalendarMonth = (monthYear) => {
   const [monthName, year] = monthYear.split(' ');
-  console.log(monthName)
-  const date = monthName.toLowerCase().trim()
+  const date = monthName.toLowerCase().trim();
+  console.log(date)
   switch (date) {
     case 'january':
       return `01-01-${year}`;
