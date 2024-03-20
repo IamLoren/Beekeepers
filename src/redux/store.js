@@ -31,7 +31,7 @@ const counterPersistConfig = {
 const dataPersistConfig = {
   key: 'data',
   storage,
-  whitelist: ['portions'],
+  whitelist: ['portions', 'dailyPortions', 'monthlyPortions'],
 };
 
 const modalsPersistConfig = {
