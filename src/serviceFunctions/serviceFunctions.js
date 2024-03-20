@@ -1,6 +1,8 @@
 export const convertCalendarMonth = (monthYear) => {
   const [monthName, year] = monthYear.split(' ');
-  switch (monthName.toLowerCase()) {
+  const date = monthName.toLowerCase().trim();
+  console.log(date);
+  switch (date) {
     case 'january':
       return `01-01-${year}`;
     case 'february':
@@ -31,7 +33,8 @@ export const convertCalendarMonth = (monthYear) => {
 };
 
 export const convertDate = (date) => {
-  console.log(date.substring(0, 10));
+  const [year, month, day] = date.split('-');
+  return `${day}-${month}-${year}`;
 };
 
 export const formingTodayDate = (today) => {
