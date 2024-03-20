@@ -33,9 +33,9 @@ export const loginThunk = createAsyncThunk(
       const response = await api.post('api/auth/login', credentials);
       setToken(response.data.token);
       console.log(response.data.token);
-
       return response.data;
     } catch (error) {
+      toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
