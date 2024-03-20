@@ -80,9 +80,9 @@ const MonthStatsTable = () => {
       if (currentMonthLabel) {
         setCurrentMonth(currentMonthLabel);
         console.log(currentMonth)
-        const date = convertDate(currentMonth);
-        console.log(date);
         try {
+          const date = convertCalendarMonth(currentMonth);
+        console.log(date);
           const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));
           dispatch(changemonthlyPortions(payload));
         } catch (error) {
