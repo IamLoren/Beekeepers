@@ -65,7 +65,6 @@ const MonthStatsTable = () => {
   const registration = useSelector(selectDataOfRegistration);
   const formattedDate = convertDate(registration);
   const userRegistration = new Date(formattedDate);
-console.log(registration);
   function changeMonth() {
     const currentMonthLabel = document.querySelector(
       '.react-calendar__navigation__label__labelText'
@@ -80,7 +79,8 @@ console.log(registration);
       ).textContent;
       if (currentMonthLabel) {
         setCurrentMonth(currentMonthLabel);
-        const date = convertCalendarMonth(currentMonth);
+        console.log(currentMonth)
+        const date = convertDate(currentMonth);
         console.log(date);
         try {
           const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));
