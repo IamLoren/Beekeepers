@@ -26,6 +26,15 @@ export const statisticDataSlice = createSlice({
     changeSelectedDay: (state, { payload }) => {
       state.selectedDay = payload;
     },
+    clearStatisticData: (state) => {
+      state.portions = [];
+      state.dailyPortions = [];
+      state.monthlyPortions = [];
+      state.isLoading = false;
+      state.isError = null;
+      state.selectedItem = null;
+      state.selectedDay = {};
+    },
     // addPortion: (state, { payload }) => {
     //   state.portions.push(payload);
     // },
@@ -107,4 +116,5 @@ export const {
   // addPortion, editPortion, deletePortion,
   changeSelectedItem,
   changemonthlyPortions,
+  clearStatisticData,
 } = statisticDataSlice.actions;
