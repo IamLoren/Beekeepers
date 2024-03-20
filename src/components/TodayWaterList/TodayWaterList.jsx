@@ -31,7 +31,7 @@ const TodayWaterList = () => {
 
   useEffect(() => {
     dispatch(fetchDailyPortionsThunk(formattedDate));
-  }, [dispatch, allPortions, formattedDate]);
+  }, [dispatch, formattedDate]);
 
   const sortedPortions = [...dailyPortions].sort((a, b) => {
     const timeA = new Date(`1970/01/01 ${a.time}`).getTime();
