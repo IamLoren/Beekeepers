@@ -16,7 +16,7 @@ export const statisticDataSlice = createSlice({
     monthlyPortions: [],
     isLoading: false,
     isError: null,
-    selectedItem: null,
+    selectedItem: {},
     selectedDay: {},
   },
   reducers: {

@@ -31,5 +31,13 @@ export const convertCalendarMonth = (monthYear) => {
 };
 
 export const convertDate = (date) => {
-  console.log(date.substring(0, 10)) 
+  console.log(date.substring(0, 10));
+};
+
+export const formingTodayDate = (today) => {
+  const day = String(today.getDate()).padStart(2, '0');
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const year = today.getFullYear();
+  const formattedDate = `${day}-${month}-${year}`;
+  return formattedDate;
 };

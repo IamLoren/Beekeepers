@@ -1,9 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPortionThunk } from '../../redux/statisticData/operations';
+
+import sprite from '../../assets/sprite.svg';
+import {
+  addPortionThunk,
+  fetchDailyPortionsThunk,
+} from '../../redux/statisticData/operations';
 import { closeModals } from '../../redux/modals/modalsSlice';
 import { selectDailyNorma } from '../../redux/selectors';
-import sprite from '../../assets/sprite.svg';
+import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
+
 import {
   StyledAddModalInput,
   StyledAddWater,
@@ -70,6 +76,8 @@ const AddWaterModal = () => {
         consumeRatio,
       })
     );
+    const today = new Date();
+    dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
     dispatch(closeModals());
   };
 

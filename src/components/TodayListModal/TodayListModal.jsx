@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import sprite from '../../assets/sprite.svg';
-import { updatePortionThunk } from '../../redux/statisticData/operations';
-import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
-import { closeModals } from '../../redux/modals/modalsSlice';
-
 import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+
+import sprite from '../../assets/sprite.svg';
+import {
+  fetchDailyPortionsThunk,
+  updatePortionThunk,
+} from '../../redux/statisticData/operations';
+import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
+import { closeModals } from '../../redux/modals/modalsSlice';
 import { LocalizationProvider } from '@mui/x-date-pickers';
+import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
 
 import {
   AmountText,
@@ -75,6 +78,8 @@ const TodayListModal = () => {
         consumeRatio,
       })
     );
+    const today = new Date();
+    dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
     dispatch(closeModals());
   };
 
