@@ -4,6 +4,7 @@ import {
   logoutThunk,
   refreshThunk,
   registerThunk,
+  updateUserThunk,
 } from './operations.js';
 import { toast } from 'react-toastify';
 
@@ -64,6 +65,22 @@ export const authSlice = createSlice({
       })
       .addCase(loginThunk.pending, (state) => {
         state.isLoading = true;
+      })
+      .addCase(updateUserThunk.fulfilled, (state, { payload }) => {
+        state.user.name = payload.user.name;
+        state.user.email = payload.user.email;
+        state.user.gender = payload.user.gender;
+        state.user.avatarURL = payload.user.avatarURL;
+        state.isLoading = false;
+        state.isError = null;
+      })
+      .addCase(updateUserThunk.pending, (state) => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addCase(updateUserThunk.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = payload;
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.user.name = payload.user.name;

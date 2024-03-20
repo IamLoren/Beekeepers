@@ -52,11 +52,25 @@ export const logoutThunk = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       await api.post('api/auth/logout');
-      localStorage.removeItem('auth', 'counter', 'data');
+      localStorage.removeItem('auth');
+      localStorage.removeItem('counter');
+      localStorage.removeItem('data');
       clearToken();
     } catch (error) {
       toast.error(error.message);
       return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUserThunk = createAsyncThunk(
+  'auth/update',
+  async (newUserData, ThunkAPI) => {
+    try {
+      const { data } = await api.patch(`api/auth/update`, newUserData);
+      return data;
+    } catch (error) {
+      return ThunkAPI.rejectWithValue(error.message);
     }
   }
 );
