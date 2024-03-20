@@ -8,7 +8,9 @@ export const fetchPortionsThunk = createAsyncThunk(
   'fetchPortions',
   async (_, thunkAPI) => {
     try {
-      const { data } = await api.get('/api/portions');
+      const { data } = await api.get('/api/portions', {
+        credentials: 'include'
+      });
       return data;
     } catch (error) {
       toast.error(error.message);
@@ -24,7 +26,9 @@ export const fetchDailyPortionsThunk = createAsyncThunk(
   'fetchDailyPortions',
   async (date, thunkAPI) => {
     try {
-      const { data } = await api.get(`/api/portions/today/${date}`);
+      const { data } = await api.get(`/api/portions/today/${date}`, {
+        credentials: 'include'
+      });
       return data;
     } catch (error) {
       toast.error(error.message);
@@ -40,7 +44,9 @@ export const fetchMonthlyPortionsThunk = createAsyncThunk(
   'fetchMonthlyPortions',
   async (date, thunkAPI) => {
     try {
-      const { data } = await api.get(`/api/portions/month/${date}`);
+      const { data } = await api.get(`/api/portions/month/${date}`, {
+        credentials: 'include'
+      });
       return data;
     } catch (error) {
       toast.error(error.message);

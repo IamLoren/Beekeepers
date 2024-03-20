@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -11,9 +11,15 @@ import {
   Styledcircle,
 } from './MonthStatsTable.styled';
 import { useSelector } from 'react-redux';
-import {selectDataOfRegistration, selectMonthData } from '../../redux/selectors';
-import {fetchMonthlyPortionsThunk} from '../../redux/statisticData/operations.js';
-import { convertCalendarMonth, convertDate} from '../../serviceFunctions/serviceFunctions.js';
+import {
+  selectDataOfRegistration,
+  selectMonthData,
+} from '../../redux/selectors';
+import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
+import {
+  convertCalendarMonth,
+  convertDate,
+} from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
 const CustomTile = () => {
@@ -60,44 +66,53 @@ const MonthStatsTable = () => {
   const registration = useSelector(selectDataOfRegistration);
   const formattedRegistration = convertDate(registration);
   const userRegistration = new Date(formattedRegistration);
- 
-  function changeMonth(){
-    const currentMonthLabel = document.querySelector(".react-calendar__navigation__label__labelText").textContent;
+
+  function changeMonth() {
+    const currentMonthLabel = document.querySelector(
+      '.react-calendar__navigation__label__labelText'
+    ).textContent;
     setCurrentMonth(currentMonthLabel);
   }
 
-useEffect(() => {
-  const fetchData = async () => {
-    const currentMonthLabel = document.querySelector(".react-calendar__navigation__label__labelText").textContent;
-    if (currentMonthLabel) {
-     setCurrentMonth(currentMonthLabel);
-      const date = convertCalendarMonth(currentMonth);
-      try {
-        const {payload} = await dispatch(fetchMonthlyPortionsThunk(date));
-       dispatch(changemonthlyPortions(payload))
-      } catch (error) {
-        console.error('Error fetching data:', error);
+  useEffect(() => {
+    const fetchData = async () => {
+      const currentMonthLabel = document.querySelector(
+        '.react-calendar__navigation__label__labelText'
+      ).textContent;
+      if (currentMonthLabel) {
+        setCurrentMonth(currentMonthLabel);
+        const date = convertCalendarMonth(currentMonth);
+        try {
+          const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));
+          dispatch(changemonthlyPortions(payload));
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
       }
-    }
-  };
+    };
 
     fetchData();
-  
-  }, [currentMonth, dispatch])
-  
+  }, [currentMonth, dispatch]);
+
   useEffect(() => {
-    const navigationButtons = document.querySelectorAll(".react-calendar__navigation__arrow");
-    navigationButtons.forEach(button => button.addEventListener("click", changeMonth));
+    const navigationButtons = document.querySelectorAll(
+      '.react-calendar__navigation__arrow'
+    );
+    navigationButtons.forEach((button) =>
+      button.addEventListener('click', changeMonth)
+    );
 
     return () => {
-      navigationButtons.forEach(button => button.removeEventListener("click", changeMonth));
+      navigationButtons.forEach((button) =>
+        button.removeEventListener('click', changeMonth)
+      );
     };
   }, []);
 
   const tiles = document.querySelectorAll('.react-calendar__tile');
   tiles.forEach((button) => {
     button.setAttribute('data-tooltip-id', 'my-tooltip');
-    const content = button.querySelector("abbr").textContent;
+    const content = button.querySelector('abbr').textContent;
     button.setAttribute('data-tip', `${content}`);
   });
 
@@ -107,7 +122,9 @@ useEffect(() => {
       const number = button.querySelector('abbr').textContent;
       const date = button.querySelector('abbr').getAttribute('aria-label');
       // button.setAttribute('data-tip', [number, date]);
-      button.addEventListener('mouseenter', () => setTooltipContent([number, date]));
+      button.addEventListener('mouseenter', () =>
+        setTooltipContent([number, date])
+      );
       button.addEventListener('mouseleave', () => setTooltipContent(''));
     });
   }, []);
@@ -117,39 +134,27 @@ useEffect(() => {
   }
 
   const [number, date] = tooltipContent;
-const [dailyNormaForTooltip, setdailyNormaForTooltip] = useState('')
+  const [dailyNormaForTooltip, setdailyNormaForTooltip] = useState('');
+  const [countPortionsForTooltip, setcountPortionsForTooltip] = useState('');
+  const [percentForTooltip, setPercentForTooltip] = useState('');
   useEffect(() => {
-     const DataForTootip = () => {
-    const day = (monthData.isArray && monthData.length > 0) && monthData.filter(d => d.day === number);
-    setdailyNormaForTooltip(day?.dailyNorma ? day.dailyNorma : '0' )
-}
-DataForTootip()
-  })
-
-  const [countPortionsForTooltip, setcountPortionsForTooltip] = useState('')
-  useEffect(() => {
-     const DataForTootip = () => {
-    const day = (monthData.isArray && monthData.length > 0) && monthData?.find(d => d.day === number);
-    setcountPortionsForTooltip(day?.portionsCount ? day.portionsCount : '0' )
-}
-DataForTootip()
-  })
-
-  const [percentForTooltip, setPercentForTooltip] = useState('')
-  useEffect(() => {
-     const DataForTootip = () => {
-    const day = (monthData.isArray && monthData.length > 0) && monthData?.find(d => d.day === number);
-    setPercentForTooltip(day?.portionsCount ? day.portionsCount : '0' )
-}
-DataForTootip()
-  })
+    const DataForTootip = () => {
+      const day =
+        monthData.isArray &&
+        monthData.length > 0 &&
+        monthData.filter((d) => d.day === number);
+      setdailyNormaForTooltip(day?.dailyNorma ? day.dailyNorma : '0');
+      setcountPortionsForTooltip(day?.portionsCount ? day.portionsCount : '0');
+      setPercentForTooltip(day?.portionsCount ? day.portionsCount : '0');
+    };
+    DataForTootip();
+  });
 
   return (
     <CalendarWrapper>
       <StyledTitle>Month</StyledTitle>
       <Calendar
         onChange={onChange}
-
         views={['month', 'tenDays']}
         tileWidth={40}
         value={value}
