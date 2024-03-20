@@ -27,12 +27,12 @@ function handlePending(state) {
 
 function handleFulfilled(state) {
   state.isLoading = false;
-  state.error = null;
+  state.isError = null;
 }
 
 function handleRejected(state, { payload }) {
   state.isLoading = false;
-  state.error = payload;
+  state.isError = payload;
 }
 
 const globalSlice = createSlice({
