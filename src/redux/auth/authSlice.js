@@ -58,6 +58,9 @@ export const authSlice = createSlice({
         state.user = {
           email: '',
           name: '',
+          gender: '',
+          avatarURL: '',
+          registrationDate: '',
         };
         state.token = '';
         state.isLogged = false;
