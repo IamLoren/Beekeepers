@@ -14,6 +14,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { modalsReducer } from './modals/modalsSlice.js';
+import { globalReducer } from './Global/globalSlice.jsx';
 
 const authPersistConfig = {
   key: 'auth',
@@ -31,11 +32,16 @@ const counterPersistConfig = {
 const dataPersistConfig = {
   key: 'data',
   storage,
-  whitelist: ['portions'],
+  whitelist: ['portions', 'dailyPortions', 'monthlyPortions'],
 };
 
 const modalsPersistConfig = {
   key: 'modals',
+  storage,
+  whitelist: [],
+};
+const globalPersistConfig = {
+  key: 'global',
   storage,
   whitelist: [],
 };
@@ -53,6 +59,10 @@ const persistedModalsReducer = persistReducer(
   modalsPersistConfig,
   modalsReducer
 );
+const persistedGlobalReducer = persistReducer(
+  globalPersistConfig,
+  globalReducer
+);
 
 export const store = configureStore({
   reducer: {
@@ -60,6 +70,7 @@ export const store = configureStore({
     normaCounterSlice: persistedCounterReducer,
     statisticDataSlice: persistedDataReducer,
     modalsSlice: persistedModalsReducer,
+    globalSlice: persistedGlobalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

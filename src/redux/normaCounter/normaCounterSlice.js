@@ -1,14 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { updateWaterRateThunk } from './operations';
-// import { selectIsLogged } from '../selectors';
-// import { useSelector } from 'react-redux';
-
-// const isLogged = useSelector(selectIsLogged);
 
 export const normaCounterSlice = createSlice({
   name: 'counter',
   initialState: {
-    dailyNorma: 1500,
+    dailyNorma: 0,
     isLoading: false,
     isError: null,
   },
@@ -31,7 +27,6 @@ export const normaCounterSlice = createSlice({
       })
       .addCase(updateWaterRateThunk.pending, (state) => {
         state.isLoading = true;
-
         state.isError = null;
       })
       .addCase(updateWaterRateThunk.rejected, (state, { payload }) => {
