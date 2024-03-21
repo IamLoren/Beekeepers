@@ -1,21 +1,16 @@
-import {
-  // useCallback,
-  useEffect,
-} from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import sprite from '../../assets/sprite.svg';
-import {
-  selectDailyPortions,
-  // , selectPortions
-} from '../../redux/selectors';
+import { selectDailyPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
 import {
   changeAddModal,
   changeModalOpen,
 } from '../../redux/modals/modalsSlice';
 import { fetchDailyPortionsThunk } from '../../redux/statisticData/operations';
+import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
 
 import {
   NoPortionsText,
@@ -23,11 +18,9 @@ import {
   TodayListButton,
   TodayListTitle,
 } from './TodayWaterList.styled';
-import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
-  // const allPortions = useSelector(selectPortions);
   const dailyPortions = useSelector(selectDailyPortions);
 
   useEffect(() => {
