@@ -1,9 +1,23 @@
-import {StyledFullPage, StyledContainer, StyledLeftWrapper, StyledTitle1, StyledTitle2, StyledLeftTitle3, StyledLeftList, StyledLeftItem, StyledSvg, StyledButton, StyledRightWrapper, StyledRightTitle3, StyledRightList, StyledRightItem} from './WelcomePage.styled'
 import { useNavigate } from 'react-router-dom'
 import sprite from '../../assets/sprite.svg'
 
-const WelcomePage = () => {
+import {
+  StyledSvg,
+  StyledFullPage,
+  StyledLeftItem,
+  WelcomeLiSpan,
+  StyledButton,
+  StyledLeftList,
+  StyledRightWrapper,
+  StyledRightItem,
+  StyledRightList,
+  StyledTitle1,
+  StyledTitle2,
+  StyledLeftTitle3,
+  StyledRightTitle3
+} from './WelcomePage.styled';
 
+const WelcomePage = () => {
 
   const navigate = useNavigate();
 
@@ -12,65 +26,65 @@ const WelcomePage = () => {
   }
 
 
-  return (
-   <StyledFullPage>
-    <StyledContainer>
-      <StyledLeftWrapper>
-        <StyledTitle1>Water consumption tracker</StyledTitle1>
-        <StyledTitle2>Record daily water intake and track</StyledTitle2>
-        <StyledLeftTitle3>Tracker Benefits</StyledLeftTitle3>
-        <StyledLeftList>
-          <StyledLeftItem>
+  return (    
+    <>
+      <StyledFullPage>
+        <div>
+          <StyledTitle1>Water consumption tracker</StyledTitle1>
+          <StyledTitle2>Record daily water intake and track</StyledTitle2>
+          <StyledLeftTitle3>Tracker Benefits</StyledLeftTitle3>
+          <StyledLeftList>
+            <StyledLeftItem>
             <StyledSvg>
               <use href={sprite + '#icon-calendar-day'}></use>
             </StyledSvg>
-              <p>Habit drive</p>
-          </StyledLeftItem>
-          <StyledLeftItem>
-          <StyledSvg>
+              <WelcomeLiSpan>Habit drive</WelcomeLiSpan>
+            </StyledLeftItem>
+            <StyledLeftItem>
+            <StyledSvg>
               <use href={sprite + '#icon-presentation-chart-bar'}></use>
             </StyledSvg>
-            <p>View statistics</p>
-          </StyledLeftItem>
-          <StyledLeftItem>
-          <StyledSvg>
+              <WelcomeLiSpan>View statistics</WelcomeLiSpan>
+            </StyledLeftItem>
+            <StyledLeftItem>
+            <StyledSvg>
               <use href={sprite + '#icon-wrench-screwdriver'}></use>
             </StyledSvg>
-            <p>Personal rate setting</p>
-          </StyledLeftItem>
-        </StyledLeftList>
-        <StyledButton onClick={handleClick}>Try tracker</StyledButton>
-      </StyledLeftWrapper>
-      <StyledRightWrapper>
-        <StyledRightTitle3>Why drink water</StyledRightTitle3>
-        <StyledRightList>
-          <StyledRightItem>
-            <p>Supply of nutrients to all organs</p>
-          </StyledRightItem>
-          <StyledRightItem>
-            <p>Providing oxygen to the lungs</p>
-          </StyledRightItem>
-          <StyledRightItem>
-            <p>Maintaining the work of the heart</p>
-          </StyledRightItem>
-          <StyledRightItem>
-            <p>Release of processed substances</p>
-          </StyledRightItem>
-          <StyledRightItem>
-            <p>Ensuring the stability of the internal environment</p>
-          </StyledRightItem>
-          <StyledRightItem>
-            <p>Maintaining within the normal temperature</p>
-          </StyledRightItem>
-          <StyledRightItem>
-            <p>Maintaining an immune system capable of resisting disease</p>
-          </StyledRightItem>
-        </StyledRightList>
-      </StyledRightWrapper>
-    </StyledContainer>
+              <WelcomeLiSpan>Personal rate setting</WelcomeLiSpan>
+            </StyledLeftItem>
+          </StyledLeftList>
 
-   </StyledFullPage>
-    )
-}
+          <StyledButton onClick={handleClick}>
+            Try tracker
+          </StyledButton>
+        </div>
+        <StyledRightWrapper>
+          <StyledRightTitle3>Why drink water</StyledRightTitle3>
+          <StyledRightList>
+            <StyledRightItem>
+              Supply of nutrients to all organs
+            </StyledRightItem>
+            <StyledRightItem>Providing oxygen to the lungs</StyledRightItem>
+            <StyledRightItem>
+              Maintaining the work of the heart
+            </StyledRightItem>
+            <StyledRightItem>
+              Release of processed substances
+            </StyledRightItem>
+            <StyledRightItem>
+              Ensuring the stability of the internal environment
+            </StyledRightItem>
+            <StyledRightItem>
+              Maintaining within the normal temperature
+            </StyledRightItem>
+            <StyledRightItem>
+              Maintaining an immune system capable of resisting disease
+            </StyledRightItem>
+          </StyledRightList>
+        </StyledRightWrapper>
+      </StyledFullPage>
+    </>
+  );
+};
 
 export default WelcomePage;
