@@ -146,6 +146,13 @@ input:-webkit-autofill:active {
     z-index: 10 !important;
     margin-top: 5px;
   }
+
+
+ .blue-toast .Toastify__close-button {
+    color: var(--secondary-text) !important;
+  }
+
+
 `;
 
 export default Global;

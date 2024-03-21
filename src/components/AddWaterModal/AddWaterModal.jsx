@@ -1,9 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addPortionThunk } from '../../redux/statisticData/operations';
-import { closeModals } from '../../redux/modals/modalsSlice';
-import { selectDailyNorma } from '../../redux/selectors';
+
 import sprite from '../../assets/sprite.svg';
+import {
+  addPortionThunk,
+  fetchDailyPortionsThunk,
+} from '../../redux/statisticData/operations';
+import { closeModals } from '../../redux/modals/modalsSlice';
+import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
+
+import dayjs from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+
+import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
+
 import {
   StyledAddModalInput,
   StyledAddWater,
@@ -17,11 +28,13 @@ import {
   StyledSaveBtn,
   StyledValueAndBtnContainer,
 } from './AddWaterModal.styled';
+import { StyledTimePicker } from '../TodayListModal/TodayListModal.styled';
 
 const AddWaterModal = () => {
   const dispatch = useDispatch();
 
   const dailyNorma = useSelector(selectDailyNorma) || 0;
+
   const [counter, setCounter] = useState(50);
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
@@ -55,10 +68,6 @@ const AddWaterModal = () => {
     setCounter(value);
   };
 
-  const handleTimeChange = (e) => {
-    setCurrentTime(e.target.value);
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
     const consumeRatio = dailyNorma / counter;
@@ -70,7 +79,30 @@ const AddWaterModal = () => {
         consumeRatio,
       })
     );
+    const today = new Date();
+    dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
     dispatch(closeModals());
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(dayjs().format('HH:mm'));
+    }, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const unformattedTime = new Date();
+  const year = unformattedTime.getFullYear();
+  const month = String(unformattedTime.getMonth() + 1).padStart(2, '0');
+  const day = String(unformattedTime.getDate()).padStart(2, '0');
+
+  const datetime = `${year}-${month}-${day}T${currentTime}`;
+
+  const onTimePickerChange = (value) => {
+    const formattedHour = String(value.$H).padStart(2, '0');
+    const formattedMinute = String(value.$m).padStart(2, '0');
+    const formattedValue = `${formattedHour}:${formattedMinute}`;
+    setSelectedTime(formattedValue);
   };
 
   return (
@@ -94,23 +126,24 @@ const AddWaterModal = () => {
             </StyledCounterBtn>
           </StyledCounterContainer>
         </div>
-        <label htmlFor="time">
+        <div>
           <StyledModalText>Recording time:</StyledModalText>
-          <StyledAddModalInput
-            type="text"
-            id="time"
-            name="time"
-            value={currentTime}
-            onChange={handleTimeChange}
-          />
-        </label>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <StyledTimePicker
+              ampm={false}
+              disableFuture={true}
+              minutesStep={5}
+              value={dayjs(datetime)}
+              onChange={(value) => onTimePickerChange(value)}
+            />
+          </LocalizationProvider>
+        </div>
         <label htmlFor="ml">
           <StyledModalBoldText>
             Enter the value of the water used:
           </StyledModalBoldText>
           <StyledAddModalInput
             type="number"
-            step="10"
             id="ml"
             name="ml"
             value={counter === 0 ? '' : counter}
