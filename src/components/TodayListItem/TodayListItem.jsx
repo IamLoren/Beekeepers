@@ -15,22 +15,14 @@ import {
   TimeText,
   ButtonsWrapper,
 } from './TodayListItem.styled';
-import { fetchDailyPortionsThunk } from '../../redux/statisticData/operations';
 
 const TodayListItem = ({ id, amount, time }) => {
   const dispatch = useDispatch();
-
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, '0');
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const year = today.getFullYear();
-  const formattedDate = `${day}-${month}-${year}`;
 
   const onEditPortionClick = () => {
     dispatch(changeSelectedItem({ id, amount, time }));
     dispatch(changeModalOpen(true));
     dispatch(changeEditPortionModal(true));
-    dispatch(fetchDailyPortionsThunk(formattedDate));
   };
 
   const onDeletePortionClick = () => {
