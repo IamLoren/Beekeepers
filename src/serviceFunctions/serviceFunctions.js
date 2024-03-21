@@ -1,7 +1,14 @@
 export const convertCalendarMonth = (monthYear) => {
   const [monthName, year] = monthYear.split(' ');
   const date = monthName.toLowerCase().trim();
-  console.log(date);
+
+  const currentDate = new Date();
+  let currentDay = currentDate.getDate();
+  let currentMonth = currentDate.getMonth() + 1; 
+  const currentYear = currentDate.getFullYear();
+  currentDay = currentDay < 10 ? '0' + currentDay : currentDay;
+currentMonth = currentMonth < 10 ? '0' + currentMonth : currentMonth;
+
   switch (date) {
     case 'january':
       return `01-01-${year}`;
@@ -28,7 +35,7 @@ export const convertCalendarMonth = (monthYear) => {
     case 'december':
       return `01-12-${year}`;
     default:
-      return 'Invalid month name';
+      return (currentDay + '-' + currentMonth + '-' + currentYear);
   }
 };
 
