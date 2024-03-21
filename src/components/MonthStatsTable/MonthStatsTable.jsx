@@ -17,7 +17,7 @@ import {
 } from '../../redux/selectors';
 import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
 import {
-  convertCalendarMonth, convertDate,
+  convertCalendarMonth
 } from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
@@ -63,8 +63,8 @@ const MonthStatsTable = () => {
   const monthData = useSelector(selectMonthData);
   
   const registration = useSelector(selectDataOfRegistration);
-  const formattedDate = convertDate(registration);
-  const userRegistration = new Date(formattedDate);
+  const userRegistration = new Date(registration);
+
   function changeMonth() {
     const currentMonthLabel = document.querySelector(
       '.react-calendar__navigation__label__labelText'

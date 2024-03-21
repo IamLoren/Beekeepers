@@ -32,7 +32,6 @@ export const loginThunk = createAsyncThunk(
     try {
       const response = await api.post('api/auth/login', credentials);
       setToken(response.data.token);
-      console.log(response.data.token);
       return response.data;
     } catch (error) {
       toast.error(error.message);
