@@ -72,27 +72,32 @@ const MonthStatsTable = () => {
     setCurrentMonth(currentMonthLabel);
   }
 
+  const [lastMonthLabel, setLastMonthLabel] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       const currentMonthLabel = document.querySelector(
         '.react-calendar__navigation__label__labelText'
       ).textContent;
-      if (currentMonthLabel) {
+      if (currentMonthLabel && currentMonthLabel !== lastMonthLabel) {
         setCurrentMonth(currentMonthLabel);
-        console.log(currentMonth)
+        console.log(currentMonth);
         try {
           const date = convertCalendarMonth(currentMonth);
-        console.log(date);
+          console.log(date);
           const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));
           dispatch(changemonthlyPortions(payload));
+          setLastMonthLabel(currentMonthLabel); // Оновлюємо останній місяць
         } catch (error) {
           console.error('Error fetching data:', error);
         }
       }
     };
-
+  
     fetchData();
-  }, [currentMonth, dispatch]);
+  
+  }, [dispatch, currentMonth, lastMonthLabel]);
+
 
   useEffect(() => {
     const navigationButtons = document.querySelectorAll(
