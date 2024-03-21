@@ -17,7 +17,7 @@ import {
 } from '../../redux/selectors';
 import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
 import {
-  convertCalendarMonth, convertDate,
+  convertCalendarMonth
 } from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
