@@ -1,15 +1,16 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
 
 import sprite from '../../assets/sprite.svg';
-import { selectDailyPortions, selectPortions } from '../../redux/selectors';
+import { selectDailyPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
 import {
   changeAddModal,
   changeModalOpen,
 } from '../../redux/modals/modalsSlice';
 import { fetchDailyPortionsThunk } from '../../redux/statisticData/operations';
+import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
 
 import {
   NoPortionsText,
@@ -20,18 +21,12 @@ import {
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
-  const allPortions = useSelector(selectPortions);
   const dailyPortions = useSelector(selectDailyPortions);
 
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, '0');
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const year = today.getFullYear();
-  const formattedDate = `${day}-${month}-${year}`;
-
   useEffect(() => {
-    dispatch(fetchDailyPortionsThunk(formattedDate));
-  }, [dispatch, formattedDate]);
+    const today = new Date();
+    dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
+  }, [dispatch]);
 
   const sortedPortions = [...dailyPortions].sort((a, b) => {
     const timeA = new Date(`1970/01/01 ${a.time}`).getTime();
@@ -44,26 +39,13 @@ const TodayWaterList = () => {
     dispatch(changeAddModal(true));
   };
 
-  const fetchDailyPortions = useCallback(() => {
-    dispatch(fetchDailyPortionsThunk(formattedDate));
-  }, [dispatch, formattedDate]);
-
-  useEffect(() => {
-    fetchDailyPortions();
-  }, [fetchDailyPortions, allPortions]);
-
   return (
     <div>
       <TodayListTitle>Today</TodayListTitle>
-      {dailyPortions.legth !== 0 ? (
+      {dailyPortions.length !== 0 ? (
         <TodayList>
-          {sortedPortions.map(({ _id, amount, time }) => (
-            <TodayListItem
-              key={nanoid()}
-              id={_id}
-              amount={amount}
-              time={time}
-            />
+          {sortedPortions.map(({ id, amount, time }) => (
+            <TodayListItem key={nanoid()} id={id} amount={amount} time={time} />
           ))}
         </TodayList>
       ) : (
