@@ -20,6 +20,7 @@ import {
   CircleIndicator,
   MiddleIndicator,
   LastIndicator,
+  BoldIndicator,
 } from './WaterRatioPanel.styled';
 import sprite from '../../assets/sprite.svg';
 
@@ -47,9 +48,9 @@ const WaterRatioPanel = () => {
           <CircleIndicator $progress={limitedProgress} />
         </StyledProgressBar>
         <StyledProgressNumbers>
-          <span>0%</span>
-          <MiddleIndicator>50%</MiddleIndicator>
-          <LastIndicator $progress={progress}>
+          <BoldIndicator $isBold={progress <= 0}>0%</BoldIndicator>
+          <MiddleIndicator $isBold={progress === 50}>50%</MiddleIndicator>
+          <LastIndicator $isBold={progress >= 100} $progress={progress}>
             {progress > 100 ? `${progress}%` : '100%'}
           </LastIndicator>
         </StyledProgressNumbers>
