@@ -190,7 +190,6 @@ export const AmountInput = styled.input`
   padding: 12px 10px;
 
   &:valid {
-    border-color: var(--secondary-text);
     outline: none;
   }
 `;

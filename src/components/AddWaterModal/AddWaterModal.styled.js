@@ -26,6 +26,7 @@ export const StyledModalBoldText = styled.p`
   font-size: 18px;
   line-height: 1.11111;
   color: var(--primary-text);
+  margin-top: 24px;
   margin-bottom: 16px;
 `;
 
@@ -94,6 +95,10 @@ export const StyledAddModalInput = styled.input`
   font-size: 16px;
   line-height: 1.25;
   color: var(--secondary-text);
+
+  &:valid {
+    outline: none;
+  }
 
   @media only screen and (min-width: 768px) {
     width: 656px;

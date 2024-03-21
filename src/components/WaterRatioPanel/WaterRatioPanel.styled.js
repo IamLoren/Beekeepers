@@ -84,6 +84,8 @@ export const StyledProgressNumbers = styled.div`
   justify-content: space-between;
   margin-top: 16px;
   color: var(--secondary-text);
+  font-size: 12px;
+  line-height: 1.33333;
 
   > span {
     margin-right: -2px;
@@ -95,8 +97,7 @@ export const StyledProgressNumbers = styled.div`
     margin-top: 7px;
 
     font-family: 'Roboto Regular', sans-serif;
-    font-size: 12px;
-    line-height: 1.33333;
+
     text-align: center;
 
     &::before {
@@ -110,11 +111,17 @@ export const StyledProgressNumbers = styled.div`
   }
 `;
 
-export const MiddleIndicator = styled.span`
+export const BoldIndicator = styled.span`
+  font-size: ${(props) => (props.$isBold ? '16px' : '12px')};
+  font-weight: ${(props) => (props.$isBold ? '500' : '400')};
+  line-height: ${(props) => (props.$isBold ? '1.25' : '1.33')};
+`;
+
+export const MiddleIndicator = styled(BoldIndicator)`
   padding-left: 7px;
 `;
 
-export const LastIndicator = styled.span`
+export const LastIndicator = styled(BoldIndicator)`
   color: ${(props) =>
     props.$progress > 100 ? '#50C800' : 'var(--secondary-text)'};
 `;
