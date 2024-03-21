@@ -17,6 +17,7 @@ export const authSlice = createSlice({
       gender: '',
       avatarURL: '',
       registrationDate: '',
+      theme: '',
     },
     token: '',
     isLogged: false,
@@ -32,6 +33,8 @@ export const authSlice = createSlice({
         state.user.email = payload.email;
         state.user.registrationDate = payload.date.substring(0, 10);
         state.user.gender = payload.gender;
+        state.user.theme = payload.theme;
+
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
