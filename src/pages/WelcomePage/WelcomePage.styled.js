@@ -1,119 +1,130 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+// import WelcomePageBg from '../../assets/DesktopBg/WelcomePageBg.webp'
+// import WelcomeBgTab from '../../assets/TabletBg/WelcomeBgTab.webp'
+// import WelcomeBgMob from '../../assets/MobileBg/WelcomeBgMob.webp'
+
+
+
 
 export const StyledFullPage = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
+  display: flex;
+  flex-direction: column;
 
-background-repeat: no-repeat;
-background-position:bottom -75px left -916px, bottom right -1650px;
-background-size:3271px 1134px, 2725px 658px;
-
-@media only screen and (min-width: 768px) {
-    justify-content: space-between;
-
-    background-position: bottom;
-    background-size: 100%;
-}
-
-@media only screen and (min-width: 1440px) {
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-
-
-    background-repeat: no-repeat;
-    background-position: bottom;
-}
-
-`
-
-export const StyledContainer = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-between;
-margin:1rem 1.25rem 2.5rem 1.25rem;
+  gap: 40px;
   @media only screen and (min-width: 768px) {
-    margin: 1.5rem 2rem;
-    align-items: flex-start;
-}
-@media only screen and (min-width: 1440px) {
-  flex-direction: row;
-  margin: 4.2rem 6.5rem;
-  gap: 5rem;
-   }
-
-`
-
-export const StyledLeftWrapper = styled.div`
-
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-justify-content: space-between;
-
-`
-
+    gap: 60px;
+  }
+  @media only screen and (min-width: 1440px) {
+    flex-direction: row;
+    gap: 81px;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 80px;
+  }
+`;
 export const StyledTitle1 = styled.h1`
-
-margin: 0;
-@media only screen and (min-width: 768px) {
-  font-size: 2.25rem;
-  line-height: 1.16667;
+  width: 246px;
+  font-weight: 700;
+  font-size: 28px;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  @media only screen and (min-width: 768px) {
+    width: 100%;
   }
-@media only screen and (min-width: 1440px) {
-  line-height: 1.16667;
+  @media only screen and (min-width: 1440px) {
+    font-size: 36px;
   }
-`
-
+`;
 export const StyledTitle2 = styled.h2`
+  width: 220px;
+  font-weight: 400;
+  font-size: 24px;
 
-font-weight: 400;
-line-height: 1.25;
-margin: 1rem 0;
-@media only screen and (min-width: 768px) {
-    letter-spacing: 1px;
-}
-
-`
+  padding-bottom: 24px;
+  @media only screen and (min-width: 768px) {
+    width: 100%;
+  }
+  @media only screen and (min-width: 1440px) {
+    font-size: 26px;
+  }
+`;
 export const StyledLeftTitle3 = styled.h3`
-font-size: 18px;
-line-height: 1.11111;
-@media only screen and (min-width: 1440px) {
-  margin-top: .5rem;
+  font-weight: 500;
+  font-size: 18px;
+  padding-bottom: 12px;
+  @media only screen and (min-width: 768px) {
+    width: 100%;
+  }
+  @media only screen and (min-width: 1440px) {
+  }
+`;
 
-`
+export const WelcomeLiSpan = styled.span`
+  font-size: 16px;
+
+  @media only screen and (min-width: 768px) {
+  }
+  @media only screen and (min-width: 1440px) {
+  }
+`;
 
 export const StyledLeftList = styled.ul`
-margin: 0;
-padding: 0;
-text-align: left;
-@media only screen and (min-width: 768px) {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+  gap: 16px;
+  flex-direction: column;
+  padding-bottom: 24px;
+  @media only screen and (min-width: 768px) {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
   @media only screen and (min-width: 1440px) {
     flex-direction: column;
   }
-`
+`;
 
 export const StyledLeftItem = styled.li`
-display: flex;
+  display: flex;
+  gap: 8px;
   align-items: center;
-  margin-top: 1rem;
   @media only screen and (min-width: 768px) {
-    min-width: 224px;
-    gap: 1rem;
+    width: 224px;
   }
-  @media only screen and (min-width: 1440px) {
-    gap:.25rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
+`;
+
+export const StyledButton = styled.button`
+  border-radius: 10px;
+  padding: 8px 30px;
+  width: 100%;
+  height: 36px;
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: #407bff;
+
+  font-weight: 500;
+  font-size: 16px;
+
+  text-align: center;
+  color: #fff;
+  border: none;
+`;
+
+export const StyledRightItem = styled.li`
+  position: relative;
+  list-style: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #407bff;
   }
-`
+`;
 
 export const StyledSvg = styled.svg`
 width: 32px;
@@ -127,79 +138,91 @@ height: 40px;
   }
 `
 
-export const StyledButton = styled.button`
-
-border-radius: 10px;
-border: none;
-padding: .5rem;
-margin-top: 1.5rem;
-margin-bottom: 2.5rem;
-box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-background: var(--blue);
-font-weight: 500;
-font-size: 18px;
-line-height: 1.33333;
-color: var(--white);
-width: 100%;
-@media only screen and (min-width: 768px) {
-  width: 50%;
-}
-@media only screen and (min-width: 1440px) {
-  width: 24rem;
-  margin-top: .5rem;
-}
-
-`
-
 export const StyledRightWrapper = styled.div`
-border-radius: 10px;
-box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
-background: var(--secondary-white);
-text-align: left;
-list-style-position: inside;
-display: flex;
-@media only screen and (min-width: 768px) {
-  margin-top: 1.25rem;
+  border-radius: 10px;
+  padding: 32px 24px;
 
-}
+  box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
+  background: #ecf2ff;
+  max-width: 380px;
+  margin-bottom: 20px;
+  @media only screen and (min-width: 768px) {
+    max-width: 494px;
+  }
+  @media only screen and (min-width: 1440px) {
+    margin-bottom: 0px;
+  }
+`;
+export const WelcomeNavLink = styled(NavLink)`
+  max-width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding: 9px;
+  width: 100%;
 
-`
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: #407bff;
+
+  font-weight: 500;
+  font-size: 16px;
+
+  text-align: center;
+  color: #fff;
+  border: none;
+  @media only screen and (min-width: 768px) {
+    max-width: 336px;
+    padding: 13px;
+  }
+  @media only screen and (min-width: 1440px) {
+    max-width: 384px;
+  }
+`;
+
+export const TryTrackerDivContainer = styled.div`
+  @media only screen and (min-width: 768px) {
+  }
+`;
 
 export const StyledRightTitle3 = styled.h3`
-font-size: 18px;
-line-height: 1.11111;
-margin: 0 -1rem;
-@media only screen and (min-width: 1440px) {
-  margin-top: .5rem;
-}
+  padding-bottom: 12px;
 
-`
+  font-weight: 500;
+  font-size: 18px;
 
+  @media only screen and (min-width: 768px) {
+  }
+`;
 export const StyledRightList = styled.ul`
-padding: 1.5rem 1rem 1.5rem 2rem;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-list-style-position: outside;
-@media only screen and (min-width: 768px) {
-  padding: 2rem 2.5rem;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 20px;
+  @media only screen and (min-width: 768px) {
+  }
+`;
+export const TabletWoterDivImg = styled.div`
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
 
-`
+  position: fixed;
+  left: 58%;
+  top: 48%;
+  z-index: -1;
+  @media only screen and (min-width: 1440px) {
+    display: none;
+  }
+`;
 
-export const StyledRightItem = styled.li`
+export const DesctopWoterDivImg = styled.div`
+  @media only screen and (max-width: 1439px) {
+    display: none;
+  }
 
-margin: 1rem 0 0;
-line-height: 1.25;
-text-indent:-1rem;
-&:before{
-  content: '';
-  display: inline-block;
-  width: .5rem;
-  height: .5rem;
-  border-radius: 50%;
-  background-color: var(--blue);
-  margin-right: 6px;
-}
-
-`
+  position: absolute;
+  left: 71%;
+  top: 61%;
+  z-index: -1;
+`;
