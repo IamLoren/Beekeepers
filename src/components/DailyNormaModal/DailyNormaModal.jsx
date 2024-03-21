@@ -31,7 +31,6 @@ const validationDailyNormaModalSchema = Yup.object({
   weight: Yup.number('Weight value must be a number')
     .typeError('Weight must be a number')
     .min(1, 'Weight must be greater than or equal to 1'),
-  // .required('Weight is required'),
   time: Yup.number()
     .typeError('Time value must be a number')
     .max(24, 'Time must not be greater than 24')
@@ -47,8 +46,11 @@ const DailyNormaModal = () => {
   const womanFormula = 'V=(M*0,03) + (T*0,4)';
   const manFormula = 'V=(M*0,04) + (T*0,6)';
   const dispatch = useDispatch();
-
   const [calculatedNorma, setCalculatedNorma] = useState(1.5);
+
+  // useEffect(() => {
+  //   dispatch(fetchDefaultDailyNormaThunk());
+  // }, [dispatch]);
 
   const formik = useFormik({
     initialValues: {
@@ -62,10 +64,6 @@ const DailyNormaModal = () => {
     onSubmit: async (values) => {
       const dailyWaterNormaLiters = Number(values.norma);
       const dailyWaterNormaMl = dailyWaterNormaLiters * 1000;
-      // if (dailyWaterNormaMl > 15000) {
-      //   console.log('Maximum amount of water is 15 L');
-      //   return toast.error('Maximum amount of water is 15 L');
-      // }
       const newDailyWaterNorma = { dailyWaterNorma: dailyWaterNormaMl };
       dispatch(changeDailyNorma(newDailyWaterNorma));
       dispatch(updateWaterRateThunk(newDailyWaterNorma));

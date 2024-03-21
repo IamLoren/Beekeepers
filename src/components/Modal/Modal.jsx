@@ -1,7 +1,8 @@
 import { useCallback, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Fade } from '@mui/material';
+// import { Zoom } from '@mui/material';
 import sprite from '../../assets/sprite.svg';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
@@ -14,12 +15,18 @@ import {
   selectDailyNormaModal,
   selectDeletePortionModal,
   selectEditPortionModal,
+  selectIsModalOpen,
   selectLogoutModal,
   selectSettingModal,
 } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
-
-import { BtnClose, ModalStyled, Overlay, SvgBtnClose } from './Modal.styled';
+import {
+  BtnClose,
+  ModalContainer,
+  ModalStyled,
+  Overlay,
+  SvgBtnClose,
+} from './Modal.styled';
 
 const Modal = () => {
   const dispatch = useDispatch();
@@ -29,6 +36,7 @@ const Modal = () => {
   const addWaterModal = useSelector(selectAddWaterModal);
   const settingModal = useSelector(selectSettingModal);
   const logoutModal = useSelector(selectLogoutModal);
+  const modalIsOpen = useSelector(selectIsModalOpen);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -39,6 +47,7 @@ const Modal = () => {
 
   const closeModal = useCallback(() => {
     document.body.style.overflow = 'auto';
+
     dispatch(closeModals(false));
   }, [dispatch]);
 
@@ -63,22 +72,30 @@ const Modal = () => {
   };
 
   return ReactDom.createPortal(
-    <Overlay onClick={onBackdropClick}>
-      <ModalStyled>
-        {dailyNormaModal && <DailyNormaModal />}
-        {editPortionModal && <TodayListModal />}
-        {deletePortionModal && <DeleteModal />}
-        {addWaterModal && <AddWaterModal />}
-        {settingModal && <SettingModal />}
-        {logoutModal && <UserLogoutModal />}
+    <>
+      <Overlay onClick={onBackdropClick}>
+        <ModalContainer>
+          <Fade in={modalIsOpen} timeout={1000}>
+            {/* <Zoom in={modalIsOpen} timeout={900}> */}
+            <ModalStyled>
+              {dailyNormaModal && <DailyNormaModal />}
+              {editPortionModal && <TodayListModal />}
+              {deletePortionModal && <DeleteModal />}
+              {addWaterModal && <AddWaterModal />}
+              {settingModal && <SettingModal />}
+              {logoutModal && <UserLogoutModal />}
 
-        <BtnClose type="button" onClick={closeModal}>
-          <SvgBtnClose>
-            <use href={`${sprite}#icon-close`} />
-          </SvgBtnClose>
-        </BtnClose>
-      </ModalStyled>
-    </Overlay>,
+              <BtnClose type="button" onClick={closeModal}>
+                <SvgBtnClose>
+                  <use href={`${sprite}#icon-close`} />
+                </SvgBtnClose>
+              </BtnClose>
+            </ModalStyled>
+          </Fade>
+          {/* </Zoom> */}
+        </ModalContainer>
+      </Overlay>
+    </>,
     document.getElementById('portal')
   );
 };
