@@ -87,7 +87,7 @@ const MonthStatsTable = () => {
           console.log(date);
           const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));
           dispatch(changemonthlyPortions(payload));
-          setLastMonthLabel(currentMonthLabel); // Оновлюємо останній місяць
+          setLastMonthLabel(currentMonthLabel);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
