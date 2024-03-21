@@ -1,5 +1,4 @@
 export const selectIsLogged = (state) => state.authSlice.isLogged;
-export const selectPortions = (state) => state.statisticDataSlice.portions;
 export const selectDailyPortions = (state) =>
   state.statisticDataSlice.dailyPortions;
 export const selectMonthlyPortions = (state) =>
@@ -27,7 +26,7 @@ export const selectSelectedItem = (state) =>
   state.statisticDataSlice.selectedItem;
 
 export const selectPortionsAmount = (state) =>
-  state.statisticDataSlice.portions.reduce(
+  state.statisticDataSlice.dailyPortions.reduce(
     (totalAmount, portion) => totalAmount + portion.amount,
     0
   );
