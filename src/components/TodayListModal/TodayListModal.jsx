@@ -36,16 +36,21 @@ const TodayListModal = () => {
   const [count, setCount] = useState(selectedItem.amount);
   const [selectedTime, setSelectedTime] = useState(selectedItem.time);
   const [inputValue, setInputValue] = useState(count);
+  const [isSaveDisabled, setIsSaveDisabled] = useState(
+    count < 0 || count > 1500
+  );
 
   const handleDecrement = () => {
     if (count >= 50) {
       setCount(count - 50);
+      setIsSaveDisabled(count - 50 === 0);
     }
   };
 
   const handleIncrement = () => {
     if (count < 1500) {
       setCount(count + 50);
+      setIsSaveDisabled(count + 50 > 1500);
     }
   };
 
@@ -54,7 +59,7 @@ const TodayListModal = () => {
   };
 
   const handleInputBlur = () => {
-    let newValue = inputValue.trim();
+    let newValue = inputValue;
 
     if (/^0/.test(newValue)) {
       newValue = newValue.replace(/^0+/, '');
@@ -77,10 +82,11 @@ const TodayListModal = () => {
         dailyNorma,
         consumeRatio,
       })
-    );
-    const today = new Date();
-    dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
-    dispatch(closeModals());
+    ).then(() => {
+      dispatch(closeModals());
+      const today = new Date();
+      dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
+    });
   };
 
   useEffect(() => {
@@ -130,16 +136,6 @@ const TodayListModal = () => {
       </div>
       <div>
         <TextModal>Recording time:</TextModal>
-        {/* <TimeSelect
-          value={selectedTime}
-          onChange={(event) => setSelectedTime(event.target.value)}
-        >
-          {generateTimeOptions().map((timeOption, index) => (
-            <option key={index} value={timeOption}>
-              {timeOption}
-            </option>
-          ))}
-        </TimeSelect> */}
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StyledTimePicker
             ampm={false}
@@ -158,14 +154,13 @@ const TodayListModal = () => {
           value={inputValue}
           min={0}
           max={1500}
-          step={10}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
         />
       </div>
       <ResultSaveWrapper>
         <AmountResult>{count} ml</AmountResult>
-        <SaveButton onClick={onSaveClick} disabled={count < 0 || count > 1500}>
+        <SaveButton onClick={onSaveClick} disabled={isSaveDisabled}>
           Save
         </SaveButton>
       </ResultSaveWrapper>

@@ -21,10 +21,11 @@ const DeleteModal = () => {
   const selectedItem = useSelector(selectSelectedItem);
 
   const onDeleteClick = () => {
-    dispatch(deletePortionThunk(selectedItem.id));
-    const today = new Date();
-    dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
-    dispatch(closeModals());
+    dispatch(deletePortionThunk(selectedItem.id)).then(() => {
+      dispatch(closeModals());
+      const today = new Date();
+      dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
+    });
   };
 
   return (

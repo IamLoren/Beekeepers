@@ -57,7 +57,7 @@ export const AmountText = styled.p`
   color: var(--secondary-text);
   font-size: 18px;
   margin: 0;
-  width: 60px;
+  width: 66px;
 `;
 
 export const TimeText = styled.p`
