@@ -72,9 +72,7 @@ export const statisticDataSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(deletePortionThunk.fulfilled, (state, { payload }) => {
-        state.portions = state.portions.filter(
-          (item) => item.id !== payload.id
-        );
+        state.portions = state.portions.filter((item) => item.id !== payload);
       })
       .addCase(addPortionThunk.fulfilled, (state, { payload }) => {
         state.portions.push(payload);
