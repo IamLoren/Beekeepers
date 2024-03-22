@@ -5,6 +5,7 @@ export const StyledRatioSectionContainer = styled.div`
 
   @media only screen and (min-width: 768px) {
     width: 704px;
+    height: 95px;
     display: flex;
     align-items: center;
     gap: 22px;
@@ -29,6 +30,7 @@ export const StyledToday = styled.p`
 `;
 
 export const StyledProgressBarContainer = styled.div`
+  height: 85px;
   margin-bottom: 16px;
   position: relative;
 

@@ -21,6 +21,18 @@ export const StyledAddWater = styled.h2`
   margin-bottom: 24px;
 `;
 
+export const StyledTimeInput = styled.div`
+  width: 120px;
+
+  @media only screen and (min-width: 768px) {
+    width: 656px;
+  }
+
+  @media only screen and (min-width: 1440px) {
+    width: 544px;
+  }
+`;
+
 export const StyledModalBoldText = styled.p`
   font-family: 'Roboto Medium', sans-serif;
   font-size: 18px;

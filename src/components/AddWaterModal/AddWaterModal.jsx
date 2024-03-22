@@ -14,7 +14,10 @@ import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 
-import { formingTodayDate, getCurrentData } from '../../serviceFunctions/serviceFunctions';
+import {
+  formingTodayDate,
+  getCurrentData,
+} from '../../serviceFunctions/serviceFunctions';
 
 import {
   StyledAddModalInput,
@@ -27,6 +30,7 @@ import {
   StyledModalBoldText,
   StyledModalText,
   StyledSaveBtn,
+  StyledTimeInput,
   StyledValueAndBtnContainer,
 } from './AddWaterModal.styled';
 import { StyledTimePicker } from '../TodayListModal/TodayListModal.styled';
@@ -69,10 +73,10 @@ const AddWaterModal = () => {
     setCounter(value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const consumeRatio = dailyNorma / counter;
-    dispatch(
+    await dispatch(
       addPortionThunk({
         amount: counter,
         time: currentTime,
@@ -105,8 +109,12 @@ const AddWaterModal = () => {
     const formattedHour = String(value.$H).padStart(2, '0');
     const formattedMinute = String(value.$m).padStart(2, '0');
     const formattedValue = `${formattedHour}:${formattedMinute}`;
-    setSelectedTime(formattedValue);
+    setCurrentTime(formattedValue);
   };
+
+  const CustomSaveButton = ({ onClick, children }) => (
+    <SaveButtonStyled onClick={onClick}>{children}</SaveButtonStyled>
+  );
 
   return (
     <StyledAddWaterModalContainer>
@@ -129,18 +137,17 @@ const AddWaterModal = () => {
             </StyledCounterBtn>
           </StyledCounterContainer>
         </div>
-        <div>
+        <StyledTimeInput>
           <StyledModalText>Recording time:</StyledModalText>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <StyledTimePicker
-              ampm={false}
               disableFuture={true}
               minutesStep={5}
               value={dayjs(datetime)}
               onChange={(value) => onTimePickerChange(value)}
             />
           </LocalizationProvider>
-        </div>
+        </StyledTimeInput>
         <label htmlFor="ml">
           <StyledModalBoldText>
             Enter the value of the water used:
