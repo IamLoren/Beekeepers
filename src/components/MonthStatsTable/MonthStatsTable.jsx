@@ -25,7 +25,7 @@ const CustomTile = ({date}) => {
   const convertDate = new Date(date);
 const day = convertDate.getDate();
 const arrOfMonthData = useSelector(selectMonthData);
-const tileContent = arrOfMonthData.find((el) => el.day == day);
+const tileContent = arrOfMonthData?.find((el) => el.day == day);
 console.log(arrOfMonthData);
   const tileStyle = {
     textAlign: 'center',
@@ -53,7 +53,7 @@ console.log(arrOfMonthData);
 
   return (
     <div style={tileStyle}>
-      <div style={textStyle}>{`${tileContent.consumedWaterRatio || 0}%`}</div>
+      <div style={textStyle}>{`${tileContent?.consumedWaterRatio || 0}%`}</div>
       <Styledcircle style={circleStyle}></Styledcircle>
     </div>
   );
