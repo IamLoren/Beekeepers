@@ -1,13 +1,16 @@
+export const getCurrentData = () => {
+  const currentDate = new Date();
+  let currentDay = currentDate.getDate();
+  let currentMonth = currentDate.getMonth() + 1;
+  const currentYear = currentDate.getFullYear();
+  currentDay = currentDay < 10 ? '0' + currentDay : currentDay;
+  currentMonth = currentMonth < 10 ? '0' + currentMonth : currentMonth;
+  return currentDay + '-' + currentMonth + '-' + currentYear;
+};
+
 export const convertCalendarMonth = (monthYear) => {
   const [monthName, year] = monthYear.split(' ');
   const date = monthName.toLowerCase().trim();
-
-  const currentDate = new Date();
-  let currentDay = currentDate.getDate();
-  let currentMonth = currentDate.getMonth() + 1; 
-  const currentYear = currentDate.getFullYear();
-  currentDay = currentDay < 10 ? '0' + currentDay : currentDay;
-currentMonth = currentMonth < 10 ? '0' + currentMonth : currentMonth;
 
   switch (date) {
     case 'january':
@@ -35,7 +38,7 @@ currentMonth = currentMonth < 10 ? '0' + currentMonth : currentMonth;
     case 'december':
       return `01-12-${year}`;
     default:
-      return (currentDay + '-' + currentMonth + '-' + currentYear);
+      return getCurrentData();
   }
 };
 

@@ -81,7 +81,6 @@ const MonthStatsTable = () => {
       ).textContent;
       if (currentMonthLabel && currentMonthLabel !== lastMonthLabel) {
         setCurrentMonth(currentMonthLabel);
-        console.log(currentMonth);
         try {
           const date = convertCalendarMonth(currentMonth);
           const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));
@@ -125,7 +124,6 @@ const MonthStatsTable = () => {
     tiles.forEach((button) => {
       const number = button.querySelector('abbr').textContent;
       const date = button.querySelector('abbr').getAttribute('aria-label');
-      // button.setAttribute('data-tip', [number, date]);
       button.addEventListener('mouseenter', () =>
         setTooltipContent([number, date])
       );
