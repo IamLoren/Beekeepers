@@ -49,24 +49,24 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route
+            path="/signin"
+            element={
+              <PublicRoute>
+                <SignInPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute>
+                <SignUpPage />
+              </PublicRoute>
+            }
+          />
           <Route path="*" element={<ErrorPage />} />
         </Route>
-        <Route
-          path="/signin"
-          element={
-            <PublicRoute>
-              <SignInPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <PublicRoute>
-              <SignUpPage />
-            </PublicRoute>
-          }
-        />
       </Routes>
       <Loader visible={isLoading} />
     </>
