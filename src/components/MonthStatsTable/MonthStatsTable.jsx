@@ -21,7 +21,12 @@ import {
 } from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
-const CustomTile = () => {
+const CustomTile = ({date}) => {
+  const convertDate = new Date(date);
+const day = convertDate.getDate();
+const arrOfMonthData = useSelector(selectMonthData);
+const tileContent = arrOfMonthData.find((el) => el.day == day);
+console.log(arrOfMonthData);
   const tileStyle = {
     textAlign: 'center',
     paddingTop: '10px',
@@ -46,10 +51,9 @@ const CustomTile = () => {
     borderRadius: '50%',
   };
 
-  const ratio = 100;
   return (
     <div style={tileStyle}>
-      <div style={textStyle}>{`${ratio}%`}</div>
+      <div style={textStyle}>{`${tileContent.consumedWaterRatio || 0}%`}</div>
       <Styledcircle style={circleStyle}></Styledcircle>
     </div>
   );
@@ -162,7 +166,7 @@ const MonthStatsTable = () => {
         onActiveStartDateChange={({ activeStartDate }) =>
           setValue(activeStartDate)
         }
-        tileContent={({ date, view }) => <CustomTile date={date} view={view} />}
+        tileContent={({ date, view }) => <CustomTile date={date} view={view} percentForTooltip={percentForTooltip}/>}
       />
       <StyledTooltip id="my-tooltip">
         <StyledDivWrapper>
