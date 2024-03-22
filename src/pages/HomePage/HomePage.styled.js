@@ -53,6 +53,7 @@ export const StatisticsWrapper = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 24px 8px;
+  margin-bottom: 40px;
 
   background-color: var(--card-bg-color);
   border-radius: 10px;
