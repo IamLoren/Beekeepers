@@ -35,9 +35,11 @@ export const TodayList = styled.ul`
 `;
 
 export const NoPortionsText = styled.p`
+  height: 180px;
+
   color: var(--percentage-text);
   font-size: 20px;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
 `;
 
 export const TodayListButton = styled.button`
