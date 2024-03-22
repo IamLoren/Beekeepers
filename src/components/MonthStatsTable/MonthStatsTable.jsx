@@ -65,7 +65,7 @@ const MonthStatsTable = () => {
   const [currentMonth, setCurrentMonth] = useState('');
   const [tooltipContent, setTooltipContent] = useState([]);
   const monthData = useSelector(selectMonthData);
-  
+  console.log(currentMonth)
   const registration = useSelector(selectDataOfRegistration);
   const userRegistration = new Date(registration);
 
@@ -83,7 +83,7 @@ const MonthStatsTable = () => {
       const currentMonthLabel = document.querySelector(
         '.react-calendar__navigation__label__labelText'
       ).textContent;
-      if (currentMonthLabel && currentMonthLabel !== lastMonthLabel) {
+      if (currentMonthLabel !== lastMonthLabel) {
         setCurrentMonth(currentMonthLabel);
         try {
           const date = convertCalendarMonth(currentMonth);
@@ -133,10 +133,11 @@ const MonthStatsTable = () => {
       );
       button.addEventListener('mouseleave', () => setTooltipContent(''));
     });
-  }, []);
+  }, [currentMonth]);
 
-  function onChange(nextValue) {
-    setValue(nextValue);
+  function onChange(newDate) {
+    const month = newDate.getMonth();
+    setCurrentMonth(month);
   }
 
   const [number, date] = tooltipContent;
@@ -151,7 +152,7 @@ const MonthStatsTable = () => {
       setPercentForTooltip(day?.consumedWaterRatio ? day.consumedWaterRatio : '0');
     };
     DataForTootip();
-  });
+  }, [currentMonth, monthData, number]);
 
   return (
     <CalendarWrapper>
