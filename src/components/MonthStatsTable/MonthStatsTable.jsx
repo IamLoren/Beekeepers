@@ -187,7 +187,7 @@ const MonthStatsTable = () => {
         <StyledTooltip id="my-tooltip">
           <StyledDivWrapper>
             <p>
-              <AccentSpan>{date}</AccentSpan>
+              <AccentSpan>{number}, {date?.substr(3, date.length-8)}</AccentSpan>
             </p>
             <p>
               <span>Daily norma: </span>
