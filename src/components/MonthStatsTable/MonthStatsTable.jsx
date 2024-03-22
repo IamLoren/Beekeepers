@@ -64,7 +64,7 @@ const CustomTile = ({ date }) => {
             strokeLinecap: 'butt',
             pathTransitionDuration: 0.5,
             pathColor: `${tileContent?.consumedWaterRatio < 99 ? `var(--accent-text)` : "green"}`,
-            trailColor: 'lightgray',
+            trailColor: `${tileContent?.consumedWaterRatio == 0 ? 'lightgray' : "transparent"}`,
             backgroundColor: 'transparent',
           })}
         />
