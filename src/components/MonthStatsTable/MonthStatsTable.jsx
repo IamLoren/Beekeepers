@@ -19,10 +19,11 @@ import {
   selectMonthData,
 } from '../../redux/selectors';
 import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
-import { convertCalendarMonth } from '../../serviceFunctions/serviceFunctions.js';
+import { convertCalendarMonth, getCurrentData } from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
 const CustomTile = ({ date }) => {
+  console.log(date);
   const convertDate = new Date(date);
   const day = convertDate.getDate();
   const arrOfMonthData = useSelector(selectMonthData);
@@ -76,7 +77,8 @@ const CustomTile = ({ date }) => {
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState(new Date());
-  const [currentMonth, setCurrentMonth] = useState('');
+  const defaultCurrentDate = getCurrentData()
+  const [currentMonth, setCurrentMonth] = useState(defaultCurrentDate);
   const [tooltipContent, setTooltipContent] = useState([]);
   const monthData = useSelector(selectMonthData);
   const registration = useSelector(selectDataOfRegistration);
