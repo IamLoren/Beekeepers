@@ -169,6 +169,8 @@ const MonthStatsTable = () => {
         }
         tileContent={({ date, view }) => <CustomTile date={date} view={view} percentForTooltip={percentForTooltip}/>}
       />
+
+      {(percentForTooltip > 0) && 
       <StyledTooltip id="my-tooltip">
         <StyledDivWrapper>
           <p>
@@ -187,7 +189,7 @@ const MonthStatsTable = () => {
             <AccentSpan>{countPortionsForTooltip}</AccentSpan>
           </p>
         </StyledDivWrapper>
-      </StyledTooltip>
+      </StyledTooltip>}
     </CalendarWrapper>
   );
 };
