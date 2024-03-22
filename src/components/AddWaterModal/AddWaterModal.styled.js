@@ -108,6 +108,12 @@ export const StyledAddModalInput = styled.input`
   line-height: 1.25;
   color: var(--secondary-text);
 
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: var(--secondary-text);
+  }
+
   &:valid {
     outline: none;
   }

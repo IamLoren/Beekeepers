@@ -173,6 +173,11 @@ export const StyledTimePicker = styled(MobileTimePicker)`
     padding: 12px 10px;
     appearance: none;
 
+    &:hover,
+    &:active {
+      border-color: var(--secondary-text);
+    }
+
     &:valid {
       border-color: var(--secondary-text);
       outline: none;
@@ -188,6 +193,12 @@ export const AmountInput = styled.input`
   border: 1px solid var(--accent-bg-color);
   border-radius: 10px;
   padding: 12px 10px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: var(--secondary-text);
+  }
 
   &:valid {
     outline: none;
