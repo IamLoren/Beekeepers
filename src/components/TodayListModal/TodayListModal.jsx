@@ -12,7 +12,10 @@ import {
 import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { formingTodayDate, getCurrentData } from '../../serviceFunctions/serviceFunctions';
+import {
+  formingTodayDate,
+  getCurrentData,
+} from '../../serviceFunctions/serviceFunctions';
 
 import {
   AmountText,
@@ -56,22 +59,30 @@ const TodayListModal = () => {
   };
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleInputBlur = () => {
-    let newValue = inputValue;
-
-    if (/^0/.test(newValue)) {
-      newValue = newValue.replace(/^0+/, '');
-
-      if (newValue === '') {
-        newValue = '0';
-      }
+    let value = Number(event.target.value);
+    if (value < 0) {
+      value = 0;
+    } else if (value > 1500) {
+      value = 1500;
+      console.error("You can't add more than 1500ml");
     }
-    setInputValue(newValue);
-    setCount(parseInt(newValue, 10));
+    // setInputValue(value);
+    setCount(value);
   };
+
+  // const handleInputBlur = () => {
+  //   let newValue = inputValue;
+
+  //   if (/^0/.test(newValue)) {
+  //     newValue = newValue.replace(/^0+/, '');
+
+  //     if (newValue === '') {
+  //       newValue = '0';
+  //     }
+  //   }
+  //   setInputValue(newValue);
+  //   setCount(parseInt(newValue, 10));
+  // };
 
   const onSaveClick = () => {
     const consumeRatio = dailyNorma / count;
@@ -88,7 +99,7 @@ const TodayListModal = () => {
       const today = new Date();
       const currentDate = getCurrentData();
       dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
-      dispatch(fetchMonthlyPortionsThunk(currentDate))
+      dispatch(fetchMonthlyPortionsThunk(currentDate));
     });
   };
 
@@ -158,7 +169,7 @@ const TodayListModal = () => {
           min={0}
           max={1500}
           onChange={handleInputChange}
-          onBlur={handleInputBlur}
+          // onBlur={handleInputBlur}
         />
       </div>
       <ResultSaveWrapper>
