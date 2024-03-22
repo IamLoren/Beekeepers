@@ -6,12 +6,13 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import sprite from '../../assets/sprite.svg';
 import {
   fetchDailyPortionsThunk,
+  fetchMonthlyPortionsThunk,
   updatePortionThunk,
 } from '../../redux/statisticData/operations';
 import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
+import { formingTodayDate, getCurrentData } from '../../serviceFunctions/serviceFunctions';
 
 import {
   AmountText,
@@ -85,7 +86,9 @@ const TodayListModal = () => {
     ).then(() => {
       dispatch(closeModals());
       const today = new Date();
+      const currentDate = getCurrentData();
       dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
+      dispatch(fetchMonthlyPortionsThunk(currentDate))
     });
   };
 

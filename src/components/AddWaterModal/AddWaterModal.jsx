@@ -5,6 +5,7 @@ import sprite from '../../assets/sprite.svg';
 import {
   addPortionThunk,
   fetchDailyPortionsThunk,
+  fetchMonthlyPortionsThunk,
 } from '../../redux/statisticData/operations';
 import { closeModals } from '../../redux/modals/modalsSlice';
 import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
@@ -13,7 +14,7 @@ import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 
-import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
+import { formingTodayDate, getCurrentData } from '../../serviceFunctions/serviceFunctions';
 
 import {
   StyledAddModalInput,
@@ -80,7 +81,9 @@ const AddWaterModal = () => {
       })
     );
     const today = new Date();
+    const currentDate = getCurrentData();
     dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
+    dispatch(fetchMonthlyPortionsThunk(currentDate));
     dispatch(closeModals());
   };
 
