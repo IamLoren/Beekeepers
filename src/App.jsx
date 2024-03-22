@@ -9,8 +9,10 @@ import PublicRoute from './routesConfig/PublicRoute.jsx';
 import PrivateRoute from './routesConfig/PrivateRoute.jsx';
 import { selectIsRefresh } from './redux/selectors.js';
 import Loader from './components/Loader/Loader.jsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from './redux/Global/selectors.jsx';
+import { useEffect } from 'react';
+import { refreshThunk } from './redux/auth/operations.js';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -18,6 +20,11 @@ function App() {
   console.log(test);
   const isRefresh = useSelector(selectIsRefresh);
   const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      dispatch(refreshThunk());
+  }, [dispatch]);
 
   return isRefresh ? (
     <Loader visible={isLoading} />

@@ -84,6 +84,7 @@ export const refreshThunk = createAsyncThunk(
 
     try {
       const { data } = await api.get('api/auth/current');
+      console.log(data);
       return data;
     } catch (error) {
       toast.error(error.message);
