@@ -19,11 +19,10 @@ import {
   selectMonthData,
 } from '../../redux/selectors';
 import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
-import { convertCalendarMonth, getCurrentData } from '../../serviceFunctions/serviceFunctions.js';
+import { getCurrentData } from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
 const CustomTile = ({ date }) => {
-  console.log(date);
   const convertDate = new Date(date);
   const day = convertDate.getDate();
   const arrOfMonthData = useSelector(selectMonthData);
@@ -76,58 +75,25 @@ const CustomTile = ({ date }) => {
 
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState(new Date());
   const defaultCurrentDate = getCurrentData()
-  const [currentMonth, setCurrentMonth] = useState(defaultCurrentDate);
+  const [selectMonth, setSelectMonth] = useState(defaultCurrentDate);
   const [tooltipContent, setTooltipContent] = useState([]);
   const monthData = useSelector(selectMonthData);
   const registration = useSelector(selectDataOfRegistration);
   const userRegistration = new Date(registration);
 
-  function changeMonth() {
-    const currentMonthLabel = document.querySelector(
-      '.react-calendar__navigation__label__labelText'
-    ).textContent;
-    setCurrentMonth(currentMonthLabel);
-  }
-
-  const [lastMonthLabel, setLastMonthLabel] = useState('');
-
   useEffect(() => {
     const fetchData = async () => {
-      const currentMonthLabel = document.querySelector(
-        '.react-calendar__navigation__label__labelText'
-      ).textContent;
-      if (currentMonthLabel !== lastMonthLabel) {
-        setCurrentMonth(currentMonthLabel);
         try {
-          const date = convertCalendarMonth(currentMonth);
-          const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));
+          const { payload } = await dispatch(fetchMonthlyPortionsThunk(selectMonth));
           dispatch(changemonthlyPortions(payload));
-          setLastMonthLabel(currentMonthLabel);
         } catch (error) {
           console.error('Error fetching data:', error);
         }
-      }
     };
 
     fetchData();
-  }, [dispatch, currentMonth, lastMonthLabel]);
-
-  useEffect(() => {
-    const navigationButtons = document.querySelectorAll(
-      '.react-calendar__navigation__arrow'
-    );
-    navigationButtons.forEach((button) =>
-      button.addEventListener('click', changeMonth)
-    );
-
-    return () => {
-      navigationButtons.forEach((button) =>
-        button.removeEventListener('click', changeMonth)
-      );
-    };
-  }, []);
+  }, [dispatch, selectMonth]);
 
   const tiles = document.querySelectorAll('.react-calendar__tile');
   tiles.forEach((button) => {
@@ -144,13 +110,34 @@ const MonthStatsTable = () => {
       button.addEventListener('mouseenter', () =>
         setTooltipContent([number, date])
       );
-      button.addEventListener('mouseleave', () => setTooltipContent(''));
+      // button.addEventListener('mouseleave', () => setTooltipContent(''));
     });
-  }, [currentMonth]);
+  }, [selectMonth]);
 
-  function onChange(newDate) {
-    const month = newDate.getMonth();
-    setCurrentMonth(month);
+  async function onChange(newDate) {
+    
+    const convert = new Date(newDate);
+    const formattedDate = `${convert.getDate()}-${(convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)}-${convert.getFullYear()}`;
+    setSelectMonth(formattedDate);
+    try {
+      const { payload } = await dispatch(fetchMonthlyPortionsThunk(selectMonth));
+      dispatch(changemonthlyPortions(payload));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+ async function setMonth(activeStartDate) {
+    const convert = new Date(activeStartDate);
+    const formattedDate = `${convert.getDate()}-${(convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)}-${convert.getFullYear()}`;
+    console.log(formattedDate)
+    setSelectMonth(formattedDate);
+    try {
+      const { payload } = await dispatch(fetchMonthlyPortionsThunk(selectMonth));
+      dispatch(changemonthlyPortions(payload));
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }
 
   const [number, date] = tooltipContent;
@@ -167,7 +154,7 @@ const MonthStatsTable = () => {
       );
     };
     DataForTootip();
-  }, [currentMonth, monthData, number]);
+  }, [selectMonth, monthData, number]);
 
   return (
     <CalendarWrapper>
@@ -176,11 +163,10 @@ const MonthStatsTable = () => {
         onChange={onChange}
         views={['month', 'tenDays']}
         tileWidth={40}
-        value={value}
         minDate={userRegistration}
         locale="en-GB"
         onActiveStartDateChange={({ activeStartDate }) =>
-          setValue(activeStartDate)
+          setMonth(activeStartDate)
         }
         tileContent={({ date, view }) => <CustomTile date={date} view={view} />}
       />
