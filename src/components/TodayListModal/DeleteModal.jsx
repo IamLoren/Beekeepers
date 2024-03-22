@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   deletePortionThunk,
   fetchDailyPortionsThunk,
+  fetchMonthlyPortionsThunk,
 } from '../../redux/statisticData/operations';
 import { selectSelectedItem } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
-import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
+import { formingTodayDate, getCurrentData } from '../../serviceFunctions/serviceFunctions';
 
 import {
   ButtonDelete,
@@ -24,7 +25,9 @@ const DeleteModal = () => {
     dispatch(deletePortionThunk(selectedItem.id)).then(() => {
       dispatch(closeModals());
       const today = new Date();
+      const currentDate = getCurrentData();
       dispatch(fetchDailyPortionsThunk(formingTodayDate(today)));
+      dispatch(fetchMonthlyPortionsThunk(currentDate));
     });
   };
 
