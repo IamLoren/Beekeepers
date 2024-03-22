@@ -84,7 +84,6 @@ const MonthStatsTable = () => {
         console.log(currentMonth);
         try {
           const date = convertCalendarMonth(currentMonth);
-          console.log(date);
           const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));
           dispatch(changemonthlyPortions(payload));
           setLastMonthLabel(currentMonthLabel);
@@ -144,13 +143,10 @@ const MonthStatsTable = () => {
   const [percentForTooltip, setPercentForTooltip] = useState('');
   useEffect(() => {
     const DataForTootip = () => {
-      const day =
-        monthData.isArray &&
-        monthData.length > 0 &&
-        monthData.filter((d) => d.day === number);
+      const [day] = monthData.filter((d) => d.day === number);
       setdailyNormaForTooltip(day?.dailyNorma ? day.dailyNorma : '0');
       setcountPortionsForTooltip(day?.portionsCount ? day.portionsCount : '0');
-      setPercentForTooltip(day?.portionsCount ? day.portionsCount : '0');
+      setPercentForTooltip(day?.consumedWaterRatio ? day.consumedWaterRatio : '0');
     };
     DataForTootip();
   });
