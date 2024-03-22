@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-tooltip/dist/react-tooltip.css';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import '../../css/variables.css';
 import {
   AccentSpan,
   CalendarWrapper,
@@ -16,17 +19,15 @@ import {
   selectMonthData,
 } from '../../redux/selectors';
 import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
-import {
-  convertCalendarMonth
-} from '../../serviceFunctions/serviceFunctions.js';
+import { convertCalendarMonth } from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 
-const CustomTile = ({date}) => {
+const CustomTile = ({ date }) => {
   const convertDate = new Date(date);
-const day = convertDate.getDate();
-const arrOfMonthData = useSelector(selectMonthData);
-const tileContent = arrOfMonthData?.find((el) => el.day == day);
-console.log(arrOfMonthData);
+  const day = convertDate.getDate();
+  const arrOfMonthData = useSelector(selectMonthData);
+  const tileContent = arrOfMonthData?.find((el) => el.day == day);
+
   const tileStyle = {
     textAlign: 'center',
     paddingTop: '10px',
@@ -41,12 +42,12 @@ console.log(arrOfMonthData);
   };
 
   const circleStyle = {
-    width: '34px',
-    height: '34px',
+    width: '37px',
+    height: '37px',
     backgroundColor: 'white',
     position: 'absolute',
-    top: '-27px',
-    left: '0',
+    top: '-29px',
+    left: '-1px',
     zIndex: '1',
     borderRadius: '50%',
   };
@@ -54,7 +55,20 @@ console.log(arrOfMonthData);
   return (
     <div style={tileStyle}>
       <div style={textStyle}>{`${tileContent?.consumedWaterRatio || 0}%`}</div>
-      <Styledcircle style={circleStyle}></Styledcircle>
+      <Styledcircle style={circleStyle}>
+        <CircularProgressbar
+          strokeWidth={8}
+          value={tileContent?.consumedWaterRatio || 0}
+          text={``}
+          styles={buildStyles({
+            strokeLinecap: 'butt',
+            pathTransitionDuration: 0.5,
+            pathColor: `${tileContent?.consumedWaterRatio < 99 ? `var(--accent-text)` : "green"}`,
+            trailColor: 'lightgray',
+            backgroundColor: 'transparent',
+          })}
+        />
+      </Styledcircle>
     </div>
   );
 };
@@ -65,7 +79,7 @@ const MonthStatsTable = () => {
   const [currentMonth, setCurrentMonth] = useState('');
   const [tooltipContent, setTooltipContent] = useState([]);
   const monthData = useSelector(selectMonthData);
-  console.log(currentMonth)
+  console.log(currentMonth);
   const registration = useSelector(selectDataOfRegistration);
   const userRegistration = new Date(registration);
 
@@ -95,11 +109,9 @@ const MonthStatsTable = () => {
         }
       }
     };
-  
-    fetchData();
-  
-  }, [dispatch, currentMonth, lastMonthLabel]);
 
+    fetchData();
+  }, [dispatch, currentMonth, lastMonthLabel]);
 
   useEffect(() => {
     const navigationButtons = document.querySelectorAll(
@@ -149,7 +161,9 @@ const MonthStatsTable = () => {
       const [day] = monthData.filter((d) => d.day === number);
       setdailyNormaForTooltip(day?.dailyNorma ? day.dailyNorma : '0');
       setcountPortionsForTooltip(day?.portionsCount ? day.portionsCount : '0');
-      setPercentForTooltip(day?.consumedWaterRatio ? day.consumedWaterRatio : '0');
+      setPercentForTooltip(
+        day?.consumedWaterRatio ? day.consumedWaterRatio : '0'
+      );
     };
     DataForTootip();
   }, [currentMonth, monthData, number]);
@@ -167,29 +181,30 @@ const MonthStatsTable = () => {
         onActiveStartDateChange={({ activeStartDate }) =>
           setValue(activeStartDate)
         }
-        tileContent={({ date, view }) => <CustomTile date={date} view={view} percentForTooltip={percentForTooltip}/>}
+        tileContent={({ date, view }) => <CustomTile date={date} view={view} />}
       />
 
-      {(percentForTooltip > 0) && 
-      <StyledTooltip id="my-tooltip">
-        <StyledDivWrapper>
-          <p>
-            <AccentSpan>{date}</AccentSpan>
-          </p>
-          <p>
-            <span>Daily norma: </span>
-            <AccentSpan> {dailyNormaForTooltip / 1000} L</AccentSpan>
-          </p>
-          <p>
-            <span>Fulfillment of the daily norm: </span>
-            <AccentSpan>{percentForTooltip}%</AccentSpan>
-          </p>
-          <p>
-            <span>How many servings of water: </span>
-            <AccentSpan>{countPortionsForTooltip}</AccentSpan>
-          </p>
-        </StyledDivWrapper>
-      </StyledTooltip>}
+      {percentForTooltip > 0 && (
+        <StyledTooltip id="my-tooltip">
+          <StyledDivWrapper>
+            <p>
+              <AccentSpan>{date}</AccentSpan>
+            </p>
+            <p>
+              <span>Daily norma: </span>
+              <AccentSpan> {dailyNormaForTooltip / 1000} L</AccentSpan>
+            </p>
+            <p>
+              <span>Fulfillment of the daily norm: </span>
+              <AccentSpan>{percentForTooltip}%</AccentSpan>
+            </p>
+            <p>
+              <span>How many servings of water: </span>
+              <AccentSpan>{countPortionsForTooltip}</AccentSpan>
+            </p>
+          </StyledDivWrapper>
+        </StyledTooltip>
+      )}
     </CalendarWrapper>
   );
 };
