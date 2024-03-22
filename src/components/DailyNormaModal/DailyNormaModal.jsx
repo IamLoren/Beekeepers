@@ -26,6 +26,8 @@ import * as Yup from 'yup';
 import { updateWaterRateThunk } from '../../redux/normaCounter/operations';
 import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
 import { toast } from 'react-toastify';
+import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations';
+import { getCurrentData } from '../../serviceFunctions/serviceFunctions';
 
 const validationDailyNormaModalSchema = Yup.object({
   weight: Yup.number('Weight value must be a number')
@@ -65,8 +67,10 @@ const DailyNormaModal = () => {
       const dailyWaterNormaLiters = Number(values.norma);
       const dailyWaterNormaMl = dailyWaterNormaLiters * 1000;
       const newDailyWaterNorma = { dailyWaterNorma: dailyWaterNormaMl };
+      const currentDate = getCurrentData();
       dispatch(changeDailyNorma(newDailyWaterNorma));
       dispatch(updateWaterRateThunk(newDailyWaterNorma));
+      dispatch(fetchMonthlyPortionsThunk(currentDate));
       dispatch(closeModals()).catch((error) => {
         toast.info(error.message);
       });
