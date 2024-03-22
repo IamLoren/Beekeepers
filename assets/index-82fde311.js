@@ -926,9 +926,11 @@ justify-content: space-between;
     width: 544px;
   }
 `,OK=K.p`
+  height: 180px;
+
   color: var(--percentage-text);
   font-size: 20px;
-  padding-bottom: 16px;
+  padding-bottom: 12px;
 `,RK=K.button`
   display: flex;
   justify-content: center;
