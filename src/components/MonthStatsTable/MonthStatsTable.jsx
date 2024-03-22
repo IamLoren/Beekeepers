@@ -79,9 +79,8 @@ const MonthStatsTable = () => {
       const currentMonthLabel = document.querySelector(
         '.react-calendar__navigation__label__labelText'
       ).textContent;
-      if (currentMonthLabel && currentMonthLabel !== lastMonthLabel) {
+      if (currentMonthLabel !== lastMonthLabel) {
         setCurrentMonth(currentMonthLabel);
-        console.log(currentMonth);
         try {
           const date = convertCalendarMonth(currentMonth);
           const { payload } = await dispatch(fetchMonthlyPortionsThunk(date));

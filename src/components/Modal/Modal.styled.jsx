@@ -9,11 +9,14 @@ export const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.8);
   z-index: 1000;
 `;
-export const ModalStyled = styled.div`
+
+export const ModalContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+`;
+export const ModalStyled = styled.div`
   height: auto;
   overflow-y: auto;
   z-index: 2000;
