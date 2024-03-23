@@ -75,7 +75,7 @@ const WaterRatioPanel = () => {
         </StyledAddBtn>
       </div>
       {modalIsOpen && <Modal />}
-      {isGreetingModalOpen && createPortal(<Greeting />, document.getElementById('portal'))}
+      {isGreetingModalOpen && createPortal(<Greeting progress={progress} />, document.getElementById('portal'))}
     </StyledRatioSectionContainer>
   );
 };
