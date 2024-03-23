@@ -11,7 +11,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { changeGreetingModal } from '../../redux/statisticData/statisticDataSlice';
 
-export const Greeting = () => {
+export const Greeting = ({progress}) => {
   const dispatch = useDispatch();
   const [percents, setPercents] = useState(20);
   const width = window.innerWidth - 5;
@@ -19,15 +19,15 @@ export const Greeting = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (percents < 100) {
-        setPercents((prevNumber) => prevNumber + 2);
+      if (percents < progress) {
+        setPercents((prevNumber) => prevNumber + 3);
       } else {
         clearInterval(intervalId);
       }
     }, 50);
     return () => clearInterval(intervalId);
     
-  }, [percents]);
+  }, [percents, progress]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
