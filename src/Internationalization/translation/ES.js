@@ -130,7 +130,7 @@ export const es = {
   },
 
   greeting: {
-    'you are hero of selfcare': 'eres un héroe',
+    'you are a hero of selfcare': 'eres un héroe',
     'keep it up': 'sigue así',
   },
 };
