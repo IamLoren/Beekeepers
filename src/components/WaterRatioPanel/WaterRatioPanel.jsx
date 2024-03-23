@@ -25,15 +25,18 @@ import {
 } from './WaterRatioPanel.styled';
 import sprite from '../../assets/sprite.svg';
 import { createPortal } from 'react-dom';
-import  {Greeting}  from '../../components/Greeting/Greeting.jsx';
+import { Greeting } from '../../components/Greeting/Greeting.jsx';
 import { changeGreetingModal } from '../../redux/statisticData/statisticDataSlice.js';
 import { useEffect } from 'react';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const WaterRatioPanel = () => {
   const dailyNorma = useSelector(selectDailyNorma);
   const modalIsOpen = useSelector(selectIsModalOpen);
   const consumedWater = useSelector(selectPortionsAmount);
   const isGreetingModalOpen = useSelector(selectIsGreetingModalOpen);
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -47,13 +50,13 @@ const WaterRatioPanel = () => {
     if (progress >= 100) {
       dispatch(changeGreetingModal(true));
     }
-  },[dispatch, progress])
+  }, [dispatch, progress]);
   const limitedProgress = Math.min(progress, 100);
 
   return (
     <StyledRatioSectionContainer>
       <StyledProgressBarContainer>
-        <StyledToday>Today</StyledToday>
+        <StyledToday>{t('today')}</StyledToday>
         <StyledProgressBar id="ml" max="100" value="0">
           <ProgressFill $progress={limitedProgress} />
           <CircleIndicator $progress={limitedProgress} />
@@ -71,11 +74,15 @@ const WaterRatioPanel = () => {
           <svg className="add" fill="none">
             <use href={sprite + '#icon-plus-circle'}></use>
           </svg>
-          Add Water
+          {t('addWater')}
         </StyledAddBtn>
       </div>
       {modalIsOpen && <Modal />}
-      {isGreetingModalOpen && createPortal(<Greeting progress={progress} />, document.getElementById('portal'))}
+      {isGreetingModalOpen &&
+        createPortal(
+          <Greeting progress={progress} />,
+          document.getElementById('portal')
+        )}
     </StyledRatioSectionContainer>
   );
 };

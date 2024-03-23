@@ -10,10 +10,12 @@ import {
   changeModalOpen,
   changeSettingModal,
 } from '../../redux/modals/modalsSlice';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const UserLogoModal = ({ isSettingModalOpen, isLogoutModalOpen, onClose }) => {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const handleSettingClick = () => {
     dispatch(changeModalOpen(true));
     dispatch(changeSettingModal(true));
@@ -37,13 +39,13 @@ const UserLogoModal = ({ isSettingModalOpen, isLogoutModalOpen, onClose }) => {
           <StyledSvg width={16} height={16}>
             <use href={`${sprite}#icon-cog-6-tooth`} />
           </StyledSvg>
-          Setting
+          {t('setting')}
         </StyledButton>
         <StyledButton onClick={handleLogoutClick}>
           <StyledSvg width={16} height={16}>
             <use href={`${sprite}#icon-arrow-right-on-rectangle`} />
           </StyledSvg>
-          Log out
+          {t('logout')}
         </StyledButton>
       </StyledModalWrapper>
     </>

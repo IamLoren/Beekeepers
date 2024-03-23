@@ -21,13 +21,14 @@ import {
 import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
 import { getCurrentData } from '../../serviceFunctions/serviceFunctions.js';
 import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const CustomTile = ({ date }) => {
   const convertDate = new Date(date);
   const day = convertDate.getDate();
   const arrOfMonthData = useSelector(selectMonthData);
   const tileContent = arrOfMonthData?.find((el) => el.day == day);
-
   const tileStyle = {
     textAlign: 'center',
     paddingTop: '10px',
@@ -63,8 +64,14 @@ const CustomTile = ({ date }) => {
           styles={buildStyles({
             strokeLinecap: 'butt',
             pathTransitionDuration: 0.5,
-            pathColor: `${tileContent?.consumedWaterRatio < 99 ? `var(--accent-text)` : "green"}`,
-            trailColor: `${tileContent?.consumedWaterRatio == 0 ? 'lightgray' : "transparent"}`,
+            pathColor: `${
+              tileContent?.consumedWaterRatio < 99
+                ? `var(--accent-text)`
+                : 'green'
+            }`,
+            trailColor: `${
+              tileContent?.consumedWaterRatio == 0 ? 'lightgray' : 'transparent'
+            }`,
             backgroundColor: 'transparent',
           })}
         />
@@ -75,22 +82,25 @@ const CustomTile = ({ date }) => {
 
 const MonthStatsTable = () => {
   const dispatch = useDispatch();
-  const defaultCurrentDate = getCurrentData()
+  const defaultCurrentDate = getCurrentData();
   const [selectMonth, setSelectMonth] = useState(defaultCurrentDate);
   const [tooltipContent, setTooltipContent] = useState([]);
   const monthData = useSelector(selectMonthData);
   const registration = useSelector(selectDataOfRegistration);
   const userRegistration = new Date(registration);
   const [activeStartDate, setActiveStartDate] = useState(new Date());
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-          const { payload } = await dispatch(fetchMonthlyPortionsThunk(selectMonth));
-          dispatch(changemonthlyPortions(payload));
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
+      try {
+        const { payload } = await dispatch(
+          fetchMonthlyPortionsThunk(selectMonth)
+        );
+        dispatch(changemonthlyPortions(payload));
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
     };
 
     fetchData();
@@ -116,26 +126,33 @@ const MonthStatsTable = () => {
   }, [selectMonth]);
 
   async function onChange(newDate) {
-    
     const convert = new Date(newDate);
-    const formattedDate = `${convert.getDate()}-${(convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)}-${convert.getFullYear()}`;
+    const formattedDate = `${convert.getDate()}-${
+      (convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)
+    }-${convert.getFullYear()}`;
     setSelectMonth(formattedDate);
     try {
-      const { payload } = await dispatch(fetchMonthlyPortionsThunk(selectMonth));
+      const { payload } = await dispatch(
+        fetchMonthlyPortionsThunk(selectMonth)
+      );
       dispatch(changemonthlyPortions(payload));
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }
 
- async function setMonth(activeStartDate) {
+  async function setMonth(activeStartDate) {
     const convert = new Date(activeStartDate);
-    console.log(convert)
+    console.log(convert);
     setActiveStartDate(activeStartDate);
-    const formattedDate = `${convert.getDate()}-${(convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)}-${convert.getFullYear()}`;
+    const formattedDate = `${convert.getDate()}-${
+      (convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)
+    }-${convert.getFullYear()}`;
     setSelectMonth(formattedDate);
     try {
-      const { payload } = await dispatch(fetchMonthlyPortionsThunk(selectMonth));
+      const { payload } = await dispatch(
+        fetchMonthlyPortionsThunk(selectMonth)
+      );
       dispatch(changemonthlyPortions(payload));
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -160,7 +177,7 @@ const MonthStatsTable = () => {
 
   return (
     <CalendarWrapper>
-      <StyledTitle>Month</StyledTitle>
+      <StyledTitle>{t('month')}</StyledTitle>
       <Calendar
         onChange={onChange}
         views={['month', 'tenDays']}
@@ -179,18 +196,23 @@ const MonthStatsTable = () => {
         <StyledTooltip id="my-tooltip">
           <StyledDivWrapper>
             <p>
-              <AccentSpan>{number}, {date?.substr(3, date.length-8)}</AccentSpan>
+              <AccentSpan>
+                {number}, {date?.substr(3, date.length - 8)}
+              </AccentSpan>
             </p>
             <p>
-              <span>Daily norma: </span>
-              <AccentSpan> {dailyNormaForTooltip / 1000} L</AccentSpan>
+              <span>{t('statistics.Daily norma')}: </span>
+              <AccentSpan>
+                {' '}
+                {dailyNormaForTooltip / 1000} {t('L')}
+              </AccentSpan>
             </p>
             <p>
-              <span>Fulfillment of the daily norm: </span>
+              <span>{t('statistics.Fulfillment of the daily norm')}: </span>
               <AccentSpan>{percentForTooltip}%</AccentSpan>
             </p>
             <p>
-              <span>How many servings of water: </span>
+              <span>{t('statistics.How many servings of water')}: </span>
               <AccentSpan>{countPortionsForTooltip}</AccentSpan>
             </p>
           </StyledDivWrapper>

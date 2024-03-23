@@ -32,6 +32,9 @@ import {
   ResultSaveWrapper,
   StyledTimePicker,
 } from './TodayListModal.styled';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 const TodayListModal = () => {
   const dispatch = useDispatch();
@@ -121,26 +124,36 @@ const TodayListModal = () => {
     setSelectedTime(formattedValue);
   };
 
+  const { t } = useTranslation();
+
   return (
     <ModalWrapper>
-      <TitleModal>Edit the entered amount of water</TitleModal>
+      <TitleModal>
+        {t('todayListModal.Edit the entered amount of water')}
+      </TitleModal>
       <ContentItemWrapper>
         <svg className="edit" width={17} height={22} fill="none">
           <use href={sprite + '#icon-glass'}></use>
         </svg>
-        <AmountText>{selectedItem.amount} ml</AmountText>
+        <AmountText>
+          {selectedItem.amount} {t('ml')}
+        </AmountText>
         <TimeText>{selectedItem.time}</TimeText>
       </ContentItemWrapper>
       <div>
-        <SubtitleModal>Correct entered data:</SubtitleModal>
-        <TextModal>Amount of water:</TextModal>
+        <SubtitleModal>
+          {t('todayListModal.Correct entered data')}:
+        </SubtitleModal>
+        <TextModal>{t('todayListModal.Amount of water')}:</TextModal>
         <CounterWrapper>
           <button onClick={handleDecrement}>
             <svg width={24} height={24}>
               <use href={sprite + '#icon-minus-small'}></use>
             </svg>
           </button>
-          <span>{count} ml</span>
+          <span>
+            {count} {t('ml')}
+          </span>
           <button onClick={handleIncrement}>
             <svg width={24} height={24}>
               <use href={sprite + '#icon-plus-small'}></use>
@@ -149,7 +162,7 @@ const TodayListModal = () => {
         </CounterWrapper>
       </div>
       <div>
-        <TextModal>Recording time:</TextModal>
+        <TextModal>{t('todayListModal.Recording time')}:</TextModal>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <StyledTimePicker
             ampm={false}
@@ -162,7 +175,9 @@ const TodayListModal = () => {
       </div>
 
       <div>
-        <SubtitleModal>Enter the value of the water used:</SubtitleModal>
+        <SubtitleModal>
+          {t('todayListModal.Enter the value of the water used')}:
+        </SubtitleModal>
         <AmountInput
           type="number"
           value={inputValue}
@@ -173,9 +188,11 @@ const TodayListModal = () => {
         />
       </div>
       <ResultSaveWrapper>
-        <AmountResult>{count} ml</AmountResult>
+        <AmountResult>
+          {count} {t('ml')}
+        </AmountResult>
         <SaveButton onClick={onSaveClick} disabled={isSaveDisabled}>
-          Save
+          {t('save')}
         </SaveButton>
       </ResultSaveWrapper>
     </ModalWrapper>
