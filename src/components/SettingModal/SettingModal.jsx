@@ -103,8 +103,6 @@ const SettingModal = () => {
     input.click();
   };
 
-  // example
-  ////////////
   const onSubmit = (data) => {
     dispatch(updateUserThunk(data))
       .then(() => {
@@ -146,7 +144,7 @@ const SettingModal = () => {
         <MainInfoWrapper>
           <MainLabelText htmlFor="gender">Your gender identity</MainLabelText>
           <RadioGroupWrap
-            defaultValue={gender ? gender : 'woman'}
+            defaultValue={gender ? gender : 'man'}
             name="gender"
             row
             // onChange={changeGender}
@@ -229,7 +227,9 @@ const SettingModal = () => {
           </LabelText>
         </MainInfoWrapper>
       </FormWrapper>
-      <SaveBtn type="submit">Save</SaveBtn>
+      <SaveBtn type="submit" onClick={handleSubmit}>
+        Save
+      </SaveBtn>
     </SettingContainer>
   );
 };
