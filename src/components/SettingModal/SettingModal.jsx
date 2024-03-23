@@ -14,6 +14,7 @@ import {
   MainInfoWrapper,
   ErrMessage,
   StyledImg,
+  StyledSwitcher,
 } from './SettingModal.styled';
 import EyePassButton from './EyePassBtn';
 import defaultPhoto from '../../assets/avatar.jpg';
@@ -119,6 +120,11 @@ const SettingModal = () => {
       })
       .catch((error) => toast.error(error.message));
   };
+
+  function changeTheme() {
+    const body = document.querySelector('html');
+    body.classList.toggle('dark');
+  }
 
   return (
     <SettingContainer>
@@ -246,6 +252,9 @@ const SettingModal = () => {
       <SaveBtn type="submit" onClick={onSubmit}>
         {t('save')}
       </SaveBtn>
+      <StyledSwitcher onClick={changeTheme}>
+      Change theme
+    </StyledSwitcher>
     </SettingContainer>
   );
 };

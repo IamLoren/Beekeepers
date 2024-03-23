@@ -45,7 +45,7 @@ const CustomTile = ({ date }) => {
   const circleStyle = {
     width: '37px',
     height: '37px',
-    backgroundColor: 'white',
+    backgroundColor: 'var(--tooltip-bg-color)',
     position: 'absolute',
     top: '-29px',
     left: '-1px',
