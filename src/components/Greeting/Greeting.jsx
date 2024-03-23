@@ -19,15 +19,15 @@ export const Greeting = ({progress}) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (percents < 100) {
-        setPercents((prevNumber) => prevNumber + 2);
+      if (percents < progress) {
+        setPercents((prevNumber) => prevNumber + 3);
       } else {
         clearInterval(intervalId);
       }
     }, 50);
     return () => clearInterval(intervalId);
     
-  }, [percents]);
+  }, [percents, progress]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -43,7 +43,7 @@ export const Greeting = ({progress}) => {
         <CircularProgressbar
           strokeWidth={8}
           value={percents}
-          text={`${progress} %`}
+          text={`${percents} %`}
           styles={buildStyles({
             strokeLinecap: 'circle',
             textColor: `${percents < 60 ? `var(--accent-text)` : 'green'}`,
