@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from './redux/Global/selectors.jsx';
 import { useEffect } from 'react';
 import { refreshThunk } from './redux/auth/operations.js';
+import VerificationSuccessPage from './pages/VerificationSuccessPage/VerificationSuccessPage.jsx';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -23,7 +24,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-      dispatch(refreshThunk());
+    dispatch(refreshThunk());
   }, [dispatch]);
 
   return isRefresh ? (
@@ -63,6 +64,14 @@ function App() {
               <PublicRoute>
                 <SignUpPage />
               </PublicRoute>
+            }
+          />
+          <Route
+            path="/api/auth/verify/:verificationToken"
+            element={
+              <PrivateRoute>
+                <VerificationSuccessPage />
+              </PrivateRoute>
             }
           />
           <Route path="*" element={<ErrorPage />} />
