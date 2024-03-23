@@ -22,9 +22,9 @@ function App() {
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //     dispatch(refreshThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+      dispatch(refreshThunk());
+  }, [dispatch]);
 
   return isRefresh ? (
     <Loader visible={isLoading} />
