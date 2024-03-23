@@ -14,6 +14,8 @@ import {
 import { logoutThunk } from '../../redux/auth/operations';
 import { clearStatisticData } from '../../redux/statisticData/statisticDataSlice';
 import { clearNormaCounterData } from '../../redux/normaCounter/normaCounterSlice';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const UserLogoutModal = () => {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ const UserLogoutModal = () => {
     dispatch(changeModalOpen(false));
     dispatch(closeModals(false));
   };
+  const { t } = useTranslation();
 
   const handleLogoutClick = () => {
     dispatch(logoutThunk());
@@ -35,14 +38,16 @@ const UserLogoutModal = () => {
 
   return (
     <ModalWrapper className="delete-modal">
-      <StyledTitle>Log out</StyledTitle>
+      <StyledTitle>{t('logout')}</StyledTitle>
       <StyledText className="delete-subtitle">
-        Do you really want to leave?
+        {t('logOut.Do you really want to leave?')}
       </StyledText>
       <ButtonsWrapper>
-        <ButtonDelete onClick={handleLogoutClick}>Logout</ButtonDelete>
+        <ButtonDelete onClick={handleLogoutClick}>
+          {t('logOut.Log out')}
+        </ButtonDelete>
         <ButtonDelete className="cancel-btn" onClick={handleCancelClick}>
-          Cancel
+          {t('logOut.Cancel')}
         </ButtonDelete>
       </ButtonsWrapper>
     </ModalWrapper>

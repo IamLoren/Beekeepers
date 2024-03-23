@@ -1,15 +1,13 @@
-import {
-  FormWrapper,
-  FormHeading,
-  BtnLink,
-  FormEl,
-} from './AuthForm.styled';
+import { FormWrapper, FormHeading, BtnLink, FormEl } from './AuthForm.styled';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const AuthForm = ({ children, on, handleSubmit, submit, errors }) => {
+  const { t } = useTranslation();
   const path = on ? `/signup` : '/signin';
   return (
     <FormWrapper>
-      <FormHeading>{on ? 'Sign In' : 'Sign Up'}</FormHeading>
+      <FormHeading>{on ? t('signIn') : t('signUp')}</FormHeading>
       <FormEl
         onSubmit={handleSubmit(submit)}
         $errorEmail={errors?.email}
@@ -18,7 +16,7 @@ const AuthForm = ({ children, on, handleSubmit, submit, errors }) => {
       >
         {children}
       </FormEl>
-      <BtnLink to={path}>{on ? 'Sign Up' : 'Sign In'}</BtnLink>
+      <BtnLink to={path}>{on ? t('signUp') : t('signIn')}</BtnLink>
     </FormWrapper>
   );
 };

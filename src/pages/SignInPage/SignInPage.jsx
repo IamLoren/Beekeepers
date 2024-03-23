@@ -28,21 +28,8 @@ import Bottle from '../../assets/MobileBg/SignInBgMob.webp';
 import BottleTablet from '../../assets/TabletBg/SignInBgTab.webp';
 import BottleDesktop from '../../assets/DesktopBg/SignInBg.webp';
 import OpenPassEye from '../../assets/OpenPassEye';
-
-const schema = yup
-  .object({
-    email: yup
-      .string()
-      .email('Please write valid email')
-      .matches(/^(?!.*@[^,]*,)/)
-      .required('Email is required'),
-    password: yup
-      .string()
-      .min(8, 'Password must be at least 8 characters')
-      .max(64)
-      .required('Password is required'),
-  })
-  .required();
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const SignInPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -51,8 +38,23 @@ const SignInPage = () => {
   const [eyePass, setEyePass] = useState(false);
 
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
+  const schema = yup
+    .object({
+      email: yup
+        .string()
+        .email(t('validEmail.Please write valid email'))
+        .matches(/^(?!.*@[^,]*,)/)
+        .required(t('validEmail.Email is required')),
+      password: yup
+        .string()
+        .min(8, t('validPassword.Password must be at least 8 characters'))
+        .max(64)
+        .required(t('validPassword.Password is required')),
+    })
+    .required();
 
   const {
     register,
@@ -88,10 +90,10 @@ const SignInPage = () => {
           errors={errors}
         >
           <FormLabel>
-            Enter your email
+            {t('enterEmail')}
             <FormInput
               type="text"
-              placeholder="E-mail"
+              placeholder={t('email')}
               name="email"
               required
               {...register('email')}
@@ -99,10 +101,10 @@ const SignInPage = () => {
             <ErrorSpan>{errors?.email?.message}</ErrorSpan>
           </FormLabel>
           <FormLabel>
-            Enter your password
+            {t('enterPassword')}
             <FormInput
               type={eyePass ? 'text' : 'password'}
-              placeholder="Password"
+              placeholder={t('password')}
               name="password"
               required
               {...register('password')}
@@ -112,12 +114,12 @@ const SignInPage = () => {
               {eyePass ? <OpenPassEye /> : <PassEye />}
             </PassShowBtn>
           </FormLabel>
-          <FormBtn type="submit">Sign In</FormBtn>
+          <FormBtn type="submit">{t('signIn')}</FormBtn>
         </AuthForm>
         <ImgWrapper>
           {isMobile && <img src={Bottle} />}
           {isTablet && <img src={BottleTablet} />}
-          {isDesktop && <img src={BottleDesktop}  />}
+          {isDesktop && <img src={BottleDesktop} />}
         </ImgWrapper>
       </LoginWrapper>
     </StyledSection>
