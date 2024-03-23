@@ -5,6 +5,7 @@ import {
   refreshThunk,
   registerThunk,
   updateUserThunk,
+  verifyThunk,
 } from './operations.js';
 import { toast } from 'react-toastify';
 
@@ -18,6 +19,8 @@ export const authSlice = createSlice({
       avatarURL: '',
       registrationDate: '',
       theme: '',
+      verify: false,
+      verificationToken: '',
     },
     token: '',
     isLogged: false,
@@ -34,8 +37,11 @@ export const authSlice = createSlice({
         state.user.registrationDate = payload.date.substring(0, 10);
         state.user.gender = payload.gender;
         state.user.theme = payload.theme;
+        state.user.verify = payload.verify;
+        state.user.verificationToken = payload.verificationToken;
+
         state.token = payload.token;
-        state.isLogged = true;
+        // state.isLogged = true;
         state.isLoading = false;
       })
       .addCase(registerThunk.rejected, (state) => {
@@ -110,6 +116,17 @@ export const authSlice = createSlice({
         state.isLogged = false;
         state.isLoading = false;
         state.isRefresh = false;
+      })
+      .addCase(verifyThunk.fulfilled, (state) => {
+        state.user.verify = true;
+        state.isLogged = true;
+      })
+      .addCase(verifyThunk.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(verifyThunk.rejected, (state) => {
+        state.isLoading = false;
+        state.user.verify = false;
       });
   },
 });

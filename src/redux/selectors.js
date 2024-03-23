@@ -42,4 +42,9 @@ export const selectDataOfRegistration = (state) =>
 export const selectIsLoading = (state) => state.authSlice.isLoading;
 export const selectIsRefresh = (state) => state.authSlice.isRefresh;
 
-export const selectIsGreetingModalOpen = (state) => state.statisticDataSlice.greetingModal;
+export const selectIsGreetingModalOpen = (state) =>
+  state.statisticDataSlice.greetingModal;
+
+export const selectVerificationToken = (state) => {
+  state.statisticDataSlice.user.verificationToken;
+};
