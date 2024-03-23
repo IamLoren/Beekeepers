@@ -20,11 +20,11 @@ export const Greeting = ({progress}) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (percents < progress) {
-        setPercents((prevNumber) => prevNumber + 3);
+        setPercents((prevNumber) => prevNumber + 1);
       } else {
         clearInterval(intervalId);
       }
-    }, 50);
+    }, 10);
     return () => clearInterval(intervalId);
     
   }, [percents, progress]);
