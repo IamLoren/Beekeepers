@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const StyledModalWrapper = styled.div`
   border-radius: 10px;
   padding: 16px;
-  width: 118px;
+  /* width: 118px; */
+  width: auto;
   height: 88px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
   background-color: #fff;
@@ -12,6 +13,7 @@ export const StyledModalWrapper = styled.div`
   gap: 16px;
   align-items: center;
   justify-content: center;
+  align-items: flex-start;
 
   /* margin: 8px -90px; */
 `;
