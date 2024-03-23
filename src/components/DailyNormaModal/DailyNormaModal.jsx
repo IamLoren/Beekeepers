@@ -190,7 +190,9 @@ const DailyNormaModal = () => {
           <Data>
             {t('normaModal.The required amount of water in liters per day')}:
           </Data>
-          <AmountNumber>{calculatedNorma} L</AmountNumber>
+          <AmountNumber>
+            {calculatedNorma} {t('L')}
+          </AmountNumber>
         </WrapAmount>
         <InputErrorWrap>
           <label htmlFor="norma">

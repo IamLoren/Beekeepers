@@ -10,9 +10,12 @@ import {
 } from './Greeting.styled';
 import { useDispatch } from 'react-redux';
 import { changeGreetingModal } from '../../redux/statisticData/statisticDataSlice';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
-export const Greeting = ({progress}) => {
+export const Greeting = ({ progress }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [percents, setPercents] = useState(20);
   const width = window.innerWidth - 5;
   const height = window.innerHeight - 50;
@@ -26,18 +29,19 @@ export const Greeting = ({progress}) => {
       }
     }, 10);
     return () => clearInterval(intervalId);
-    
   }, [percents, progress]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      dispatch(changeGreetingModal(false))
-      }, 4000);
-      return () => clearTimeout(timeoutId);
-  }, [dispatch])
+      dispatch(changeGreetingModal(false));
+    }, 4000);
+    return () => clearTimeout(timeoutId);
+  }, [dispatch]);
   return (
     <StyledGreeting>
-      <StyledGreetingTitle>you are a hero of selfcare!</StyledGreetingTitle>
+      <StyledGreetingTitle>
+        {t('greeting.you are a hero of selfcare')}!
+      </StyledGreetingTitle>
       <Confetti width={width} height={height} />
       <StyledGreetingWrapper>
         <CircularProgressbar
@@ -55,7 +59,7 @@ export const Greeting = ({progress}) => {
           })}
         />
       </StyledGreetingWrapper>
-      <StyledGreetingText>keep it up!</StyledGreetingText>
+      <StyledGreetingText>{t('greeting.keep it up')}!</StyledGreetingText>
     </StyledGreeting>
   );
 };
