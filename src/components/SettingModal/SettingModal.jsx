@@ -56,6 +56,7 @@ const basicSchema = yup.object({
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
   // const [photo, setPhoto] = useState(defaultPhoto);
+  const { t } = useTranslation();
   const { avatarURL, gender, name, email } = useSelector(selectUser);
 
   const dispatch = useDispatch();
@@ -117,7 +118,7 @@ const SettingModal = () => {
 
   return (
     <SettingContainer>
-      <h1>Setting</h1>
+      <h1>{t('settingModal.Setting')}</h1>
 
       <FormWrapper
         // onSubmit={handleSubmit}
@@ -125,7 +126,10 @@ const SettingModal = () => {
         encType="multipart/form-data"
         errors={errors}
       >
-        <MainLabelText htmlFor="avatar">Your photo</MainLabelText>
+        <MainLabelText htmlFor="avatar">
+          {' '}
+          {t('settingModal.Your photo')}
+        </MainLabelText>
         <PhotoWrapper>
           <img
             src={avatarURL ? avatarURL : defaultPhoto}
@@ -139,12 +143,15 @@ const SettingModal = () => {
             <svg className="arrow-up" fill="none" fontSize={24}>
               <use href={sprite + '#icon-arrow-up-try'}></use>
             </svg>
-            Upload a photo
+            {t('settingModal.Upload a photo')}
           </UploadBtn>
         </PhotoWrapper>
 
         <MainInfoWrapper>
-          <MainLabelText htmlFor="gender">Your gender identity</MainLabelText>
+          <MainLabelText htmlFor="gender">
+            {' '}
+            {t('settingModal.Your gender identity')}
+          </MainLabelText>
           <RadioGroupWrap
             defaultValue={gender ? gender : 'man'}
             name="gender"
@@ -154,7 +161,7 @@ const SettingModal = () => {
             <StyledFormControlLabel
               value="woman"
               control={<Radio />}
-              label="Woman"
+              label={t('woman')}
               {...register('gender')}
               // checked={formik.values.gender === 'woman'}
             ></StyledFormControlLabel>
@@ -162,13 +169,16 @@ const SettingModal = () => {
             <StyledFormControlLabel
               value="man"
               control={<Radio />}
-              label="Man"
+              label={t('man')}
               {...register('gender')}
               // checked={formik.values.gender === 'man'}
             ></StyledFormControlLabel>
           </RadioGroupWrap>
 
-          <MainLabelText htmlFor="name">Your name</MainLabelText>
+          <MainLabelText htmlFor="name">
+            {' '}
+            {t('settingModal.Your name')}
+          </MainLabelText>
           <StyledInput
             id="name"
             type="text"
@@ -178,7 +188,7 @@ const SettingModal = () => {
             {...register('name')}
           />
 
-          <MainLabelText htmlFor="email">E-mail</MainLabelText>
+          <MainLabelText htmlFor="email">{t('email')}</MainLabelText>
           <StyledInput
             id="email"
             type="text"
@@ -188,7 +198,7 @@ const SettingModal = () => {
             {...register('email')}
           />
 
-          <MainLabelText htmlFor="password">Password</MainLabelText>
+          <MainLabelText htmlFor="password">{t('password')}</MainLabelText>
 
           <LabelText htmlFor="oldPassword">
             Outdated password:
@@ -196,19 +206,19 @@ const SettingModal = () => {
               id="oldPassword"
               name="oldPassword"
               type={eyePass ? 'text' : 'password'}
-              placeholder="Password"
+              placeholder={t('password')}
               {...register('oldPassword')}
             />
             <EyePassButton onClick={showPass} eyePass={eyePass} />
           </LabelText>
 
           <LabelText htmlFor="newPassword">
-            New Password:
+            {t('settingModal.New Password')}:
             <StyledInput
               id="newPassword"
               type={eyePass ? 'text' : 'password'}
               name="newPassword"
-              placeholder="Password"
+              placeholder={t('password')}
               {...register('newPassword')}
             />
             <ErrMessage>{errors.newPassword?.message}</ErrMessage>
@@ -216,12 +226,12 @@ const SettingModal = () => {
           </LabelText>
 
           <LabelText htmlFor="repeatPassword">
-            Repeat new password:
+            {t('settingModal.Repeat new password')}:
             <StyledInput
               id="repeatPassword"
               type={eyePass ? 'text' : 'password'}
               name="repPassword"
-              placeholder="Password"
+              placeholder={t('password')}
               {...register('repPassword')}
             />
             <ErrMessage>{errors.repPassword?.message}</ErrMessage>
@@ -229,9 +239,7 @@ const SettingModal = () => {
           </LabelText>
         </MainInfoWrapper>
       </FormWrapper>
-      <SaveBtn type="submit" onClick={handleSubmit}>
-        Save
-      </SaveBtn>
+      <SaveBtn type="submit">{t('save')}</SaveBtn>
     </SettingContainer>
   );
 };
