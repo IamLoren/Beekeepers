@@ -18,6 +18,7 @@ export const statisticDataSlice = createSlice({
     isError: null,
     selectedItem: {},
     selectedDay: {},
+    greetingModal: false,
   },
   reducers: {
     changemonthlyPortions: (state, { payload }) => {
@@ -34,6 +35,9 @@ export const statisticDataSlice = createSlice({
       state.isError = null;
       state.selectedItem = null;
       state.selectedDay = {};
+    },
+    changeGreetingModal: (state, { payload }) => {
+      state.greetingModal = payload;
     },
     // addPortion: (state, { payload }) => {
     //   state.portions.push(payload);
@@ -115,4 +119,5 @@ export const {
   changeSelectedItem,
   changemonthlyPortions,
   clearStatisticData,
+  changeGreetingModal,
 } = statisticDataSlice.actions;
