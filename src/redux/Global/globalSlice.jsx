@@ -15,10 +15,13 @@ import {
   fetchPortionsThunk,
   updatePortionThunk,
 } from '../statisticData/operations';
+import { LANGUAGES } from '../../Internationalization/i18n';
 
 const initialState = {
   isLoading: false,
   isError: null,
+  theme: 'light',
+  language: LANGUAGES.EN,
 };
 
 function handlePending(state) {
@@ -38,6 +41,12 @@ function handleRejected(state, { payload }) {
 const globalSlice = createSlice({
   name: 'global',
   initialState,
+
+  reducers: {
+    setLanguage: (state, { payload }) => {
+      state.language = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
 
@@ -90,5 +99,5 @@ const globalSlice = createSlice({
       .addCase(updatePortionThunk.rejected, handleRejected);
   },
 });
-
+export const { setLanguage } = globalSlice.actions;
 export const globalReducer = globalSlice.reducer;

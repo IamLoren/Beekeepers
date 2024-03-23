@@ -10,46 +10,23 @@ import {
   FormLabel,
   PassShowBtn,
 } from '../../components/AuthForm/AuthForm.styled';
-
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
-
-
 import AuthForm from '../../components/AuthForm/AuthForm';
-
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';;
-
-
+import { yupResolver } from '@hookform/resolvers/yup';
 import Bottle from '../../assets/MobileBg/SignInBgMob.webp';
 import BottleTablet from '../../assets/TabletBg/SignInBgTab.webp';
 import BottleDesktop from '../../assets/DesktopBg/SignInBg.webp';
 import PassEye from '../../assets/PassEye';
 import OpenPassEye from '../../assets/OpenPassEye';
-
-const schema = yup
-  .object({
-    email: yup
-      .string()
-      .email('Please write valid email')
-      .matches(/^(?!.*@[^,]*,)/)
-      .required('Email is required'),
-    password: yup
-      .string()
-      .min(8, 'Password must be at least 8 characters')
-      .required('Password is required'),
-    repPassword: yup
-      .string()
-      .min(8, 'Password must be at least 8 characters')
-      .oneOf([yup.ref('password')], "Passwords don't match, please try again.")
-      .required('Password is required'),
-  })
-  .required('Required');
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const SignUpPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -57,8 +34,30 @@ const SignUpPage = () => {
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const [eyePass, setEyePass] = useState(false);
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+
+  const { t } = useTranslation();
+  const schema = yup
+    .object({
+      email: yup
+        .string()
+        .email(t('validEmail.Please write valid email'))
+        .matches(/^(?!.*@[^,]*,)/)
+        .required(t('validEmail.Email is required')),
+      password: yup
+        .string()
+        .min(8, t('validPassword.Password must be at least 8 characters'))
+        .required(t('validPassword.Password is required')),
+      repPassword: yup
+        .string()
+        .min(8, t('validPassword.Password must be at least 8 characters'))
+        .oneOf(
+          [yup.ref('password')],
+          t("validPassword.Passwords don't match, please try again")
+        )
+        .required(t('validPassword.Password is required')),
+    })
+    .required();
 
   const {
     register,
@@ -92,20 +91,20 @@ const SignUpPage = () => {
           errors={errors}
         >
           <FormLabel>
-            Enter your email
+            {t('enterEmail')}
             <FormInput
               type="text"
-              placeholder="E-mail"
+              placeholder={t('email')}
               name="email"
               {...register('email')}
             />
             <ErrorSpan>{errors?.email?.message}</ErrorSpan>
           </FormLabel>
           <FormLabel>
-            Enter your password
+            {t('enterPassword')}
             <FormInput
               type={eyePass ? 'text' : 'password'}
-              placeholder="Password"
+              placeholder={t('password')}
               name="password"
               {...register('password')}
             />
@@ -115,10 +114,10 @@ const SignUpPage = () => {
             </PassShowBtn>
           </FormLabel>
           <FormLabel>
-            Repeat password
+            {t('repeatPassword')}
             <FormInput
               type={eyePass ? 'text' : 'password'}
-              placeholder="Repeat password"
+              placeholder={t('repeatPassword')}
               name="repPassword"
               {...register('repPassword')}
             />
@@ -127,12 +126,12 @@ const SignUpPage = () => {
               {eyePass ? <OpenPassEye /> : <PassEye />}
             </PassShowBtn>
           </FormLabel>
-          <FormBtn type="submit">Sign Up</FormBtn>
+          <FormBtn type="submit"> {t('signUp')}</FormBtn>
         </AuthForm>
         <ImgWrapper>
           {isMobile && <img src={Bottle} />}
           {isTablet && <img src={BottleTablet} />}
-          {isDesktop && <img src={BottleDesktop}  />}
+          {isDesktop && <img src={BottleDesktop} />}
         </ImgWrapper>
       </LoginWrapper>
     </StyledSection>
