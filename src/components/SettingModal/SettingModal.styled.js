@@ -240,3 +240,21 @@ export const ErrMessage = styled.p`
   padding-top: 2px;
   font-size: 12px;
 `;
+
+export const StyledSwitcher = styled.button`
+text-decoration: none;
+display: inline-block;
+padding: 15px 30px;
+border-radius: 10px;
+box-shadow: 0 0 40px 40px #9ebbff inset, 0 0 0 0 #9ebbff;
+font-weight: bold;
+letter-spacing: 2px;
+color: white;
+transition: .15s ease-in-out;
+border-color: var(--percentage-text);
+
+&:hover {
+  box-shadow: 0 0 10px 0 #9ebbff inset, 0 0 10px 4px #9ebbff;
+  color: #9ebbff;
+}
+`

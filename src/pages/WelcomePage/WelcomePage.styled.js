@@ -1,8 +1,44 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-// import WelcomePageBg from '../../assets/DesktopBg/WelcomePageBg.webp'
-// import WelcomeBgTab from '../../assets/TabletBg/WelcomeBgTab.webp'
-// import WelcomeBgMob from '../../assets/MobileBg/WelcomeBgMob.webp'
+import WelcomePageBg from '../../assets/DesktopBg/WelcomePageBg.webp'
+import WelcomeBgTab from '../../assets/TabletBg/WelcomeBgTab.webp'
+import WelcomeBgMob from '../../assets/MobileBg/WelcomeBgMob.webp'
+import WelcomePageBgRetina from '../../assets/DesktopBg/WelcomePageBg@retina.webp'
+import WelcomeBgTabRetina from '../../assets/TabletBg/WelcomeBgTab@retina.webp'
+import WelcomeBgMobRetina from '../../assets/MobileBg/WelcomeBgMob@retina.webp'
+
+
+
+export const StyledBackGr = styled.div`
+background-image:url(${WelcomeBgMob})
+position: relative;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-position: bottom;
+  top: 0;
+  
+  @media only screen and (min-width: 768px) {
+    background-image:url(${WelcomeBgTab})
+    
+  }
+
+  @media only screen and (min-width: 1440px) {
+    background-image:url(${WelcomePageBg})
+
+  }
+  @media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  @media screen and (min-width: 320px) and (max-width: 767px) {
+    background-image: url(${WelcomeBgMobRetina});
+  }
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    background-image: url(${WelcomeBgTabRetina});
+  }
+  @media screen and (min-width: 1440px) {
+    background-image: url(${WelcomePageBgRetina});
+  }
+}
+`
 
 
 
@@ -99,13 +135,13 @@ export const StyledButton = styled.button`
   width: 100%;
   height: 36px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: #407bff;
+  background: var(--secondary-text);
 
   font-weight: 500;
   font-size: 16px;
 
   text-align: center;
-  color: #fff;
+  color: var(--tooltip-bg-color);
   border: none;
 `;
 
@@ -122,14 +158,14 @@ export const StyledRightItem = styled.li`
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #407bff;
+    background-color: var(--secondary-text);
   }
 `;
 
 export const StyledSvg = styled.svg`
 width: 32px;
 height: 32px;
-fill: #fffff;
+fill: var(--tooltip-bg-color);
 display: inline - block;
 margin-right: 5px;
 @media only screen and (min-width: 768px) {
@@ -143,7 +179,7 @@ export const StyledRightWrapper = styled.div`
   padding: 32px 24px;
 
   box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
-  background: #ecf2ff;
+  background: var(--card-bg-color);
   max-width: 380px;
   margin-bottom: 20px;
   @media only screen and (min-width: 768px) {
@@ -153,37 +189,9 @@ export const StyledRightWrapper = styled.div`
     margin-bottom: 0px;
   }
 `;
-export const WelcomeNavLink = styled(NavLink)`
-  max-width: 280px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  padding: 9px;
-  width: 100%;
 
-  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: #407bff;
 
-  font-weight: 500;
-  font-size: 16px;
 
-  text-align: center;
-  color: #fff;
-  border: none;
-  @media only screen and (min-width: 768px) {
-    max-width: 336px;
-    padding: 13px;
-  }
-  @media only screen and (min-width: 1440px) {
-    max-width: 384px;
-  }
-`;
-
-export const TryTrackerDivContainer = styled.div`
-  @media only screen and (min-width: 768px) {
-  }
-`;
 
 export const StyledRightTitle3 = styled.h3`
   padding-bottom: 12px;
