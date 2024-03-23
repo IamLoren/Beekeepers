@@ -34,7 +34,6 @@ export const authSlice = createSlice({
         state.user.registrationDate = payload.date.substring(0, 10);
         state.user.gender = payload.gender;
         state.user.theme = payload.theme;
-
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
@@ -54,7 +53,7 @@ export const authSlice = createSlice({
         state.user.email = payload.user.email;
         state.user.name = payload.user.name;
         state.user.gender = payload.user.gender;
-        // state.user.avatarURL = payload.user.avatarURL;
+        state.user.avatarURL = payload.user.avatarURL;
         state.user.registrationDate = payload.user.createdAt.substring(0, 10);
         state.token = payload.token;
         state.isLogged = true;
