@@ -19,10 +19,10 @@ const LanguageSelector = () => {
         EN
       </button>
       <button
-        disabled={currentLanguage === LANGUAGES.UK}
-        onClick={() => changeLanguage(LANGUAGES.UK)}
+        disabled={currentLanguage === LANGUAGES.UA}
+        onClick={() => changeLanguage(LANGUAGES.UA)}
       >
-        UK
+        UA
       </button>
       <button
         disabled={currentLanguage === LANGUAGES.ES}

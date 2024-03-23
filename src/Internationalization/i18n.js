@@ -3,11 +3,11 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 import { es } from '../Internationalization/translation/ES';
 import { en } from '../Internationalization/translation/EN';
-import { uk } from '../Internationalization/translation/UK';
+import { ua } from './translation/UA';
 
 export const LANGUAGES = {
   EN: 'en',
-  UK: 'uk',
+  UA: 'ua',
   ES: 'es',
 };
 
@@ -15,8 +15,8 @@ const resources = {
   [LANGUAGES.EN]: {
     translation: en,
   },
-  [LANGUAGES.UK]: {
-    translation: uk,
+  [LANGUAGES.UA]: {
+    translation: ua,
   },
   [LANGUAGES.ES]: {
     translation: es,
