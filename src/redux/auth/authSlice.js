@@ -93,12 +93,9 @@ export const authSlice = createSlice({
         state.isError = payload;
       })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
-        // state.user.name = payload.user?.name;
         state.user.email = payload.email;
         state.user.gender = payload.gender;
-        // state.user.avatarURL = payload.user.avatarURL;
         state.user.registrationDate = payload.createdAt.substring(0, 10);
-        // state.token = payload.token;
         state.user.theme = payload.theme;
         state.isLogged = true;
         state.isLoading = false;
