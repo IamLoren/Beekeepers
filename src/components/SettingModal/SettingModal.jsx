@@ -20,8 +20,14 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  updateAvatarThunk,
+  updateUserThunk,
+} from '../../redux/auth/operations';
+import { selectUser } from '../../redux/selectors';
+import { toast } from 'react-toastify';
+import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
 
 const basicSchema = yup.object({
   // name: yup.string().required('Name is required'),
@@ -47,14 +53,19 @@ const basicSchema = yup.object({
 
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
-  const [photo, setPhoto] = useState(defaultPhoto);
-  const { t } = useTranslation();
+  // const [photo, setPhoto] = useState(defaultPhoto);
+  const { avatarURL, gender, name, email } = useSelector(selectUser);
+
+  const dispatch = useDispatch();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      gender: gender,
+    },
     mode: 'onChange',
     resolver: yupResolver(basicSchema),
   });
@@ -75,52 +86,65 @@ const SettingModal = () => {
     eyePass ? setEyePass(false) : setEyePass(true);
   }
 
-  const handlePhotoUpload = () => {
+  const handlePhotoUpload = (e) => {
+    e.preventDefault();
     const input = document.createElement('input');
     input.type = 'file';
     input.accept = 'image/*';
     input.onchange = (e) => {
       const file = e.target.files[0];
       if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          setPhoto(e.target.result);
-        };
-        reader.readAsDataURL(file);
+        const formData = new FormData();
+        formData.append('avatarURL', file);
+
+        dispatch(updateAvatarThunk(formData));
       }
     };
     input.click();
   };
 
+  const onSubmit = (data) => {
+    dispatch(updateUserThunk(data))
+      .then(() => {
+        toast.success('Profile updated successfully');
+        dispatch(changeModalOpen(false));
+        dispatch(closeModals(false));
+      })
+      .catch((error) => toast.error(error.message));
+  };
+
   return (
     <SettingContainer>
-      <h1>{t('settingModal.Setting')}</h1>
+      <h1>Setting</h1>
 
       <FormWrapper
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
         errors={errors}
       >
-        <MainLabelText htmlFor="photo">
-          {t('settingModal.Your photo')}
-        </MainLabelText>
+        <MainLabelText htmlFor="avatar">Your photo</MainLabelText>
         <PhotoWrapper>
-          <img src={photo} alt="avatar" width="80" height="80" />
+          <img
+            src={avatarURL ? avatarURL : defaultPhoto}
+            alt="avatarURL"
+            width="80"
+            height="80"
+          />
 
-          <UploadBtn onClick={handlePhotoUpload} register={register}>
+          {/* <UploadBtn onClick={handlePhotoUpload} register={register}> */}
+          <UploadBtn onClick={handlePhotoUpload}>
             <svg className="arrow-up" fill="none" fontSize={24}>
               <use href={sprite + '#icon-arrow-up-try'}></use>
             </svg>
-            {t('settingModal.Upload a photo')}
+            Upload a photo
           </UploadBtn>
         </PhotoWrapper>
 
         <MainInfoWrapper>
-          <MainLabelText htmlFor="gender">
-            {t('settingModal.Your gender identity')}
-          </MainLabelText>
+          <MainLabelText htmlFor="gender">Your gender identity</MainLabelText>
           <RadioGroupWrap
-            defaultValue="woman"
+            defaultValue={gender ? gender : 'man'}
             name="gender"
             row
             // onChange={changeGender}
@@ -128,7 +152,7 @@ const SettingModal = () => {
             <StyledFormControlLabel
               value="woman"
               control={<Radio />}
-              label={t('woman')}
+              label="Woman"
               {...register('gender')}
               // checked={formik.values.gender === 'woman'}
             ></StyledFormControlLabel>
@@ -136,53 +160,53 @@ const SettingModal = () => {
             <StyledFormControlLabel
               value="man"
               control={<Radio />}
-              label={t('man')}
+              label="Man"
               {...register('gender')}
               // checked={formik.values.gender === 'man'}
             ></StyledFormControlLabel>
           </RadioGroupWrap>
 
-          <MainLabelText htmlFor="name">
-            {t('settingModal.Your name')}
-          </MainLabelText>
+          <MainLabelText htmlFor="name">Your name</MainLabelText>
           <StyledInput
             id="name"
             type="text"
             name="name"
+            defaultValue={name ? name : ''}
             placeholder="David"
             {...register('name')}
           />
 
-          <MainLabelText htmlFor="email">{t('email')}</MainLabelText>
+          <MainLabelText htmlFor="email">E-mail</MainLabelText>
           <StyledInput
             id="email"
             type="text"
             name="email"
+            defaultValue={email ? email : ''}
             placeholder="david01@gmail.com"
             {...register('email')}
           />
 
-          <MainLabelText htmlFor="password">{t('password')}</MainLabelText>
+          <MainLabelText htmlFor="password">Password</MainLabelText>
 
           <LabelText htmlFor="oldPassword">
-            {t('settingModal.Outdated password')}:
+            Outdated password:
             <StyledInput
               id="oldPassword"
               name="oldPassword"
               type={eyePass ? 'text' : 'password'}
-              placeholder={t('password')}
+              placeholder="Password"
               {...register('oldPassword')}
             />
             <EyePassButton onClick={showPass} eyePass={eyePass} />
           </LabelText>
 
           <LabelText htmlFor="newPassword">
-            {t('settingModal.New Password')}:
+            New Password:
             <StyledInput
               id="newPassword"
               type={eyePass ? 'text' : 'password'}
               name="newPassword"
-              placeholder={t('password')}
+              placeholder="Password"
               {...register('newPassword')}
             />
             <ErrMessage>{errors.newPassword?.message}</ErrMessage>
@@ -190,12 +214,12 @@ const SettingModal = () => {
           </LabelText>
 
           <LabelText htmlFor="repeatPassword">
-            {t('settingModal.Repeat new password')}:
+            Repeat new password:
             <StyledInput
               id="repeatPassword"
               type={eyePass ? 'text' : 'password'}
               name="repPassword"
-              placeholder={t('password')}
+              placeholder="Password"
               {...register('repPassword')}
             />
             <ErrMessage>{errors.repPassword?.message}</ErrMessage>
@@ -203,7 +227,9 @@ const SettingModal = () => {
           </LabelText>
         </MainInfoWrapper>
       </FormWrapper>
-      <SaveBtn type="submit">{t('save')}</SaveBtn>
+      <SaveBtn type="submit" onClick={handleSubmit}>
+        Save
+      </SaveBtn>
     </SettingContainer>
   );
 };
