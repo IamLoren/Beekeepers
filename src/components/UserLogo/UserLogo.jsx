@@ -5,6 +5,7 @@ import {
   StyledBtn,
   StyledName,
   StyledSvg,
+  StyledImg,
   StyledWrapper,
 } from './UserLogo.styled';
 import { useState } from 'react';
@@ -43,7 +44,7 @@ const UserLogo = () => {
             {name && <StyledName>{name}</StyledName>}
             <AvatarWrapper $borderColor={avatarURL ? 'transparent' : '#407bff'}>
               {avatarURL ? (
-                <img
+                <StyledImg
                   src={avatarURL ? avatarURL : defaultPhoto}
                   width={28}
                   height={28}

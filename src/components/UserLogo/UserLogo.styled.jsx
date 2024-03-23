@@ -19,6 +19,10 @@ export const StyledName = styled.h2`
   }
 `;
 
+export const StyledImg = styled.img`
+  object-fit: cover;
+`;
+
 export const StyledBtn = styled.button`
   display: flex;
   gap: 8px;

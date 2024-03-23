@@ -13,6 +13,7 @@ import {
   FormWrapper,
   MainInfoWrapper,
   ErrMessage,
+  StyledImg,
 } from './SettingModal.styled';
 import EyePassButton from './EyePassBtn';
 import defaultPhoto from '../../assets/avatar.jpg';
@@ -134,7 +135,7 @@ const SettingModal = () => {
           {t('settingModal.Your photo')}
         </MainLabelText>
         <PhotoWrapper>
-          <img
+          <StyledImg
             src={avatarURL ? avatarURL : defaultPhoto}
             alt="avatarURL"
             width="80"
@@ -242,7 +243,9 @@ const SettingModal = () => {
           </LabelText>
         </MainInfoWrapper>
       </FormWrapper>
-      <SaveBtn type="submit">{t('save')}</SaveBtn>
+      <SaveBtn type="submit" onClick={onSubmit}>
+        {t('save')}
+      </SaveBtn>
     </SettingContainer>
   );
 };
