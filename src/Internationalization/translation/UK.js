@@ -8,10 +8,20 @@ export const uk = {
   password: 'Пароль',
   email: 'Електронна пошта',
   forgotPassword: 'Забули пароль?',
+  required: "Це поле є обов'язковим!",
+  edit: 'Редагувати',
   save: 'Зберегти',
-  required: 'Обовязково',
+  L: 'Л',
+  ml: 'мл',
   woman: 'Жінка',
   man: 'Чоловік',
+  delete: 'Видалити',
+  cancel: 'Скасувати',
+  today: 'Сьогодні',
+  addWater: 'Додати воду',
+  month: 'Місяць',
+  setting: 'Налаштування',
+
   welcomePage: {
     'Water consumption tracker': 'Трекер споживання води',
     'Record daily water intake and track':
@@ -41,6 +51,7 @@ export const uk = {
     'Password is required': 'Потрібно ввести пароль',
     "Passwords don't match, please try again":
       'Паролі не співпадають, спробуйте ще раз',
+    'Passwords must match!': 'Паролі повинні співпадати!',
   },
 
   validEmail: {
@@ -84,7 +95,6 @@ export const uk = {
     'Water amount is required': "Кількість води – обов'язкове поле",
   },
   settingModal: {
-    Setting: 'Налаштування',
     'Your photo': 'Ваше фото',
     'Upload a photo': 'Завантажити фото',
     'Your gender identity': 'Стать',
@@ -93,5 +103,32 @@ export const uk = {
     'Outdated password': 'Поточний пароль',
     'New Password': 'Новий пароль',
     'Repeat new password': 'Повторіть новий пароль',
+  },
+  addModal: {
+    'Choose a value': 'Виберіть значення',
+    'Amount of water': 'Кількість води',
+    'Recording time': 'Час запису',
+    'Enter the value of the water used': 'Вкажіть кількість випитої води',
+  },
+  statistics: {
+    'Daily norma': 'Денна норма',
+    'Fulfillment of the daily norm': 'Виконання денної норми',
+    'How many servings of water': 'Кількість порцій води',
+  },
+
+  deleteModal: {
+    'Delete entry': 'Видалити запис',
+    'Are you sure you want to delete the entry':
+      'Ви впевнені, що хочете видалити запис',
+  },
+  todayListModal: {
+    'Edit the entered amount of water': 'Редагувати введену кількість води',
+    'Correct entered data': 'Редагувати введені дані',
+    'Amount of water': 'Кількість води',
+    'Recording time': 'Час запису',
+    'Enter the value of the water used': 'Вкажіть кількість випитої води',
+  },
+  todayWaterList: {
+    'No notes yet': 'Записів поки немає',
   },
 };

@@ -31,28 +31,6 @@ import { selectUser } from '../../redux/selectors';
 import { toast } from 'react-toastify';
 import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
 
-const basicSchema = yup.object({
-  // name: yup.string().required('Name is required'),
-  // email: yup
-  //   .string()
-  //   .email('Please write valid email')
-  //   .matches(/^(?!.*@[^,]*,)/)
-  //   .required('Email is required'),
-  oldPassword: yup
-    .string()
-    .min(8, 'Password must be at least 8 characters')
-    .max(64)
-    .required('Password is required'),
-  newPassword: yup
-    .string()
-    .min(8, 'Password must be at least 8 characters!')
-    .required('Password is required!'),
-  repPassword: yup
-    .string()
-    .oneOf([yup.ref('newPassword'), null], 'Passwords must match!')
-    .required('The field is required!'),
-});
-
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
   // const [photo, setPhoto] = useState(defaultPhoto);
@@ -60,6 +38,31 @@ const SettingModal = () => {
   const { avatarURL, gender, name, email } = useSelector(selectUser);
 
   const dispatch = useDispatch();
+
+  const basicSchema = yup.object({
+    // name: yup.string().required('Name is required'),
+    // email: yup
+    //   .string()
+    //   .email('Please write valid email')
+    //   .matches(/^(?!.*@[^,]*,)/)
+    //   .required('Email is required'),
+    oldPassword: yup
+      .string()
+      .min(8, t('validPassword.Password must be at least 8 characters'))
+      .max(64)
+      .required(t('validPassword.Password is required')),
+    newPassword: yup
+      .string()
+      .min(8, t('validPassword.Password must be at least 8 characters'))
+      .required(t('validPassword.Password is required!')),
+    repPassword: yup
+      .string()
+      .oneOf(
+        [yup.ref('newPassword'), null],
+        t('validPassword.Passwords must match!')
+      )
+      .required(t('required')),
+  });
 
   const {
     register,
@@ -118,7 +121,7 @@ const SettingModal = () => {
 
   return (
     <SettingContainer>
-      <h1>{t('settingModal.Setting')}</h1>
+      <h1>{t('setting')}</h1>
 
       <FormWrapper
         // onSubmit={handleSubmit}

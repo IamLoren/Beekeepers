@@ -13,11 +13,14 @@ import {
   changeDailyNormaModal,
   changeModalOpen,
 } from '../../redux/modals/modalsSlice.js';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);
   const dailyNormaLiters = dailyNorma / 1000;
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const onEditClick = () => {
     dispatch(changeModalOpen(true));
@@ -26,11 +29,13 @@ const DailyNorma = () => {
 
   return (
     <Wrapper>
-      <Title>My daily norma</Title>
+      <Title>{t('normaModal.My daily norma')}</Title>
       <NormaBtnWrap>
-        <NormaText>{dailyNormaLiters} L</NormaText>
+        <NormaText>
+          {dailyNormaLiters} {t('L')}
+        </NormaText>
         <Btn type="button" onClick={onEditClick}>
-          Edit
+          {t('edit')}
         </Btn>
       </NormaBtnWrap>
     </Wrapper>
