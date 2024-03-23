@@ -98,7 +98,7 @@ export const authSlice = createSlice({
         state.user.gender = payload.user.gender;
         // state.user.avatarURL = payload.user.avatarURL;
         state.user.registrationDate = payload.createdAt.substring(0, 10);
-        state.token = payload.token;
+        // state.token = payload.token;
         state.user.theme = payload.theme;
         state.isLogged = true;
         state.isLoading = false;
@@ -113,6 +113,7 @@ export const authSlice = createSlice({
         toast.error('You need to logIn!');
         state.isLogged = false;
         state.isLoading = false;
+        state.isRefresh = false;
       });
   },
 });
