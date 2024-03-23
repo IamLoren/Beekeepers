@@ -16,6 +16,7 @@ import {
   StyledTitle2,
   StyledLeftTitle3,
   StyledRightTitle3,
+  StyledBackGr,
 } from './WelcomePage.styled';
 
 const WelcomePage = () => {
@@ -27,6 +28,7 @@ const WelcomePage = () => {
 
   return (
     <>
+    <StyledBackGr>
       <StyledFullPage>
         <div>
           <StyledTitle1>
@@ -98,6 +100,7 @@ const WelcomePage = () => {
           </StyledRightList>
         </StyledRightWrapper>
       </StyledFullPage>
+      </StyledBackGr>
     </>
   );
 };
