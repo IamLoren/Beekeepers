@@ -23,8 +23,9 @@ h1,
 h2,
 h3,
 h4,
-p {
-  margin: 0;
+p,
+.react-calendar__month-view__days__day  {
+  margin: 0 !important;
   padding: 0;
 }
 
@@ -53,6 +54,7 @@ button {
   column-gap: 22px;
   row-gap: 20px;
 }
+
 body{
   font-family: 'Roboto Regular';
   font-size: 18px;
@@ -68,7 +70,6 @@ input:-webkit-autofill:active {
     background-color: inherit !important;
     color: var(--text-forms);
 }
-
 
 
 @media screen and (min-width: 767px) and (max-width: 1440px) {

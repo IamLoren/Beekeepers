@@ -81,6 +81,7 @@ const MonthStatsTable = () => {
   const monthData = useSelector(selectMonthData);
   const registration = useSelector(selectDataOfRegistration);
   const userRegistration = new Date(registration);
+  const [activeStartDate, setActiveStartDate] = useState(new Date());
 
   useEffect(() => {
     const fetchData = async () => {
@@ -129,8 +130,9 @@ const MonthStatsTable = () => {
 
  async function setMonth(activeStartDate) {
     const convert = new Date(activeStartDate);
+    console.log(convert)
+    setActiveStartDate(activeStartDate);
     const formattedDate = `${convert.getDate()}-${(convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)}-${convert.getFullYear()}`;
-    console.log(formattedDate)
     setSelectMonth(formattedDate);
     try {
       const { payload } = await dispatch(fetchMonthlyPortionsThunk(selectMonth));
@@ -165,9 +167,11 @@ const MonthStatsTable = () => {
         tileWidth={40}
         minDate={userRegistration}
         locale="en-GB"
+        activeStartDate={activeStartDate}
         onActiveStartDateChange={({ activeStartDate }) =>
           setMonth(activeStartDate)
         }
+        showNeighboringMonth={false}
         tileContent={({ date, view }) => <CustomTile date={date} view={view} />}
       />
 
