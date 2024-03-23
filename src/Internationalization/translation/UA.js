@@ -1,4 +1,4 @@
-export const uk = {
+export const ua = {
   signUp: 'Зареєструватись',
   signIn: 'Увійти',
   logout: 'Вийти',
@@ -130,5 +130,9 @@ export const uk = {
   },
   todayWaterList: {
     'No notes yet': 'Записів поки немає',
+  },
+  greeting: {
+    'you are a hero of selfcare': 'ти чемпіон з піклування про себе',
+    'keep it up': 'так тримати',
   },
 };
