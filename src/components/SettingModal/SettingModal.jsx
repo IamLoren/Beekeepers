@@ -204,7 +204,7 @@ const SettingModal = () => {
           <MainLabelText htmlFor="password">{t('password')}</MainLabelText>
 
           <LabelText htmlFor="oldPassword">
-            Outdated password:
+            {t('settingModal.Outdated password')}:
             <StyledInput
               id="oldPassword"
               name="oldPassword"

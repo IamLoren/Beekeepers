@@ -127,7 +127,7 @@ export const en = {
     'No notes yet': 'No notes yet',
   },
   greeting: {
-    'you are hero of selfcare': 'you are hero of selfcare',
+    'you are a hero of selfcare': 'you are a hero of selfcare',
     'keep it up': 'keep it up',
   },
 };
