@@ -68,7 +68,7 @@ const SignInPage = () => {
     dispatch(loginThunk(data))
       .unwrap()
       .then((res) => {
-        toast.success(`Welcome ${res.user.username}`);
+        toast.success(`Welcome ${res.user.name || res.user.email.split("@")[0]}`);
         navigate('/home');
       })
       .catch((err) => toast.error(err));
