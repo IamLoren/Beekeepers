@@ -5,3 +5,7 @@ export const selectIsLoading = (state) => {
 export const selectIsError = (state) => {
   return state.globalSlice.isError;
 };
+
+export const selectLanguage = (state) => {
+  return state.globalSlice.language;
+};
