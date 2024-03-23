@@ -1,4 +1,3 @@
-import Chat from '../../components/ChatBot/ChatBot';
 import Container from '../../components/Container/Container';
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
@@ -26,7 +25,6 @@ const HomePage = () => {
           </StatisticsWrapper>
         </StyledFlexContainer>
       </Container>
-      <Chat />
     </StyledWrapperDiv>
   );
 };
