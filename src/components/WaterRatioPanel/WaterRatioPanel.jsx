@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectDailyNorma,
+  selectIsGreetingModalOpen,
   selectIsModalOpen,
   selectPortionsAmount,
 } from '../../redux/selectors';
@@ -25,11 +26,14 @@ import {
 import sprite from '../../assets/sprite.svg';
 import { createPortal } from 'react-dom';
 import  {Greeting}  from '../../components/Greeting/Greeting.jsx';
+import { changeGreetingModal } from '../../redux/statisticData/statisticDataSlice.js';
+import { useEffect } from 'react';
 
 const WaterRatioPanel = () => {
   const dailyNorma = useSelector(selectDailyNorma);
   const modalIsOpen = useSelector(selectIsModalOpen);
   const consumedWater = useSelector(selectPortionsAmount);
+  const isGreetingModalOpen = useSelector(selectIsGreetingModalOpen);
 
   const dispatch = useDispatch();
 
@@ -39,6 +43,11 @@ const WaterRatioPanel = () => {
   };
 
   const progress = Math.round((consumedWater / dailyNorma) * 100);
+  useEffect(() => {
+    if (progress >= 100) {
+      dispatch(changeGreetingModal(true));
+    }
+  },[dispatch, progress])
   const limitedProgress = Math.min(progress, 100);
 
   return (
@@ -66,7 +75,7 @@ const WaterRatioPanel = () => {
         </StyledAddBtn>
       </div>
       {modalIsOpen && <Modal />}
-      {/* {progress >= 100 && createPortal(<Greeting />, document.getElementById('portal'))} */}
+      {isGreetingModalOpen && createPortal(<Greeting />, document.getElementById('portal'))}
     </StyledRatioSectionContainer>
   );
 };
