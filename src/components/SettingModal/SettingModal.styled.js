@@ -32,6 +32,10 @@ export const FormWrapper = styled.form`
   }
 `;
 
+export const StyledImg = styled.img`
+  object-fit: cover;
+`;
+
 export const MainLabelText = styled.label`
   font-size: 18px;
   font-family: 'Roboto Medium';
