@@ -28,31 +28,30 @@ import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
 import { toast } from 'react-toastify';
 import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations';
 import { getCurrentData } from '../../serviceFunctions/serviceFunctions';
-
-const validationDailyNormaModalSchema = Yup.object({
-  weight: Yup.number('Weight value must be a number')
-    .typeError('Weight must be a number')
-    .min(1, 'Weight must be greater than or equal to 1'),
-  time: Yup.number()
-    .typeError('Time value must be a number')
-    .max(24, 'Time must not be greater than 24')
-    .min(0)
-    .nullable(),
-  norma: Yup.number('Daily norma value must be a number')
-    .typeError('Water amount value must be a number')
-    .max(15, 'Maximum amount of water is 15L')
-    .required('Water amount is required'),
-});
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const DailyNormaModal = () => {
   const womanFormula = 'V=(M*0,03) + (T*0,4)';
   const manFormula = 'V=(M*0,04) + (T*0,6)';
   const dispatch = useDispatch();
   const [calculatedNorma, setCalculatedNorma] = useState(1.5);
+  const { t } = useTranslation();
 
-  // useEffect(() => {
-  //   dispatch(fetchDefaultDailyNormaThunk());
-  // }, [dispatch]);
+  const validationDailyNormaModalSchema = Yup.object({
+    weight: Yup.number(t('normaModal.Weight value must be a number'))
+      .typeError(t('normaModal.Weight value must be a number'))
+      .min(1, t('normaModal.Weight must be greater than or equal to 1')),
+    time: Yup.number()
+      .typeError(t('normaModal.Time value must be a number'))
+      .max(24, t('normaModal.Time must not be greater than 24'))
+      .min(0)
+      .nullable(),
+    norma: Yup.number(t('normaModal.Daily norma value must be a number'))
+      .typeError(t('normaModal.Water amount value must be a number'))
+      .max(15, t('normaModal.Maximum amount of water is 15L'))
+      .required(t('normaModal.Water amount is required')),
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -111,25 +110,22 @@ const DailyNormaModal = () => {
 
   return (
     <DailyNormaModalContainer>
-      <ModalTitle>My daily norma</ModalTitle>
+      <ModalTitle>{t('normaModal.My daily norma')}</ModalTitle>
       <WrapFormula>
         <p>
-          For woman: <span>{womanFormula}</span>
+          {t('normaModal.formulaWoman')}: <span>{womanFormula}</span>
         </p>
         <p>
-          For man: <span>{manFormula}</span>
+          {t('normaModal.formulaMan')}:<span>{manFormula}</span>
         </p>
       </WrapFormula>
       <WrapFormulaExplication>
         <FormulaExplication>
-          <span>*</span>V is the volume of the water norm in liters per day, M
-          is your body weight, T is the time of active sports, or another type
-          of activity commensurate in terms of loads (in the absence of these,
-          you must set 0)
+          <span>*</span> {t('normaModal.formulaExplanation')}
         </FormulaExplication>
       </WrapFormulaExplication>
       <form onSubmit={formik.handleSubmit}>
-        <Subtitle>Calculate your rate:</Subtitle>
+        <Subtitle>{t('normaModal.Calculate your rate')}:</Subtitle>
         <StyledRadioGroup
           aria-labelledby="radio-buttons-group"
           name="gender"
@@ -139,20 +135,20 @@ const DailyNormaModal = () => {
           <StyledFormControlLabel
             value="woman"
             control={<Radio />}
-            label="For woman"
+            label={t('woman')}
             checked={formik.values.gender === 'woman'}
           />
           <StyledFormControlLabel
             value="man"
             control={<Radio />}
-            label="For man"
+            label={t('man')}
             checked={formik.values.gender === 'man'}
           />
         </StyledRadioGroup>
 
         <InputErrorWrap>
           <label htmlFor="weight">
-            <TypeData>Your weight in kilograms:</TypeData>
+            <TypeData>{t('normaModal.Your weight in kilograms')}:</TypeData>
 
             <Input
               type="text"
@@ -171,8 +167,10 @@ const DailyNormaModal = () => {
         <InputErrorWrap>
           <label htmlFor="time">
             <TypeData>
-              The time of active participation in sports or other activities
-              with a high physical. load in hours:
+              {t(
+                'normaModal.The time of active participation in sports or other activities with a high physical load in hours'
+              )}
+              :
             </TypeData>
             <Input
               id="time"
@@ -189,12 +187,16 @@ const DailyNormaModal = () => {
           </label>
         </InputErrorWrap>
         <WrapAmount>
-          <Data>The required amount of water in liters per day:</Data>
+          <Data>
+            {t('normaModal.The required amount of water in liters per day')}:
+          </Data>
           <AmountNumber>{calculatedNorma} L</AmountNumber>
         </WrapAmount>
         <InputErrorWrap>
           <label htmlFor="norma">
-            <Subtitle>Write down how much water you will drink:</Subtitle>
+            <Subtitle>
+              {t('normaModal.Write down how much water you will drink')}:
+            </Subtitle>
             <Input
               id="norma"
               name="norma"
@@ -208,12 +210,14 @@ const DailyNormaModal = () => {
             {formik.errors.norma ? (
               <Error>{formik.errors.norma}</Error>
             ) : (
-              <InfoMessage>Amount of water in Liters</InfoMessage>
+              <InfoMessage>
+                {t('normaModal.Amount of water in Liters')}
+              </InfoMessage>
             )}
             {/* {formik.errors.norma && <Error>{formik.errors.norma}</Error>} */}
           </label>
         </InputErrorWrap>
-        <BtnSave type="submit">Save</BtnSave>
+        <BtnSave type="submit">{t('save')}</BtnSave>
       </form>
     </DailyNormaModalContainer>
   );
