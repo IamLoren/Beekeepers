@@ -8,10 +8,19 @@ export const es = {
   password: 'Contraseña',
   email: 'Correo electrónico',
   forgotPassword: 'Olvidaste tu contraseña?',
-
+  required: '¡Este campo es obligatorio!',
+  edit: 'Editar',
   save: 'Guardar',
+  L: 'L',
+  ml: 'ml',
   woman: 'Mujer',
   man: 'Hombre',
+  delete: 'Eliminar',
+  cancel: 'Cancelar',
+  today: 'Hoy',
+  addWater: 'Añadir agua',
+  month: 'Mes',
+  setting: 'Configuración',
 
   welcomePage: {
     'Water consumption tracker': 'Control del consumo de agua',
@@ -41,7 +50,8 @@ export const es = {
       'La contraseña debe tener al menos 8 caracteres',
     'Password is required': 'Se requiere una contraseña',
     "Passwords don't match, please try again":
-      'Las contraseñas no coinciden, por favor inténtelo de nuevo.',
+      'Las contraseñas no coinciden, por favor inténtelo de nuevo',
+    'Passwords must match!': '¡Las contraseñas deben coincidir!',
   },
 
   validEmail: {
@@ -86,8 +96,7 @@ export const es = {
   },
 
   settingModal: {
-    Setting: 'Configuración',
-    'Your photo': 'Foto del perfil',
+    'Your photo': 'Foto de perfil',
     'Upload a photo': 'Subir la foto',
     'Your gender identity': 'Género',
     'Your name': 'Tu nombre',
@@ -95,5 +104,33 @@ export const es = {
     'Outdated password': 'Contraseña anterior',
     'New Password': 'Nueva contraseña',
     'Repeat new password': 'Repite tu nueva contraseña',
+  },
+  addModal: {
+    'Choose a value': 'Elija un valor',
+    'Amount of water': 'Cantidad de agua',
+    'Recording time': 'Tiempo de registro',
+    'Enter the value of the water used': 'Ingrese el valor del agua utilizada',
+  },
+  statistics: {
+    'Daily norma': 'Norma diaria',
+    'Fulfillment of the daily norm': 'Cumplimiento de la norma diaria',
+    'How many servings of water': 'Cuántas porciones de agua',
+  },
+  deleteModal: {
+    'Delete entry': 'Eliminar registro',
+    'Are you sure you want to delete the entry':
+      '¿Estás seguro de que deseas eliminar el registro?',
+  },
+  todayListModal: {
+    'Edit the entered amount of water': 'Editar la cantidad de agua ingresada',
+    'Correct entered data': 'Corregir los datos ingresados',
+    'Amount of water': 'Cantidad de agua',
+    'Recording time': 'Tiempo de registro',
+    'Enter the value of the water used': 'Ingresa el valor del agua utilizada',
+  },
+
+  greeting: {
+    'you are hero of selfcare': 'eres un héroe',
+    'keep it up': 'sigue así',
   },
 };

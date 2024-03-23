@@ -8,11 +8,19 @@ export const en = {
   password: 'Password',
   email: 'E-mail',
   forgotPassword: 'Forgot your password?',
-  required: 'Required',
-
+  required: 'This field is required!',
+  edit: 'Edit',
   save: 'Save',
+  L: 'L',
+  ml: 'ml',
   woman: 'Woman',
   man: 'Man',
+  delete: 'Delete',
+  cancel: 'Cancel',
+  today: 'Today',
+  addWater: 'Add water',
+  month: 'Month',
+  setting: 'Setting',
 
   welcomePage: {
     'Water consumption tracker': 'Water consumption tracker',
@@ -41,6 +49,7 @@ export const en = {
     'Password is required': 'Password is required',
     "Passwords don't match, please try again":
       "Passwords don't match, please try again",
+    'Passwords must match!': 'Passwords must match!',
   },
 
   validEmail: {
@@ -50,7 +59,6 @@ export const en = {
   logOut: {
     'Do you really want to leave?': 'Do you really want to leave?',
     'Log out': 'Log out',
-    Cancel: 'Cancel',
   },
 
   normaModal: {
@@ -83,7 +91,6 @@ export const en = {
   },
 
   settingModal: {
-    Setting: 'Setting',
     'Your photo': 'Your photo',
     'Upload a photo': 'Upload a photo',
     'Your gender identity': 'Your gender identity',
@@ -92,5 +99,35 @@ export const en = {
     'Outdated password': 'Outdated password',
     'New Password': 'New Password',
     'Repeat new password': 'Repeat new password',
+  },
+  addModal: {
+    'Choose a value': 'Choose a value',
+    'Amount of water': 'Amount of water',
+    'Recording time': 'Recording time',
+    'Enter the value of the water used': 'Enter the value of the water used',
+  },
+  statistics: {
+    'Daily norma': 'Daily norma',
+    'Fulfillment of the daily norm': 'Fulfillment of the daily norm',
+    'How many servings of water': 'How many servings of water',
+  },
+  deleteModal: {
+    'Delete entry': 'Delete entry',
+    'Are you sure you want to delete the entry':
+      'Are you sure you want to delete the entry',
+  },
+  todayListModal: {
+    'Edit the entered amount of water': 'Edit the entered amount of water',
+    'Correct entered data': 'Correct entered data',
+    'Amount of water': 'Amount of water',
+    'Recording time': 'Recording time',
+    'Enter the value of the water used': 'Enter the value of the water used',
+  },
+  todayWaterList: {
+    'No notes yet': 'No notes yet',
+  },
+  greeting: {
+    'you are hero of selfcare': 'you are hero of selfcare',
+    'keep it up': 'keep it up',
   },
 };

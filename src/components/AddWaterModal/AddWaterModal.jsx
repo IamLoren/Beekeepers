@@ -34,6 +34,8 @@ import {
   StyledValueAndBtnContainer,
 } from './AddWaterModal.styled';
 import { StyledTimePicker } from '../TodayListModal/TodayListModal.styled';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const AddWaterModal = () => {
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ const AddWaterModal = () => {
     new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
   );
   const [isSaveDisabled, setIsSaveDisabled] = useState(counter === 0);
-
+  const { t } = useTranslation();
   const MIN_VALUE = 0;
   const MAX_VALUE = 1500;
 
@@ -119,17 +121,22 @@ const AddWaterModal = () => {
   return (
     <StyledAddWaterModalContainer>
       <form onSubmit={onSubmit}>
-        <StyledAddWater>Add Water</StyledAddWater>
-        <StyledModalBoldText>Choose a value:</StyledModalBoldText>
+        <StyledAddWater>{t('addWater')}</StyledAddWater>
+        <StyledModalBoldText>
+          {t('addModal.Choose a value')}:
+        </StyledModalBoldText>
         <div>
-          <StyledModalText>Amount of water:</StyledModalText>
+          <StyledModalText>{t('addModal.Amount of water')}:</StyledModalText>
           <StyledCounterContainer>
             <StyledCounterBtn type="button" onClick={handleClick1}>
               <svg className="minus" fill="none">
                 <use href={sprite + '#icon-minus-small'}></use>
               </svg>
             </StyledCounterBtn>
-            <StyledCounterNumber>{`${counter}ml`}</StyledCounterNumber>
+            <StyledCounterNumber>
+              {`${counter}`}
+              {t('ml')}
+            </StyledCounterNumber>
             <StyledCounterBtn type="button" onClick={handleClick2}>
               <svg className="plus" fill="none">
                 <use href={sprite + '#icon-plus-small'}></use>
@@ -138,7 +145,7 @@ const AddWaterModal = () => {
           </StyledCounterContainer>
         </div>
         <StyledTimeInput>
-          <StyledModalText>Recording time:</StyledModalText>
+          <StyledModalText>{t('addModal.Recording time')}:</StyledModalText>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <StyledTimePicker
               disableFuture={true}
@@ -148,9 +155,9 @@ const AddWaterModal = () => {
             />
           </LocalizationProvider>
         </StyledTimeInput>
-        <label htmlFor="ml">
+        <label htmlFor={t('ml')}>
           <StyledModalBoldText>
-            Enter the value of the water used:
+            {t('addModal.Enter the value of the water used')}:
           </StyledModalBoldText>
           <StyledAddModalInput
             type="number"
@@ -163,9 +170,12 @@ const AddWaterModal = () => {
           />
         </label>
         <StyledValueAndBtnContainer>
-          <StyledCounterBottomNumber>{`${counter}ml`}</StyledCounterBottomNumber>
+          <StyledCounterBottomNumber>
+            {`${counter}`}
+            {t('ml')}
+          </StyledCounterBottomNumber>
           <StyledSaveBtn type="submit" disabled={isSaveDisabled}>
-            Save
+            {t('save')}
           </StyledSaveBtn>
         </StyledValueAndBtnContainer>
       </form>

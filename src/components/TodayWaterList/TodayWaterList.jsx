@@ -18,10 +18,13 @@ import {
   TodayListButton,
   TodayListTitle,
 } from './TodayWaterList.styled';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
   const dailyPortions = useSelector(selectDailyPortions);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const today = new Date();
@@ -41,7 +44,7 @@ const TodayWaterList = () => {
 
   return (
     <div>
-      <TodayListTitle>Today</TodayListTitle>
+      <TodayListTitle>{t('today')}</TodayListTitle>
       {dailyPortions.length !== 0 ? (
         <TodayList>
           {sortedPortions.map(({ id, amount, time }) => (
@@ -49,13 +52,13 @@ const TodayWaterList = () => {
           ))}
         </TodayList>
       ) : (
-        <NoPortionsText>No notes yet</NoPortionsText>
+        <NoPortionsText>{t('todayWaterList.No notes yet')}</NoPortionsText>
       )}
       <TodayListButton onClick={onAddPortionClick}>
         <svg width={16} height={16}>
           <use href={sprite + '#icon-plus-small'}></use>
         </svg>
-        Add water
+        {t('addWater')}
       </TodayListButton>
     </div>
   );

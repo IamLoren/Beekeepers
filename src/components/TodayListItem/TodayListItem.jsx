@@ -15,9 +15,12 @@ import {
   TimeText,
   ButtonsWrapper,
 } from './TodayListItem.styled';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const TodayListItem = ({ id, amount, time }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const onEditPortionClick = () => {
     dispatch(changeSelectedItem({ id, amount, time }));
@@ -37,7 +40,9 @@ const TodayListItem = ({ id, amount, time }) => {
         <svg width={17} height={22} fill="none">
           <use href={sprite + '#icon-glass'}></use>
         </svg>
-        <AmountText>{amount} ml</AmountText>
+        <AmountText>
+          {amount} {t('ml')}
+        </AmountText>
         <TimeText>{time}</TimeText>
       </ContentItemWrapper>
       <ButtonsWrapper>
