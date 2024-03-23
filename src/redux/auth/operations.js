@@ -92,3 +92,16 @@ export const refreshThunk = createAsyncThunk(
     }
   }
 );
+
+export const verifyThunk = createAsyncThunk(
+  'auth/verify',
+  async (verificationToken, thunkAPI) => {
+    try {
+      const response = await api.get(`api/auth/verify/${verificationToken}`);
+      return response.data;
+    } catch (error) {
+      toast.error(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -14,7 +14,6 @@ import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerThunk } from '../../redux/auth/operations';
-import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { useForm } from 'react-hook-form';
@@ -33,7 +32,6 @@ const SignUpPage = () => {
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const [eyePass, setEyePass] = useState(false);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
@@ -70,8 +68,8 @@ const SignUpPage = () => {
     dispatch(registerThunk({ email, password }))
       .unwrap()
       .then(() => {
-        toast.success('Sign up done!\nPlease login!');
-        navigate('/signin');
+        toast.success('Sign up done!\nPlease verify email!');
+        // navigate('/signin');
       })
 
       .catch(() => toast.error('Ooops... Something went wrong!'));
