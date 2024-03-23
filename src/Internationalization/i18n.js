@@ -1,7 +1,10 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
-import { es, uk, en } from '../Internationalization/translation.js';
+import { es } from '../Internationalization/translation/ES';
+import { en } from '../Internationalization/translation/EN';
+import { uk } from '../Internationalization/translation/UK';
+
 export const LANGUAGES = {
   EN: 'en',
   UK: 'uk',
