@@ -4,6 +4,7 @@ import {
   logoutThunk,
   refreshThunk,
   registerThunk,
+  updateAvatarThunk,
   updateUserThunk,
   verifyThunk,
 } from './operations.js';
@@ -84,7 +85,7 @@ export const authSlice = createSlice({
         state.user.name = payload.user.name;
         state.user.email = payload.user.email;
         state.user.gender = payload.user.gender;
-        // state.user.avatarURL = payload.user.avatarURL;
+        state.user.avatarURL = payload.user.avatarURL;
         state.user.registrationDate = payload.date;
         state.isLoading = false;
         state.isError = null;
@@ -97,10 +98,25 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isError = payload;
       })
+      .addCase(updateAvatarThunk.fulfilled, (state, { payload }) => {
+        state.user.avatarURL = payload.avatarURL;
+
+        state.isLoading = false;
+        state.isError = null;
+      })
+      .addCase(updateAvatarThunk.pending, (state) => {
+        state.isLoading = true;
+        state.isError = null;
+      })
+      .addCase(updateAvatarThunk.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.isError = payload;
+      })
       .addCase(refreshThunk.fulfilled, (state, { payload }) => {
         state.user.email = payload.email;
         state.user.gender = payload.gender;
         state.user.registrationDate = payload.createdAt.substring(0, 10);
+        state.user.avatarURL = payload.user.avatarURL;
         state.user.theme = payload.theme;
         state.isLogged = true;
         state.isLoading = false;

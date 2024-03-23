@@ -63,7 +63,7 @@ export const updateUserThunk = createAsyncThunk(
   'auth/update',
   async (newUserData, ThunkAPI) => {
     try {
-      const { data } = await api.patch(`api/auth/update`, newUserData);
+      const { data } = await api.patch(`api/auth/user`, newUserData);
       return data;
     } catch (error) {
       return ThunkAPI.rejectWithValue(error.message);
@@ -101,6 +101,19 @@ export const verifyThunk = createAsyncThunk(
       return response.data;
     } catch (error) {
       toast.error(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateAvatarThunk = createAsyncThunk(
+  'auth/avatar',
+  async (avatarData, thunkAPI) => {
+    try {
+      const { data } = await api.patch('api/auth/avatar', avatarData);
+      console.log(data);
+      return data;
+    } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
