@@ -32,7 +32,7 @@ export const Greeting = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       dispatch(changeGreetingModal(false))
-      }, 5000);
+      }, 4000);
       return () => clearTimeout(timeoutId);
   }, [dispatch])
   return (
