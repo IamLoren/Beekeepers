@@ -15,6 +15,7 @@ import {
   selectUser,
 } from '../../redux/selectors';
 import { Popover } from '@mui/material';
+import defaultPhoto from '../../assets/avatar.jpg';
 
 const UserLogo = () => {
   const isSettingModalOpen = useSelector(selectSettingModal);
@@ -42,7 +43,12 @@ const UserLogo = () => {
             {name && <StyledName>{name}</StyledName>}
             <AvatarWrapper $borderColor={avatarURL ? 'transparent' : '#407bff'}>
               {avatarURL ? (
-                <img src={avatarURL} width={28} height={28} alt="user avatar" />
+                <img
+                  src={avatarURL ? avatarURL : defaultPhoto}
+                  width={28}
+                  height={28}
+                  alt="user avatar"
+                />
               ) : name ? (
                 <StyledName>{name[0].toUpperCase()}</StyledName>
               ) : (
