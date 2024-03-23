@@ -2065,49 +2065,51 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         opacity: 0;
     }
 `,Wae=X.div`
-position: absolute;
-top: 0;
-left: 0;
-z-index: 100;
-width: 99vw;
-height: 98vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 50px;
-background-color: var(--greeting-bg-color);
-animation: ${Uae} 4s ease-out forwards;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  width: 99vw;
+  height: 98vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: var(--greeting-bg-color);
+  animation: ${Uae} 4s ease-out forwards;
 
-@media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     gap: 100px;
-}
+  }
 `,Hae=X.div`
-display: flex;
-justify-content: center;
-align-items: center;
-align-self: center;
-width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 80%;
 
-@media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1440px) {
     width: 20%;
     height: 20%;
-}
+  }
 `,Yae=X.h1`
-font-size: 36px;
-color: var(--secondary-text);
-text-align: center;
+  font-size: 36px;
+  color: var(--secondary-text);
+  text-align: center;
 
-@media screen and (min-width: 767px) {
+  @media screen and (min-width: 767px) {
     font-size: 48px;
-}
+  }
 `,Kae=X.h2`
-font-size: 36px;
-color: var(--secondary-text);
-text-align: center;
-@media screen and (min-width: 767px) {
+  font-size: 36px;
+  color: var(--secondary-text);
+  text-align: center;
+  @media screen and (min-width: 767px) {
     font-size: 48px;
-}
+  }
 `,qae=({progress:e})=>{const t=qt(),[n,r]=S.useState(20),o=window.innerWidth-5,i=window.innerHeight-50;return S.useEffect(()=>{const a=setInterval(()=>{n<e?r(s=>s+3):clearInterval(a)},50);return()=>clearInterval(a)},[n,e]),S.useEffect(()=>{const a=setTimeout(()=>{t(CM(!1))},4e3);return()=>clearTimeout(a)},[t]),x.jsxs(Wae,{children:[x.jsx(Yae,{children:"you are a hero of selfcare!"}),x.jsx(Vae,{width:o,height:i}),x.jsx(Hae,{children:x.jsx(vM,{strokeWidth:8,value:n,text:`${n} %`,styles:xM({strokeLinecap:"circle",textColor:`${n<60?"var(--accent-text)":"green"}`,textSize:"16px",textWeight:"900",pathColor:`${n<60?"var(--accent-text)":"green"}`,trailColor:`${n==0?"lightgray":"transparent"}`,backgroundColor:"transparent"})})}),x.jsx(Kae,{children:"keep it up!"})]})},Gae=()=>{const e=qe(lh),t=qe(gO),n=qe(WN),r=qe(KN),o=qt(),i=()=>{o(lo(!0)),o(UO(!0))},a=Math.round(n/e*100);S.useEffect(()=>{a>=100&&o(CM(!0))},[o,a]);const s=Math.min(a,100);return x.jsxs(Rae,{children:[x.jsxs(Dae,{children:[x.jsx(Mae,{children:"Today"}),x.jsxs(Iae,{id:"ml",max:"100",value:"0",children:[x.jsx(Aae,{$progress:s}),x.jsx(jae,{$progress:s})]}),x.jsxs(Lae,{children:[x.jsx(j1,{$isBold:a<=0,children:"0%"}),x.jsx(Nae,{$isBold:a===50,children:"50%"}),x.jsx(Fae,{$isBold:a>=100,$progress:a,children:a>100?`${a}%`:"100%"})]})]}),x.jsx("div",{children:x.jsxs(zae,{type:"button",onClick:i,children:[x.jsx("svg",{className:"add",fill:"none",children:x.jsx("use",{href:$t+"#icon-plus-circle"})}),"Add Water"]})}),t&&x.jsx(_ae,{}),r&&Xp.createPortal(x.jsx(qae,{progress:a}),document.getElementById("portal"))]})},Qae="data:image/webp;base64,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",Zae="/assets/BubblesBgTab-91f08f5d.webp",Jae="/assets/Bubbles-a9516639.webp",Xae="/assets/HomepageBubblesMob@retina-f856cda0.webp",ese="/assets/BubblesBgTab@retina-2fc69d13.webp",tse="/assets/Bubbles@retina-41b9da58.webp",nse=X.div`
   display: flex;
   flex-direction: column;
