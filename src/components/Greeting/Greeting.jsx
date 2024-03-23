@@ -37,7 +37,7 @@ export const Greeting = ({progress}) => {
   }, [dispatch])
   return (
     <StyledGreeting>
-      <StyledGreetingTitle>you are hero of selfcare!</StyledGreetingTitle>
+      <StyledGreetingTitle>you are a hero of selfcare!</StyledGreetingTitle>
       <Confetti width={width} height={height} />
       <StyledGreetingWrapper>
         <CircularProgressbar

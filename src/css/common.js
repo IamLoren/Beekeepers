@@ -72,7 +72,6 @@ input:-webkit-autofill:active {
     color: var(--text-forms);
 }
 
-
 @media screen and (min-width: 767px) and (max-width: 1440px) {
   .react-calendar__month-view__days  {
     display: grid !important;
@@ -95,7 +94,6 @@ input:-webkit-autofill:active {
     column-gap: 22px;
     row-gap: 20px;
   }
-  
 }
   .react-calendar {
     width: 100%;
@@ -105,7 +103,6 @@ input:-webkit-autofill:active {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 22px;
-    
   }
 
   .react-calendar__navigation__label {
@@ -128,7 +125,6 @@ input:-webkit-autofill:active {
     color: var(--secondary-text);
   }
 
-
   .react-calendar__month-view__weekdays {
     display: none !important; 
   }
@@ -143,18 +139,16 @@ input:-webkit-autofill:active {
       z-index: 10 !important;
       overflow: visible !important;
   }
+
   abbr {
     position: relative;
     z-index: 10 !important;
     margin-top: 5px;
   }
 
-
  .blue-toast .Toastify__close-button {
     color: var(--secondary-text) !important;
   }
-
-
 `;
 
 export default Global;
