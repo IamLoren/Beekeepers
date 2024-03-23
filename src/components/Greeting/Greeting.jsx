@@ -11,7 +11,7 @@ import {
 import { useDispatch } from 'react-redux';
 import { changeGreetingModal } from '../../redux/statisticData/statisticDataSlice';
 
-export const Greeting = () => {
+export const Greeting = ({progress}) => {
   const dispatch = useDispatch();
   const [percents, setPercents] = useState(20);
   const width = window.innerWidth - 5;
@@ -43,7 +43,7 @@ export const Greeting = () => {
         <CircularProgressbar
           strokeWidth={8}
           value={percents}
-          text={`${percents} %`}
+          text={`${progress} %`}
           styles={buildStyles({
             strokeLinecap: 'circle',
             textColor: `${percents < 60 ? `var(--accent-text)` : 'green'}`,
