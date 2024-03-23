@@ -60,6 +60,7 @@ body{
   font-size: 18px;
   min-height: 100vh;
   color: var(--primary-text);
+  background-color: var(--bcgclr);
 }
 
 input:-webkit-autofill,

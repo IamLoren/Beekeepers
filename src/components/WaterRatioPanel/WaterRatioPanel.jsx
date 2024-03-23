@@ -23,6 +23,8 @@ import {
   BoldIndicator,
 } from './WaterRatioPanel.styled';
 import sprite from '../../assets/sprite.svg';
+import { createPortal } from 'react-dom';
+import  {Greeting}  from '../../components/Greeting/Greeting.jsx';
 
 const WaterRatioPanel = () => {
   const dailyNorma = useSelector(selectDailyNorma);
@@ -64,6 +66,7 @@ const WaterRatioPanel = () => {
         </StyledAddBtn>
       </div>
       {modalIsOpen && <Modal />}
+      {/* {progress >= 100 && createPortal(<Greeting />, document.getElementById('portal'))} */}
     </StyledRatioSectionContainer>
   );
 };

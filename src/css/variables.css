@@ -9,4 +9,19 @@
   --accent-bg-color: #d7e3ff;
   --tooltip-bg-color: #ffffff;
   --greeting-bg-color: rgba(249, 250, 251, 0.7);
+  --bcgclr: #ffffff;
+}
+
+.dark {
+  --primary-text: rgb(204, 203, 249);
+  --secondary-text: #407bff;
+  --white-text: #031969;
+  --accent-text: #e76011;
+  --percentage-text: #9ebbff;
+  --error-text: #a00c0c;
+  --card-bg-color: #02091a;
+  --accent-bg-color: #7970eb;
+  --tooltip-bg-color: #21027e;
+  --bcgclr: #02091a;
+
 }
