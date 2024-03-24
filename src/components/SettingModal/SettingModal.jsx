@@ -111,14 +111,16 @@ const SettingModal = () => {
     input.click();
   };
 
-  const onSubmit = (data) => {
-    dispatch(updateUserThunk(data))
-      .then(() => {
+  const onSubmit = ({ repPassword, ...data }) => {
+    dispatch(updateUserThunk(data)).then((response) => {
+      if (response.error) {
+        toast.error(response.error.message);
+      } else {
         toast.success('Profile updated successfully');
         dispatch(changeModalOpen(false));
         dispatch(closeModals(false));
-      })
-      .catch((error) => toast.error(error.message));
+      }
+    });
   };
 
   function changeTheme() {
@@ -248,13 +250,9 @@ const SettingModal = () => {
             <EyePassButton onClick={showPass} eyePass={eyePass} />
           </LabelText>
         </MainInfoWrapper>
+        <SaveBtn type="submit">{t('save')}</SaveBtn>
       </FormWrapper>
-      <SaveBtn type="submit" onClick={onSubmit}>
-        {t('save')}
-      </SaveBtn>
-      <StyledSwitcher onClick={changeTheme}>
-      Change theme
-    </StyledSwitcher>
+      <StyledSwitcher onClick={changeTheme}>Change theme</StyledSwitcher>
     </SettingContainer>
   );
 };
