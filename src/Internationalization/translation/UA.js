@@ -21,6 +21,7 @@ export const ua = {
   addWater: 'Додати воду',
   month: 'Місяць',
   setting: 'Налаштування',
+  changeTheme: 'Змінити тему',
 
   welcomePage: {
     'Water consumption tracker': 'Трекер споживання води',
@@ -114,6 +115,9 @@ export const ua = {
     'Daily norma': 'Денна норма',
     'Fulfillment of the daily norm': 'Виконання денної норми',
     'How many servings of water': 'Кількість порцій води',
+    'Your month chart': 'Місячний графік',
+    'Grow your tree': 'Виростіть своє дерево',
+    'Your personal assistant': 'Особистий помічник',
   },
 
   deleteModal: {

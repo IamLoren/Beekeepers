@@ -19,7 +19,7 @@ export const authSlice = createSlice({
       gender: '',
       avatarURL: '',
       registrationDate: '',
-      theme: '',
+      theme: 'light',
       verify: false,
       verificationToken: '',
     },
@@ -46,22 +46,21 @@ export const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(registerThunk.rejected, (state) => {
-        toast.error('Error! User exist!');
+        toast.error('User already exists');
         state.isLogged = false;
         state.isLoading = false;
       })
       .addCase(loginThunk.rejected, (state) => {
-        toast.error('Error! Something went wrong!');
+        toast.error('Something went wrong. Try again later');
         state.isLogged = false;
         state.isLoading = false;
       })
       .addCase(loginThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
         state.user.email = payload.user.email;
         state.user.name = payload.user.name;
         state.user.gender = payload.user.gender;
         state.user.avatarURL = payload.user.avatarURL;
-        state.user.name = payload.user.theme;
+        state.user.name = payload.user.name;
         state.user.registrationDate = payload.user.createdAt.substring(0, 10);
         state.token = payload.token;
         state.isLogged = true;

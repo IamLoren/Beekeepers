@@ -7,7 +7,7 @@ export const es = {
   repeatPassword: 'Repita la contraseña',
   password: 'Contraseña',
   email: 'Correo electrónico',
-  forgotPassword: 'Olvidaste tu contraseña?',
+  forgotPassword: '¿Olvidaste tu contraseña?',
   required: '¡Este campo es obligatorio!',
   edit: 'Editar',
   save: 'Guardar',
@@ -21,6 +21,7 @@ export const es = {
   addWater: 'Añadir agua',
   month: 'Mes',
   setting: 'Configuración',
+  changeTheme: 'Cambiar tema',
 
   welcomePage: {
     'Water consumption tracker': 'Control del consumo de agua',
@@ -43,7 +44,7 @@ export const es = {
     'Maintaining within the normal temperature':
       'Mantenimiento dentro de la temperatura normal',
     'Maintaining an immune system capable of resisting disease':
-      'Mantenenimiento del sistema inmunológico capaz de resistir enfermedades',
+      'Mantenimiento del sistema inmunológico capaz de resistir enfermedades',
   },
   validPassword: {
     'Password must be at least 8 characters':
@@ -115,6 +116,9 @@ export const es = {
     'Daily norma': 'Norma diaria',
     'Fulfillment of the daily norm': 'Cumplimiento de la norma diaria',
     'How many servings of water': 'Cuántas porciones de agua',
+    'Your month chart': 'Tu gráfico mensual',
+    'Grow your tree': 'Haz crecer tu árbol',
+    'Your personal assistant': 'Tu asistente personal',
   },
   deleteModal: {
     'Delete entry': 'Eliminar registro',
