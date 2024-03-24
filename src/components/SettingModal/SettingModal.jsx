@@ -14,7 +14,7 @@ import {
   MainInfoWrapper,
   ErrMessage,
   StyledImg,
-  StyledSwitcher,
+  TitleSwitcherWrap,
 } from './SettingModal.styled';
 import EyePassButton from './EyePassBtn';
 import defaultPhoto from '../../assets/avatar.jpg';
@@ -32,6 +32,7 @@ import {
 import { selectUser } from '../../redux/selectors';
 import { toast } from 'react-toastify';
 import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
+import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
@@ -91,18 +92,6 @@ const SettingModal = () => {
     resolver: yupResolver(basicSchema),
   });
 
-  // const inputChange = (e) => {
-  //   formik.handleChange(e);
-  // };
-
-  // const changeGender = (e) => {
-  //   formik.handleChange(e);
-  // };
-
-  // function submit({ ...data }) {
-  //   console.log(data);
-  // }
-
   function showPass() {
     eyePass ? setEyePass(false) : setEyePass(true);
   }
@@ -155,10 +144,11 @@ const SettingModal = () => {
 
   return (
     <SettingContainer>
-      <h1>{t('setting')}</h1>
-
+      <TitleSwitcherWrap>
+        <h1>{t('setting')}</h1>
+        <ThemeToggler onClick={changeTheme}></ThemeToggler>
+      </TitleSwitcherWrap>
       <FormWrapper
-        // onSubmit={handleSubmit}
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
         errors={errors}
@@ -175,7 +165,6 @@ const SettingModal = () => {
             height="80"
           />
 
-          {/* <UploadBtn onClick={handlePhotoUpload} register={register}> */}
           <UploadBtn onClick={handlePhotoUpload}>
             <svg className="arrow-up" fill="none" fontSize={24}>
               <use href={sprite + '#icon-arrow-up-try'}></use>
@@ -193,14 +182,12 @@ const SettingModal = () => {
             defaultValue={gender ? gender : 'man'}
             name="gender"
             row
-            // onChange={changeGender}
           >
             <StyledFormControlLabel
               value="woman"
               control={<Radio />}
               label={t('woman')}
               {...register('gender')}
-              // checked={formik.values.gender === 'woman'}
             ></StyledFormControlLabel>
 
             <StyledFormControlLabel
@@ -208,7 +195,6 @@ const SettingModal = () => {
               control={<Radio />}
               label={t('man')}
               {...register('gender')}
-              // checked={formik.values.gender === 'man'}
             ></StyledFormControlLabel>
           </RadioGroupWrap>
 
@@ -277,7 +263,6 @@ const SettingModal = () => {
         </MainInfoWrapper>
         <SaveBtn type="submit">{t('save')}</SaveBtn>
       </FormWrapper>
-      <StyledSwitcher onClick={changeTheme}>Change theme</StyledSwitcher>
     </SettingContainer>
   );
 };

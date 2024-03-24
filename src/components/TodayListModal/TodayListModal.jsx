@@ -33,11 +33,12 @@ import {
   StyledTimePicker,
 } from './TodayListModal.styled';
 import '../../Internationalization/i18n';
+import '../../Internationalization/i18n';
 import { useTranslation } from 'react-i18next';
-import { t } from 'i18next';
 
 const TodayListModal = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const selectedItem = useSelector(selectSelectedItem);
   const dailyNorma = useSelector(selectDailyNorma) || 0;
   const [count, setCount] = useState(selectedItem.amount);
@@ -123,8 +124,6 @@ const TodayListModal = () => {
     const formattedValue = `${formattedHour}:${formattedMinute}`;
     setSelectedTime(formattedValue);
   };
-
-  const { t } = useTranslation();
 
   return (
     <ModalWrapper>
