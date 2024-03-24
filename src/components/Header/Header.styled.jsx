@@ -19,12 +19,6 @@ export const StyledWrapper = styled.div`
   }
 `;
 
-export const LngLogoutWrap = styled.div`
-  display: flex;
-  gap: 10px;
-  align-items: baseline;
-`;
-
 export const StyledBox = styled.div`
   display: flex;
   justify-content: space-between;

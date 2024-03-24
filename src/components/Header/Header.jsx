@@ -4,7 +4,7 @@ import Container from '../Container/Container';
 import Logo from '../Logo/Logo';
 import UserAuth from '../UserAuth/UserAuth';
 import UserLogo from '../UserLogo/UserLogo';
-import { LngLogoutWrap, StyledBox, StyledWrapper } from './Header.styled';
+import { StyledBox, StyledWrapper } from './Header.styled';
 import { selectIsLogged } from '../../redux/selectors';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import { selectLanguage } from '../../redux/Global/selectors';
@@ -38,15 +38,11 @@ export const Header = () => {
       <Container>
         <StyledWrapper>
           <Logo />
-          <LngLogoutWrap>
-            <LanguageSelector
-              checked={languageActive}
-              onChange={onLanguageChange}
-            />
-            <StyledBox>
-              {isAuthenticated ? <UserLogo /> : <UserAuth />}
-            </StyledBox>
-          </LngLogoutWrap>
+          <LanguageSelector
+            checked={languageActive}
+            onChange={onLanguageChange}
+          />
+          <StyledBox>{isAuthenticated ? <UserLogo /> : <UserAuth />}</StyledBox>
         </StyledWrapper>
       </Container>
     </header>
