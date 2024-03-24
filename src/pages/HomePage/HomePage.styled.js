@@ -106,7 +106,7 @@ export const StyledButton = styled.button`
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
-  color: ${({ theme }) => (theme === 'dark' ? 'rgb(204, 203, 249)' : 'var( --white-text)')};
+  color: var(--tabs-color);
   font-weight: 700;
   font-size: 14px;
   box-shadow: 0 0 10px #eee;
