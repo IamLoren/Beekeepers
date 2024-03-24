@@ -29,6 +29,7 @@
   --accent-bg-color: #574bff;
   --tooltip-bg-color: #6e92ff;
   --bcgclr: #172240;
+  --greeting-bg-color: rgba(75, 108,183, 0.7);
   --tabs-color:rgb(204, 203, 249);
   --btn-linear: linear-gradient(to right, #4b6cb7 0%, #182848  51%, #4b6cb7  100%);
 }
