@@ -9,7 +9,7 @@ import WelcomeBgMobRetina from '../../assets/MobileBg/WelcomeBgMob@retina.webp'
 
 
 export const StyledBackGr = styled.div`
-background-image:url(${WelcomeBgMob})
+background-image:url(${WelcomeBgMob});
 position: relative;
   background-repeat: no-repeat;
   z-index: 1;
