@@ -64,4 +64,69 @@ export const StatisticsWrapper = styled.div`
   }
 `;
 
+export const ActiveContentWrapper = styled.div`
+  height: 350px;
+  width: 100%;
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+
+  }
+
+  @media screen and (min-width: 1440px) {
+    height: 510px;
+    width: 592px;
+  }
+`;
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  gap: 5px;
+
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 592px;
+    flex-direction: row;
+  }
+`;
+
+export const StyledButton = styled.button`
+  width: 110px;
+  height: 56px;
+  background-image: linear-gradient(
+    to right,
+    #00c6ff 0%,
+    #0072ff 51%,
+    #00c6ff 100%
+  );
+  padding: 10px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0 0 20px #eee;
+  border: none;
+  border-radius: 10px;
+  display: block;
+
+  &:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 140px;
+    height: 76px;
+    font-size: 18px;
+    padding: 14px;
+  }
+`;
+
 export default StyledWrapperDiv;
