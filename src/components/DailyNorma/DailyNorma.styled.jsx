@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  width: 156px;
   display: inline-block;
   border-radius: 10px;
-  border: 1px solid var(--card-bg-color);
+  border: 1px solid var(--percentage-text);
   background: var(--white-text);
   box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
-  padding: 8px 20px;
+  padding: 8px 15px;
   height: 74px;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     height: 76px;
@@ -30,7 +32,7 @@ export const NormaText = styled.h2`
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
   @media (min-width: 768px) {
-    font-size: 24px;
+    font-size: 20px;
     text-shadow: none;
   }
 `;
