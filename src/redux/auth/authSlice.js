@@ -19,7 +19,7 @@ export const authSlice = createSlice({
       gender: '',
       avatarURL: '',
       registrationDate: '',
-      theme: 'dark',
+      theme: '',
       verify: false,
       verificationToken: '',
     },
