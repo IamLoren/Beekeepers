@@ -7,7 +7,7 @@ import {
 } from '../../redux/selectors';
 import '../../css/variables.css';
 import { StyledTitle } from './Chart.styled';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { convertDateToMonth } from '../../serviceFunctions/serviceFunctions';
 
 export const Chart = () => {
@@ -30,7 +30,7 @@ export const Chart = () => {
         width={600}
         height={350}
         data={data}
-        margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+        margin={{ top: 5, right: 20, left: -10, bottom: 5 }}
       >
         <XAxis dataKey="name" />
         <YAxis domain={[0, 100]} />
