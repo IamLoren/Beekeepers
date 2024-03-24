@@ -83,6 +83,7 @@ export const ButtonsWrapper = styled.div`
   align-content: center;
   align-self: center;
   gap: 5px;
+  margin-bottom: 10px;
 
   @media screen and (min-width: 768px) {
     width: 100%;
@@ -92,6 +93,7 @@ export const ButtonsWrapper = styled.div`
   @media screen and (min-width: 1440px) {
     width: 592px;
     flex-direction: row;
+    margin-bottom: 50px;
   }
 `;
 
