@@ -10,6 +10,7 @@ import {
   FormLabel,
   PassShowBtn,
 } from '../../components/AuthForm/AuthForm.styled';
+import Container from '../../components/Container/Container'
 
 import { useMediaQuery } from 'react-responsive';
 import { useForm } from 'react-hook-form';
@@ -33,7 +34,7 @@ import { useTranslation } from 'react-i18next';
 
 const SignInPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const [eyePass, setEyePass] = useState(false);
 
@@ -81,7 +82,8 @@ const SignInPage = () => {
   }
 
   return (
-    <StyledSection>
+    <Container>
+      <StyledSection>
       <LoginWrapper>
         <AuthForm
           on={true}
@@ -123,6 +125,7 @@ const SignInPage = () => {
         </ImgWrapper>
       </LoginWrapper>
     </StyledSection>
+    </Container>
   );
 };
 
