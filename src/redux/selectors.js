@@ -48,3 +48,5 @@ export const selectIsGreetingModalOpen = (state) =>
 export const selectVerificationToken = (state) => {
   state.statisticDataSlice.user.verificationToken;
 };
+
+export const selectactiveContent = state => state.normaCounterSlice.activeContent;
