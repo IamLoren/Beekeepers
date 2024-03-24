@@ -14,12 +14,14 @@ import PictureBottleBg from './PictureBottleBg';
 import Chart from '../../components/Chart/Chart';
 import Planting from '../../components/Planting/Planting';
 import Assistant from '../../components/Assistant/Assistant.jsx';
-import { selectactiveContent } from '../../redux/selectors.js';
+import { selectColorTheme, selectactiveContent } from '../../redux/selectors.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
 
 const HomePage = () => {
   const activeContent = useSelector(selectactiveContent);
+  const theme = useSelector(selectColorTheme);
+  console.log(theme)
   const dispatch = useDispatch();
 
   return (
@@ -51,7 +53,7 @@ const HomePage = () => {
             </div>
             <WaterRatioPanel />
           </div>
-          <StatisticsWrapper>
+          <StatisticsWrapper theme={theme}>
             <TodayWaterList />
             <MonthStatsTable />
           </StatisticsWrapper>
