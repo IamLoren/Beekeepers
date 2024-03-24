@@ -216,7 +216,6 @@ const DailyNormaModal = () => {
                 {t('normaModal.Amount of water in Liters')}
               </InfoMessage>
             )}
-            {/* {formik.errors.norma && <Error>{formik.errors.norma}</Error>} */}
           </label>
         </InputErrorWrap>
         <BtnSave type="submit">{t('save')}</BtnSave>
