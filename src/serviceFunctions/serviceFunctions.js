@@ -8,6 +8,17 @@ export const getCurrentData = () => {
   return currentDay + '-' + currentMonth + '-' + currentYear;
 };
 
+export const convertDateToMonth = (dateString) => {
+  const [day, month, year] = dateString.split('-');
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  const monthIndex = parseInt(month, 10) - 1;
+  const monthName = monthNames[monthIndex];
+  return `${monthName}`;
+};
+
 export const convertCalendarMonth = (monthYear) => {
   const [monthName, year] = monthYear.split(' ');
   const date = monthName.toLowerCase().trim();
