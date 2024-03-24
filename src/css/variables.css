@@ -10,6 +10,12 @@
   --tooltip-bg-color: #ffffff;
   --greeting-bg-color: rgba(249, 250, 251, 0.7);
   --bcgclr: #ffffff;
+  --btn-linear: linear-gradient(
+    to right,
+    #00c6ff 0%,
+    #0072ff 51%,
+    #00c6ff 100%
+  )
 }
 
 .dark {
@@ -23,5 +29,7 @@
   --accent-bg-color: #574bff;
   --tooltip-bg-color: #6e92ff;
   --bcgclr: #172240;
-
+  --btn-linear: linear-gradient(to right, #4b6cb7 0%, #182848  51%, #4b6cb7  100%);
 }
+
+

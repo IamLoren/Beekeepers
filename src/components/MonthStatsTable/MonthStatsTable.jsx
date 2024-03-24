@@ -20,7 +20,7 @@ import {
 } from '../../redux/selectors';
 import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
 import { getCurrentData } from '../../serviceFunctions/serviceFunctions.js';
-import { changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
+import { changeSelectedMonth, changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
 import '../../Internationalization/i18n';
 import { useTranslation } from 'react-i18next';
 
@@ -28,7 +28,12 @@ const CustomTile = ({ date }) => {
   const convertDate = new Date(date);
   const day = convertDate.getDate();
   const arrOfMonthData = useSelector(selectMonthData);
-  const tileContent = arrOfMonthData?.find((el) => el.day == day);
+  const [tileContent, setTileContent] = useState(null);
+  useEffect(() => {
+  const content = arrOfMonthData?.find((el) => el.day == day);
+  setTileContent(content);
+  }, [arrOfMonthData, day])
+
   const tileStyle = {
     textAlign: 'center',
     paddingTop: '10px',
@@ -98,6 +103,7 @@ const MonthStatsTable = () => {
           fetchMonthlyPortionsThunk(selectMonth)
         );
         dispatch(changemonthlyPortions(payload));
+        dispatch(changeSelectedMonth(selectMonth));
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -126,16 +132,18 @@ const MonthStatsTable = () => {
   }, [selectMonth]);
 
   async function onChange(newDate) {
+    console.log('newDate', newDate);
     const convert = new Date(newDate);
     const formattedDate = `${convert.getDate()}-${
       (convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)
     }-${convert.getFullYear()}`;
     setSelectMonth(formattedDate);
+    dispatch(changeSelectedMonth(formattedDate));
     try {
       const { payload } = await dispatch(
-        fetchMonthlyPortionsThunk(selectMonth)
+        fetchMonthlyPortionsThunk(formattedDate)
       );
-      dispatch(changemonthlyPortions(payload));
+      dispatch(changemonthlyPortions(payload));  
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -143,15 +151,15 @@ const MonthStatsTable = () => {
 
   async function setMonth(activeStartDate) {
     const convert = new Date(activeStartDate);
-    console.log(convert);
     setActiveStartDate(activeStartDate);
     const formattedDate = `${convert.getDate()}-${
       (convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)
     }-${convert.getFullYear()}`;
     setSelectMonth(formattedDate);
+    dispatch(changeSelectedMonth(selectMonth));
     try {
       const { payload } = await dispatch(
-        fetchMonthlyPortionsThunk(selectMonth)
+        fetchMonthlyPortionsThunk(formattedDate)
       );
       dispatch(changemonthlyPortions(payload));
     } catch (error) {
