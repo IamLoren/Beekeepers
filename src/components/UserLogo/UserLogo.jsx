@@ -41,7 +41,11 @@ const UserLogo = () => {
         {' '}
         <StyledWrapper>
           <StyledBtn onClick={handleClick}>
-            {name && <StyledName>{name}</StyledName>}
+            {name ? (
+              <StyledName>{name}</StyledName>
+            ) : (
+              <StyledName>User</StyledName>
+            )}
             <AvatarWrapper $borderColor={avatarURL ? 'transparent' : '#407bff'}>
               {avatarURL ? (
                 <StyledImg
