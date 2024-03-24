@@ -15,6 +15,7 @@ import {
 } from '../../redux/modals/modalsSlice.js';
 import '../../Internationalization/i18n';
 import { useTranslation } from 'react-i18next';
+import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
 
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);
@@ -28,7 +29,7 @@ const DailyNorma = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper onClick={() => dispatch(changeActiveContent('pictureBottleBg'))}>
       <Title>{t('normaModal.My daily norma')}</Title>
       <NormaBtnWrap>
         <NormaText>
