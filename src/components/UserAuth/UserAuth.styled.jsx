@@ -22,7 +22,7 @@ export const StyledSpan = styled.span`
   font-size: 16px;
   line-height: 1.25;
   &:hover {
-    color: #ff9d43;
+    color: var(--accent-text);
   }
   @media only screen and (min-width: 768px) {
     font-size: 18px;
@@ -32,5 +32,5 @@ export const StyledSpan = styled.span`
 
 export const StyledSvg = styled.svg`
   fill: transparent;
-  stroke: black;
+  stroke: var(--primary-text);
 `;

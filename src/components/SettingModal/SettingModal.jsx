@@ -14,7 +14,7 @@ import {
   MainInfoWrapper,
   ErrMessage,
   StyledImg,
-  StyledSwitcher,
+  TitleSwitcherWrap,
 } from './SettingModal.styled';
 import EyePassButton from './EyePassBtn';
 import defaultPhoto from '../../assets/avatar.jpg';
@@ -32,39 +32,53 @@ import {
 import { selectUser } from '../../redux/selectors';
 import { toast } from 'react-toastify';
 import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
+import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
-  // const [photo, setPhoto] = useState(defaultPhoto);
   const { t } = useTranslation();
   const { avatarURL, gender, name, email } = useSelector(selectUser);
 
   const dispatch = useDispatch();
-
-  const basicSchema = yup.object({
-    // name: yup.string().required('Name is required'),
-    // email: yup
-    //   .string()
-    //   .email('Please write valid email')
-    //   .matches(/^(?!.*@[^,]*,)/)
-    //   .required('Email is required'),
-    oldPassword: yup
-      .string()
-      .min(8, t('validPassword.Password must be at least 8 characters'))
-      .max(64)
-      .required(t('validPassword.Password is required')),
-    newPassword: yup
-      .string()
-      .min(8, t('validPassword.Password must be at least 8 characters'))
-      .required(t('validPassword.Password is required!')),
-    repPassword: yup
-      .string()
-      .oneOf(
-        [yup.ref('newPassword'), null],
-        t('validPassword.Passwords must match!')
-      )
-      .required(t('required')),
-  });
+  const basicSchema = yup
+    .object({
+      name: yup.string(),
+      email: yup
+        .string()
+        .email('Please write valid email')
+        .matches(/^(?!.*@[^,]*,)/),
+      oldPassword: yup
+        .string()
+        .nullable()
+        .test(
+          'minLength',
+          'Password must be at least 8 characters',
+          (value) => {
+            if (!value) return true;
+            return value.length >= 8;
+          }
+        )
+        .max(64),
+      newPassword: yup
+        .string()
+        .nullable()
+        .test(
+          'minLength',
+          'Password must be at least 8 characters',
+          (value) => {
+            if (!value) return true;
+            return value.length >= 8;
+          }
+        ),
+      repPassword: yup
+        .string()
+        .nullable()
+        .oneOf(
+          [yup.ref('newPassword'), null],
+          t('validPassword.Passwords must match!')
+        ),
+    })
+    .required();
 
   const {
     register,
@@ -77,18 +91,6 @@ const SettingModal = () => {
     mode: 'onChange',
     resolver: yupResolver(basicSchema),
   });
-
-  // const inputChange = (e) => {
-  //   formik.handleChange(e);
-  // };
-
-  // const changeGender = (e) => {
-  //   formik.handleChange(e);
-  // };
-
-  // function submit({ ...data }) {
-  //   console.log(data);
-  // }
 
   function showPass() {
     eyePass ? setEyePass(false) : setEyePass(true);
@@ -111,16 +113,28 @@ const SettingModal = () => {
     input.click();
   };
 
-  const onSubmit = ({ repPassword, ...data }) => {
-    dispatch(updateUserThunk(data)).then((response) => {
-      if (response.error) {
-        toast.error(response.error.message);
-      } else {
-        toast.success('Profile updated successfully');
-        dispatch(changeModalOpen(false));
-        dispatch(closeModals(false));
-      }
-    });
+  const onSubmit = ({ oldPassword, repPassword, newPassword, ...data }) => {
+    if (!newPassword) {
+      dispatch(updateUserThunk(data)).then((response) => {
+        if (response.error) {
+          toast.error(response.error.message);
+        } else {
+          toast.success('Profile updated successfully');
+          dispatch(changeModalOpen(false));
+          dispatch(closeModals(false));
+        }
+      });
+    } else {
+      dispatch(updateUserThunk({ ...data, newPassword })).then((response) => {
+        if (response.error) {
+          toast.error(response.error.message);
+        } else {
+          toast.success('Profile updated successfully');
+          dispatch(changeModalOpen(false));
+          dispatch(closeModals(false));
+        }
+      });
+    }
   };
 
   function changeTheme() {
@@ -130,10 +144,11 @@ const SettingModal = () => {
 
   return (
     <SettingContainer>
-      <h1>{t('setting')}</h1>
-
+      <TitleSwitcherWrap>
+        <h1>{t('setting')}</h1>
+        <ThemeToggler onClick={changeTheme}></ThemeToggler>
+      </TitleSwitcherWrap>
       <FormWrapper
-        // onSubmit={handleSubmit}
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
         errors={errors}
@@ -150,7 +165,6 @@ const SettingModal = () => {
             height="80"
           />
 
-          {/* <UploadBtn onClick={handlePhotoUpload} register={register}> */}
           <UploadBtn onClick={handlePhotoUpload}>
             <svg className="arrow-up" fill="none" fontSize={24}>
               <use href={sprite + '#icon-arrow-up-try'}></use>
@@ -168,14 +182,12 @@ const SettingModal = () => {
             defaultValue={gender ? gender : 'man'}
             name="gender"
             row
-            // onChange={changeGender}
           >
             <StyledFormControlLabel
               value="woman"
               control={<Radio />}
               label={t('woman')}
               {...register('gender')}
-              // checked={formik.values.gender === 'woman'}
             ></StyledFormControlLabel>
 
             <StyledFormControlLabel
@@ -183,7 +195,6 @@ const SettingModal = () => {
               control={<Radio />}
               label={t('man')}
               {...register('gender')}
-              // checked={formik.values.gender === 'man'}
             ></StyledFormControlLabel>
           </RadioGroupWrap>
 
@@ -237,10 +248,10 @@ const SettingModal = () => {
             <EyePassButton onClick={showPass} eyePass={eyePass} />
           </LabelText>
 
-          <LabelText htmlFor="repeatPassword">
+          <LabelText htmlFor="repPassword">
             {t('settingModal.Repeat new password')}:
             <StyledInput
-              id="repeatPassword"
+              id="repPassword"
               type={eyePass ? 'text' : 'password'}
               name="repPassword"
               placeholder={t('password')}
@@ -252,7 +263,6 @@ const SettingModal = () => {
         </MainInfoWrapper>
         <SaveBtn type="submit">{t('save')}</SaveBtn>
       </FormWrapper>
-      <StyledSwitcher onClick={changeTheme}>Change theme</StyledSwitcher>
     </SettingContainer>
   );
 };
