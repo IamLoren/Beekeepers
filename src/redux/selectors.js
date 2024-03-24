@@ -51,3 +51,4 @@ export const selectVerificationToken = (state) => {
 
 export const selectactiveContent = state => state.normaCounterSlice.activeContent;
 export const selectSelectedMonth = state => state.statisticDataSlice.selectedMonth;
+export const selectColorTheme = state => state.authSlice.user.theme;
