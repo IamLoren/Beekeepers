@@ -43,14 +43,14 @@ export const MainLabelText = styled.label`
   color: var(--primary-text);
   margin-top: ${(props) =>
     props.htmlFor === 'gender' ||
-    props.htmlFor === 'name' ||
-    props.htmlFor === 'photo'
+      props.htmlFor === 'name' ||
+      props.htmlFor === 'photo'
       ? '0px'
       : '24px'};
   margin-bottom: ${(props) =>
     props.htmlFor === 'name' ||
-    props.htmlFor === 'photo' ||
-    props.htmlFor === 'email'
+      props.htmlFor === 'photo' ||
+      props.htmlFor === 'email'
       ? '8px'
       : '12px'};
   ${(props) =>
@@ -61,8 +61,8 @@ export const MainLabelText = styled.label`
 
   @media (min-width: 1440px) {
     ${(props) =>
-      props.htmlFor === 'password' &&
-      css`
+    props.htmlFor === 'password' &&
+    css`
         margin-top: 0px;
       `}
   }
@@ -186,6 +186,8 @@ export const SaveBtn = styled.button`
   line-height: 1.25;
   border-radius: 10px;
   box-shadow: 0px 4px 8px 0px rgba(64, 123, 255, 0.34);
+  padding: 10px;
+  margin-top:20px;
 
   &:hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
@@ -252,6 +254,7 @@ letter-spacing: 2px;
 color: white;
 transition: .15s ease-in-out;
 border-color: var(--percentage-text);
+margin-top: 85px;
 
 &:hover {
   box-shadow: 0 0 10px 0 #9ebbff inset, 0 0 10px 4px #9ebbff;

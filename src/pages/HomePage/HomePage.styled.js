@@ -66,8 +66,10 @@ export const StatisticsWrapper = styled.div`
 `;
 
 export const ActiveContentWrapper = styled.div`
-  height: 350px;
+  // height: 350px;
   width: 100%;
+  padding-bottom: 20px;
+
   @media screen and (min-width: 768px) and (max-width: 1439px) {
 
   }

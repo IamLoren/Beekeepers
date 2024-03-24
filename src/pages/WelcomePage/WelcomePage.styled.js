@@ -48,25 +48,32 @@ export const StyledFullPage = styled.div`
   flex-direction: column;
 
   gap: 40px;
+
+  max-width: 280px;
+  margin: 0 auto;
+
   @media only screen and (min-width: 768px) {
     gap: 60px;
+    max-width: 704px;
   }
   @media only screen and (min-width: 1440px) {
+    max-width: 1280px;
     flex-direction: row;
-    gap: 81px;
+    gap: 88px;
     justify-content: center;
     align-items: flex-end;
-    padding-top: 80px;
+    padding-top: 56px;
   }
 `;
 export const StyledTitle1 = styled.h1`
   width: 246px;
   font-weight: 700;
   font-size: 28px;
-  padding-top: 24px;
+  padding-top: 0px;
   padding-bottom: 16px;
   @media only screen and (min-width: 768px) {
     width: 100%;
+    font-size: 36px;
   }
   @media only screen and (min-width: 1440px) {
     font-size: 36px;
@@ -77,9 +84,10 @@ export const StyledTitle2 = styled.h2`
   font-weight: 400;
   font-size: 24px;
 
-  padding-bottom: 24px;
+  padding-bottom: 28px;
   @media only screen and (min-width: 768px) {
     width: 100%;
+    font-size: 26px;
   }
   @media only screen and (min-width: 1440px) {
     font-size: 26px;
@@ -110,6 +118,8 @@ export const StyledLeftList = styled.ul`
   gap: 16px;
   flex-direction: column;
   padding-bottom: 24px;
+  margin: 0;
+
   @media only screen and (min-width: 768px) {
     flex-direction: row;
     width: 100%;
@@ -122,7 +132,7 @@ export const StyledLeftList = styled.ul`
 
 export const StyledLeftItem = styled.li`
   display: flex;
-  gap: 8px;
+  gap: 3px;
   align-items: center;
   @media only screen and (min-width: 768px) {
     width: 224px;
@@ -143,6 +153,16 @@ export const StyledButton = styled.button`
   text-align: center;
   color: var(--tooltip-bg-color);
   border: none;
+
+  @media only screen and (min-width: 768px){
+    width: 48%;
+    height: 41px;
+    font-size: 18px;
+  }
+
+  @media only screen and (min-width: 1440px){
+    width: 88%;
+  }
 `;
 
 export const StyledRightItem = styled.li`
@@ -176,7 +196,7 @@ height: 40px;
 
 export const StyledRightWrapper = styled.div`
   border-radius: 10px;
-  padding: 32px 24px;
+  padding: 23px 16px;
 
   box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.3);
   background: var(--card-bg-color);
@@ -184,9 +204,11 @@ export const StyledRightWrapper = styled.div`
   margin-bottom: 20px;
   @media only screen and (min-width: 768px) {
     max-width: 494px;
+    padding: 32px 24px;
   }
   @media only screen and (min-width: 1440px) {
     margin-bottom: 0px;
+    padding: 29px 24px;
   }
 `;
 
@@ -205,10 +227,16 @@ export const StyledRightTitle3 = styled.h3`
 export const StyledRightList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding-left: 20px;
+  gap: 19px;
+  padding-left: 18px;
+  font-size: 16px;
+  margin: 0;
+
   @media only screen and (min-width: 768px) {
+    gap: 18px;
   }
+
+
 `;
 export const TabletWoterDivImg = styled.div`
   @media only screen and (max-width: 767px) {
