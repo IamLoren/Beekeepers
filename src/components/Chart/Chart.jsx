@@ -1,29 +1,58 @@
-import { Tooltip } from "react-tooltip";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-
+import { useSelector } from 'react-redux';
+import { Tooltip } from 'react-tooltip';
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
+import {
+  selectMonthlyPortions,
+  selectSelectedMonth,
+} from '../../redux/selectors';
+import '../../css/variables.css';
+import { StyledTitle } from './Chart.styled';
+import { useEffect, useMemo } from 'react';
+import { convertDateToMonth } from '../../serviceFunctions/serviceFunctions';
 
 export const Chart = () => {
-    const data = [
-        { name: 'Січ', uv: 100, pv: 50 },
-        { name: 'Лют', uv: 100, pv: 70 },
-        { name: 'Бер', uv: 100, pv: 90 },
-        { name: 'Кві', uv: 100, pv: 60 },
-        { name: 'Тра', uv: 100, pv: 75 },
-        { name: 'Чер', uv: 100, pv: 80 },
-        { name: 'Лип', uv: 100, pv: 85 },
-      ];
+  const month = useSelector(selectSelectedMonth);
+  const monthData = useSelector(selectMonthlyPortions);
+    const convertMonth = convertDateToMonth(month);
+
+  const data = useMemo(() => {
+    return monthData.map((day) => ({
+      name: day.day,
+      uv: 100,
+      pv: day.consumedWaterRatio,
+    }));
+  }, [monthData]);
+
   return (
     <div>
-        <LineChart width={600} height={350} data={data} margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
+      <StyledTitle>{convertMonth}</StyledTitle>
+      <LineChart
+        width={600}
+        height={350}
+        data={data}
+        margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+      >
         <XAxis dataKey="name" />
         <YAxis domain={[0, 100]} />
         <Tooltip />
-        <CartesianGrid stroke="#f5f5f5" />
-        <Line type="monotone" dataKey="uv" stroke="green" yAxisId={0} />
-        <Line type="monotone" dataKey="pv" stroke="blue" yAxisId={0} />
+        <CartesianGrid stroke={'var(--tooltip-bg-color)'} />
+        <Line
+          type="monotone"
+          dataKey="uv"
+          stroke="green"
+          strokeWidth={3}
+          yAxisId={0}
+        />
+        <Line
+          type="monotone"
+          dataKey="pv"
+          stroke={`var(--secondary-text)`}
+          strokeWidth={3}
+          yAxisId={0}
+        />
       </LineChart>
     </div>
-  )
-}
+  );
+};
 
-export default Chart
+export default Chart;

@@ -17,6 +17,7 @@ export const statisticDataSlice = createSlice({
     isLoading: false,
     isError: null,
     selectedItem: {},
+    selectedMonth: '',
     selectedDay: {},
     greetingModal: false,
   },
@@ -26,6 +27,9 @@ export const statisticDataSlice = createSlice({
     },
     changeSelectedDay: (state, { payload }) => {
       state.selectedDay = payload;
+    },
+    changeSelectedMonth: (state, { payload }) => {
+      state.selectedMonth = payload;
     },
     clearStatisticData: (state) => {
       state.portions = [];
@@ -120,4 +124,5 @@ export const {
   changemonthlyPortions,
   clearStatisticData,
   changeGreetingModal,
+  changeSelectedMonth,
 } = statisticDataSlice.actions;
