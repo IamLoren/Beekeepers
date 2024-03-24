@@ -19,7 +19,7 @@ export const ContentItemWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 
   @media only screen and (min-width: 768px) {
     svg {

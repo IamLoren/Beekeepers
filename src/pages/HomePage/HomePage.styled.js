@@ -52,7 +52,7 @@ const StyledWrapperDiv = styled.div`
 export const StatisticsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 31px;
   padding: 24px 8px;
   margin-bottom: 40px;
 
