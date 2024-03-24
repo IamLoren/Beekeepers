@@ -9,7 +9,7 @@ export const getCurrentData = () => {
 };
 
 export const convertDateToMonth = (dateString) => {
-  const [day, month, year] = dateString.split('-');
+  const [, month, ,] = dateString.split('-');
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'

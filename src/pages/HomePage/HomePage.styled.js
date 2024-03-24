@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import BubblesMob from '../../assets/MobileBg/HomepageBubblesMob.webp';
 import BubblesTab from '../../assets/TabletBg/BubblesBgTab.webp';
 import BubblesDesk from '../../assets/DesktopBg/Bubbles.webp';
@@ -58,8 +58,8 @@ export const StatisticsWrapper = styled.div`
 
   background-color: var(--card-bg-color);
   border-radius: 10px;
-  box-shadow: 0px 4px 14px #407cff62;
-
+  box-shadow: ${({ theme }) => (theme === 'dark' ? '0 0 10px #eee' : '0px 4px 14px #407cff62')};
+  
   @media only screen and (min-width: 768px) {
     padding: 32px 24px;
   }
@@ -106,7 +106,8 @@ export const StyledButton = styled.button`
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
+  color: ${({ theme }) => (theme === 'dark' ? 'rgb(204, 203, 249)' : 'var( --white-text)')};
+  font-weight: 700;
   font-size: 14px;
   box-shadow: 0 0 10px #eee;
   border: none;
