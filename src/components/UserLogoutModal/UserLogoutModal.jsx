@@ -43,11 +43,9 @@ const UserLogoutModal = () => {
         {t('logOut.Do you really want to leave?')}
       </StyledText>
       <ButtonsWrapper>
-        <ButtonDelete onClick={handleLogoutClick}>
-          {t('logOut.Log out')}
-        </ButtonDelete>
+        <ButtonDelete onClick={handleLogoutClick}>{t('logout')}</ButtonDelete>
         <ButtonDelete className="cancel-btn" onClick={handleCancelClick}>
-          {t('logOut.Cancel')}
+          {t('cancel')}
         </ButtonDelete>
       </ButtonsWrapper>
     </ModalWrapper>
