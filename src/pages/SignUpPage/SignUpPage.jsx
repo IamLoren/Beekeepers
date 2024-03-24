@@ -29,7 +29,7 @@ import { useTranslation } from 'react-i18next';
 
 const SignUpPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
   const [eyePass, setEyePass] = useState(false);
   const dispatch = useDispatch();

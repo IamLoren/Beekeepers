@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 export const FormWrapper = styled.div`
   margin-top: 24px;
-  margin-bottom: 66px;
+  margin-bottom: -24px;
   @media only screen and (min-width: 768px) {
     max-width: 336px;
   }
 
   @media only screen and (min-width: 1440px) {
-    margin-top: 162px;
+    margin-top: 118px;
     min-width: 384px;
   }
 `;
@@ -22,47 +22,47 @@ export const FormEl = styled.form`
     border: 1px solid
       var(
         ${(props) =>
-    props.$errorEmail ? '#EF5050' : '#407BFF'}
+    props.$errorEmail ? '--error-text' : '--accent-bg-color'}
       );
 
-    color: var(${(props) => (props.$errorEmail ? '#EF5050' : '#407BFF')});
+    color: var(${(props) => (props.$errorEmail ? '--error-text' : '--percentage-text')});
   }
   label:nth-child(2) > input {
     border: 1px solid
       var(
         ${(props) =>
-    props.$errorPassword ? '#EF5050' : '#407BFF'}
+    props.$errorPassword ? '--error-text' : '--accent-bg-color'}
       );
 
     color: var(
-      ${(props) => (props.$errorPassword ? '#EF5050' : '#407BFF')}
+      ${(props) => (props.$errorPassword ? '--error-text' : '--percentage-text')}
     );
   }
   label:nth-child(3) > input {
     border: 1px solid
       var(
         ${(props) =>
-    props.$errorPassword ? '#EF5050' : '#407BFF'}
+    props.$errorPassword ? '--error-text' : '--accent-bg-color'}
       );
 
     color: var(
-      ${(props) => (props.$errorPassword ? '#EF5050' : '#407BFF')}
+      ${(props) => (props.$errorPassword ? '--error-text' : '---percentage-text')}
     );
   }
 `;
 export const FormHeading = styled.h2`
-  font-weight: 500;
+  font-weight: 600;
   font-size: 26px;
   line-height: 32px;
   margin-bottom: 16px;
 `;
 export const FormInput = styled.input`
   margin-top: 8px;
-  padding: 12px 10px;
+  padding: 11px 10px;
   border-radius: 6px;
   border: 1px solid #407BFF;
   outline: none;
-  color: #407BFF;
+  color: var(--percentage-text);
 
   &::placeholder {
     color:  #407BFF;
@@ -81,11 +81,12 @@ export const FormLabel = styled.label`
   position: relative;
 `;
 export const FormBtn = styled.button`
-  margin-top: 10px;
+  margin-top: 0px;
   margin-bottom: 16px;
   background-color: #407BFF;
   border: 1px solid #407BFF;
   color: #ffff;
+  font-size: 16px;
   padding: 8px 30px;
   border-radius: 10px;
 
@@ -99,10 +100,12 @@ export const FormBtn = styled.button`
 
   @media only screen and (min-width: 768px) {
     font-size: 18px;
+    padding: 12px 30px;
   }
 `;
 export const BtnLink = styled(NavLink)`
   color: #407BFF;
+  font-size: 16px;
   transition: all 0.4s;
   &:hover,
   &:focus {
@@ -114,7 +117,7 @@ export const PassShowBtn = styled.button`
   border: none;
   position: absolute;
   right: 10px;
-  top: 47px;
+  top: 45px;
   height: 16px;
   width: 16px;
   display: flex;
