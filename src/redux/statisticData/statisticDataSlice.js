@@ -19,6 +19,7 @@ export const statisticDataSlice = createSlice({
     selectedItem: {},
     selectedMonth: '',
     selectedDay: {},
+    dailyProgress: 0,
     greetingModal: false,
   },
   reducers: {
@@ -42,6 +43,9 @@ export const statisticDataSlice = createSlice({
     },
     changeGreetingModal: (state, { payload }) => {
       state.greetingModal = payload;
+    },
+    changeDailyProgress: (state, { payload }) => {
+      state.dailyProgress = payload;
     },
     // addPortion: (state, { payload }) => {
     //   state.portions.push(payload);
@@ -125,4 +129,5 @@ export const {
   clearStatisticData,
   changeGreetingModal,
   changeSelectedMonth,
+  changeDailyProgress,
 } = statisticDataSlice.actions;
