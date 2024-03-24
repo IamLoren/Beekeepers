@@ -14,15 +14,21 @@ import PictureBottleBg from './PictureBottleBg';
 import Chart from '../../components/Chart/Chart';
 import Planting from '../../components/Planting/Planting';
 import Assistant from '../../components/Assistant/Assistant.jsx';
-import { selectColorTheme, selectactiveContent } from '../../redux/selectors.js';
+import {
+  selectColorTheme,
+  selectactiveContent,
+} from '../../redux/selectors.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
+import '../../Internationalization/i18n';
+import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
   const activeContent = useSelector(selectactiveContent);
   const theme = useSelector(selectColorTheme);
-  console.log(theme)
+  console.log(theme);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
     <StyledWrapperDiv>
@@ -31,16 +37,20 @@ const HomePage = () => {
           <div>
             <ButtonsWrapper>
               <DailyNorma />
-              <StyledButton onClick={() => dispatch(changeActiveContent('chart'))}>
-                Your month chart
+              <StyledButton
+                onClick={() => dispatch(changeActiveContent('chart'))}
+              >
+                {t('statistics.Your month chart')}
               </StyledButton>
-              <StyledButton onClick={() => dispatch(changeActiveContent('planting'))}>
-                Grow your tree
+              <StyledButton
+                onClick={() => dispatch(changeActiveContent('planting'))}
+              >
+                {t('statistics.Grow your tree')}
               </StyledButton>
               <StyledButton
                 onClick={() => dispatch(changeActiveContent('bot'))}
               >
-                Your personal assistant
+                {t('statistics.Your personal assistant')}
               </StyledButton>
             </ButtonsWrapper>
             <div>
