@@ -12,7 +12,7 @@ export const StyledName = styled.h2`
   font-size: 16px;
   line-height: 1.25;
   text-align: right;
-  color: #2f2f2f;
+  color: var(--primary-text);
   @media only screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33333;
@@ -21,6 +21,8 @@ export const StyledName = styled.h2`
 
 export const StyledImg = styled.img`
   object-fit: cover;
+  width: 28;
+  height: 28;
 `;
 
 export const StyledBtn = styled.button`
@@ -49,11 +51,11 @@ export const AvatarWrapper = styled.div`
 
 export const StyledSpan = styled.span`
   font-weight: 500;
-  color: #407bff;
+  color: var(--secondary-text);
   margin: 2px 0 0;
 `;
 
 export const StyledSvg = styled.svg`
-  stroke: #407bff;
-  fill: #407bff;
+  stroke: var(--secondary-text);
+  fill: var(--secondary-text);
 `;

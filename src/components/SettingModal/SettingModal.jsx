@@ -35,36 +35,49 @@ import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
 
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
-  // const [photo, setPhoto] = useState(defaultPhoto);
   const { t } = useTranslation();
   const { avatarURL, gender, name, email } = useSelector(selectUser);
 
   const dispatch = useDispatch();
-
-  const basicSchema = yup.object({
-    // name: yup.string().required('Name is required'),
-    // email: yup
-    //   .string()
-    //   .email('Please write valid email')
-    //   .matches(/^(?!.*@[^,]*,)/)
-    //   .required('Email is required'),
-    oldPassword: yup
-      .string()
-      .min(8, t('validPassword.Password must be at least 8 characters'))
-      .max(64)
-      .required(t('validPassword.Password is required')),
-    newPassword: yup
-      .string()
-      .min(8, t('validPassword.Password must be at least 8 characters'))
-      .required(t('validPassword.Password is required!')),
-    repPassword: yup
-      .string()
-      .oneOf(
-        [yup.ref('newPassword'), null],
-        t('validPassword.Passwords must match!')
-      )
-      .required(t('required')),
-  });
+  const basicSchema = yup
+    .object({
+      name: yup.string(),
+      email: yup
+        .string()
+        .email('Please write valid email')
+        .matches(/^(?!.*@[^,]*,)/),
+      oldPassword: yup
+        .string()
+        .nullable()
+        .test(
+          'minLength',
+          'Password must be at least 8 characters',
+          (value) => {
+            if (!value) return true;
+            return value.length >= 8;
+          }
+        )
+        .max(64),
+      newPassword: yup
+        .string()
+        .nullable()
+        .test(
+          'minLength',
+          'Password must be at least 8 characters',
+          (value) => {
+            if (!value) return true;
+            return value.length >= 8;
+          }
+        ),
+      repPassword: yup
+        .string()
+        .nullable()
+        .oneOf(
+          [yup.ref('newPassword'), null],
+          t('validPassword.Passwords must match!')
+        ),
+    })
+    .required();
 
   const {
     register,
@@ -111,16 +124,28 @@ const SettingModal = () => {
     input.click();
   };
 
-  const onSubmit = ({ repPassword, ...data }) => {
-    dispatch(updateUserThunk(data)).then((response) => {
-      if (response.error) {
-        toast.error(response.error.message);
-      } else {
-        toast.success('Profile updated successfully');
-        dispatch(changeModalOpen(false));
-        dispatch(closeModals(false));
-      }
-    });
+  const onSubmit = ({ oldPassword, repPassword, newPassword, ...data }) => {
+    if (!newPassword) {
+      dispatch(updateUserThunk(data)).then((response) => {
+        if (response.error) {
+          toast.error(response.error.message);
+        } else {
+          toast.success('Profile updated successfully');
+          dispatch(changeModalOpen(false));
+          dispatch(closeModals(false));
+        }
+      });
+    } else {
+      dispatch(updateUserThunk({ ...data, newPassword })).then((response) => {
+        if (response.error) {
+          toast.error(response.error.message);
+        } else {
+          toast.success('Profile updated successfully');
+          dispatch(changeModalOpen(false));
+          dispatch(closeModals(false));
+        }
+      });
+    }
   };
 
   function changeTheme() {
@@ -237,10 +262,10 @@ const SettingModal = () => {
             <EyePassButton onClick={showPass} eyePass={eyePass} />
           </LabelText>
 
-          <LabelText htmlFor="repeatPassword">
+          <LabelText htmlFor="repPassword">
             {t('settingModal.Repeat new password')}:
             <StyledInput
-              id="repeatPassword"
+              id="repPassword"
               type={eyePass ? 'text' : 'password'}
               name="repPassword"
               placeholder={t('password')}
