@@ -12,7 +12,6 @@ import {
 } from '../../redux/modals/modalsSlice';
 import '../../Internationalization/i18n';
 import { useTranslation } from 'react-i18next';
-import { Fade } from '@mui/material';
 
 const UserLogoModal = ({ isSettingModalOpen, isLogoutModalOpen, onClose }) => {
   const dispatch = useDispatch();
@@ -35,22 +34,20 @@ const UserLogoModal = ({ isSettingModalOpen, isLogoutModalOpen, onClose }) => {
 
   return (
     <>
-      <Fade in={true} timeout={500}>
-        <StyledModalWrapper>
-          <StyledButton onClick={handleSettingClick}>
-            <StyledSvg width={16} height={16}>
-              <use href={`${sprite}#icon-cog-6-tooth`} />
-            </StyledSvg>
-            {t('setting')}
-          </StyledButton>
-          <StyledButton onClick={handleLogoutClick}>
-            <StyledSvg width={16} height={16}>
-              <use href={`${sprite}#icon-arrow-right-on-rectangle`} />
-            </StyledSvg>
-            {t('logout')}
-          </StyledButton>
-        </StyledModalWrapper>
-      </Fade>
+      <StyledModalWrapper>
+        <StyledButton onClick={handleSettingClick}>
+          <StyledSvg width={16} height={16}>
+            <use href={`${sprite}#icon-cog-6-tooth`} />
+          </StyledSvg>
+          {t('setting')}
+        </StyledButton>
+        <StyledButton onClick={handleLogoutClick}>
+          <StyledSvg width={16} height={16}>
+            <use href={`${sprite}#icon-arrow-right-on-rectangle`} />
+          </StyledSvg>
+          {t('logout')}
+        </StyledButton>
+      </StyledModalWrapper>
     </>
   );
 };
