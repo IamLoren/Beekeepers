@@ -4,7 +4,10 @@ import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
 import StyledWrapperDiv, {
+  ActiveContentWrapper,
+  ButtonsWrapper,
   StatisticsWrapper,
+  StyledButton,
   StyledFlexContainer,
 } from './HomePage.styled';
 import PictureBottleBg from './PictureBottleBg';
@@ -16,35 +19,36 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
 
 const HomePage = () => {
-  const activeContent = useSelector(selectactiveContent)
-  const dispatch = useDispatch(); 
+  const activeContent = useSelector(selectactiveContent);
+  const dispatch = useDispatch();
 
   return (
     <StyledWrapperDiv>
       <Container>
         <StyledFlexContainer>
           <div>
+            <ButtonsWrapper>
+              <DailyNorma />
+              <StyledButton onClick={() => dispatch(changeActiveContent('chart'))}>
+                Your month chart
+              </StyledButton>
+              <StyledButton onClick={() => dispatch(changeActiveContent('planting'))}>
+                Grow your tree
+              </StyledButton>
+              <StyledButton
+                onClick={() => dispatch(changeActiveContent('bot'))}
+              >
+                Your personal assistant
+              </StyledButton>
+            </ButtonsWrapper>
             <div>
-              <DailyNorma/>
-              <button onClick={() => dispatch(changeActiveContent('chart'))}>
-                Кнопка 2
-              </button>
-              <button onClick={() => dispatch(changeActiveContent('planting'))}>
-                Кнопка 3
-              </button>
-              <button onClick={() => dispatch(changeActiveContent('achivments'))}>
-                Кнопка 4
-              </button>
+              <ActiveContentWrapper>
+                {activeContent === 'pictureBottleBg' && <PictureBottleBg />}
+                {activeContent === 'chart' && <Chart />}
+                {activeContent === 'planting' && <Planting />}
+                {activeContent === 'bot' && <Assistant />}
+              </ActiveContentWrapper>
             </div>
-            <div>
-              <div>
-                {(activeContent === 'pictureBottleBg') && <PictureBottleBg />}
-                {(activeContent === 'chart') && <Chart />}
-                {(activeContent === 'planting') && <Planting />}
-                {(activeContent === 'achivments') && <Assistant />}
-                </div>
-            </div>
-
             <WaterRatioPanel />
           </div>
           <StatisticsWrapper>
