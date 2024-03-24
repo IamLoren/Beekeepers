@@ -5,6 +5,7 @@ import BubblesDesk from '../../assets/DesktopBg/Bubbles.webp';
 import BubblesMobRetina from '../../assets/MobileBg/HomepageBubblesMob@retina.webp';
 import BubblesTabRetina from '../../assets/TabletBg/BubblesBgTab@retina.webp';
 import BubblesDeskRetina from '../../assets/DesktopBg/Bubbles@retina.webp';
+import '../../css/variables.css';
 
 export const StyledFlexContainer = styled.div`
   display: flex;
@@ -100,19 +101,14 @@ export const ButtonsWrapper = styled.div`
 export const StyledButton = styled.button`
   width: 110px;
   height: 56px;
-  background-image: linear-gradient(
-    to right,
-    #00c6ff 0%,
-    #0072ff 51%,
-    #00c6ff 100%
-  );
+  background-image: var(--btn-linear);
   padding: 10px;
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
   font-size: 14px;
-  box-shadow: 0 0 20px #eee;
+  box-shadow: 0 0 10px #eee;
   border: none;
   border-radius: 10px;
   display: block;

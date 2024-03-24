@@ -25,8 +25,12 @@ h3,
 h4,
 p,
 .react-calendar__month-view__days__day  {
-  margin: 0 !important;
+  margin: 0;
   padding: 0;
+}
+
+.react-calendar__month-view__days__day  {
+  margin: 0 !important;
 }
 
 ul,
