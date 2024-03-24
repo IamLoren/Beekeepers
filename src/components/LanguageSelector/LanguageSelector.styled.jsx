@@ -4,7 +4,7 @@ export const LanguageSelectorWrap = styled.div`
   position: relative;
   display: inline-block;
   margin-right: 10px;
-  z-index: 1000;
+  z-index: 2000;
 
   button {
     font-size: 16px;
