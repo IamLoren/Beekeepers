@@ -69,9 +69,9 @@ function App() {
           <Route
             path="/verification"
             element={
-              <PublicRoute>
+              <PrivateRoute>
                 <VerificationSuccessPage />
-              </PublicRoute>
+              </PrivateRoute>
             }
           />
           <Route path="*" element={<ErrorPage />} />
