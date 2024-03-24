@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import BubblesMob from '../../assets/MobileBg/HomepageBubblesMob.webp';
 import BubblesTab from '../../assets/TabletBg/BubblesBgTab.webp';
 import BubblesDesk from '../../assets/DesktopBg/Bubbles.webp';
