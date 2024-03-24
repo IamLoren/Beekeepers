@@ -21,6 +21,7 @@ export const en = {
   addWater: 'Add water',
   month: 'Month',
   setting: 'Setting',
+  changeTheme: 'Change theme',
 
   welcomePage: {
     'Water consumption tracker': 'Water consumption tracker',
@@ -110,6 +111,9 @@ export const en = {
     'Daily norma': 'Daily norma',
     'Fulfillment of the daily norm': 'Fulfillment of the daily norm',
     'How many servings of water': 'How many servings of water',
+    'Your month chart': 'Your month chart',
+    'Grow your tree': 'Grow your tree',
+    'Your personal assistant': 'Your personal assistant',
   },
   deleteModal: {
     'Delete entry': 'Delete entry',
