@@ -2,7 +2,7 @@ import { Tooltip } from "react-tooltip";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 
 
-const Chart = () => {
+export const Chart = () => {
     const data = [
         { name: 'Січ', uv: 100, pv: 50 },
         { name: 'Лют', uv: 100, pv: 70 },
