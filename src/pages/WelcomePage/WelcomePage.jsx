@@ -16,10 +16,21 @@ import {
   StyledTitle2,
   StyledLeftTitle3,
   StyledRightTitle3,
-  StyledBackGr,
+  // StyledBackGr,
+  WellcomeBackgroundWrapper
 } from './WelcomePage.styled';
 
+import { useMediaQuery } from 'react-responsive';
+
+import WelcomePageBg from '../../assets/DesktopBg/WelcomePageBg.webp'
+import WelcomeBgTab from '../../assets/TabletBg/WelcomeBgTab.webp'
+import WelcomeBgMob from '../../assets/MobileBg/WelcomeBgMob.webp'
+
 const WelcomePage = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
+
   const navigate = useNavigate();
   const { t } = useTranslation();
   const handleClick = () => {
@@ -28,7 +39,6 @@ const WelcomePage = () => {
 
   return (
     <>
-    <StyledBackGr>
       <StyledFullPage>
         <div>
           <StyledTitle1>
@@ -100,7 +110,12 @@ const WelcomePage = () => {
           </StyledRightList>
         </StyledRightWrapper>
       </StyledFullPage>
-      </StyledBackGr>
+      {/* <StyledBackGr></StyledBackGr> */}
+      <WellcomeBackgroundWrapper>
+          {isMobile && <img src={WelcomeBgMob} />}
+          {isTablet && <img src={WelcomeBgTab} />}
+          {isDesktop && <img src={WelcomePageBg} />}
+        </WellcomeBackgroundWrapper>
     </>
   );
 };

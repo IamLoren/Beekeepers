@@ -18,6 +18,7 @@ export const TodayList = styled.ul`
   overflow-y: auto;
 
   padding-right: 8px;
+  padding-left: 4px;
   margin: 0;
   margin-bottom: 12px;
 
