@@ -101,8 +101,7 @@ convenient and quick execution of all necessary actions.
 
 ## Project Links
 
-[Web Page](https://beekeepers-seven.vercel.app)
-[Frontend Water Tracker](https://github.com/IamLoren/Beekeepers)
-[Backend Water Tracker](https://github.com/IamLoren/Beekeepers-back)
-
+[Web-Page-url]: https://beekeepers-seven.vercel.app
+[Frontend-Water-Tracker-url]: https://github.com/IamLoren/Beekeepers
+[Backend-Water-Tracker-url]: https://github.com/IamLoren/Beekeepers-back
 [contributors-url]: https://github.com/IamLoren/Beekeepers/graphs/contributors
