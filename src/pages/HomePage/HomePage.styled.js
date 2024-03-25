@@ -125,7 +125,7 @@ export const StyledButton = styled.button`
     width: 140px;
     height: 76px;
     font-size: 18px;
-    padding: 14px;
+    padding: 13px;
   }
 `;
 
