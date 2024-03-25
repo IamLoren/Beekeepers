@@ -70,7 +70,6 @@ const TodayListModal = () => {
       value = 1500;
       console.error("You can't add more than 1500ml");
     }
-    // setInputValue(value);
     setCount(value);
   };
 

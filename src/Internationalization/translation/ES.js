@@ -52,14 +52,18 @@ export const es = {
     'Password is required': 'Se requiere una contraseña',
     "Passwords don't match, please try again":
       'Las contraseñas no coinciden, por favor inténtelo de nuevo',
-    'Passwords must match!': '¡Las contraseñas deben coincidir!',
+    'Passwords must match': 'Las contraseñas deben coincidir',
   },
 
   validEmail: {
     'Please write valid email':
       'Por favor, escriba un correo electrónico válido',
     'Email is required': 'Se requiere un correo electrónico',
+    Verified: 'Verificado',
+    'You have successfully verified your account': 'Has verificado tu cuenta',
+    'Back to Homepage': 'Volver a la página de inicio',
   },
+
   logOut: {
     'Do you really want to leave?': '¿Realmente desea salir?',
     'Log out': 'Salir',
@@ -67,7 +71,7 @@ export const es = {
   },
 
   normaModal: {
-    'My daily norma': 'Mi norma diaria',
+    'My daily norma': 'Norma diaria',
     'For woman': 'Para mujer',
     'For man:': 'Para hombre:',
     formulaExplanation:
