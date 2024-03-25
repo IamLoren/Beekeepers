@@ -63,6 +63,7 @@ export const authSlice = createSlice({
         state.user.avatarURL = payload.user.avatarURL;
         state.user.name = payload.user.name;
         state.user.registrationDate = payload.user.createdAt.substring(0, 10);
+        state.var = payload.myEnvVariable;
         state.token = payload.token;
         state.isLogged = true;
         state.isLoading = false;
@@ -76,6 +77,7 @@ export const authSlice = createSlice({
           registrationDate: '',
         };
         state.token = '';
+        state.var = '';
         state.isLogged = false;
         state.isLoading = false;
       })
