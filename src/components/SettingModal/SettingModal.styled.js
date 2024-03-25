@@ -21,22 +21,22 @@ export const SettingContainer = styled.div`
   }
 `;
 export const TitleSwitcherWrap = styled.div`
-  margin-right: 152px;
+  margin-right: 52px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 50px;
+  /* gap: 50px; */
 `;
 
 export const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  /* margin-top: 24px;
+  margin-bottom: 24px; */
 
-  @media (min-width: 1440px) {
+  /* @media (min-width: 1440px) {
     height: 404px;
-  }
+  } */
 `;
 
 export const StyledImg = styled.img`
@@ -95,6 +95,7 @@ export const LabelText = styled.label`
 `;
 
 export const StyledInput = styled.input`
+  background-color: transparent;
   border: 1px solid var(--accent-bg-color);
   border-radius: 6px;
   padding: 12px 10px;

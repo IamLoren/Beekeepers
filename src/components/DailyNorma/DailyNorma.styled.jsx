@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  width: 156px;
+  width: 100%;
   display: inline-block;
   border-radius: 10px;
   border: 1px solid var(--percentage-text);
@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
   cursor: pointer;
 
   @media (min-width: 768px) {
+    width: 156px;
     height: 76px;
   }
 `;

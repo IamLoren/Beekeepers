@@ -1,6 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledTitle = styled.h2`
-margin-bottom: 10px;
-text-align: center;
-`
+  color: var(--secondary-text);
+  font-family: 'Roboto Regular';
+  margin-bottom: 10px;
+  text-align: center;
+`;
