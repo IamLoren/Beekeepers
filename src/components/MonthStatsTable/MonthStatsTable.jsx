@@ -36,7 +36,7 @@ const CustomTile = ({ date }) => {
 
   const tileStyle = {
     textAlign: 'center',
-    paddingTop: '10px',
+    paddingTop: '15px',
     backgroundColor: 'transparent',
     position: 'relative',
   };
