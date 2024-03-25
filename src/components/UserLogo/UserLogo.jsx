@@ -34,18 +34,16 @@ const UserLogo = () => {
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
+  const displayName =
+    name ||
+    email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
 
   return (
     <>
       <div>
-        {' '}
         <StyledWrapper>
           <StyledBtn onClick={handleClick}>
-            {name ? (
-              <StyledName>{name}</StyledName>
-            ) : (
-              <StyledName>User</StyledName>
-            )}
+            <StyledName>{displayName}</StyledName>
             <AvatarWrapper $borderColor={avatarURL ? 'transparent' : '#407bff'}>
               {avatarURL ? (
                 <StyledImg
