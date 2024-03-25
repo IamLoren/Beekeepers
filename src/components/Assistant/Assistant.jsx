@@ -10,8 +10,8 @@ const [messages, setMessages] = useState([
     sender: "assistant"
   }
 ]);
-const SECRET_KEY = import.meta.env.VITE_REACT_APP_GPT_SECRET_KEY;
-console.log(SECRET_KEY)
+const KEY = import.meta.env.GPT_KEY;
+console.log(KEY)
 
 const handleSend = async (message) => {
   const newMessage = {
@@ -60,7 +60,7 @@ const apiRequestBody = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer " +  SECRET_KEY,
+      "Authorization": "Bearer " +  KEY,
     },
     body: JSON.stringify(apiRequestBody)
   })
