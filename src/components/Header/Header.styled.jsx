@@ -21,7 +21,6 @@ export const StyledWrapper = styled.div`
 
 export const LngLogoutWrap = styled.div`
   display: flex;
-  gap: 10px;
   align-items: baseline;
 `;
 
