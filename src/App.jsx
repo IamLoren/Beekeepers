@@ -15,10 +15,7 @@ import { useEffect } from 'react';
 import { refreshThunk } from './redux/auth/operations.js';
 import VerificationSuccessPage from './pages/VerificationSuccessPage/VerificationSuccessPage.jsx';
 
-const test = import.meta.env.VITE_API_TEST;
-
 function App() {
-  console.log(test);
   const isRefresh = useSelector(selectIsRefresh);
   const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
