@@ -180,8 +180,8 @@ export const SaveBtn = styled.button`
   border: none;
   width: 100%;
   height: 36px;
-  background-color: var(--secondary-text);
-  color: var(--white-text);
+  background-color: var(--modal-btn-bg);
+  color: var(--modal-btn-color);
   font-family: 'Roboto Medium';
   font-size: 16px;
   line-height: 1.25;

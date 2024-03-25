@@ -207,7 +207,7 @@ const SettingModal = () => {
             type="text"
             name="name"
             defaultValue={name ? name : ''}
-            placeholder="David"
+            placeholder="Enter your name"
             {...register('name')}
           />
 
@@ -217,7 +217,6 @@ const SettingModal = () => {
             type="text"
             name="email"
             defaultValue={email ? email : ''}
-            placeholder="david01@gmail.com"
             {...register('email')}
           />
 
