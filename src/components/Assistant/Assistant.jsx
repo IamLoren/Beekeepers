@@ -58,7 +58,7 @@ const apiRequestBody = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer " + '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',
+      "Authorization": `Bearer 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`,
     },
     body: JSON.stringify(apiRequestBody)
   })
