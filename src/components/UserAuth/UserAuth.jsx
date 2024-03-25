@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import sprite from '../../assets/sprite.svg';
 import {
   StyledLink,
@@ -5,8 +7,6 @@ import {
   StyledSvg,
   StyledUserAuthWrapper,
 } from './UserAuth.styled';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const UserAuth = () => {
   const { t } = useTranslation();

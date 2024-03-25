@@ -1,9 +1,14 @@
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import {
   changeLogoutModal,
   changeModalOpen,
   closeModals,
 } from '../../redux/modals/modalsSlice';
+import { logoutThunk } from '../../redux/auth/operations';
+import { clearStatisticData } from '../../redux/statisticData/statisticDataSlice';
+import { clearNormaCounterData } from '../../redux/normaCounter/normaCounterSlice';
 import {
   ButtonDelete,
   ButtonsWrapper,
@@ -11,11 +16,6 @@ import {
   StyledText,
   StyledTitle,
 } from './UserLogoutModal.styled';
-import { logoutThunk } from '../../redux/auth/operations';
-import { clearStatisticData } from '../../redux/statisticData/statisticDataSlice';
-import { clearNormaCounterData } from '../../redux/normaCounter/normaCounterSlice';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const UserLogoutModal = () => {
   const dispatch = useDispatch();
@@ -29,9 +29,7 @@ const UserLogoutModal = () => {
   const handleLogoutClick = () => {
     dispatch(logoutThunk());
     dispatch(clearStatisticData());
-    console.log(clearStatisticData);
     dispatch(clearNormaCounterData());
-    console.log(clearNormaCounterData);
     dispatch(changeModalOpen(false));
     dispatch(changeLogoutModal(false));
   };

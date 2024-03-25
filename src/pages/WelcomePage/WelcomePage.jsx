@@ -1,7 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import sprite from '../../assets/sprite.svg';
-import '../../Internationalization/i18n';
+import { useMediaQuery } from 'react-responsive';
 import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
+import sprite from '../../assets/sprite.svg';
+import WelcomePageBg from '../../assets/DesktopBg/WelcomePageBg.webp';
+import WelcomeBgTab from '../../assets/TabletBg/WelcomeBgTab.webp';
+import WelcomeBgMob from '../../assets/MobileBg/WelcomeBgMob.webp';
 import {
   StyledSvg,
   StyledFullPage,
@@ -16,15 +20,8 @@ import {
   StyledTitle2,
   StyledLeftTitle3,
   StyledRightTitle3,
-  // StyledBackGr,
-  WellcomeBackgroundWrapper
+  WellcomeBackgroundWrapper,
 } from './WelcomePage.styled';
-
-import { useMediaQuery } from 'react-responsive';
-
-import WelcomePageBg from '../../assets/DesktopBg/WelcomePageBg.webp'
-import WelcomeBgTab from '../../assets/TabletBg/WelcomeBgTab.webp'
-import WelcomeBgMob from '../../assets/MobileBg/WelcomeBgMob.webp'
 
 const WelcomePage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -110,12 +107,11 @@ const WelcomePage = () => {
           </StyledRightList>
         </StyledRightWrapper>
       </StyledFullPage>
-      {/* <StyledBackGr></StyledBackGr> */}
       <WellcomeBackgroundWrapper>
-          {isMobile && <img src={WelcomeBgMob} />}
-          {isTablet && <img src={WelcomeBgTab} />}
-          {isDesktop && <img src={WelcomePageBg} />}
-        </WellcomeBackgroundWrapper>
+        {isMobile && <img src={WelcomeBgMob} />}
+        {isTablet && <img src={WelcomeBgTab} />}
+        {isDesktop && <img src={WelcomePageBg} />}
+      </WellcomeBackgroundWrapper>
     </>
   );
 };

@@ -1,18 +1,18 @@
-import sprite from '../../assets/sprite.svg';
-import {
-  StyledButton,
-  StyledModalWrapper,
-  StyledSvg,
-} from './UserLogoModal.styled';
 import { useDispatch } from 'react-redux';
+import { Fade } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
+import sprite from '../../assets/sprite.svg';
 import {
   changeLogoutModal,
   changeModalOpen,
   changeSettingModal,
 } from '../../redux/modals/modalsSlice';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
-import { Fade } from '@mui/material';
+import {
+  StyledButton,
+  StyledModalWrapper,
+  StyledSvg,
+} from './UserLogoModal.styled';
 
 const UserLogoModal = ({ isSettingModalOpen, isLogoutModalOpen, onClose }) => {
   const dispatch = useDispatch();

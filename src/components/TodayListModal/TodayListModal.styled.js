@@ -233,8 +233,8 @@ export const SaveButton = styled.button`
   align-items: center;
   width: 100%;
 
-  color: var(--white-text);
-  background-color: var(--secondary-text);
+  color: var(--modal-btn-color);
+  background-color: var(--modal-btn-bg);
   border: none;
   border-radius: 10px;
   padding: 8px 0;

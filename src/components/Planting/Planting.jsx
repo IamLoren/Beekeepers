@@ -14,25 +14,25 @@ const Planting = () => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
-  const width = isMobile ? 280 : isTablet ? 704 : 600;
+  const height = isMobile ? 280 : isTablet ? 656 : 510;
 
   return (
     <StyledTreeWrapper>
-      {progress == 0 && <img src={DryTree} alt="dry tree" width={width} />}
+      {progress == 0 && <img src={DryTree} alt="dry tree" height={height} />}
       {progress > 0 && progress < 20 && (
-        <img src={TreeWithBuds} alt="tree with buds" width={width} />
+        <img src={TreeWithBuds} alt="tree with buds" height={height} />
       )}
       {progress >= 20 && progress < 50 && (
-        <img src={SmallLeaves} alt="tree with small leaves" width={width} />
+        <img src={SmallLeaves} alt="tree with small leaves" height={height} />
       )}
       {progress >= 50 && progress < 70 && (
-        <img src={BigLeaves} alt="tree with big leaves" width={width} />
+        <img src={BigLeaves} alt="tree with big leaves" height={height} />
       )}
       {progress >= 70 && progress < 100 && (
-        <img src={ManyLeaves} alt="tree with many leaves" width={width} />
+        <img src={ManyLeaves} alt="tree with many leaves" height={height} />
       )}
       {progress >= 100 && (
-        <img src={BloomingTree} alt="blooming tree" width={width} />
+        <img src={BloomingTree} alt="blooming tree" height={height} />
       )}
     </StyledTreeWrapper>
   );
