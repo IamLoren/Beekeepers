@@ -46,15 +46,6 @@ export const modalsSlice = createSlice({
   },
 });
 
-// extraReducers: (builder) => {
-//   builder;
-// .addCase(getNormaThunk.fulfilled, (state, { payload }) => {
-//     state.dailyNorma = payload;
-//   state.isLoading = false;
-// })
-//   },
-// });
-
 export const modalsReducer = modalsSlice.reducer;
 export const {
   changeModalOpen,

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import { selectVerificationToken } from '../../redux/selectors';
 import { verifyThunk } from '../../redux/auth/operations';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const VerificationSuccessPage = () => {
   const dispatch = useDispatch();

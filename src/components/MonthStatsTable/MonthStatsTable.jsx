@@ -1,10 +1,22 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Calendar from 'react-calendar';
 import 'react-tooltip/dist/react-tooltip.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import '../../css/variables.css';
+import {
+  selectDataOfRegistration,
+  selectMonthData,
+} from '../../redux/selectors';
+import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
+import {
+  changeSelectedMonth,
+  changemonthlyPortions,
+} from '../../redux/statisticData/statisticDataSlice.js';
+import { getCurrentData } from '../../serviceFunctions/serviceFunctions.js';
 import {
   AccentSpan,
   CalendarWrapper,
@@ -13,16 +25,6 @@ import {
   StyledTooltip,
   Styledcircle,
 } from './MonthStatsTable.styled';
-import { useSelector } from 'react-redux';
-import {
-  selectDataOfRegistration,
-  selectMonthData,
-} from '../../redux/selectors';
-import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations.js';
-import { getCurrentData } from '../../serviceFunctions/serviceFunctions.js';
-import { changeSelectedMonth, changemonthlyPortions } from '../../redux/statisticData/statisticDataSlice.js';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const CustomTile = ({ date }) => {
   const convertDate = new Date(date);
@@ -30,9 +32,9 @@ const CustomTile = ({ date }) => {
   const arrOfMonthData = useSelector(selectMonthData);
   const [tileContent, setTileContent] = useState(null);
   useEffect(() => {
-  const content = arrOfMonthData?.find((el) => el.day == day);
-  setTileContent(content);
-  }, [arrOfMonthData, day])
+    const content = arrOfMonthData?.find((el) => el.day == day);
+    setTileContent(content);
+  }, [arrOfMonthData, day]);
 
   const tileStyle = {
     textAlign: 'center',
@@ -127,12 +129,10 @@ const MonthStatsTable = () => {
       button.addEventListener('mouseenter', () =>
         setTooltipContent([number, date])
       );
-      // button.addEventListener('mouseleave', () => setTooltipContent(''));
     });
   }, [selectMonth]);
 
   async function onChange(newDate) {
-    console.log('newDate', newDate);
     const convert = new Date(newDate);
     const formattedDate = `${convert.getDate()}-${
       (convert.getMonth() + 1 < 10 ? '0' : '') + (convert.getMonth() + 1)
@@ -143,7 +143,7 @@ const MonthStatsTable = () => {
       const { payload } = await dispatch(
         fetchMonthlyPortionsThunk(formattedDate)
       );
-      dispatch(changemonthlyPortions(payload));  
+      dispatch(changemonthlyPortions(payload));
     } catch (error) {
       console.error('Error fetching data:', error);
     }

@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const FormWrapper = styled.div`
   margin-top: 24px;
@@ -16,37 +16,40 @@ export const FormWrapper = styled.div`
 export const FormEl = styled.form`
   display: flex;
   flex-direction: column;
-  gap:30px;
+  gap: 30px;
 
   label:first-child > input {
     border: 1px solid
       var(
-        ${(props) =>
-    props.$errorEmail ? '--error-text' : '--accent-bg-color'}
+        ${(props) => (props.$errorEmail ? '--error-text' : '--accent-bg-color')}
       );
 
-    color: var(${(props) => (props.$errorEmail ? '--error-text' : '--percentage-text')});
+    color: var(
+      ${(props) => (props.$errorEmail ? '--error-text' : '--percentage-text')}
+    );
   }
   label:nth-child(2) > input {
     border: 1px solid
       var(
         ${(props) =>
-    props.$errorPassword ? '--error-text' : '--accent-bg-color'}
+          props.$errorPassword ? '--error-text' : '--accent-bg-color'}
       );
 
     color: var(
-      ${(props) => (props.$errorPassword ? '--error-text' : '--percentage-text')}
+      ${(props) =>
+        props.$errorPassword ? '--error-text' : '--percentage-text'}
     );
   }
   label:nth-child(3) > input {
     border: 1px solid
       var(
         ${(props) =>
-    props.$errorPassword ? '--error-text' : '--accent-bg-color'}
+          props.$errorPassword ? '--error-text' : '--accent-bg-color'}
       );
 
     color: var(
-      ${(props) => (props.$errorPassword ? '--error-text' : '---percentage-text')}
+      ${(props) =>
+        props.$errorPassword ? '--error-text' : '---percentage-text'}
     );
   }
 `;
@@ -60,12 +63,12 @@ export const FormInput = styled.input`
   margin-top: 8px;
   padding: 11px 10px;
   border-radius: 6px;
-  border: 1px solid #407BFF;
+  border: 1px solid #407bff;
   outline: none;
   color: var(--percentage-text);
 
   &::placeholder {
-    color:  #407BFF;
+    color: #407bff;
     font-size: 16px;
     line-height: 20px;
   }
@@ -77,14 +80,13 @@ export const FormLabel = styled.label`
   position: relative;
   font-size: 18px;
   line-height: 24px;
-  // margin-bottom: 16px;
   position: relative;
 `;
 export const FormBtn = styled.button`
   margin-top: 0px;
   margin-bottom: 16px;
-  background-color: #407BFF;
-  border: 1px solid #407BFF;
+  background-color: #407bff;
+  border: 1px solid #407bff;
   color: #ffff;
   font-size: 16px;
   padding: 8px 30px;
@@ -104,12 +106,12 @@ export const FormBtn = styled.button`
   }
 `;
 export const BtnLink = styled(NavLink)`
-  color: #407BFF;
+  color: #407bff;
   font-size: 16px;
   transition: all 0.4s;
   &:hover,
   &:focus {
-    color: #FF9D43;
+    color: #ff9d43;
   }
 `;
 export const PassShowBtn = styled.button`
