@@ -45,14 +45,14 @@ const SettingModal = () => {
       name: yup.string(),
       email: yup
         .string()
-        .email('Please write valid email')
+        .email(t('validEmail.Please write valid email'))
         .matches(/^(?!.*@[^,]*,)/),
       oldPassword: yup
         .string()
         .nullable()
         .test(
           'minLength',
-          'Password must be at least 8 characters',
+          t('validPassword.Password must be at least 8 characters'),
           (value) => {
             if (!value) return true;
             return value.length >= 8;
@@ -64,7 +64,7 @@ const SettingModal = () => {
         .nullable()
         .test(
           'minLength',
-          'Password must be at least 8 characters',
+          t('validPassword.Password must be at least 8 characters'),
           (value) => {
             if (!value) return true;
             return value.length >= 8;
@@ -75,7 +75,7 @@ const SettingModal = () => {
         .nullable()
         .oneOf(
           [yup.ref('newPassword'), null],
-          t('validPassword.Passwords must match!')
+          t('validPassword.Passwords must match')
         ),
     })
     .required();
