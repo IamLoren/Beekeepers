@@ -17,8 +17,8 @@ const [messages, setMessages] = useState([
     sender: "assistant"
   }
 ]);
-const SECRET_KEY = import.meta.env.VITE_REACT_APP_GPT_SECRET_KEY;
-console.log(SECRET_KEY)
+const KEY = import.meta.env.GPT_KEY;
+console.log(KEY)
 
 const handleSend = async (message) => {
   const newMessage = {
@@ -55,35 +55,40 @@ const handleSend = async (message) => {
         'motivate interlocutor to keep water balance, drink water regularly, to give short  motivated tips (2-3 sentenses)',
     };
 
-    const apiRequestBody = {
-      model: 'gpt-3.5-turbo',
-      messages: [systemMessage, ...apiMessages],
-    };
+const apiRequestBody = {
+  "model": "gpt-3.5-turbo",
+  "messages": [
+    systemMessage,
+    ...apiMessages
+  ]
+}
 
-    await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + SECRET_KEY,
-      },
-      body: JSON.stringify(apiRequestBody),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data.choices[0].message.content);
-        setMessages([
-          ...messages,
-          {
-            message: data.choices[0].message.content,
-            sender: 'ChatGPT',
-          },
-        ]);
-        setIsTyping(false);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-  }
+  await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " +  KEY,
+    },
+    body: JSON.stringify(apiRequestBody)
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log(data.choices[0].message.content);
+      setMessages(
+        [...messages, {
+          message: data.choices[0].message.content,
+          sender: "ChatGPT"
+        }]
+      );
+      setIsTyping(false);
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+
+}
+
+
 
   return (
     <div style={{ position: 'relative', height: '480px' }}>
