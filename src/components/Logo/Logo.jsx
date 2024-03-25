@@ -1,8 +1,7 @@
-// import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import sprite from '../../assets/sprite.svg';
-import { StyledUserAuthLink } from './Logo.styled';
 import { selectIsLogged } from '../../redux/selectors';
+import { StyledUserAuthLink } from './Logo.styled';
 
 const Logo = () => {
   const isAuthenticated = useSelector(selectIsLogged);

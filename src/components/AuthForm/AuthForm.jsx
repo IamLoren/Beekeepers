@@ -1,6 +1,6 @@
-import { FormWrapper, FormHeading, BtnLink, FormEl } from './AuthForm.styled';
-import '../../Internationalization/i18n';
 import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
+import { FormWrapper, FormHeading, BtnLink, FormEl } from './AuthForm.styled';
 
 const AuthForm = ({ children, on, handleSubmit, submit, errors }) => {
   const { t } = useTranslation();

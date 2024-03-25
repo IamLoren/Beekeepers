@@ -1,25 +1,23 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import sprite from '../../assets/sprite.svg';
-import { selectDailyPortions } from '../../redux/selectors';
 import TodayListItem from '../TodayListItem/TodayListItem';
+import { selectDailyPortions } from '../../redux/selectors';
 import {
   changeAddModal,
   changeModalOpen,
 } from '../../redux/modals/modalsSlice';
 import { fetchDailyPortionsThunk } from '../../redux/statisticData/operations';
 import { formingTodayDate } from '../../serviceFunctions/serviceFunctions';
-
 import {
   NoPortionsText,
   TodayList,
   TodayListButton,
   TodayListTitle,
 } from './TodayWaterList.styled';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();

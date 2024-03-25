@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import dayjs from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import sprite from '../../assets/sprite.svg';
 import {
   addPortionThunk,
@@ -8,17 +12,11 @@ import {
   fetchMonthlyPortionsThunk,
 } from '../../redux/statisticData/operations';
 import { closeModals } from '../../redux/modals/modalsSlice';
-import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
-
-import dayjs from 'dayjs';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-
+import { selectDailyNorma } from '../../redux/selectors';
 import {
   formingTodayDate,
   getCurrentData,
 } from '../../serviceFunctions/serviceFunctions';
-
 import {
   StyledAddModalInput,
   StyledAddWater,
@@ -34,8 +32,6 @@ import {
   StyledValueAndBtnContainer,
 } from './AddWaterModal.styled';
 import { StyledTimePicker } from '../TodayListModal/TodayListModal.styled';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const AddWaterModal = () => {
   const dispatch = useDispatch();
@@ -113,10 +109,6 @@ const AddWaterModal = () => {
     const formattedValue = `${formattedHour}:${formattedMinute}`;
     setCurrentTime(formattedValue);
   };
-
-  const CustomSaveButton = ({ onClick, children }) => (
-    <SaveButtonStyled onClick={onClick}>{children}</SaveButtonStyled>
-  );
 
   return (
     <StyledAddWaterModalContainer>

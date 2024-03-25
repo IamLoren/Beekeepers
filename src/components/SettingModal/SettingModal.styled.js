@@ -25,18 +25,11 @@ export const TitleSwitcherWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 50px; */
 `;
 
 export const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  /* margin-top: 24px;
-  margin-bottom: 24px; */
-
-  /* @media (min-width: 1440px) {
-    height: 404px;
-  } */
 `;
 
 export const StyledImg = styled.img`

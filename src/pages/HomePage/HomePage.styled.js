@@ -71,9 +71,7 @@ export const ActiveContentWrapper = styled.div`
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  // height: 350px;
   width: 100%;
-  /* padding-bottom: 20px; */
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
   }
@@ -100,7 +98,6 @@ export const ButtonsWrapper = styled.div`
   @media screen and (min-width: 1440px) {
     width: 592px;
     flex-direction: row;
-    /* margin-bottom: 50px; */
   }
 `;
 
