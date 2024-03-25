@@ -1,4 +1,4 @@
-import styles from "@chatscope/chat-ui-kit-styles/dist/assets/index-8b7dfd42.css ";
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { MainContainer, ChatContainer,  MessageList, Message, MessageInput, TypingIndicator} from '@chatscope/chat-ui-kit-react';
 import { useState } from 'react';
 
