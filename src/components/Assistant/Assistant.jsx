@@ -15,7 +15,7 @@ import {
 
 
 const Assistant = () => {
-  const KEY = useSelector(selectVariable)
+  const KEY = useSelector(selectVariable);
 const [isTyping, setIsTyping] = useState(false);
 const [messages, setMessages] = useState([
   {
