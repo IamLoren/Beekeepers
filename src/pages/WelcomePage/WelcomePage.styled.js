@@ -9,12 +9,14 @@ import WelcomeBgMobRetina from '../../assets/MobileBg/WelcomeBgMob@retina.webp'
 
 
 export const StyledBackGr = styled.div`
-background-image:url(${WelcomeBgMob});
-position: relative;
+  background-image:url(${WelcomeBgMob});
+  position: relative;
   background-repeat: no-repeat;
   z-index: 1;
   background-position: bottom;
   top: 0;
+  // width: 100vh;
+  height: 100vh;
   
   @media only screen and (min-width: 768px) {
     background-image:url(${WelcomeBgTab})
