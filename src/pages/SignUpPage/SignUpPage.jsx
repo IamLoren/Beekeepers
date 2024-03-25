@@ -3,6 +3,7 @@ import {
   LoginWrapper,
   StyledSection,
   ImgWrapper,
+  BackgroundWrapper
 } from '../SignInPage/SigninPage.styled';
 import {
   FormBtn,
@@ -80,7 +81,8 @@ const SignUpPage = () => {
   }
 
   return (
-    <StyledSection>
+    <BackgroundWrapper>
+      <StyledSection>
       <LoginWrapper>
         <AuthForm
           on={false}
@@ -133,6 +135,7 @@ const SignUpPage = () => {
         </ImgWrapper>
       </LoginWrapper>
     </StyledSection>
+    </BackgroundWrapper>
   );
 };
 
