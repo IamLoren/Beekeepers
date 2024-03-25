@@ -5,6 +5,7 @@ on:
     branches: [main]
 env:
   VITE_API_TEST: ${{secrets.VITE_API_TEST}}
+  REACT_APP_GPT_SECRET_KEY: ${{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}}
 
 jobs:
   build-and-deploy:
