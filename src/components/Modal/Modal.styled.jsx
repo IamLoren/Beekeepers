@@ -19,6 +19,7 @@ export const ModalContainer = styled.div`
 export const ModalStyled = styled.div`
   height: auto;
   overflow-y: auto;
+  max-height: 90vh;
   z-index: 2000;
   border-radius: 10px;
   background-color: var(--white-text);
