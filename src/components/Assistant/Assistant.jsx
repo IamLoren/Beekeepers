@@ -1,8 +1,11 @@
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { MainContainer, ChatContainer,  MessageList, Message, MessageInput, TypingIndicator} from '@chatscope/chat-ui-kit-react';
 import { useState } from 'react';
+import { selectVariable } from "../../redux/selectors";
+import { useSelector } from "react-redux";
 
 const Assistant = () => {
+  const KEY = useSelector(selectVariable)
 const [isTyping, setIsTyping] = useState(false);
 const [messages, setMessages] = useState([
   {
@@ -10,8 +13,6 @@ const [messages, setMessages] = useState([
     sender: "assistant"
   }
 ]);
-const KEY = import.meta.env.GPT_KEY;
-console.log(KEY)
 
 const handleSend = async (message) => {
   const newMessage = {
