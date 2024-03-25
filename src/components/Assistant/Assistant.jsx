@@ -11,6 +11,7 @@ const [messages, setMessages] = useState([
   }
 ]);
 const SECRET_KEY = import.meta.env.VITE_REACT_APP_GPT_SECRET_KEY;
+console.log(SECRET_KEY)
 
 const handleSend = async (message) => {
   const newMessage = {
