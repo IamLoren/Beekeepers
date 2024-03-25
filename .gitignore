@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 .env
 .yml
+.github/workflows/deploy.yml
