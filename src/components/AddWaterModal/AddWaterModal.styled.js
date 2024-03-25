@@ -161,13 +161,13 @@ export const StyledSaveBtn = styled.button`
   height: 36px;
 
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: var(--secondary-text);
+  background: var(--modal-btn-bg);
 
   font-family: 'Roboto Medium', sans-serif;
   font-size: 16px;
   line-height: 1.25;
   text-align: center;
-  color: var(--white-text);
+  color: var(--modal-btn-color);
   border: none;
 
   &:hover {

@@ -1,15 +1,15 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Container from '../Container/Container';
 import Logo from '../Logo/Logo';
 import UserAuth from '../UserAuth/UserAuth';
 import UserLogo from '../UserLogo/UserLogo';
-import { LngLogoutWrap, StyledBox, StyledWrapper } from './Header.styled';
-import { selectIsLogged } from '../../redux/selectors';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
+import { selectIsLogged } from '../../redux/selectors';
 import { selectLanguage } from '../../redux/Global/selectors';
 import i18n, { LANGUAGES } from '../../Internationalization/i18n';
 import { setLanguage } from '../../redux/Global/globalSlice';
+import { LngLogoutWrap, StyledBox, StyledWrapper } from './Header.styled';
 
 export const Header = () => {
   const dispatch = useDispatch();

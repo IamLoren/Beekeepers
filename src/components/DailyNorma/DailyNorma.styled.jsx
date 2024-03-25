@@ -6,10 +6,15 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   border: 1px solid var(--percentage-text);
   background: var(--white-text);
-  box-shadow: 0 4px 8px 0 rgba(158, 187, 255, 0.12);
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
   padding: 8px 15px;
   height: 74px;
   cursor: pointer;
+
+  &:hover,
+  &:active {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
 
   @media (min-width: 768px) {
     width: 156px;

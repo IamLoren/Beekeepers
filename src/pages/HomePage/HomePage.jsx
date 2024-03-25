@@ -1,8 +1,20 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import Container from '../../components/Container/Container';
 import DailyNorma from '../../components/DailyNorma/DailyNorma';
 import MonthStatsTable from '../../components/MonthStatsTable/MonthStatsTable';
 import TodayWaterList from '../../components/TodayWaterList/TodayWaterList';
 import WaterRatioPanel from '../../components/WaterRatioPanel/WaterRatioPanel';
+import Chart from '../../components/Chart/Chart';
+import Planting from '../../components/Planting/Planting';
+import Assistant from '../../components/Assistant/Assistant.jsx';
+import PictureBottleBg from './PictureBottleBg';
+import {
+  selectColorTheme,
+  selectactiveContent,
+} from '../../redux/selectors.js';
+import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
 import StyledWrapperDiv, {
   ActiveContentWrapper,
   ButtonsWrapper,
@@ -10,23 +22,10 @@ import StyledWrapperDiv, {
   StyledButton,
   StyledFlexContainer,
 } from './HomePage.styled';
-import PictureBottleBg from './PictureBottleBg';
-import Chart from '../../components/Chart/Chart';
-import Planting from '../../components/Planting/Planting';
-import Assistant from '../../components/Assistant/Assistant.jsx';
-import {
-  selectColorTheme,
-  selectactiveContent,
-} from '../../redux/selectors.js';
-import { useDispatch, useSelector } from 'react-redux';
-import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const HomePage = () => {
   const activeContent = useSelector(selectactiveContent);
   const theme = useSelector(selectColorTheme);
-  console.log(theme);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 

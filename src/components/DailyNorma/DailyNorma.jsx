@@ -1,6 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDailyNorma } from '../../redux/selectors.js';
-
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
+import {
+  changeDailyNormaModal,
+  changeModalOpen,
+} from '../../redux/modals/modalsSlice.js';
+import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
 import {
   Btn,
   NormaBtnWrap,
@@ -8,14 +14,6 @@ import {
   Title,
   Wrapper,
 } from './DailyNorma.styled';
-
-import {
-  changeDailyNormaModal,
-  changeModalOpen,
-} from '../../redux/modals/modalsSlice.js';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
-import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
 
 const DailyNorma = () => {
   const dailyNorma = useSelector(selectDailyNorma);

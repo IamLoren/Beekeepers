@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import dayjs from 'dayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import sprite from '../../assets/sprite.svg';
 import {
   fetchDailyPortionsThunk,
@@ -11,12 +13,10 @@ import {
 } from '../../redux/statisticData/operations';
 import { selectDailyNorma, selectSelectedItem } from '../../redux/selectors';
 import { closeModals } from '../../redux/modals/modalsSlice';
-import { LocalizationProvider } from '@mui/x-date-pickers';
 import {
   formingTodayDate,
   getCurrentData,
 } from '../../serviceFunctions/serviceFunctions';
-
 import {
   AmountText,
   ContentItemWrapper,
@@ -32,9 +32,6 @@ import {
   ResultSaveWrapper,
   StyledTimePicker,
 } from './TodayListModal.styled';
-import '../../Internationalization/i18n';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const TodayListModal = () => {
   const dispatch = useDispatch();
@@ -72,20 +69,6 @@ const TodayListModal = () => {
     }
     setCount(value);
   };
-
-  // const handleInputBlur = () => {
-  //   let newValue = inputValue;
-
-  //   if (/^0/.test(newValue)) {
-  //     newValue = newValue.replace(/^0+/, '');
-
-  //     if (newValue === '') {
-  //       newValue = '0';
-  //     }
-  //   }
-  //   setInputValue(newValue);
-  //   setCount(parseInt(newValue, 10));
-  // };
 
   const onSaveClick = () => {
     const consumeRatio = dailyNorma / count;
@@ -182,7 +165,6 @@ const TodayListModal = () => {
           min={0}
           max={1500}
           onChange={handleInputChange}
-          // onBlur={handleInputBlur}
         />
       </div>
       <ResultSaveWrapper>
