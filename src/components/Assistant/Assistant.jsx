@@ -10,24 +10,24 @@ import {
 } from '@chatscope/chat-ui-kit-react';
 
 const Assistant = () => {
-  const [isTyping, setIsTyping] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      message:
-        'Hello, I am your personal water assistant. I wil help you stay hydrated. How can I help you today?',
-      sender: 'assistant',
-    },
-  ]);
-  const SECRET_KEY = import.meta.env.VITE_REACT_APP_GPT_SECRET_KEY;
+const [isTyping, setIsTyping] = useState(false);
+const [messages, setMessages] = useState([
+  {
+    message: "Hello, I am your personal water assistant. I wil help you stay hydrated. How can I help you today?",
+    sender: "assistant"
+  }
+]);
+const SECRET_KEY = import.meta.env.VITE_REACT_APP_GPT_SECRET_KEY;
+console.log(SECRET_KEY)
 
-  const handleSend = async (message) => {
-    const newMessage = {
-      message: message,
-      sender: 'user',
-      direction: 'outgoing',
-    };
+const handleSend = async (message) => {
+  const newMessage = {
+    message: message,
+    sender: "user",
+    direction: "outgoing"
+  }
 
-    const newMessages = [...messages, newMessage];
+  const newMessages = [...messages, newMessage];
 
     setMessages(newMessages);
     setIsTyping(true);
