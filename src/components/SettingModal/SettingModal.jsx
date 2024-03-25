@@ -1,5 +1,22 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Radio } from '@mui/material';
+import '../../Internationalization/i18n';
 import sprite from '../../assets/sprite.svg';
+import EyePassButton from './EyePassBtn';
+import defaultPhoto from '../../assets/avatar.jpg';
+import {
+  updateAvatarThunk,
+  updateUserThunk,
+} from '../../redux/auth/operations';
+import { selectUser } from '../../redux/selectors';
+import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
+import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import {
   LabelText,
   MainLabelText,
@@ -16,23 +33,6 @@ import {
   StyledImg,
   TitleSwitcherWrap,
 } from './SettingModal.styled';
-import EyePassButton from './EyePassBtn';
-import defaultPhoto from '../../assets/avatar.jpg';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  updateAvatarThunk,
-  updateUserThunk,
-} from '../../redux/auth/operations';
-import { selectUser } from '../../redux/selectors';
-import { toast } from 'react-toastify';
-import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
-import ThemeToggler from '../ThemeToggler/ThemeToggler';
 
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
@@ -113,7 +113,7 @@ const SettingModal = () => {
     input.click();
   };
 
-  const onSubmit = ({ oldPassword, repPassword, newPassword, ...data }) => {
+  const onSubmit = ({ newPassword, ...data }) => {
     if (!newPassword) {
       dispatch(updateUserThunk(data)).then((response) => {
         if (response.error) {

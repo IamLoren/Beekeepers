@@ -6,7 +6,7 @@ export const StyledModalWrapper = styled.div`
   width: auto;
   height: 88px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.2);
-  background-color: #fff;
+  background-color: var(--white-text);
   display: flex;
   flex-direction: column;
   gap: 16px;

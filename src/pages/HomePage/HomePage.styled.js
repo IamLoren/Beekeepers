@@ -58,20 +58,24 @@ export const StatisticsWrapper = styled.div`
 
   background-color: var(--card-bg-color);
   border-radius: 10px;
-  box-shadow: ${({ theme }) => (theme === 'dark' ? '0 0 10px #eee' : '0px 4px 14px #407cff62')};
-  
+  box-shadow: ${({ theme }) =>
+    theme === 'dark' ? '0 0 10px #eee' : '0px 4px 14px #407cff62'};
+
   @media only screen and (min-width: 768px) {
     padding: 32px 24px;
   }
 `;
 
 export const ActiveContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
   // height: 350px;
   width: 100%;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-
   }
 
   @media screen and (min-width: 1440px) {
@@ -86,7 +90,7 @@ export const ButtonsWrapper = styled.div`
   align-content: center;
   align-self: center;
   gap: 5px;
-  margin-bottom: 10px;
+  padding-bottom: 20px;
 
   @media screen and (min-width: 768px) {
     width: 100%;
@@ -96,31 +100,23 @@ export const ButtonsWrapper = styled.div`
   @media screen and (min-width: 1440px) {
     width: 592px;
     flex-direction: row;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
   }
 `;
 
 export const StyledButton = styled.button`
-  width: 110px;
+  width: 100%;
   height: 56px;
-  background-image: var(--btn-linear);
+  box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+  background: var(--secondary-text);
   padding: 10px;
   text-align: center;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: var(--tabs-color);
+  color: var(--white-text);
   font-weight: 700;
   font-size: 14px;
-  box-shadow: 0 0 10px #eee;
   border: none;
   border-radius: 10px;
   display: block;
-
-  &:hover {
-    background-position: right center; /* change the direction of the change here */
-    color: #fff;
-    text-decoration: none;
-  }
 
   @media screen and (min-width: 768px) {
     width: 140px;

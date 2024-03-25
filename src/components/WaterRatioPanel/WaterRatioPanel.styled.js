@@ -13,9 +13,8 @@ export const StyledRatioSectionContainer = styled.div`
 
   @media only screen and (min-width: 1440px) {
     width: 592px;
+    height: auto;
     gap: 23px;
-    
-    padding-top: 82px;
   }
 `;
 

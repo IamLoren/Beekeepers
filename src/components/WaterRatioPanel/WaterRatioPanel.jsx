@@ -26,7 +26,10 @@ import {
 import sprite from '../../assets/sprite.svg';
 import { createPortal } from 'react-dom';
 import { Greeting } from '../../components/Greeting/Greeting.jsx';
-import { changeDailyProgress, changeGreetingModal } from '../../redux/statisticData/statisticDataSlice.js';
+import {
+  changeDailyProgress,
+  changeGreetingModal,
+} from '../../redux/statisticData/statisticDataSlice.js';
 import { useEffect } from 'react';
 import '../../Internationalization/i18n';
 import { useTranslation } from 'react-i18next';
@@ -46,8 +49,8 @@ const WaterRatioPanel = () => {
   };
 
   const progress = Math.round((consumedWater / dailyNorma) * 100);
-  dispatch(changeDailyProgress(progress));
   useEffect(() => {
+    dispatch(changeDailyProgress(progress));
     if (progress >= 100) {
       dispatch(changeGreetingModal(true));
     }
