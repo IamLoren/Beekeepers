@@ -108,10 +108,29 @@
 
 ## Посилання на проект та його розробники
 
+1.
+
 - WebPage:
   [https://beekeepers-seven.vercel.app](https://beekeepers-seven.vercel.app)
 - Frontend:
   [https://github.com/IamLoren/Beekeepers](https://github.com/IamLoren/Beekeepers)
 - Backend:
   [https://github.com/IamLoren/Beekeepers-back](https://github.com/IamLoren/Beekeepers-back)
-- [РОЗРОБНИКИ](https://github.com/IamLoren/Beekeepers/graphs/contributors)
+
+2. Project
+   [CONTRIBUTORS](https://github.com/IamLoren/Beekeepers/graphs/contributors):
+
+### <h3 align="center">Beekeepers team<h3>
+
+<span align="center">
+
+<a align="center" href="https://github.com/IamLoren">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Daryna8">![GitHub](https://img.shields.io/badge/-Daryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/VButenk0">![GitHub](https://img.shields.io/badge/-Vlad-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/MariiaZhk">![GitHub](https://img.shields.io/badge/-Mariia-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Alyonka556">![GitHub](https://img.shields.io/badge/-Olena-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Yeva-Kolesova">![GitHub](https://img.shields.io/badge/-Yeva-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/khrystyna-shekel">![GitHub](https://img.shields.io/badge/-Khrystyna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/kkot04">![GitHub](https://img.shields.io/badge/-Kateryna-05122A?style=flat&logo=github)</a>
+
+</span>
