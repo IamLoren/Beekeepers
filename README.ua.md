@@ -37,35 +37,50 @@
 який дозволяє користувачам вести облік порцій випитої води протягом дня,
 контролювати норму кількості води в організмі, плануванувати та відслідковувати
 її споживання.
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme1.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 Проект включає реєстрацію, аутентифікацію та верифікацію користувачів. Він
 забезпечує безпеку користувачів за допомогою шифрування паролів та ідентифікації
 на основі токенів.
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme2.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 Користувач може розрахувати рекомендовану норму споживання води за допомогою
 калькулятора, враховуючи свою вагу та час активних занять спортом або іншим
 видом діяльності, пов'язаним з фізичними навантаженнями.
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme3.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 Крім того, користувачі можуть додавати та відстежувати свої порції вживання води
 протягом дня, переглядати статистику, а також виконувати редагування та
 видалення порцій води.
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme4.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 Користувач може переглядати інтерактивний графік споживання води, спостерігати
 за 'деревом споживання води' та отримувати корисні поради щодо користі та норми
 споживання води від чат-бота.
 
-<div style="display: flex; justify-content: center;">
+<div style="display: flex; justify-content: center; gap: 10px;">
     <img src="src/assets/ReadmePhotos/WaterTrackerReadme5.webp" width="300" alt="Screenshot of project"/>
     <img src="src/assets/ReadmePhotos/WaterTrackerReadme6.webp" width="300" alt="Screenshot of project"/>
   </div>
 
 Крім того, користувач може змінювати особисті дані, мову веб-сайту та
 налаштовувати тему (темну /світлу).
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme7.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 Додаток має зручний та зрозумілий інтерфейс, що дозволяє зручно та швидко
 виконувати всі необхідні дії.
