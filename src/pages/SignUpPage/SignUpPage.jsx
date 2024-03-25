@@ -1,9 +1,25 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
+import { toast } from 'react-toastify';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
+import * as yup from 'yup';
+import { registerThunk } from '../../redux/auth/operations';
+import AuthForm from '../../components/AuthForm/AuthForm';
+import { yupResolver } from '@hookform/resolvers/yup';
+import Bottle from '../../assets/MobileBg/SignInBgMob.webp';
+import BottleTablet from '../../assets/TabletBg/SignInBgTab.webp';
+import BottleDesktop from '../../assets/DesktopBg/SignInBg.webp';
+import PassEye from '../../assets/PassEye';
+import OpenPassEye from '../../assets/OpenPassEye';
 import {
   ErrorSpan,
   LoginWrapper,
   StyledSection,
   ImgWrapper,
-  BackgroundWrapper
+  BackgroundWrapper,
 } from '../SignInPage/SigninPage.styled';
 import {
   FormBtn,
@@ -11,22 +27,6 @@ import {
   FormLabel,
   PassShowBtn,
 } from '../../components/AuthForm/AuthForm.styled';
-import { useMediaQuery } from 'react-responsive';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { registerThunk } from '../../redux/auth/operations';
-import { toast } from 'react-toastify';
-import AuthForm from '../../components/AuthForm/AuthForm';
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import Bottle from '../../assets/MobileBg/SignInBgMob.webp';
-import BottleTablet from '../../assets/TabletBg/SignInBgTab.webp';
-import BottleDesktop from '../../assets/DesktopBg/SignInBg.webp';
-import PassEye from '../../assets/PassEye';
-import OpenPassEye from '../../assets/OpenPassEye';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const SignUpPage = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -69,8 +69,7 @@ const SignUpPage = () => {
     dispatch(registerThunk({ email, password }))
       .unwrap()
       .then(() => {
-        toast.success('Sign up done!\nPlease verify email!');
-        // navigate('/signin');
+        toast.success('Sign up done!');
       })
 
       .catch(() => toast.error('Ooops... Something went wrong!'));
@@ -83,58 +82,58 @@ const SignUpPage = () => {
   return (
     <BackgroundWrapper>
       <StyledSection>
-      <LoginWrapper>
-        <AuthForm
-          on={false}
-          handleSubmit={handleSubmit}
-          submit={submit}
-          errors={errors}
-        >
-          <FormLabel>
-            {t('enterEmail')}
-            <FormInput
-              type="text"
-              placeholder={t('email')}
-              name="email"
-              {...register('email')}
-            />
-            <ErrorSpan>{errors?.email?.message}</ErrorSpan>
-          </FormLabel>
-          <FormLabel>
-            {t('enterPassword')}
-            <FormInput
-              type={eyePass ? 'text' : 'password'}
-              placeholder={t('password')}
-              name="password"
-              {...register('password')}
-            />
-            <ErrorSpan>{errors?.password?.message}</ErrorSpan>
-            <PassShowBtn type="button" onClick={showPass}>
-              {eyePass ? <OpenPassEye /> : <PassEye />}
-            </PassShowBtn>
-          </FormLabel>
-          <FormLabel>
-            {t('repeatPassword')}
-            <FormInput
-              type={eyePass ? 'text' : 'password'}
-              placeholder={t('repeatPassword')}
-              name="repPassword"
-              {...register('repPassword')}
-            />
-            <ErrorSpan>{errors?.repPassword?.message}</ErrorSpan>
-            <PassShowBtn type="button" onClick={showPass}>
-              {eyePass ? <OpenPassEye /> : <PassEye />}
-            </PassShowBtn>
-          </FormLabel>
-          <FormBtn type="submit"> {t('signUp')}</FormBtn>
-        </AuthForm>
-        <ImgWrapper>
-          {isMobile && <img src={Bottle} />}
-          {isTablet && <img src={BottleTablet} />}
-          {isDesktop && <img src={BottleDesktop} />}
-        </ImgWrapper>
-      </LoginWrapper>
-    </StyledSection>
+        <LoginWrapper>
+          <AuthForm
+            on={false}
+            handleSubmit={handleSubmit}
+            submit={submit}
+            errors={errors}
+          >
+            <FormLabel>
+              {t('enterEmail')}
+              <FormInput
+                type="text"
+                placeholder={t('email')}
+                name="email"
+                {...register('email')}
+              />
+              <ErrorSpan>{errors?.email?.message}</ErrorSpan>
+            </FormLabel>
+            <FormLabel>
+              {t('enterPassword')}
+              <FormInput
+                type={eyePass ? 'text' : 'password'}
+                placeholder={t('password')}
+                name="password"
+                {...register('password')}
+              />
+              <ErrorSpan>{errors?.password?.message}</ErrorSpan>
+              <PassShowBtn type="button" onClick={showPass}>
+                {eyePass ? <OpenPassEye /> : <PassEye />}
+              </PassShowBtn>
+            </FormLabel>
+            <FormLabel>
+              {t('repeatPassword')}
+              <FormInput
+                type={eyePass ? 'text' : 'password'}
+                placeholder={t('repeatPassword')}
+                name="repPassword"
+                {...register('repPassword')}
+              />
+              <ErrorSpan>{errors?.repPassword?.message}</ErrorSpan>
+              <PassShowBtn type="button" onClick={showPass}>
+                {eyePass ? <OpenPassEye /> : <PassEye />}
+              </PassShowBtn>
+            </FormLabel>
+            <FormBtn type="submit"> {t('signUp')}</FormBtn>
+          </AuthForm>
+          <ImgWrapper>
+            {isMobile && <img src={Bottle} />}
+            {isTablet && <img src={BottleTablet} />}
+            {isDesktop && <img src={BottleDesktop} />}
+          </ImgWrapper>
+        </LoginWrapper>
+      </StyledSection>
     </BackgroundWrapper>
   );
 };

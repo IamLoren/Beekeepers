@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Radio } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import '../../Internationalization/i18n';
 import sprite from '../../assets/sprite.svg';
-import EyePassButton from './EyePassBtn';
 import defaultPhoto from '../../assets/avatar.jpg';
+import EyePassButton from './EyePassBtn';
+import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import {
   updateAvatarThunk,
   updateUserThunk,
 } from '../../redux/auth/operations';
 import { selectUser } from '../../redux/selectors';
 import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
-import ThemeToggler from '../ThemeToggler/ThemeToggler';
 import {
   LabelText,
   MainLabelText,
@@ -207,7 +207,7 @@ const SettingModal = () => {
             type="text"
             name="name"
             defaultValue={name ? name : ''}
-            placeholder="David"
+            placeholder="Enter your name"
             {...register('name')}
           />
 
@@ -217,7 +217,6 @@ const SettingModal = () => {
             type="text"
             name="email"
             defaultValue={email ? email : ''}
-            placeholder="david01@gmail.com"
             {...register('email')}
           />
 

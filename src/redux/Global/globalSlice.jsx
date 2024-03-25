@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { LANGUAGES } from '../../Internationalization/i18n';
 import {
   loginThunk,
   logoutThunk,
@@ -15,7 +16,6 @@ import {
   fetchPortionsThunk,
   updatePortionThunk,
 } from '../statisticData/operations';
-import { LANGUAGES } from '../../Internationalization/i18n';
 
 const initialState = {
   isLoading: false,

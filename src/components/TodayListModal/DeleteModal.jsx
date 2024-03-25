@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import {
   deletePortionThunk,
   fetchDailyPortionsThunk,
@@ -11,7 +12,6 @@ import {
   formingTodayDate,
   getCurrentData,
 } from '../../serviceFunctions/serviceFunctions';
-
 import {
   ButtonDelete,
   ButtonsWrapper,
@@ -19,8 +19,6 @@ import {
   SubtitleModal,
   TitleModal,
 } from './TodayListModal.styled';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const DeleteModal = () => {
   const dispatch = useDispatch();

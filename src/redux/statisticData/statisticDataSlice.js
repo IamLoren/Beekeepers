@@ -47,23 +47,6 @@ export const statisticDataSlice = createSlice({
     changeDailyProgress: (state, { payload }) => {
       state.dailyProgress = payload;
     },
-    // addPortion: (state, { payload }) => {
-    //   state.portions.push(payload);
-    // },
-    // editPortion: (state, { payload }) => {
-    //   const { id, amount, time } = payload;
-    //   const portionToUpdate = state.portions.find(
-    //     (portion) => portion.id === id
-    //   );
-    //   if (portionToUpdate) {
-    //     portionToUpdate.amount = amount;
-    //     portionToUpdate.time = time;
-    //   }
-    // },
-    // deletePortion: (state, { payload }) => {
-    //   const idToDelete = payload;
-    //   state.portions = state.portions.filter((item) => item.id !== idToDelete);
-    // },
     changeSelectedItem: (state, { payload }) => {
       state.selectedItem = payload;
     },
@@ -123,7 +106,6 @@ export const statisticDataSlice = createSlice({
 
 export const statisticDataReducer = statisticDataSlice.reducer;
 export const {
-  // addPortion, editPortion, deletePortion,
   changeSelectedItem,
   changemonthlyPortions,
   clearStatisticData,

@@ -71,9 +71,7 @@ export const ActiveContentWrapper = styled.div`
   flex-direction: column;
   justify-content: end;
   align-items: center;
-  // height: 350px;
   width: 100%;
-  /* padding-bottom: 20px; */
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
   }
@@ -100,7 +98,6 @@ export const ButtonsWrapper = styled.div`
   @media screen and (min-width: 1440px) {
     width: 592px;
     flex-direction: row;
-    /* margin-bottom: 50px; */
   }
 `;
 
@@ -108,15 +105,21 @@ export const StyledButton = styled.button`
   width: 100%;
   height: 56px;
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: var(--secondary-text);
+  background: var(--btn-bg-color);
+  border: 1px solid var(--percentage-text) !important;
   padding: 10px;
   text-align: center;
-  color: var(--white-text);
+  color: var(--btn-text-color);
   font-weight: 700;
   font-size: 14px;
   border: none;
   border-radius: 10px;
   display: block;
+
+  &:hover,
+  &:active {
+    box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+  }
 
   @media screen and (min-width: 768px) {
     width: 140px;

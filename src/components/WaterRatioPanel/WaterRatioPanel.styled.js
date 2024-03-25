@@ -137,8 +137,8 @@ export const StyledAddBtn = styled.button`
   gap: 10px;
 
   box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-  background: var(--secondary-text);
-  border: none;
+  background: var(--btn-bg-color);
+  border: 1px solid var(--percentage-text);
   border-radius: 10px;
   padding: 6px 75px;
   cursor: pointer;
@@ -147,7 +147,7 @@ export const StyledAddBtn = styled.button`
   font-size: 16px;
   line-height: 1.25;
   text-align: center;
-  color: var(--white-text);
+  color: var(--btn-text-color);
 
   &:hover {
     box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);

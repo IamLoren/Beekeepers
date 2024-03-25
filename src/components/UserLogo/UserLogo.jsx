@@ -1,5 +1,14 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Popover } from '@mui/material';
 import sprite from '../../assets/sprite.svg';
+import UserLogoModal from '../UserLogoModal/UserLogoModal';
+import {
+  selectLogoutModal,
+  selectSettingModal,
+  selectUser,
+} from '../../redux/selectors';
+import defaultPhoto from '../../assets/avatar.jpg';
 import {
   AvatarWrapper,
   StyledBtn,
@@ -8,15 +17,6 @@ import {
   StyledImg,
   StyledWrapper,
 } from './UserLogo.styled';
-import { useState } from 'react';
-import UserLogoModal from '../UserLogoModal/UserLogoModal';
-import {
-  selectLogoutModal,
-  selectSettingModal,
-  selectUser,
-} from '../../redux/selectors';
-import { Popover } from '@mui/material';
-import defaultPhoto from '../../assets/avatar.jpg';
 
 const UserLogo = () => {
   const isSettingModalOpen = useSelector(selectSettingModal);

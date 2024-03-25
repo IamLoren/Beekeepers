@@ -1,8 +1,8 @@
-import i18n from 'i18next';
 import { useEffect, useRef, useState } from 'react';
-import { LanguageSelectorWrap } from './LanguageSelector.styled';
-import { LANGUAGES } from '../../Internationalization/i18n';
 import { Fade } from '@mui/material';
+import i18n from 'i18next';
+import { LANGUAGES } from '../../Internationalization/i18n';
+import { LanguageSelectorWrap } from './LanguageSelector.styled';
 
 const LanguageSelector = () => {
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language);

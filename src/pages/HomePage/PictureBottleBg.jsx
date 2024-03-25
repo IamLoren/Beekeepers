@@ -1,4 +1,3 @@
-//  import { ImgTumb } from '../../../pages/HomePage/HomePage.styled';
 import pictureMob from '../../assets/MobileBg/HomePageBottleBg.webp';
 import pictureMobRetina from '../../assets/MobileBg/HomePageBottleBg@retina.webp';
 import pictureTab from '../../assets/TabletBg/HomePageBgTab.webp';

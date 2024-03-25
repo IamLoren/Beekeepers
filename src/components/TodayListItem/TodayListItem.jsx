@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import sprite from '../../assets/sprite.svg';
 import {
   changeDeletePortionModal,
@@ -7,7 +8,6 @@ import {
   changeModalOpen,
 } from '../../redux/modals/modalsSlice';
 import { changeSelectedItem } from '../../redux/statisticData/statisticDataSlice';
-
 import {
   ItemWrapper,
   ContentItemWrapper,
@@ -15,8 +15,6 @@ import {
   TimeText,
   ButtonsWrapper,
 } from './TodayListItem.styled';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const TodayListItem = ({ id, amount, time }) => {
   const dispatch = useDispatch();
