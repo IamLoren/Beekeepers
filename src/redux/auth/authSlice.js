@@ -22,7 +22,8 @@ export const authSlice = createSlice({
       theme: 'light',
       verify: false,
       verificationToken: '',
-    },
+    }, 
+    var: '',
     token: '',
     isLogged: false,
     isLoading: false,
@@ -40,7 +41,7 @@ export const authSlice = createSlice({
         state.user.theme = payload.theme;
         state.user.verify = payload.verify;
         state.user.verificationToken = payload.verificationToken;
-
+        state.var = payload.myEnvVariable;
         state.token = payload.token;
         state.isLoading = false;
       })

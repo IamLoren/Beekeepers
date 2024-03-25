@@ -53,3 +53,4 @@ export const selectactiveContent = state => state.normaCounterSlice.activeConten
 export const selectSelectedMonth = state => state.statisticDataSlice.selectedMonth;
 export const selectColorTheme = state => state.authSlice.user.theme;
 export const selectDailyProgress = state => state.statisticDataSlice.dailyProgress;
+export const selectVariable = state => state.authSlice.var;
