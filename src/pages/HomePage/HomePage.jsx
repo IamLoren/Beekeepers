@@ -53,14 +53,12 @@ const HomePage = () => {
                 {t('statistics.Your personal assistant')}
               </StyledButton>
             </ButtonsWrapper>
-            <div>
-              <ActiveContentWrapper>
-                {activeContent === 'pictureBottleBg' && <PictureBottleBg />}
-                {activeContent === 'chart' && <Chart />}
-                {activeContent === 'planting' && <Planting />}
-                {activeContent === 'bot' && <Assistant />}
-              </ActiveContentWrapper>
-            </div>
+            <ActiveContentWrapper>
+              {activeContent === 'pictureBottleBg' && <PictureBottleBg />}
+              {activeContent === 'chart' && <Chart />}
+              {activeContent === 'planting' && <Planting />}
+              {activeContent === 'bot' && <Assistant />}
+            </ActiveContentWrapper>
             <WaterRatioPanel />
           </div>
           <StatisticsWrapper theme={theme}>

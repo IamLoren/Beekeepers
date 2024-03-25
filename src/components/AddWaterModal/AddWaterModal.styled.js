@@ -107,6 +107,7 @@ export const StyledAddModalInput = styled.input`
   font-size: 16px;
   line-height: 1.25;
   color: var(--secondary-text);
+  background-color: transparent;
 
   &:hover,
   &:active,

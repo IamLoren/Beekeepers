@@ -7,7 +7,7 @@
   --error-text: #ef5050;
   --card-bg-color: #ecf2ff;
   --accent-bg-color: #d7e3ff;
-  --tooltip-bg-color: #ffffff;
+  --tooltip-bg-color: #fff;
   --greeting-bg-color: rgba(249, 250, 251, 0.7);
   --bcgclr: #ffffff;
   --tabs-color: #ffffff;
@@ -16,7 +16,7 @@
     #9ebbff 0%,
     #0072ff 51%,
     #9ebbff 100%
-  )
+  );
 }
 
 .dark {
@@ -29,9 +29,12 @@
   --accent-bg-color: #574bff;
   --tooltip-bg-color: #6e92ff;
   --bcgclr: #172240;
-  --greeting-bg-color: rgba(75, 108,183, 0.7);
-  --tabs-color:rgb(204, 203, 249);
-  --btn-linear: linear-gradient(to right, #4b6cb7 0%, #182848  51%, #4b6cb7  100%);
+  --greeting-bg-color: rgba(75, 108, 183, 0.7);
+  --tabs-color: rgb(204, 203, 249);
+  --btn-linear: linear-gradient(
+    to right,
+    #4b6cb7 0%,
+    #182848 51%,
+    #4b6cb7 100%
+  );
 }
-
-
