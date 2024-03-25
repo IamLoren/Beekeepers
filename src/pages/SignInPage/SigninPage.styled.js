@@ -43,7 +43,7 @@ export const StyledSection = styled.section`
   max-width: 280px;
   margin: 0 auto;
 
-  @media only screen and (min-width: 768px){
+  @media only screen and (min-width: 768px) {
     max-width: 704px;
   }
 `;
@@ -60,10 +60,6 @@ export const ImgWrapper = styled.div`
   text-align: center;
   position: relative;
   z-index: -1;
-
-  // img{
-  //   margin: -10px auto;
-  // }
 
   @media only screen and (min-width: 768px) {
     position: absolute;

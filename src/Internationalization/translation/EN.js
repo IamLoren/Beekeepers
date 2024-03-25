@@ -50,12 +50,16 @@ export const en = {
     'Password is required': 'Password is required',
     "Passwords don't match, please try again":
       "Passwords don't match, please try again",
-    'Passwords must match!': 'Passwords must match!',
+    'Passwords must match': 'Passwords must match',
   },
 
   validEmail: {
     'Please write valid email': 'Please write valid email',
     'Email is required': 'Email is required',
+    Verified: 'Verified',
+    'You have successfully verified your account':
+      'You have successfully verified your account',
+    'Back to Homepage': 'Back to Homepage',
   },
   logOut: {
     'Do you really want to leave?': 'Do you really want to leave?',

@@ -1,56 +1,49 @@
 import styled from 'styled-components';
-import WelcomePageBg from '../../assets/DesktopBg/WelcomePageBg.webp'
-import WelcomeBgTab from '../../assets/TabletBg/WelcomeBgTab.webp'
-import WelcomeBgMob from '../../assets/MobileBg/WelcomeBgMob.webp'
-import WelcomePageBgRetina from '../../assets/DesktopBg/WelcomePageBg@retina.webp'
-import WelcomeBgTabRetina from '../../assets/TabletBg/WelcomeBgTab@retina.webp'
-import WelcomeBgMobRetina from '../../assets/MobileBg/WelcomeBgMob@retina.webp'
-
-
+import WelcomePageBg from '../../assets/DesktopBg/WelcomePageBg.webp';
+import WelcomeBgTab from '../../assets/TabletBg/WelcomeBgTab.webp';
+import WelcomeBgMob from '../../assets/MobileBg/WelcomeBgMob.webp';
+import WelcomePageBgRetina from '../../assets/DesktopBg/WelcomePageBg@retina.webp';
+import WelcomeBgTabRetina from '../../assets/TabletBg/WelcomeBgTab@retina.webp';
+import WelcomeBgMobRetina from '../../assets/MobileBg/WelcomeBgMob@retina.webp';
+import Bubbles from '../../assets/DesktopBg/Bubbles.webp';
+import BubblesRetina from '../../assets/DesktopBg/Bubbles@retina.webp';
 
 export const StyledBackGr = styled.div`
-  background-image:url(${WelcomeBgMob});
-  position: relative;
+  background-image: url(${WelcomeBgMob});
+  background-size: cover;
+  background-position: center bottom;
   background-repeat: no-repeat;
-  z-index: 1;
-  background-position: bottom;
-  bottom: 0;
-  // width: 100vh;
-  height: 100vh;
-  
+  background-size: 100%;
+  min-height: calc(100vh - 80px);
+
   @media only screen and (min-width: 768px) {
-    background-image:url(${WelcomeBgTab})
-    
+    background-image: url(${WelcomeBgTab});
   }
 
   @media only screen and (min-width: 1440px) {
-    background-image:url(${WelcomePageBg})
-
+    background-blend-mode: multiply;
+    background-image: url(${WelcomePageBg}), url(${Bubbles});
   }
+
   @media (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
-  @media screen and (min-width: 320px) and (max-width: 767px) {
-    background-image: url(${WelcomeBgMobRetina});
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+      background-image: url(${WelcomeBgMobRetina});
+    }
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      background-image: url(${WelcomeBgTabRetina});
+    }
+    @media screen and (min-width: 1440px) {
+      background-image: url(${WelcomePageBgRetina}), url(${BubblesRetina});
+    }
   }
-  @media screen and (min-width: 768px) and (max-width: 1439px) {
-    background-image: url(${WelcomeBgTabRetina});
-  }
-  @media screen and (min-width: 1440px) {
-    background-image: url(${WelcomePageBgRetina});
-  }
-}
-`
-
-
-
+`;
 
 export const StyledFullPage = styled.div`
   display: flex;
   flex-direction: column;
-
   gap: 40px;
-
   max-width: 280px;
   margin: 0 auto;
 
@@ -156,13 +149,13 @@ export const StyledButton = styled.button`
   color: var(--tooltip-bg-color);
   border: none;
 
-  @media only screen and (min-width: 768px){
+  @media only screen and (min-width: 768px) {
     width: 48%;
     height: 41px;
     font-size: 18px;
   }
 
-  @media only screen and (min-width: 1440px){
+  @media only screen and (min-width: 1440px) {
     width: 88%;
   }
 `;
@@ -185,16 +178,16 @@ export const StyledRightItem = styled.li`
 `;
 
 export const StyledSvg = styled.svg`
-width: 32px;
-height: 32px;
-fill: var(--tooltip-bg-color);
-display: inline - block;
-margin-right: 5px;
-@media only screen and (min-width: 768px) {
-  width: 40px;
-height: 40px;
+  width: 32px;
+  height: 32px;
+  fill: var(--tooltip-bg-color);
+  display: inline - block;
+  margin-right: 5px;
+  @media only screen and (min-width: 768px) {
+    width: 40px;
+    height: 40px;
   }
-`
+`;
 
 export const StyledRightWrapper = styled.div`
   border-radius: 10px;
@@ -213,9 +206,6 @@ export const StyledRightWrapper = styled.div`
     padding: 29px 24px;
   }
 `;
-
-
-
 
 export const StyledRightTitle3 = styled.h3`
   padding-bottom: 12px;
@@ -237,8 +227,6 @@ export const StyledRightList = styled.ul`
   @media only screen and (min-width: 768px) {
     gap: 18px;
   }
-
-
 `;
 export const TabletWoterDivImg = styled.div`
   @media only screen and (max-width: 767px) {
@@ -268,7 +256,7 @@ export const DesctopWoterDivImg = styled.div`
 export const WellcomeBackgroundWrapper = styled.div`
   position: relative;
 
-  @media only screen and (min-width: 1440px){
+  @media only screen and (min-width: 1440px) {
     position: static;
   }
 
@@ -277,14 +265,14 @@ export const WellcomeBackgroundWrapper = styled.div`
     position: absolute;
     z-index: -1;
     bottom: 0;
-  }  
+  }
 
-  @media only screen and (min-width: 1440px){
-     img {
+  @media only screen and (min-width: 1440px) {
+    img {
       width: 100%;
       position: absolute;
       z-index: -1;
       bottom: 0;
     }
   }
-`
+`;
