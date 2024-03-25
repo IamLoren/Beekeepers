@@ -21,7 +21,7 @@
     <li>
        <a href="#technological-stack">Technological Stack </a>
        </li>
-   <li><a href="#project-links">Project Links and Contributors</a></li>
+   <li><a href="#project-links-and-contributors">Project Links and Contributors</a></li>
    </ol>
 </details>
 
@@ -29,42 +29,43 @@
 
 ## About The Project
 
-Water tracker app to track daily water intake made as a final project on
-[GOIT](https://goit.global)
+'Water Сonsumption Tracker' app to track daily water intake made as a final
+project on [GOIT](https://goit.global)
 [Fullstack Bootcamp](https://goit.global/ua/courses/bootcamp/) course.
 
-- This project is a web application for managing personal water consumption
-  within daily limits, allowing users to track their water intake throughout the
-  day. The main goal of the project is to provide users with tools to control
-  the amount of water in their bodies, plan, and track their consumption.
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme1.webp" width="300" alt="Screenshot of project"/>
+This project is a web application for managing personal water consumption within
+daily limits, allowing users to track their water intake throughout the day. The
+main goal of the project is to provide users with tools to control the amount of
+water in their bodies, plan, and track their consumption.
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme1.webp" width="300" alt="Screenshot of project"/>
 
-- The project includes user registration, authentication and verification. It
-  ensures user security through password encryption and token-based
-  identification.
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme2.webp" width="300" alt="Screenshot of project"/>
+The project includes user registration, authentication and verification. It
+ensures user security through password encryption and token-based
+identification.
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme2.webp" width="300" alt="Screenshot of project"/>
 
-- The user can calculate the recommended water consumption norm using a
-  calculator, taking into account their weight and the duration of physically
-  demanding activities such as sports or other forms of exercise.
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme3.webp" width="300" alt="Screenshot of project"/>
+The user can calculate the recommended water consumption norm using a
+calculator, taking into account their weight and the duration of physically
+demanding activities such as sports or other forms of exercise.
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme3.webp" width="300" alt="Screenshot of project"/>
 
-- Also users can create and track their water intake portions throughout the
-  day, view monthly statistics, as well as perform editing and deletion of their
-  portions.
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme4.webp" width="300" alt="Screenshot of project"/>
+Also users can create and track their water intake portions throughout the day,
+view monthly statistics, as well as perform editing and deletion of their
+portions.
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme4.webp" width="300" alt="Screenshot of project"/>
 
-- The user can view an interactive graph of their water consumption, observe an
+The user can view an interactive graph of their water consumption, observe an
 interactive water consumption tree, and receive useful advice regarding the
 benefits and norms of water consumption through the chatbot.
+
 <div style="display: flex; justify-content: center; gap: 10px;">
   <img src="src/assets/ReadmePhotos/WaterTrackerReadme5.webp" width="300" alt="Screenshot of project"/>
   <img src="src/assets/ReadmePhotos/WaterTrackerReadme6.webp" width="300" alt="Screenshot of project"/>
 </div>
 
-- Furthermore, user can modify personal data, change the website language, and
-  also adjust the theme (dark/light).
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme7.webp" width="300" alt="Screenshot of project"/>
+Furthermore, user can modify personal data, change the website language, and
+also adjust the theme (dark/light).
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme7.webp" width="300" alt="Screenshot of project"/>
 
 The application has a user-friendly and understandable interface, allowing for
 convenient and quick execution of all necessary actions.

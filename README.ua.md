@@ -21,7 +21,7 @@
     <li>
        <a href="#стек-технологій">Стек технологій</a>
        </li>
-   <li><a href="#посилання-на-проект">Посилання на проект. Його розробники</a></li>
+   <li><a href="#посилання-на-проект-та-його-розробники">Посилання на проект та його розробники</a></li>
    </ol>
 </details>
 
@@ -33,38 +33,39 @@
 [GOIT](https://goit.global)
 [Fullstack Bootcamp](https://goit.global/ua/courses/bootcamp/).
 
-- Цей проект - це вебзастосунок для керування обсягом та часом споживанням води,
-  який дозволяє користувачам вести облік порцій випитої води протягом дня,
-  контролювати норму кількості води в організмі, плануванувати та
-  відслідковувати її споживання.
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme1.webp" width="300" alt="Screenshot of project"/>
+Цей проект - це вебзастосунок для керування обсягом та часом споживанням води,
+який дозволяє користувачам вести облік порцій випитої води протягом дня,
+контролювати норму кількості води в організмі, плануванувати та відслідковувати
+її споживання.
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme1.webp" width="300" alt="Screenshot of project"/>
 
-- Проект включає реєстрацію, аутентифікацію та верифікацію користувачів. Він
-  забезпечує безпеку користувачів за допомогою шифрування паролів та
-  ідентифікації на основі токенів.
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme2.webp" width="300" alt="Screenshot of project"/>
+Проект включає реєстрацію, аутентифікацію та верифікацію користувачів. Він
+забезпечує безпеку користувачів за допомогою шифрування паролів та ідентифікації
+на основі токенів.
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme2.webp" width="300" alt="Screenshot of project"/>
 
-- Користувач може розрахувати рекомендовану норму споживання води за допомогою
-  калькулятора, враховуючи свою вагу та час активних занять спортом або іншим
-  видом діяльності, пов'язаним з фізичними навантаженнями.
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme3.webp" width="300" alt="Screenshot of project"/>
+Користувач може розрахувати рекомендовану норму споживання води за допомогою
+калькулятора, враховуючи свою вагу та час активних занять спортом або іншим
+видом діяльності, пов'язаним з фізичними навантаженнями.
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme3.webp" width="300" alt="Screenshot of project"/>
 
-- Крім того, користувачі можуть додавати та відстежувати свої порції вживання
-  води протягом дня, переглядати статистику, а також виконувати редагування та
-  видалення порцій води.
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme4.webp" width="300" alt="Screenshot of project"/>
+Крім того, користувачі можуть додавати та відстежувати свої порції вживання води
+протягом дня, переглядати статистику, а також виконувати редагування та
+видалення порцій води.
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme4.webp" width="300" alt="Screenshot of project"/>
 
-- Користувач може переглядати інтерактивний графік споживання води, спостерігати
+Користувач може переглядати інтерактивний графік споживання води, спостерігати
 за 'деревом споживання води' та отримувати корисні поради щодо користі та норми
 споживання води від чат-бота.
+
 <div style="display: flex; justify-content: center;">
     <img src="src/assets/ReadmePhotos/WaterTrackerReadme5.webp" width="300" alt="Screenshot of project"/>
     <img src="src/assets/ReadmePhotos/WaterTrackerReadme6.webp" width="300" alt="Screenshot of project"/>
   </div>
 
-- Крім того, користувач може змінювати особисті дані, мову веб-сайту та
-  налаштовувати тему (темну /світлу).
-  <img src="src/assets/ReadmePhotos/WaterTrackerReadme7.webp" width="300" alt="Screenshot of project"/>
+Крім того, користувач може змінювати особисті дані, мову веб-сайту та
+налаштовувати тему (темну /світлу).
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme7.webp" width="300" alt="Screenshot of project"/>
 
 Додаток має зручний та зрозумілий інтерфейс, що дозволяє зручно та швидко
 виконувати всі необхідні дії.
@@ -105,7 +106,7 @@
 
 <!--LINKS-->
 
-## Посилання на проект. Його розробники
+## Посилання на проект та його розробники
 
 - WebPage:
   [https://beekeepers-seven.vercel.app](https://beekeepers-seven.vercel.app)
