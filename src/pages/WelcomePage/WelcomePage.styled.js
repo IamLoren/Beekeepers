@@ -14,7 +14,7 @@ export const StyledBackGr = styled.div`
   background-repeat: no-repeat;
   z-index: 1;
   background-position: bottom;
-  top: 0;
+  bottom: 0;
   // width: 100vh;
   height: 100vh;
   
@@ -264,3 +264,27 @@ export const DesctopWoterDivImg = styled.div`
   top: 61%;
   z-index: -1;
 `;
+
+export const WellcomeBackgroundWrapper = styled.div`
+  position: relative;
+
+  @media only screen and (min-width: 1440px){
+    position: static;
+  }
+
+  img {
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+  }  
+
+  @media only screen and (min-width: 1440px){
+     img {
+      width: 100%;
+      position: absolute;
+      z-index: -1;
+      bottom: 0;
+    }
+  }
+`
