@@ -37,22 +37,34 @@ This project is a web application for managing personal water consumption within
 daily limits, allowing users to track their water intake throughout the day. The
 main goal of the project is to provide users with tools to control the amount of
 water in their bodies, plan, and track their consumption.
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme1.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 The project includes user registration, authentication and verification. It
 ensures user security through password encryption and token-based
 identification.
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme2.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 The user can calculate the recommended water consumption norm using a
 calculator, taking into account their weight and the duration of physically
 demanding activities such as sports or other forms of exercise.
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme3.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 Also users can create and track their water intake portions throughout the day,
 view monthly statistics, as well as perform editing and deletion of their
 portions.
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme4.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 The user can view an interactive graph of their water consumption, observe an
 interactive water consumption tree, and receive useful advice regarding the
@@ -65,7 +77,10 @@ benefits and norms of water consumption through the chatbot.
 
 Furthermore, user can modify personal data, change the website language, and
 also adjust the theme (dark/light).
+
+<div style="display: flex; justify-content: center;">
 <img src="src/assets/ReadmePhotos/WaterTrackerReadme7.webp" width="300" alt="Screenshot of project"/>
+</div>
 
 The application has a user-friendly and understandable interface, allowing for
 convenient and quick execution of all necessary actions.
@@ -90,7 +105,6 @@ convenient and quick execution of all necessary actions.
 - [Express.js](https://expressjs.com)
 - [MongoDB](https://www.mongodb.com)
 - [Mongoose](https://mongoosejs.com/)
-- [Vite](https://vitejs.dev)
 - [react-router-dom](https://reactrouter.com)
 - [axios](https://axios-http.com/)
 - [react-i18next](https://react.i18next.com)
@@ -108,11 +122,29 @@ convenient and quick execution of all necessary actions.
 
 ## Project Links and Contributors
 
+1.
+
 - WebPage:
   [https://beekeepers-seven.vercel.app](https://beekeepers-seven.vercel.app)
 - Frontend:
   [https://github.com/IamLoren/Beekeepers](https://github.com/IamLoren/Beekeepers)
 - Backend:
   [https://github.com/IamLoren/Beekeepers-back](https://github.com/IamLoren/Beekeepers-back)
-- Project
-  [CONTRIBUTORS](https://github.com/IamLoren/Beekeepers/graphs/contributors)
+
+2. Project
+   [CONTRIBUTORS](https://github.com/IamLoren/Beekeepers/graphs/contributors):
+
+### <h3 align="center">Beekeepers team<h3>
+
+<span align="center">
+
+<a align="center" href="https://github.com/IamLoren">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Daryna8">![GitHub](https://img.shields.io/badge/-Daryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/VButenk0">![GitHub](https://img.shields.io/badge/-Vlad-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/MariiaZhk">![GitHub](https://img.shields.io/badge/-Mariia-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Alyonka556">![GitHub](https://img.shields.io/badge/-Olena-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Yeva-Kolesova">![GitHub](https://img.shields.io/badge/-Yeva-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/khrystyna-shekel">![GitHub](https://img.shields.io/badge/-Khrystyna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/kkot04">![GitHub](https://img.shields.io/badge/-Kateryna-05122A?style=flat&logo=github)</a>
+
+</span>
