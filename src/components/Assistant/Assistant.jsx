@@ -10,7 +10,8 @@ const [messages, setMessages] = useState([
     sender: "assistant"
   }
 ]);
-const GPT_SECRET = process.env.REACT_APP_GPT_SECRET_KEY;
+const REACT_APP_GPT_SECRET_KEY = import.meta.env.VITE_REACT_APP_GPT_SECRET_KEY;
+console.log(REACT_APP_GPT_SECRET_KEY);
 
 const handleSend = async (message) => {
   const newMessage = {
@@ -59,7 +60,7 @@ const apiRequestBody = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": "Bearer " +  GPT_SECRET,
+      "Authorization": "Bearer " +  REACT_APP_GPT_SECRET_KEY,
     },
     body: JSON.stringify(apiRequestBody)
   })
