@@ -113,28 +113,28 @@ const SettingModal = () => {
     input.click();
   };
 
-  const onSubmit = ({ newPassword, ...data }) => {
-    if (!newPassword) {
-      dispatch(updateUserThunk(data)).then((response) => {
-        if (response.error) {
-          toast.error(response.error.message);
-        } else {
-          toast.success('Profile updated successfully');
-          dispatch(changeModalOpen(false));
-          dispatch(closeModals(false));
-        }
-      });
-    } else {
-      dispatch(updateUserThunk({ ...data, newPassword })).then((response) => {
-        if (response.error) {
-          toast.error(response.error.message);
-        } else {
-          toast.success('Profile updated successfully');
-          dispatch(changeModalOpen(false));
-          dispatch(closeModals(false));
-        }
-      });
+  const onSubmit = ({ oldPassword, repPassword, newPassword, ...data }) => {
+    if (oldPassword && !newPassword) {
+      toast.error('Please enter a new password');
+      return;
     }
+
+    if (newPassword && !repPassword) {
+      toast.error('Please repeat the new password');
+      return;
+    }
+
+    const userData = newPassword ? { ...data, newPassword } : data;
+
+    dispatch(updateUserThunk(userData)).then((response) => {
+      if (response.error) {
+        toast.error(response.error.message);
+      } else {
+        toast.success('Profile updated successfully');
+        dispatch(changeModalOpen(false));
+        dispatch(closeModals(false));
+      }
+    });
   };
 
   function changeTheme() {
