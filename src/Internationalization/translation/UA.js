@@ -9,7 +9,7 @@ export const ua = {
   email: 'Електронна пошта',
   forgotPassword: 'Забули пароль?',
   required: "Це поле є обов'язковим!",
-  edit: 'Редагувати',
+  edit: 'Змінити',
   save: 'Зберегти',
   L: 'Л',
   ml: 'мл',
@@ -52,12 +52,16 @@ export const ua = {
     'Password is required': 'Потрібно ввести пароль',
     "Passwords don't match, please try again":
       'Паролі не співпадають, спробуйте ще раз',
-    'Passwords must match!': 'Паролі повинні співпадати!',
+    'Passwords must match': 'Паролі повинні співпадати',
   },
 
   validEmail: {
     'Please write valid email': 'Будь ласка, напишіть дійсну електронну адресу',
     'Email is required': "Адреса електронної пошти є обов'язковою",
+    Verified: 'Підтверджено',
+    'You have successfully verified your account':
+      'Ви успішно підтвердили свій обліковий запис',
+    'Back to Homepage': 'Повернутися на домашню сторінку',
   },
 
   logOut: {
@@ -67,7 +71,7 @@ export const ua = {
   },
 
   normaModal: {
-    'My daily norma': 'Моя денна норма',
+    'My daily norma': 'Денна норма',
     'For woman': 'Для жінок',
     'For man': 'Для чоловіків',
     formulaExplanation:
