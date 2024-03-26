@@ -206,7 +206,12 @@ const SettingModal = () => {
             id="name"
             type="text"
             name="name"
-            defaultValue={name ? name : ''}
+            defaultValue={
+              name
+                ? name
+                : email.split('@')[0].charAt(0).toUpperCase() +
+                  email.split('@')[0].slice(1)
+            }
             placeholder="Enter your name"
             {...register('name')}
           />
