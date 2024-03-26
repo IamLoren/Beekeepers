@@ -8,7 +8,7 @@ import WelcomeBgMobRetina from '../../assets/MobileBg/WelcomeBgMob@retina.webp';
 import Bubbles from '../../assets/DesktopBg/Bubbles.webp';
 import BubblesRetina from '../../assets/DesktopBg/Bubbles@retina.webp';
 
-export const StyledBackGr = styled.div`
+export const WellcomeBackgroundWrapper = styled.div`
   background-image: url(${WelcomeBgMob});
   background-size: cover;
   background-position: center bottom;
@@ -251,28 +251,4 @@ export const DesctopWoterDivImg = styled.div`
   left: 71%;
   top: 61%;
   z-index: -1;
-`;
-
-export const WellcomeBackgroundWrapper = styled.div`
-  position: relative;
-
-  @media only screen and (min-width: 1440px) {
-    position: static;
-  }
-
-  img {
-    width: 100%;
-    position: absolute;
-    z-index: -1;
-    bottom: 0;
-  }
-
-  @media only screen and (min-width: 1440px) {
-    img {
-      width: 100%;
-      position: absolute;
-      z-index: -1;
-      bottom: 0;
-    }
-  }
 `;
