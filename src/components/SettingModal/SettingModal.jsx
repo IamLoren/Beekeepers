@@ -112,18 +112,20 @@ const SettingModal = () => {
     input.click();
   };
 
-  const onSubmit = ({ oldPassword, repPassword, newPassword, ...data }) => {
-    if (oldPassword && !newPassword) {
-      toast.error('Please enter a new password');
+  const onSubmit = ({ gender, email, name, oldPassword, newPassword }) => {
+    const userData = {
+      gender,
+      email,
+      name,
+    };
+    if (oldPassword) {
+      userData.oldPassword = oldPassword;
+      userData.newPassword = newPassword;
+    }
+    if (newPassword && !oldPassword) {
+      toast.error('Please enter a outdated password');
       return;
     }
-
-    if (newPassword && !repPassword) {
-      toast.error('Please repeat the new password');
-      return;
-    }
-
-    const userData = newPassword ? { ...data, newPassword } : data;
 
     dispatch(updateUserThunk(userData)).then((response) => {
       if (response.error) {
