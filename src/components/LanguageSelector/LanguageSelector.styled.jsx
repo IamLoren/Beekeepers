@@ -9,21 +9,15 @@ export const LanguageSelectorWrap = styled.div`
   button {
     font-size: 16px;
     line-height: 1.25;
-    color: var(--btn-text-color);
-    background-color: var(--btn-bg-color);
-    border: 1px solid var(--percentage-text);
-    box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
-    border-radius: 10px;
+    color: var(--white-text);
+    background-color: var(--percentage-text);
+    border: 1px solid var(--secondary-text);
+    border-radius: 50%;
     width: 28px;
     height: 28px;
     padding: 0;
     text-transform: uppercase;
     cursor: pointer;
-
-    &:hover,
-    &:active {
-      box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
-    }
   }
 
   ul {
