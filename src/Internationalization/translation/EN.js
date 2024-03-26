@@ -138,4 +138,11 @@ export const en = {
     'you are a hero of selfcare': 'you are a hero of selfcare',
     'keep it up': 'keep it up',
   },
+
+  errorPage: {
+    'We are sorry, Page not found': 'We are sorry, Page not found',
+    'The page you are looking for might have been removed or is temporarily unavailable':
+      'The page you are looking for might have been removed or is temporarily unavailable',
+    'Back To Homepage': 'Back To Homepage',
+  },
 };

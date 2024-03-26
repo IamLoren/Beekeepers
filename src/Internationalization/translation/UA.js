@@ -143,4 +143,10 @@ export const ua = {
     'you are a hero of selfcare': 'ти чемпіон з піклування про себе',
     'keep it up': 'так тримати',
   },
+  errorPage: {
+    'We are sorry, Page not found': 'На жаль, сторінку не знайдено',
+    'The page you are looking for might have been removed or is temporarily unavailable':
+      'Сторінка, яку ви шукаєте, могла бути видалена або тимчасово недоступна',
+    'Back To Homepage': 'Повернутися на домашню сторінку',
+  },
 };
