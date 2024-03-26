@@ -1,4 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { counterReducer } from './normaCounter/normaCounterSlice.js';
+import { authReducer} from './auth/authSlice.js';
+import { statisticDataReducer } from './statisticData/statisticDataSlice.js';
+
 import {
   persistStore,
   persistReducer,

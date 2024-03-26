@@ -18,7 +18,4 @@ export default defineConfig({
       external: ['@chatscope/chat-ui-kit-styles'],
     },
   },
-  define: {
-    __APP_ENV__: process.env.VITE_VERCEL_ENV,
-  },
 });

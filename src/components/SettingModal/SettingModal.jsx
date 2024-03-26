@@ -15,7 +15,7 @@ import {
   updateAvatarThunk,
   updateUserThunk,
 } from '../../redux/auth/operations';
-import { selectUser } from '../../redux/selectors';
+import { selectColorTheme, selectUser } from '../../redux/selectors';
 import { changeModalOpen, closeModals } from '../../redux/modals/modalsSlice';
 import {
   LabelText,
@@ -33,11 +33,13 @@ import {
   StyledImg,
   TitleSwitcherWrap,
 } from './SettingModal.styled';
+import { changeUserTheme } from '../../redux/auth/authSlice';
 
 const SettingModal = () => {
   const [eyePass, setEyePass] = useState(false);
   const { t } = useTranslation();
   const { avatarURL, gender, name, email } = useSelector(selectUser);
+  const theme = useSelector(selectColorTheme);
 
   const dispatch = useDispatch();
   const basicSchema = yup
@@ -138,8 +140,11 @@ const SettingModal = () => {
   };
 
   function changeTheme() {
-    const body = document.querySelector('html');
-    body.classList.toggle('dark');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    document.documentElement.classList.remove(theme);
+    document.documentElement.classList.add(newTheme);
+    dispatch(changeUserTheme(newTheme));
+    dispatch(updateUserThunk({theme:newTheme}))
   }
 
   return (

@@ -30,7 +30,11 @@ export const authSlice = createSlice({
     isRefresh: false,
     isError: null,
   },
-  reducers: {},
+  reducers: {
+    changeUserTheme: (state, { payload }) => {
+      state.user.theme = payload;
+    },
+  },
 
   extraReducers: (builder) => {
     builder
@@ -88,6 +92,7 @@ export const authSlice = createSlice({
         state.user.email = payload.email;
         state.user.gender = payload.gender;
         state.user.avatarURL = payload.avatarURL;
+        state.user.theme = payload.theme;
         state.user.registrationDate = payload.createdAt.substring(0, 10);
         state.isLoading = false;
         state.isError = null;
@@ -102,7 +107,6 @@ export const authSlice = createSlice({
       })
       .addCase(updateAvatarThunk.fulfilled, (state, { payload }) => {
         state.user.avatarURL = payload.avatarURL;
-
         state.isLoading = false;
         state.isError = null;
       })
@@ -150,3 +154,4 @@ export const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+export const {changeUserTheme} = authSlice.actions;
