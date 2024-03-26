@@ -13,9 +13,6 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import { counterReducer } from './normaCounter/normaCounterSlice.js';
-import { authReducer } from './auth/authSlice.js';
-import { statisticDataReducer } from './statisticData/statisticDataSlice.js';
 import storage from 'redux-persist/lib/storage';
 import { modalsReducer } from './modals/modalsSlice.js';
 import { globalReducer } from './Global/globalSlice.jsx';
