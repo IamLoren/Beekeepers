@@ -14,13 +14,14 @@ export const WellcomeBackgroundWrapper = styled.div`
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
-  min-height: calc(100vh - 80px);
 
   @media only screen and (min-width: 768px) {
     background-image: url(${WelcomeBgTab});
+    min-height: calc(100vh - 64px);
   }
 
   @media only screen and (min-width: 1440px) {
+    min-height: calc(100vh - 80px);
     background-blend-mode: multiply;
     background-image: url(${WelcomePageBg}), url(${Bubbles});
   }
