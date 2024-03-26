@@ -69,7 +69,9 @@ const SignUpPage = () => {
     dispatch(registerThunk({ email, password }))
       .unwrap()
       .then(() => {
-        toast.success('Sign up done!');
+        toast.success(
+          'Registration done! Check your email to verify your acc!'
+        );
       })
 
       .catch(() => toast.error('Ooops... Something went wrong!'));
