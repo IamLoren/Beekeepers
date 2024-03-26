@@ -17,13 +17,18 @@
     #0072ff 51%,
     #9ebbff 100%
   );
+  --btn-bg-color: #407bff;
+  --btn-text-color: #ffffff;
+
+  --modal-btn-bg: #407bff;
+  --modal-btn-color: #ffffff;
 }
 
 .dark {
   --primary-text: rgb(204, 203, 249);
   --secondary-text: #ffffff;
   --white-text: #071239;
-  --accent-text: #e76011;
+  --accent-text: #ff9d43;
   --percentage-text: #9ebbff;
   --card-bg-color: #092469;
   --accent-bg-color: #574bff;
@@ -37,4 +42,9 @@
     #182848 51%,
     #4b6cb7 100%
   );
+  --btn-bg-color: #071239;
+  --btn-text-color: rgb(204, 203, 249);
+
+  --modal-btn-bg: #574bff;
+  --modal-btn-color: #ffffff;
 }

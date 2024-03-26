@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { Tooltip } from 'react-tooltip';
 import { useMediaQuery } from 'react-responsive';
@@ -7,11 +8,10 @@ import {
   selectSelectedMonth,
 } from '../../redux/selectors';
 import '../../css/variables.css';
-import { StyledTitle } from './Chart.styled';
-import { useMemo } from 'react';
 import { convertDateToMonth } from '../../serviceFunctions/serviceFunctions';
+import { StyledTitle } from './Chart.styled';
 
-export const Chart = () => {
+const Chart = () => {
   const month = useSelector(selectSelectedMonth);
   const monthData = useSelector(selectMonthlyPortions);
   const convertMonth = convertDateToMonth(month);

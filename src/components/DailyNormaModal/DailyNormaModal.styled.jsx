@@ -1,5 +1,5 @@
-import { FormControlLabel, RadioGroup } from '@mui/material';
 import styled from 'styled-components';
+import { FormControlLabel, RadioGroup } from '@mui/material';
 
 export const DailyNormaModalContainer = styled.div`
   padding: 24px 12px;

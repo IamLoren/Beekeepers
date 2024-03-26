@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { counterReducer } from './normaCounter/normaCounterSlice.js';
 import { authReducer} from './auth/authSlice.js';
 import { statisticDataReducer } from './statisticData/statisticDataSlice.js';
+
 import {
   persistStore,
   persistReducer,
@@ -12,6 +13,9 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { counterReducer } from './normaCounter/normaCounterSlice.js';
+import { authReducer } from './auth/authSlice.js';
+import { statisticDataReducer } from './statisticData/statisticDataSlice.js';
 import storage from 'redux-persist/lib/storage';
 import { modalsReducer } from './modals/modalsSlice.js';
 import { globalReducer } from './Global/globalSlice.jsx';
@@ -78,7 +82,6 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  // devTools: process.env.NODE_ENV !== 'production',
 });
 
 export let persistor = persistStore(store);

@@ -40,7 +40,6 @@ export const ButtonsWrapper = styled.div`
 
   @media only screen and (min-width: 768px) {
     flex-direction: row-reverse;
-    /* justify-content: flex-end; */
   }
 
   @media only screen and (min-width: 1440px) {

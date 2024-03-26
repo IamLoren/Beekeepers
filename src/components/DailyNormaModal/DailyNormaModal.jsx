@@ -1,6 +1,16 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { Radio } from '@mui/material';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
+import { closeModals } from '../../redux/modals/modalsSlice';
+import { updateWaterRateThunk } from '../../redux/normaCounter/operations';
+import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
+import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations';
+import { getCurrentData } from '../../serviceFunctions/serviceFunctions';
 import {
   AmountNumber,
   BtnSave,
@@ -20,16 +30,6 @@ import {
   WrapFormula,
   WrapFormulaExplication,
 } from './DailyNormaModal.styled';
-import { useDispatch } from 'react-redux';
-import { closeModals } from '../../redux/modals/modalsSlice';
-import * as Yup from 'yup';
-import { updateWaterRateThunk } from '../../redux/normaCounter/operations';
-import { changeDailyNorma } from '../../redux/normaCounter/normaCounterSlice';
-import { toast } from 'react-toastify';
-import { fetchMonthlyPortionsThunk } from '../../redux/statisticData/operations';
-import { getCurrentData } from '../../serviceFunctions/serviceFunctions';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const DailyNormaModal = () => {
   const womanFormula = 'V=(M*0,03) + (T*0,4)';

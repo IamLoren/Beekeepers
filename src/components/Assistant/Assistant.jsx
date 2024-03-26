@@ -1,8 +1,18 @@
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import { MainContainer, ChatContainer,  MessageList, Message, MessageInput, TypingIndicator} from '@chatscope/chat-ui-kit-react';
 import { useState } from 'react';
+
 import { selectVariable } from "../../redux/selectors";
 import { useSelector } from "react-redux";
+
+import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import {
+  MainContainer,
+  ChatContainer,
+  MessageList,
+  Message,
+  MessageInput,
+  TypingIndicator,
+} from '@chatscope/chat-ui-kit-react';
+
 
 const Assistant = () => {
   const KEY = useSelector(selectVariable);
@@ -23,31 +33,31 @@ const handleSend = async (message) => {
 
   const newMessages = [...messages, newMessage];
 
-  setMessages(newMessages);
-  setIsTyping(true);
+    setMessages(newMessages);
+    setIsTyping(true);
 
-  await processMessageToChatGPT(newMessages);
-}
+    await processMessageToChatGPT(newMessages);
+  };
 
-async function processMessageToChatGPT(messages) {
-  let apiMessages = messages.map((message) => {
-    let role = "";
-    if(message.sender === "ChatGPT") {
-      role = "assistant";
-    } else {
-      role = "user";
-    }
-    return {
-      role: role,
-      content: message.message
-    }
-  });
+  async function processMessageToChatGPT(messages) {
+    let apiMessages = messages.map((message) => {
+      let role = '';
+      if (message.sender === 'ChatGPT') {
+        role = 'assistant';
+      } else {
+        role = 'user';
+      }
+      return {
+        role: role,
+        content: message.message,
+      };
+    });
 
-const systemMessage = {
-  role: "system",
-  content: "motivate interlocutor to keep water balance, drink water regularly, to give short  motivated tips (2-3 sentenses)"
-
-}
+    const systemMessage = {
+      role: 'system',
+      content:
+        'motivate interlocutor to keep water balance, drink water regularly, to give short  motivated tips (2-3 sentenses)',
+    };
 
 const apiRequestBody = {
   "model": "gpt-3.5-turbo",
@@ -82,31 +92,37 @@ const apiRequestBody = {
 
 }
 
+
+
   return (
-    <div style={{ position: "relative", height: "480px" }}>
+    <div style={{ position: 'relative', height: '480px' }}>
       <MainContainer>
         <ChatContainer>
           <MessageList
-            typingIndicator={isTyping && <TypingIndicator content="Your assistant try to care of you" />}
-            >
-              {messages.map((message, i) =>{
-                return (
-                  <Message
-                    key={i}
-                    model={{
-                      message: message.message,
-                      sentTime: 'Just Now',
-                      sender: message.sender
-                    }}
-                  />
-                )
-              } )}
+            typingIndicator={
+              isTyping && (
+                <TypingIndicator content="Your assistant try to care of you" />
+              )
+            }
+          >
+            {messages.map((message, i) => {
+              return (
+                <Message
+                  key={i}
+                  model={{
+                    message: message.message,
+                    sentTime: 'Just Now',
+                    sender: message.sender,
+                  }}
+                />
+              );
+            })}
           </MessageList>
-          <MessageInput placeholder="Type message here" onSend={handleSend}/>
+          <MessageInput placeholder="Type message here" onSend={handleSend} />
         </ChatContainer>
       </MainContainer>
     </div>
-  )
-}
+  );
+};
 
-export default Assistant
+export default Assistant;

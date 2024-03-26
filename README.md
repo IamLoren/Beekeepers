@@ -1,108 +1,150 @@
-# React + Vite template
+<!-- PROJECT LOGO -->
+<div align="center">
+  <a href="https://beekeepers-seven.vercel.app">
+    <img src="/public/Logo.svg" alt="Logo" width="200" height="200">
+  </a>
 
-Цей проєкт було створено за допомогою [Create Vite](https://vitejs.dev/). Для
-знайомства і налаштування додаткових можливостей
-[звернися до документації](https://vitejs.dev/guide/).
+  <h3 align="center">WebApp 'Water Consumption Tracker'</h3>
 
-## Створення репозиторію за шаблоном
+  <p align="center">
+    React.js and Node.js app to track daily water intake.
+</p>
+</div>
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проєкту. Для цього натисни на кнопку `"Use this template"` і
-обери опцію `"Create a new repository"`, як показано на зображенні.
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About the Project</a>
+   </li>
+    <li>
+       <a href="#technological-stack">Technological Stack </a>
+       </li>
+   <li><a href="#project-links-and-contributors">Project Links and Contributors</a></li>
+   </ol>
+</details>
 
-![Creating repo from a template step 1](./src/assets/template-step-1.png)
+<!-- ABOUT THE PROJECT -->
 
-На наступному кроці відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся що репозиторій публічний, після чого натисни кнопку
-`"Create repository from template"`.
+## About The Project
 
-![Creating repo from a template step 2](./src/assets/template-step-2.png)
+'Water Сonsumption Tracker' app to track daily water intake made as a final
+project on [GOIT](https://goit.global)
+[Fullstack Bootcamp](https://goit.global/ua/courses/bootcamp/) course.
 
-Після того як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+This project is a web application for managing personal water consumption within
+daily limits, allowing users to track their water intake throughout the day. The
+main goal of the project is to provide users with tools to control the amount of
+water in their bodies, plan, and track their consumption.
 
-![Settings GitHub Actions permissions step 1](./src/assets/gh-actions-perm-1.png)
+<div style="display: flex; justify-content: center;">
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme1.webp" width="300" alt="Screenshot of project"/>
+</div>
 
-Проскроливши сторінку до самого кінця, у секції `"Workflow permissions"` вибери
-опцію `"Read and write permissions"` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проєкту.
+The project includes user registration, authentication and verification. It
+ensures user security through password encryption and token-based
+identification.
 
-![Settings GitHub Actions permissions step 2](./src/assets/gh-actions-perm-2.png)
+<div style="display: flex; justify-content: center;">
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme2.webp" width="300" alt="Screenshot of project"/>
+</div>
 
-Тепер у тебе є особистий репозиторій проєкту, зі структурою файлів і папок
-репозиторія-шаблону. Далі працюй з ним як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби комміти і відправляй
-їх на GitHub.
+The user can calculate the recommended water consumption norm using a
+calculator, taking into account their weight and the duration of physically
+demanding activities such as sports or other forms of exercise.
 
-## Підготовка до роботи
+<div style="display: flex; justify-content: center;">
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme3.webp" width="300" alt="Screenshot of project"/>
+</div>
 
-1. Переконайся, що на комп'ютері встановлена LTS-версія Node.js.
-   [Скачай і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встановіть базові залежності проекту командою `npm install`.
-3. Запустіть режим розробки, виконавши команду `npm run dev`.
-4. Перейди в браузері за адресою, що зазначено в терміналі.
+Also users can create and track their water intake portions throughout the day,
+view monthly statistics, as well as perform editing and deletion of their
+portions.
 
-## Деплой
+<div style="display: flex; justify-content: center;">
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme4.webp" width="300" alt="Screenshot of project"/>
+</div>
 
-Продакшн версія проєкту буде автоматично збиратися і деплоїтися на GitHub Pages,
-у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад, після
-прямого пушу або прийнятого пул-реквесту. Для цього необхідно у файлі
-`vite.config.js` відредагувати поле `base`, замінивши `react_vite` на свою назву
-репозиторію `"/your_repo_name"`, і відправити зміни на GitHub.
+The user can view an interactive graph of their water consumption, observe an
+interactive water consumption tree, and receive useful advice regarding the
+benefits and norms of water consumption through the chatbot.
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="src/assets/ReadmePhotos/WaterTrackerReadme5.webp" width="300" alt="Screenshot of project"/>
+  <img src="src/assets/ReadmePhotos/WaterTrackerReadme6.webp" width="300" alt="Screenshot of project"/>
+</div>
 
-![GitHub Pages settings](./src/assets/repo-settings.png)
+Furthermore, user can modify personal data, change the website language, and
+also adjust the theme (dark/light).
 
-### Статус деплоя
+<div style="display: flex; justify-content: center;">
+<img src="src/assets/ReadmePhotos/WaterTrackerReadme7.webp" width="300" alt="Screenshot of project"/>
+</div>
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+The application has a user-friendly and understandable interface, allowing for
+convenient and quick execution of all necessary actions.
 
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час збирання або деплою сталася помилка.
+#### Functional capabilities:
 
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і в
-випадаючому вікні перейти за посиланням `Details`.
+- user registration, authentication and verification;
+- calculation and edition of water consumption norm;
+- adding, viewing, and deleting water intake portions;
+- display of detailed daily statistics;
+- display of overall user statistics for the month;
+- interactive water consumption chart and tree;
+- chatbot support;
+- localization;
+- theme: light/dark mode.
 
-![Deployment status](./src/assets/deploy-status.png)
+## Technological Stack
 
-### Жива сторінка
+- [React](https://react.dev)
+- [React Redux](https://react-redux.js.org)
+- [Node](https://nodejs.org)
+- [Express.js](https://expressjs.com)
+- [MongoDB](https://www.mongodb.com)
+- [Mongoose](https://mongoosejs.com/)
+- [react-router-dom](https://reactrouter.com)
+- [axios](https://axios-http.com/)
+- [react-i18next](https://react.i18next.com)
+- [react-calendar](https://www.npmjs.com/package/react-calendar)
+- [yup](https://www.npmjs.com/package/yup)
+- [styled-components](https://styled-components.com)
+- [mui/material](https://mui.com)
+- [react-tooltip](https://react-tooltip.com)
+- [reduxjs/toolkit](https://redux-toolkit.js.org)
+- [react-hook-form](https://react-hook-form.com)
+- [react-circular-progressbar](https://www.npmjs.com/package/react-circular-progressbar)
+- [chatscope/chat-ui-kit-react](https://www.npmjs.com/package/@chatscope/chat-ui-kit-react)
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною в налаштуваннях GitHub-репозиторію (`Settings` > `Pages`).
+<!--LINKS-->
 
-![GitHub-pages URL](./src/assets/gh-pages-url.png)
+## Project Links and Contributors
 
-Якщо відкривається порожня сторінка, переконайся що у вкладці `Console` немає
-помилок пов'язаних із неправильними шляхами до CSS і JS файлів проекту
-(**404**). Швидше за все найімовірніше, у тебе неправильне значення поля `base`
-у файлі `vite.config.js`.
+1.
 
-### Маршрутизація
+- WebPage:
+  [https://beekeepers-seven.vercel.app](https://beekeepers-seven.vercel.app)
+- Frontend:
+  [https://github.com/IamLoren/Beekeepers](https://github.com/IamLoren/Beekeepers)
+- Backend:
+  [https://github.com/IamLoren/Beekeepers-back](https://github.com/IamLoren/Beekeepers-back)
 
-Якщо додаток використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши в пропе
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
+2. Project
+   [CONTRIBUTORS](https://github.com/IamLoren/Beekeepers/graphs/contributors):
 
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-### Додавання змінних в  .env
-Для зберігання конфігураційних даних, таких як API ключі, адреси серверів, порти та інші змінні використовуйте файл `.env`. Для цього необхідно з назви файлу `.env.template` видалити зайві ".template",після чого файл відповідатиме умовам файлу `.ignore` і буде зберігатися лише локально, не публікуючись на віддаленому репозиторії з метою безпеки. Задля використання змінних на GitHub-pages усі змінні, передбачені файлом .env, слід додати до файлу `.github/workflows/deploy.yml`, а також до налаштувань репозиторію. Для цього слід перейти (`Settings` > `Secrets and variables` > `Actions`)
+### <h3 align="center">Beekeepers team<h3>
 
-![Add enviroments from .env](./src/assets/secrets.png)
+<span align="center">
 
-## Як це працює
+<a align="center" href="https://github.com/IamLoren">![GitHub](https://img.shields.io/badge/-Iryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Daryna8">![GitHub](https://img.shields.io/badge/-Daryna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/VButenk0">![GitHub](https://img.shields.io/badge/-Vlad-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/MariiaZhk">![GitHub](https://img.shields.io/badge/-Mariia-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Alyonka556">![GitHub](https://img.shields.io/badge/-Olena-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/Yeva-Kolesova">![GitHub](https://img.shields.io/badge/-Yeva-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/khrystyna-shekel">![GitHub](https://img.shields.io/badge/-Khrystyna-05122A?style=flat&logo=github)</a>
+<a align="center" href="https://github.com/kkot04">![GitHub](https://img.shields.io/badge/-Kateryna-05122A?style=flat&logo=github)</a>
 
-1. Після кожного пушу в гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) з файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проєкт ініціалізується і
-   проходить збірку перед деплоєм. 3 Якщо всі кроки пройшли успішно, зібрана
-   продакшн-версія файлів проєкту відправляється в гілку `gh-pages`. В іншому
-   випадку, в логах виконання скрипта буде вказано в чому проблема.
+</span>

@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { createSlice } from '@reduxjs/toolkit';
 import {
   loginThunk,
@@ -8,7 +9,6 @@ import {
   updateUserThunk,
   verifyThunk,
 } from './operations.js';
-import { toast } from 'react-toastify';
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -47,7 +47,6 @@ export const authSlice = createSlice({
         state.user.verificationToken = payload.verificationToken;
         state.var = payload.myEnvVariable;
         state.token = payload.token;
-        // state.isLogged = true;
         state.isLoading = false;
       })
       .addCase(registerThunk.rejected, (state) => {

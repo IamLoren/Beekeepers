@@ -1,12 +1,7 @@
+import { toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api, clearToken, setToken } from '../../configAxios/configAxios.js';
-import { toast } from 'react-toastify';
 
-// При виклику санки аргументом передати обʼєкт:
-// (email: string, password: string}
-// payload відповіді:
-//(token: string)
-// (email: string)
 export const registerThunk = createAsyncThunk(
   'auth/register',
   async (credentials, thunkApi) => {
@@ -22,11 +17,6 @@ export const registerThunk = createAsyncThunk(
   }
 );
 
-// При виклику санки аргументом передати обʼєкт:
-// (email: string, password: string}
-// payload відповіді:
-//(token: string)
-// (user:{email: string})
 export const loginThunk = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
@@ -41,9 +31,6 @@ export const loginThunk = createAsyncThunk(
   }
 );
 
-// При виклику санки передати Token:
-// payload відповіді:
-//204 No Content
 export const logoutThunk = createAsyncThunk(
   'auth/logout',
   async (_, thunkApi) => {
@@ -78,7 +65,6 @@ export const refreshThunk = createAsyncThunk(
   'auth/refresh',
   async (_, thunkApi) => {
     const savedToken = thunkApi.getState().authSlice.token;
-    console.log(savedToken);
     if (savedToken) {
       setToken(savedToken);
     } else {
@@ -87,7 +73,6 @@ export const refreshThunk = createAsyncThunk(
 
     try {
       const { data } = await api.get('api/auth/current');
-      console.log(data);
       return data;
     } catch (error) {
       toast.error(error.message);
@@ -114,7 +99,6 @@ export const updateAvatarThunk = createAsyncThunk(
   async (avatarData, thunkAPI) => {
     try {
       const { data } = await api.patch('api/auth/avatar', avatarData);
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -1,9 +1,7 @@
+import { toast } from 'react-toastify';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../configAxios/configAxios.js';
-import { toast } from 'react-toastify';
 
-// payload відповіді:
-// [{_id: string(ObjectId), amount: number, time: string, dailyNorma: number, consumeRatio: number, timeStamp(createdAt: date, updatedAt: date)}]
 export const fetchPortionsThunk = createAsyncThunk(
   'fetchPortions',
   async (_, thunkAPI) => {
@@ -17,9 +15,6 @@ export const fetchPortionsThunk = createAsyncThunk(
   }
 );
 
-// При виклику санки в параметрах передати date у форматі дд.мм.рррр
-// payload відповіді:
-// [{_id: string(ObjectId), amount: number, time: string, dailyNorma: number, consumeRatio: number, timeStamp(createdAt: date, updatedAt: date)}]
 export const fetchDailyPortionsThunk = createAsyncThunk(
   'fetchDailyPortions',
   async (date, thunkAPI) => {
@@ -33,9 +28,6 @@ export const fetchDailyPortionsThunk = createAsyncThunk(
   }
 );
 
-// При виклику санки в параметрах передати date у форматі дд.мм.рррр
-// payload відповіді:
-// [{_id: string(ObjectId), amount: number, time: string, timeStamp(createdAt: date, updatedAt: date)}]
 export const fetchMonthlyPortionsThunk = createAsyncThunk(
   'fetchMonthlyPortions',
   async (date, thunkAPI) => {
@@ -49,8 +41,6 @@ export const fetchMonthlyPortionsThunk = createAsyncThunk(
   }
 );
 
-// При виклику санки в параметрах передати id
-// payload відповіді: { message: 'Deleted successfully' }
 export const deletePortionThunk = createAsyncThunk(
   'deletePortion',
   async (id, thunkAPI) => {
@@ -64,10 +54,6 @@ export const deletePortionThunk = createAsyncThunk(
   }
 );
 
-// При виклику санки аргументом передати об'єкт:
-// {amount: number, time: string, dailyNorma: number, consumeRatio: number}
-// payload відповіді:
-// {_id: string(ObjectId), amount: number, time: string, timeStamp(createdAt: date, updatedAt: date)}
 export const addPortionThunk = createAsyncThunk(
   'addPortion',
   async ({ amount, time, dailyNorma, consumeRatio }, thunkAPI) => {
@@ -87,11 +73,6 @@ export const addPortionThunk = createAsyncThunk(
   }
 );
 
-// При виклику санки в параметрах передати id,
-// а аргументом передати об'єкт:
-// { amount: number, time: string, dailyNorma: number, consumeRatio: number }
-// payload відповіді:
-// {_id: string(ObjectId), amount: number, time: string, timeStamp(createdAt: date, updatedAt: date)}
 export const updatePortionThunk = createAsyncThunk(
   'updatePortion',
   async ({ id, ...restCredentials }, thunkAPI) => {

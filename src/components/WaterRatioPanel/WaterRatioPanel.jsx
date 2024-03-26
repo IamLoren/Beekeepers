@@ -1,4 +1,11 @@
+import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
+import Modal from '../Modal/Modal';
+import sprite from '../../assets/sprite.svg';
+import { Greeting } from '../../components/Greeting/Greeting.jsx';
 import {
   selectDailyNorma,
   selectIsGreetingModalOpen,
@@ -9,7 +16,10 @@ import {
   changeAddModal,
   changeModalOpen,
 } from '../../redux/modals/modalsSlice';
-import Modal from '../Modal/Modal';
+import {
+  changeDailyProgress,
+  changeGreetingModal,
+} from '../../redux/statisticData/statisticDataSlice.js';
 import {
   StyledRatioSectionContainer,
   StyledProgressBarContainer,
@@ -23,16 +33,6 @@ import {
   LastIndicator,
   BoldIndicator,
 } from './WaterRatioPanel.styled';
-import sprite from '../../assets/sprite.svg';
-import { createPortal } from 'react-dom';
-import { Greeting } from '../../components/Greeting/Greeting.jsx';
-import {
-  changeDailyProgress,
-  changeGreetingModal,
-} from '../../redux/statisticData/statisticDataSlice.js';
-import { useEffect } from 'react';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 const WaterRatioPanel = () => {
   const dailyNorma = useSelector(selectDailyNorma);

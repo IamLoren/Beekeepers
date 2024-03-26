@@ -2,7 +2,6 @@ import { useCallback, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Fade } from '@mui/material';
-// import { Zoom } from '@mui/material';
 import sprite from '../../assets/sprite.svg';
 import TodayListModal from '../TodayListModal/TodayListModal';
 import DailyNormaModal from '../DailyNormaModal/DailyNormaModal';
@@ -10,6 +9,7 @@ import DeleteModal from '../TodayListModal/DeleteModal';
 import AddWaterModal from '../AddWaterModal/AddWaterModal';
 import UserLogoutModal from '../UserLogoutModal/UserLogoutModal';
 import SettingModal from '../SettingModal/SettingModal';
+import { closeModals } from '../../redux/modals/modalsSlice';
 import {
   selectAddWaterModal,
   selectDailyNormaModal,
@@ -19,7 +19,6 @@ import {
   selectLogoutModal,
   selectSettingModal,
 } from '../../redux/selectors';
-import { closeModals } from '../../redux/modals/modalsSlice';
 import {
   BtnClose,
   ModalContainer,
@@ -76,7 +75,6 @@ const Modal = () => {
       <Overlay onClick={onBackdropClick}>
         <ModalContainer>
           <Fade in={modalIsOpen} timeout={1000}>
-            {/* <Zoom in={modalIsOpen} timeout={900}> */}
             <ModalStyled>
               {dailyNormaModal && <DailyNormaModal />}
               {editPortionModal && <TodayListModal />}
@@ -92,7 +90,6 @@ const Modal = () => {
               </BtnClose>
             </ModalStyled>
           </Fade>
-          {/* </Zoom> */}
         </ModalContainer>
       </Overlay>
     </>,

@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import Confetti from 'react-confetti';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
+import { changeGreetingModal } from '../../redux/statisticData/statisticDataSlice';
 import {
   StyledGreeting,
   StyledGreetingText,
   StyledGreetingTitle,
   StyledGreetingWrapper,
 } from './Greeting.styled';
-import { useDispatch } from 'react-redux';
-import { changeGreetingModal } from '../../redux/statisticData/statisticDataSlice';
-import '../../Internationalization/i18n';
-import { useTranslation } from 'react-i18next';
 
 export const Greeting = ({ progress }) => {
   const dispatch = useDispatch();
