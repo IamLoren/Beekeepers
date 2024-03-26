@@ -141,4 +141,10 @@ export const es = {
     'you are a hero of selfcare': 'eres un héroe',
     'keep it up': 'sigue así',
   },
+  errorPage: {
+    'We are sorry, Page not found': 'Lo sentimos, Página no encontrada',
+    'The page you are looking for might have been removed or is temporarily unavailable':
+      'Es posible que la página que está buscando se haya eliminado o no esté disponible temporalmente',
+    'Back To Homepage': 'Volver a la página de inicio',
+  },
 };

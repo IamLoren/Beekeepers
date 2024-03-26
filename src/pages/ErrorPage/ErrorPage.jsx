@@ -1,4 +1,6 @@
 import Container from '../../components/Container/Container';
+import { useTranslation } from 'react-i18next';
+import '../../Internationalization/i18n';
 import {
   StyledError,
   StyledLink,
@@ -10,6 +12,7 @@ import {
 } from './ErrorPage.styled';
 
 const ErrorPage = () => {
+  const { t } = useTranslation();
   return (
     <Container>
       <StyledWrapper>
@@ -17,13 +20,15 @@ const ErrorPage = () => {
           <StyledError>
             <StyledType>404</StyledType>
           </StyledError>
-          <StyledTextP>We are sorry, Page not found!</StyledTextP>
+          <StyledTextP>
+            {t('errorPage.We are sorry, Page not found')}!
+          </StyledTextP>
           <StyledText>
-            {' '}
-            The page you are looking for might have been removed had its name
-            changed or is temporarily unavailable.
+            {t(
+              'errorPage.The page you are looking for might have been removed or is temporarily unavailable'
+            )}
           </StyledText>
-          <StyledLink to="/">Back To Homepage</StyledLink>
+          <StyledLink to="/">{t('errorPage.Back To Homepage')}</StyledLink>
         </StyledNotFound>
       </StyledWrapper>
     </Container>
