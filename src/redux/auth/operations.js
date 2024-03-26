@@ -65,6 +65,7 @@ export const updateUserThunk = createAsyncThunk(
   async (newUserData, ThunkAPI) => {
     try {
       const { data } = await api.patch(`api/auth/user`, newUserData);
+      console.log(data);
       return data;
     } catch (error) {
       toast.error(error?.response?.data?.message || error.message);

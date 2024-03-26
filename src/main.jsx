@@ -8,10 +8,12 @@ import Global from './css/common.js';
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
 import StyledToastContainer from './components/Toast/Toast.jsx';
+import ThemeClass from './components/Theme/Theme.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>
+      <ThemeClass/>
       <PersistGate loading={null} persistor={persistor}>
         <App />
         <Global />

@@ -26,7 +26,6 @@ import { useTranslation } from 'react-i18next';
 const HomePage = () => {
   const activeContent = useSelector(selectactiveContent);
   const theme = useSelector(selectColorTheme);
-  console.log(theme);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
