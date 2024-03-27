@@ -3,21 +3,26 @@ import styled from 'styled-components';
 export const LanguageSelectorWrap = styled.div`
   position: relative;
   display: inline-block;
-  margin-right: 10px;
   z-index: 1000;
 
   button {
     font-size: 16px;
     line-height: 1.25;
-    color: var(--white-text);
-    background-color: var(--percentage-text);
-    border: 1px solid var(--secondary-text);
+    color: var(--btn-text-color);
+    background-color: var(--btn-bg-color);
+    border: 1px solid var(--btn-text-color);
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
+    box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34);
+    width: 32px;
+    height: 32px;
     padding: 0;
     text-transform: uppercase;
     cursor: pointer;
+
+    &:hover,
+    &:active {
+      box-shadow: 0 4px 14px 0 rgba(64, 123, 255, 0.54);
+    }
   }
 
   ul {

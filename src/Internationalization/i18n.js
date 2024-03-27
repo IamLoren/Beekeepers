@@ -27,7 +27,7 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: LANGUAGES.EN,
     resources,
     interpolation: {
