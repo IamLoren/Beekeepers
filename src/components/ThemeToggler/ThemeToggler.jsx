@@ -20,12 +20,13 @@ const ThemeToggler = styled(Switch)(() => ({
       },
       '& + .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: '#8796A5',
+        backgroundColor: 'var(--percentage-text)',
       },
     },
   },
   '& .MuiSwitch-thumb': {
-    backgroundColor: 'var(--primary-text)',
+    backgroundColor: 'var(--btn-bg-color)',
+    border: '1px solid var(--percentage-text)',
     width: 32,
     height: 32,
     '&::before': {
@@ -44,7 +45,7 @@ const ThemeToggler = styled(Switch)(() => ({
   },
   '& .MuiSwitch-track': {
     opacity: 1,
-    backgroundColor: '#aab4be',
+    backgroundColor: 'var(--percentage-text)',
     borderRadius: 20 / 2,
   },
 }));

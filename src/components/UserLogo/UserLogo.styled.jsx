@@ -12,7 +12,7 @@ export const StyledName = styled.h2`
   font-size: 16px;
   line-height: 1.25;
   text-align: right;
-  color: var(--primary-text);
+  color: var(--secondary-text);
   @media only screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.33333;
@@ -35,8 +35,8 @@ export const StyledBtn = styled.button`
 `;
 
 export const AvatarWrapper = styled.div`
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   overflow: clip;
   border-radius: 50px;
   border: 1px solid ${({ $borderColor }) => $borderColor};
@@ -52,7 +52,6 @@ export const AvatarWrapper = styled.div`
 export const StyledSpan = styled.span`
   font-weight: 500;
   color: var(--secondary-text);
-  margin: 2px 0 0;
 `;
 
 export const StyledSvg = styled.svg`

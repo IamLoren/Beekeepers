@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { Popover } from '@mui/material';
 import sprite from '../../assets/sprite.svg';
+import defaultPhoto from '../../assets/avatar.jpg';
 import UserLogoModal from '../UserLogoModal/UserLogoModal';
 import {
   selectLogoutModal,
   selectSettingModal,
   selectUser,
 } from '../../redux/selectors';
-import defaultPhoto from '../../assets/avatar.jpg';
 import {
   AvatarWrapper,
   StyledBtn,
@@ -16,6 +17,7 @@ import {
   StyledSvg,
   StyledImg,
   StyledWrapper,
+  StyledSpan,
 } from './UserLogo.styled';
 
 const UserLogo = () => {
@@ -38,24 +40,25 @@ const UserLogo = () => {
     name ||
     email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
 
+  const isNotMobile = useMediaQuery({ query: '(min-width: 768px)' });
   return (
     <>
       <div>
         <StyledWrapper>
           <StyledBtn onClick={handleClick}>
-            <StyledName>{displayName}</StyledName>
+            {isNotMobile && <StyledName>{displayName}</StyledName>}
             <AvatarWrapper $borderColor={avatarURL ? 'transparent' : '#407bff'}>
               {avatarURL ? (
                 <StyledImg
                   src={avatarURL ? avatarURL : defaultPhoto}
-                  width={28}
-                  height={28}
+                  width={32}
+                  height={32}
                   alt="user avatar"
                 />
               ) : name ? (
                 <StyledName>{name[0].toUpperCase()}</StyledName>
               ) : (
-                <span>{email[0].toUpperCase()}</span>
+                <StyledSpan>{email[0].toUpperCase()}</StyledSpan>
               )}
             </AvatarWrapper>
             <StyledSvg width={16} height={16}>

@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { selectVariable } from "../../redux/selectors";
-import { useSelector } from "react-redux";
+
+import { selectVariable } from '../../redux/selectors';
+import { useSelector } from 'react-redux';
+
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {
   MainContainer,
@@ -11,25 +13,25 @@ import {
   TypingIndicator,
 } from '@chatscope/chat-ui-kit-react';
 
-
 const Assistant = () => {
   const KEY = useSelector(selectVariable);
-const [isTyping, setIsTyping] = useState(false);
-const [messages, setMessages] = useState([
-  {
-    message: "Hello, I am your personal water assistant. I wil help you stay hydrated. How can I help you today?",
-    sender: "assistant"
-  }
-]);
+  const [isTyping, setIsTyping] = useState(false);
+  const [messages, setMessages] = useState([
+    {
+      message:
+        'Hello, I am your personal water assistant. I wil help you stay hydrated. How can I help you today?',
+      sender: 'assistant',
+    },
+  ]);
 
-const handleSend = async (message) => {
-  const newMessage = {
-    message: message,
-    sender: "user",
-    direction: "outgoing"
-  }
+  const handleSend = async (message) => {
+    const newMessage = {
+      message: message,
+      sender: 'user',
+      direction: 'outgoing',
+    };
 
-  const newMessages = [...messages, newMessage];
+    const newMessages = [...messages, newMessage];
 
     setMessages(newMessages);
     setIsTyping(true);
