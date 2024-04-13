@@ -133,6 +133,7 @@ export const StyledAddBtn = styled.button`
   width: 280px;
   height: 36px;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
 
@@ -140,7 +141,7 @@ export const StyledAddBtn = styled.button`
   background: var(--btn-bg-color);
   border: 1px solid var(--percentage-text);
   border-radius: 10px;
-  padding: 6px 75px;
+  padding: 6px;
   cursor: pointer;
 
   font-family: 'Roboto Medium', sans-serif;
@@ -162,7 +163,7 @@ export const StyledAddBtn = styled.button`
   @media only screen and (min-width: 768px) {
     width: 336px;
     height: 44px;
-    padding: 10px 95px;
+    padding: 10px;
 
     font-size: 18px;
     line-height: 1.33333;
@@ -170,6 +171,6 @@ export const StyledAddBtn = styled.button`
 
   @media only screen and (min-width: 1440px) {
     width: 178px;
-    padding: 10px 18px;
+    padding: 10px;
   }
 `;
