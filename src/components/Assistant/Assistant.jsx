@@ -1,8 +1,6 @@
 import { useState } from 'react';
-
 import { selectVariable } from "../../redux/selectors";
 import { useSelector } from "react-redux";
-
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import {
   MainContainer,
@@ -91,8 +89,6 @@ const apiRequestBody = {
   });
 
 }
-
-
 
   return (
     <div style={{ position: 'relative', height: '480px' }}>

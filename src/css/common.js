@@ -153,6 +153,13 @@ input:-webkit-autofill:active {
  .blue-toast .Toastify__close-button {
     color: var(--secondary-text) !important;
   }
+
+  .MuiPopover-paper {
+    border-radius: 9px !important;
+    background-color: var(--white-text) !important;
+    border: 1px solid var(--percentage-text) !important;
+    box-shadow: 0 4px 8px 0 rgba(64, 123, 255, 0.34) !important;
+  }
 `;
 
 export default Global;
