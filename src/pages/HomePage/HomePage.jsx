@@ -12,6 +12,7 @@ import Assistant from '../../components/Assistant/Assistant.jsx';
 import PictureBottleBg from './PictureBottleBg';
 import {
   selectColorTheme,
+  selectLanguage,
   selectactiveContent,
 } from '../../redux/selectors.js';
 import { changeActiveContent } from '../../redux/normaCounter/normaCounterSlice.js';
@@ -22,12 +23,22 @@ import StyledWrapperDiv, {
   StyledButton,
   StyledFlexContainer,
 } from './HomePage.styled';
+import { useEffect } from 'react';
+import i18n from '../../Internationalization/i18n';
 
 const HomePage = () => {
   const activeContent = useSelector(selectactiveContent);
   const theme = useSelector(selectColorTheme);
+  const currentLanguage = useSelector(selectLanguage);
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const growYourTreeText = t('statistics.Grow your tree');
+  const assistantText = t('statistics.Your personal assistant');
+  const monthChartText = t('statistics.Your month chart');
+
+  useEffect(() => {
+    i18n.changeLanguage(currentLanguage);
+  }, [currentLanguage]);
 
   return (
     <StyledWrapperDiv>
@@ -39,17 +50,17 @@ const HomePage = () => {
               <StyledButton
                 onClick={() => dispatch(changeActiveContent('chart'))}
               >
-                {t('statistics.Your month chart')}
+                {monthChartText}
               </StyledButton>
               <StyledButton
                 onClick={() => dispatch(changeActiveContent('planting'))}
               >
-                {t('statistics.Grow your tree')}
+                {growYourTreeText}
               </StyledButton>
               <StyledButton
                 onClick={() => dispatch(changeActiveContent('bot'))}
               >
-                {t('statistics.Your personal assistant')}
+                {assistantText}
               </StyledButton>
             </ButtonsWrapper>
             <ActiveContentWrapper>

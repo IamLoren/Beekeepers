@@ -22,6 +22,7 @@ export const es = {
   month: 'Mes',
   setting: 'Configuración',
   changeTheme: 'Cambiar tema',
+  todayWaterList: 'Aún no hay notas',
 
   welcomePage: {
     'Water consumption tracker': 'Control del consumo de agua',

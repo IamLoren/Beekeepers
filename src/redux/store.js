@@ -21,7 +21,7 @@ const authPersistConfig = {
   key: 'auth',
   version: 1,
   storage,
-  whitelist: ['token', 'user', 'var'],
+  whitelist: ['token', 'user', 'var', 'language'],
 };
 
 const counterPersistConfig = {

@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useMediaQuery } from 'react-responsive';
 import { useForm } from 'react-hook-form';
@@ -29,8 +29,11 @@ import {
   FormLabel,
   PassShowBtn,
 } from '../../components/AuthForm/AuthForm.styled';
+import i18n from '../../Internationalization/i18n';
+import { selectLanguage } from '../../redux/selectors';
 
 const SignInPage = () => {
+  const currentLanguage = useSelector(selectLanguage);
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1439 });
   const isDesktop = useMediaQuery({ query: '(min-width: 1440px)' });
@@ -40,6 +43,11 @@ const SignInPage = () => {
   const dispatch = useDispatch();
 
   const { t } = useTranslation();
+
+  useEffect(() => {
+    i18n.changeLanguage(currentLanguage);
+  }, [currentLanguage]);
+
   const schema = yup
     .object({
       email: yup

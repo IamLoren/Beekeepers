@@ -22,6 +22,7 @@ export const en = {
   month: 'Month',
   setting: 'Setting',
   changeTheme: 'Change theme',
+  todayWaterList: 'No notes yet',
 
   welcomePage: {
     'Water consumption tracker': 'Water consumption tracker',
@@ -131,9 +132,7 @@ export const en = {
     'Recording time': 'Recording time',
     'Enter the value of the water used': 'Enter the value of the water used',
   },
-  todayWaterList: {
-    'No notes yet': 'No notes yet',
-  },
+ 
   greeting: {
     'you are a hero of selfcare': 'you are a hero of selfcare',
     'keep it up': 'keep it up',

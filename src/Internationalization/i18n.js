@@ -23,13 +23,16 @@ const resources = {
   },
 };
 
+const storedLanguage = localStorage.getItem('i18nextLng');
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    fallbackLng: storedLanguage,
     debug: false,
-    fallbackLng: LANGUAGES.EN,
     resources,
+    lng: storedLanguage || LANGUAGES.EN,
     interpolation: {
       escapeValue: false,
     },

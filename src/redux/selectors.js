@@ -54,3 +54,4 @@ export const selectSelectedMonth = state => state.statisticDataSlice.selectedMon
 export const selectColorTheme = state => state.authSlice.user.theme;
 export const selectDailyProgress = state => state.statisticDataSlice.dailyProgress;
 export const selectVariable = state => state.authSlice.var;
+export const selectLanguage = state => state.authSlice.user.language;

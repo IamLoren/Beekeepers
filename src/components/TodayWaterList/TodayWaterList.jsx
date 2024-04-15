@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import '../../Internationalization/i18n';
 import sprite from '../../assets/sprite.svg';
 import TodayListItem from '../TodayListItem/TodayListItem';
-import { selectDailyPortions } from '../../redux/selectors';
+import { selectDailyPortions, selectLanguage } from '../../redux/selectors';
 import {
   changeAddModal,
   changeModalOpen,
@@ -18,11 +18,18 @@ import {
   TodayListButton,
   TodayListTitle,
 } from './TodayWaterList.styled';
+import i18n from '../../Internationalization/i18n';
 
 const TodayWaterList = () => {
   const dispatch = useDispatch();
   const dailyPortions = useSelector(selectDailyPortions);
+  const currentLanguage = useSelector(selectLanguage);
   const { t } = useTranslation();
+  const noPortionsText = t('todayWaterList')
+
+  useEffect(() => {
+    i18n.changeLanguage(currentLanguage);
+  }, [currentLanguage]);
 
   useEffect(() => {
     const today = new Date();
@@ -50,7 +57,7 @@ const TodayWaterList = () => {
           ))}
         </TodayList>
       ) : (
-        <NoPortionsText>{t('todayWaterList.No notes yet')}</NoPortionsText>
+        <NoPortionsText>{noPortionsText}</NoPortionsText>
       )}
       <TodayListButton onClick={onAddPortionClick}>
         <svg width={16} height={16}>

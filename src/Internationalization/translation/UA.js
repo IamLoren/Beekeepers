@@ -22,6 +22,7 @@ export const ua = {
   month: 'Місяць',
   setting: 'Налаштування',
   changeTheme: 'Змінити тему',
+  todayWaterList: 'Ще немає записів',
 
   welcomePage: {
     'Water consumption tracker': 'Трекер споживання води',
@@ -136,9 +137,7 @@ export const ua = {
     'Recording time': 'Час запису',
     'Enter the value of the water used': 'Вкажіть кількість випитої води',
   },
-  todayWaterList: {
-    'No notes yet': 'Записів поки немає',
-  },
+
   greeting: {
     'you are a hero of selfcare': 'ти чемпіон з піклування про себе',
     'keep it up': 'так тримати',

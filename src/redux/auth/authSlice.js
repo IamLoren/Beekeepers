@@ -9,6 +9,7 @@ import {
   updateUserThunk,
   verifyThunk,
 } from './operations.js';
+import { LANGUAGES } from '../../Internationalization/i18n';
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -22,6 +23,7 @@ export const authSlice = createSlice({
       theme: 'light',
       verify: false,
       verificationToken: '',
+      language: LANGUAGES.EN,
     }, 
     var: '',
     token: '',
@@ -33,6 +35,9 @@ export const authSlice = createSlice({
   reducers: {
     changeUserTheme: (state, { payload }) => {
       state.user.theme = payload;
+    },
+    changeLanguageInState: (state, { payload }) => {
+      state.user.language = payload;
     },
   },
 
@@ -88,11 +93,13 @@ export const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(updateUserThunk.fulfilled, (state, { payload }) => {
+        console.log(payload)
         state.user.name = payload.name;
         state.user.email = payload.email;
         state.user.gender = payload.gender;
         state.user.avatarURL = payload.avatarURL;
         state.user.theme = payload.theme;
+        state.user.language = payload.language;
         state.user.registrationDate = payload.createdAt.substring(0, 10);
         state.isLoading = false;
         state.isError = null;
@@ -124,6 +131,8 @@ export const authSlice = createSlice({
         state.user.registrationDate = payload.createdAt.substring(0, 10);
         state.user.avatarURL = payload.avatarURL;
         state.user.theme = payload.theme;
+        state.user.language = payload.language;
+        console.log(payload.language)
         state.isLogged = true;
         state.isLoading = false;
         state.isRefresh = false;
@@ -154,4 +163,4 @@ export const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
-export const {changeUserTheme} = authSlice.actions;
+export const {changeUserTheme, changeLanguageInState} = authSlice.actions;
